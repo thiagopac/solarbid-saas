@@ -1,0 +1,141 @@
+
+				
+				.btn-danger {
+    background: #f0284a !important;
+}
+
+.btn-success {
+    background: #27ae60 !important;
+}
+
+.btn-primary {
+    background: #0081ff !important;
+}
+
+.btn-secondary {
+    background: #e67e22 !important;
+}
+
+.btn-warning {
+    background: #ffa61e !important;
+}
+
+.btn-info {
+    background: #f1f1f1 !important;
+    color: #0081ff !important;
+}
+
+.orangered {
+    color: orangered;
+}
+
+.green {
+    color: green;
+}
+
+.white {
+    color: white;
+}
+
+.warning-lead {
+    /*background: #fde9a1 !important;*/
+    background: #ffa61e !important;
+}
+
+.danger-lead {
+    /*background: #ffb3b3 !important;*/
+    background: #ec492c !important;
+}
+
+.normal-lead {
+    background: #bcc2c7 !important;
+}
+
+.transparent {
+    color: transparent !important;
+}
+
+.dashboard-label.label-red {
+    font-family: Tahoma;
+    font-weight: 100;
+    background: #ec492c !important;
+    border: 0px;
+    padding: 4px;
+    font-size: 10px;
+    color: white !important;
+}
+
+.dashboard-label.label-yellow {
+    font-family: Tahoma;
+    font-weight: 100;
+    background: #ffbd30 !important;
+    border: 0px;
+    padding: 4px;
+    font-size: 10px;
+    color: white !important;
+}
+
+.dashboard-label.label-blue {
+    font-family: Tahoma;
+    font-weight: 100;
+    background: #3498db !important;
+    border: 0px;
+    padding: 4px;
+    font-size: 10px;
+    color: white !important;
+}
+
+.dashboard-label.label-green {
+    font-family: Tahoma;
+    font-weight: 100;
+    background: #27ae60 !important;
+    border: 0px;
+    padding: 4px;
+    font-size: 10px;
+    color: white !important;
+}
+
+.dashboard-label.label-gray {
+    font-family: Tahoma;
+    font-weight: 100;
+    background: #95a5a6 !important;
+    border: 0px;
+    padding: 4px;
+    font-size: 10px;
+    color: white !important;
+}
+
+.lead-screen-tv-size {
+    min-width: 150px !important;
+    max-width: 200px !important;
+}
+
+.lead-title-tv-size {
+    font-size: 12px !important;
+    white-space: normal !important;
+    width: calc(100%) !important;
+}
+
+.lead-status-tv-title {
+    font-size: 14px !important;
+    white-space: normal !important;
+    height: 60px !important;
+}
+
+.toggle-on {
+    top:1.5px !important;
+}
+
+.toggle-off {
+    top:1.5px !important;
+}
+
+.toggle.btn-sm {
+    height: 27px !important;
+    min-height: 27px !important;
+    bottom: 1px !important;
+}
+
+.dashboard-label {
+    width: 60px !important;
+}
