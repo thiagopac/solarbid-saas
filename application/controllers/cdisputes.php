@@ -32,21 +32,10 @@ class cDisputes extends MY_Controller
         $this->content_view = 'disputes/client/all';
     }
 
-    function messagelist($con = FALSE, $deleted = FALSE)
+    function disputelist()
     {
-        $max_value = 60;
-        if ($deleted == 'deleted') {
-            $qdeleted = " AND privatemessages.status = 'deleted' OR privatemessages.deleted = 1 ";
-        } else {
-            $qdeleted = ' AND privatemessages.status != "deleted" AND privatemessages.deleted = 0 ';
-        }
 
-        if (is_numeric($con)) {
-            $limit = $con . ',';
-        } else {
-            $limit = false;
-        }
-        $this->view_data['message'] = Privatemessage::getMessages($limit, $max_value, $qdeleted, $this->client->id, true);
+        $this->view_data['disputes'] = Dispute::all();
 
         if ($deleted) {
             $this->view_data['deleted'] = '/' . $deleted;

@@ -1132,3 +1132,9 @@ $lang['application_bill'] = 'Conta';
 $lang['application_other'] = 'Outro';
 $lang['application_observations'] = 'Observações';
 $lang['application_no_kind_defined'] = 'Tipo indefinido';
+
+$lang['application_scheduled'] = 'Agendado';
+$lang['application_in_progress'] = 'Em andamento';
+$lang['application_suspended'] = 'Suspenso';
+$lang['application_completed'] = 'Concluído';
+$lang['application_impossible_update_dispute_object'] = 'Não é permitido alterar o Objeto de Disputa após o Certame ser criado';

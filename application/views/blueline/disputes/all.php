@@ -49,7 +49,7 @@
                     </th>-->
 
                     <th style="text-align: center" class="hidden-xs">
-                        <?=$this->lang->line('application_issue_date');?>
+                        <?=$this->lang->line('application_start_date');?>
                     </th>
                     <th style="text-align: center" class="hidden-xs">
                         <?=$this->lang->line('application_due_date');?>
@@ -59,6 +59,9 @@
                     </th>
                     <th style="text-align: center">
                         <?=$this->lang->line('application_Sent');?>
+                    </th>
+                    <th style="text-align: center">
+                        <?=$this->lang->line('application_status');?>
                     </th>
                     <th style="text-align: center">
                         <?=$this->lang->line('application_action');?>
@@ -78,13 +81,40 @@
                                 <?/*=$value->dispute_object->rated_power_mod;*/?> <?/*=$core_settings->rated_power_measurement*/?>
                             </td>-->
 
-                            <td style="text-align: center" class="hidden-xs"><span><?=fnDateYMDHItoDMYHI($value->issue_date);?></span>
+                            <td style="text-align: center" class="hidden-xs"><span><?=fnDateYMDHItoDMYHI($value->start_date);?></span>
                             </td>
                             <td style="text-align: center" class="hidden-xs"><span><?=fnDateYMDHItoDMYHI($value->due_date);?></span>
                             </td>
                             <td style="text-align: center" class="hidden-xs" id="clock" data-countdown="<?=$value->due_date;?>"></span>
                             </td>
                             <td style="text-align: center"><span class="label <?=$value->dispute_sent == 'yes' ? 'label-success' : 'label-important';?> tt" ><?=$this->lang->line('application_'.$value->dispute_sent) ?></span></td>
+                            <?php
+
+                                $label_state = "";
+
+                                switch ($value->status) {
+                                    case 'scheduled':
+                                        $label_state = "label-warning";
+                                        break;
+
+                                    case 'in_progress':
+                                        $label_state = "label-success";
+                                        break;
+
+                                    case 'suspended':
+                                        $label_state = "label-important";
+                                        break;
+
+                                    case 'completed':
+                                        $label_state = "label-info";
+                                        break;
+
+                                    default:
+                                        $label_state = "label-primary";
+                                }
+
+                            ?>
+                            <td style="text-align: center"><span class="label <?=$label_state;?> tt" ><?=$this->lang->line('application_'.$value->status) ?></span></td>
                             <td class="option" width="8%" style="text-align: center">
                                 <button <?=$value->dispute_sent == 'no' ? '' : 'disabled style="color:lightgray"'?> href="<?=base_url()?>disputes/update/<?=$value->id;?>" class="btn-option" data-toggle="mainmodal"><i class="icon dripicons-gear"></i></button>
                             </td>
@@ -95,6 +125,7 @@
             </div>
         </div>
     </div>
+
 
 <script>
 $(document).ready(function(){

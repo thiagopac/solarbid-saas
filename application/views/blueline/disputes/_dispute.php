@@ -19,6 +19,8 @@ echo form_open($form_action, $attributes);
             <input id="reference" type="text" name="dispute_reference" class="form-control" value="<?php if(isset($dispute)){echo $dispute->dispute_reference;} else{ echo $core_settings->dispute_reference; } ?>" required />
         </div>
     </div>
+
+    <small class="text-muted"><?=$this->lang->line("application_impossible_update_dispute_object")?></small>
     <div class="form-group">
         <label for="client">
             <?=$this->lang->line('application_dispute_object');?>
@@ -32,14 +34,17 @@ echo form_open($form_action, $attributes);
         endforeach;
         if (isset($dispute) && is_object($dispute)) {
             $object_id = $dispute->dispute_object_id;
+            $disabled = empty($dispute->dispute_object_id) ? '' : 'disabled';
         }
-        echo form_dropdown('dispute_object_id', $options, $object_id, 'style="width:100%" class="chosen-select"'); ?>
+
+        echo form_dropdown('dispute_object_id', $options, $object_id, "style='width:100%' class='chosen-select' $disabled"); ?>
     </div>
 
+
     <div class="form-group">
-        <label for="issue_date">
-            <?=$this->lang->line('application_issue_date');?> *</label>
-        <input id="issue_date" type="text" name="issue_date" data-enable-time=true class="form-control datepicker-time required" value="<?php if(isset($dispute)){echo $dispute->issue_date;} ?>" required/>
+        <label for="start_date">
+            <?=$this->lang->line('application_start_date');?> *</label>
+        <input id="start_date" type="text" name="issue_date" data-enable-time=true class="form-control datepicker-time required" value="<?php if(isset($dispute)){echo $dispute->start_date;} ?>" required/>
         <!--<input id="due_date" type="text" name="due_date" data-enable-time=true class="required datepicker-time datepicker-time-linked form-control" value="<?php /*if(isset($dispute)){echo $dispute->due_date;} */?>" required/>-->
     </div>
     <div class="form-group">
@@ -59,6 +64,22 @@ echo form_open($form_action, $attributes);
             $inactive = $dispute->inactive;
         }
         echo form_dropdown('inactive', $options, $inactive, 'style="width:100%" class="chosen-select"'); ?>
+    </div>
+    <div class="form-group">
+        <label for="status">
+            <?=$this->lang->line('application_status');?>
+        </label>
+        <?php $options = array();
+        $options[null] = $this->lang->line('application_select');
+        $options['scheduled'] = $this->lang->line('application_scheduled');
+        $options['in_progress'] = $this->lang->line('application_in_progress');
+        $options['suspended'] = $this->lang->line('application_suspended');
+        $options['completed'] = $this->lang->line('application_completed');
+
+        if (isset($dispute) && is_object($dispute)) {
+            $status = $dispute->status;
+        }
+        echo form_dropdown('status', $options, $status, 'style="width:100%" class="chosen-select"'); ?>
     </div>
     <!--<div class="form-group">
         <label for="currency"><?/*=$this->lang->line('application_currency');*/?></label>

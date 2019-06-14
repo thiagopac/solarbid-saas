@@ -7,9 +7,6 @@
             <h1 class="page-title">
                 <div class="message-list-header">
                     <span id="inbox-folder"><i class="icon dripicons-inbox"></i> <?=$this->lang->line('application_INBOX');?></span>
-                    <span id="sent-folder"><i class="icon dripicons-reply"></i> <?=$this->lang->line('application_sent');?></span>
-                    <span id="deleted-folder"><i class="icon dripicons-trash"></i> <?=$this->lang->line('application_Deleted');?></span>
-                    <span id="marked-folder"><i class="icon dripicons-star"></i> <?=$this->lang->line('application_Marked');?></span>
                 </div>
             </h1>
         </header>
@@ -17,7 +14,7 @@
             <ul>
                 <li>
                     <div class="btn-group">
-                        <a class="btn btn-primary message-list-load inbox-folder" id="message-trigger" style="display: none;" role="button" href="<?=base_url()?>cdisputes/messagelist" title="Inbox"><i class="icon dripicons-inbox space"></i> <span class="hidden-xs"><?=$this->lang->line('application_INBOX');?></span></a>
+                        <a class="btn btn-primary message-list-load inbox-folder" id="message-trigger" style="display: none;" role="button" href="<?=base_url()?>cdisputes/disputelist" title="Inbox"><i class="icon dripicons-inbox space"></i> <span class="hidden-xs"><?=$this->lang->line('application_INBOX');?></span></a>
                     </div>
                 </li>
             </ul>

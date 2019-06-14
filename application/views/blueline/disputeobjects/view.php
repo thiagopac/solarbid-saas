@@ -368,7 +368,7 @@
                         <?=$this->lang->line('application_dispute_object_id');?>
                     </th>
                     <th width="5%" style="text-align:center;">
-                        <?=$this->lang->line('application_issue_date');?>
+                        <?=$this->lang->line('application_start_date');?>
                     </th>
                     <th width="5%" style="text-align:center;">
                         <?=$this->lang->line('application_due_date');?>
@@ -385,7 +385,7 @@
                                 <?=$core_settings->dispute_prefix?><?=$value->dispute_reference?>
                             </td>
                             <td style="text-align:center;" class="hidden-xs">
-                                <?=fnDateYMDHItoDMYHI($value->issue_date)?>
+                                <?=fnDateYMDHItoDMYHI($value->start_date)?>
                             </td>
                             <td style="text-align:center;" class="hidden-xs">
                                 <?=fnDateYMDHItoDMYHI($value->due_date)?>

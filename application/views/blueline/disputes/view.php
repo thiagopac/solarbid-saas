@@ -31,7 +31,36 @@
         <div class="box-shadow">
             <div class="table-head">
                 <?=$this->lang->line('application_dispute_details');?>
-                <div id="clock" class="pull-right" style="text-transform: lowercase; font-size: 18px"></div>
+                <?php
+
+                $label_state = "";
+
+                switch ($dispute->status) {
+                    case 'scheduled':
+                        $label_state = "label-warning";
+                        break;
+
+                    case 'in_progress':
+                        $label_state = "label-success";
+                        break;
+
+                    case 'suspended':
+                        $label_state = "label-important";
+                        break;
+
+                    case 'completed':
+                        $label_state = "label-info";
+                        break;
+
+                    default:
+                        $label_state = "label-primary";
+                }
+
+                ?>
+                <span class="label <?=$label_state?>" style="vertical-align: middle"><?=$this->lang->line("application_".$dispute->status)?></span>
+                <div class="pull-right">
+                    <span id="clock" style="text-transform: lowercase; font-size: 18px"></span>
+                </div>
             </div>
             <div class="subcont">
                 <ul class="details col-xs-12 col-sm-6">
@@ -42,8 +71,8 @@
                     <li class="<?=$dispute->dispute_sent;?>"><span><?=$this->lang->line('application_Sent');?>:</span>
                         <span class="label <?=$dispute->dispute_sent == 'yes' ? 'label-success' : 'label-important';?> tt"><?=$this->lang->line('application_' . $dispute->dispute_sent);?></span>
                     </li>
-                    <li><span><?=$this->lang->line('application_issue_date');?>:</span>
-                        <?=fnDateYMDHItoDMYHI($dispute->issue_date);?>
+                    <li><span><?=$this->lang->line('application_start_date');?>:</span>
+                        <?=fnDateYMDHItoDMYHI($dispute->start_date);?>
                     </li>
 
                     <li><span><?=$this->lang->line('application_due_date'); ?>:</span>
