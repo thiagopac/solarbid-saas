@@ -9,7 +9,7 @@
 class peeker_ci_methods
 {
 	// hold the codeigniter object
-	public $CI
+	public $CI;
 	
 	// create the link between this 
 	// class and the base layer

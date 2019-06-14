@@ -14,8 +14,8 @@
               $active_record = TRUE;
 
               $db['default']['hostname'] = 'localhost';
-              $db['default']['username'] = 'owner398_user';
-              $db['default']['password'] = 'ownergy@3459';
+              $db['default']['username'] = 'loyaltee_sb_user';
+              $db['default']['password'] = 'LPFfs2798A';
               $db['default']['database'] = 'loyaltee_solarbid_bidbox';
               $db['default']['dbdriver'] = 'mysql';
               $db['default']['dbprefix'] = '';
@@ -32,4 +32,3 @@
 
               /* End of file database.php */
               /* Location: ./application/config/database.php */
-              

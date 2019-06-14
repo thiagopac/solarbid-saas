@@ -466,10 +466,16 @@ class Disputes extends MY_Controller
 
     public function startDispute($id = false){
 
+        $this->load->helper('notification');
+
+        $core_settings = Setting::first();
+        $dispute = Dispute::find($id);
+
+        $prefix = $core_settings->dispute_prefix;
+        $reference = $dispute->dispute_reference;
+
         $this->content_view = 'disputes/view' . $id;
         $this->theme_view = 'ajax';
-
-        $dispute = Dispute::find($id);
 
         $push_receivers = array();
 
@@ -479,21 +485,23 @@ class Disputes extends MY_Controller
             foreach ($ids_participants as $id_participant){
                 CompanyHasDispute::create(['company_id' => $id_participant, 'dispute_id' => $id]);
 
-                $arr_clients = Client::find_by_id();
+                $arr_clients = Client::all(['conditions' => ['company_id = ? AND inactive = ?', $id_participant, 0]]);
 
-                foreach ($arr_clients as $client)
+                foreach ($arr_clients as $client) {
 
-                if ($client->push_active == 1){
-                    array_push($push_receivers, $client->email);
+                    if ($client->push_active == 1) {
+                        array_push($push_receivers, $client->email);
+                    }
+
+                    $attributes = array('client_id' => $client->id, 'message' => "<b>".$prefix.$reference."</b> - ".$this->lang->line('application_new_dispute_started'), 'url' => base_url()."cdisputes");
+                    ClientNotification::create($attributes);
+
+                    send_notification($client->email, "[".$prefix.$reference."] - ".$this->lang->line('application_new_dispute_started'), $this->lang->line('application_new_dispute_started').'<br><strong>'.$prefix.$dispute->dispute_reference.'</strong>', false, base_url()."cdisputes", $this->lang->line('application_new_dispute_started'));
                 }
-
-                $attributes = array('client_id' => $client->id, 'message' => "<b>".$this->lang->line('application_dispute')."</b> - "."Certame recebido", 'url' => base_url());
-                ClientNotification::create($attributes);
             }
-
         }
 
-        ClientNotification::sendPushNotification($push_receivers, "[".$this->lang->line('application_dispute')."] - "."Certame recebido", base_url());
+        ClientNotification::sendPushNotification($push_receivers, "[".$prefix.$reference."] - ".$this->lang->line('application_new_dispute_started'), base_url());
 
         $dispute->dispute_sent = 'yes';
 

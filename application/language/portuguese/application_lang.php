@@ -1075,6 +1075,11 @@ $lang['application_dispute_participation_rule'] = 'Regra de participação';
 $lang['application_start_dispute'] = 'Iniciar certame';
 $lang['application_finish_dispute'] = 'Finalizar certame';
 
+$lang['application_new_dispute'] = 'Novo certame';
+$lang['application_new_dispute_started'] = 'Novo certame iniciado';
+$lang['application_send_your_proposal'] = 'Envie sua proposta';
+$lang['application_alert'] = 'Alerta';
+
 $lang['application_no_plant_assigned'] = 'Nenhuma planta atribuída';
 $lang['application_no_rule_assigned'] = 'Nenhuma regra selecionada';
 
