@@ -22,7 +22,7 @@ echo form_open($form_action, $attributes);
 
     <small class="text-muted"><?=$this->lang->line("application_impossible_update_dispute_object")?></small>
     <div class="form-group">
-        <label for="client">
+        <label for="dispute_object_id">
             <?=$this->lang->line('application_dispute_object');?>
         </label>
         <?php $options = array();

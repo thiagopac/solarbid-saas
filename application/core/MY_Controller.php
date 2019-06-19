@@ -222,7 +222,7 @@ class My_Controller extends CI_Controller
         if (!in_array($this->uri->uri_string(), $no_link) && empty($_POST) && (!isset($url[1]) || $url[1] == "view")) {
             $link = '/'.$this->uri->uri_string();
             $cookie = array(
-                       'name'   => 'fc2_link',
+                       'name'   => 'bidbox_link',
                        'value'  => $link,
                        'expire' => '500',
                    );

@@ -11,7 +11,7 @@ class Tickets extends MY_Controller
         $link = '/' . $this->uri->uri_string();
 
         if ($this->client) {
-            if ($this->input->cookie('fc2_link') != '') {
+            if ($this->input->cookie('bidbox_link') != '') {
                 $link = str_replace('/tickets/', '/ctickets/', $link);
                 redirect($link);
             }
@@ -27,7 +27,7 @@ class Tickets extends MY_Controller
             }
         } else {
             $cookie = [
-                   'name' => 'fc2_link',
+                   'name' => 'bidbox_link',
                    'value' => $link,
                    'expire' => '500',
                ];

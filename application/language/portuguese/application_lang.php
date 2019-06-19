@@ -258,7 +258,7 @@ $lang['application_go_to_login'] = 'Ir para login';
 $lang['application_forgot_password'] = 'Esqueceu sua senha?';
 $lang['application_identify_account'] = 'Para redefinir sua senha, por favor, primeiro identificar a sua conta.';
 $lang['application_notification_new_message_subject'] = 'Nova mensagem';
-$lang['application_notification_new_message'] = 'Você recebeu uma nova mensagem.';
+$lang['application_notification_new_message'] = 'Você recebeu uma nova mensagem';
 $lang['application_notification_project_assign_subject'] = 'Atualização do Projeto';
 $lang['application_notification_project_assign'] = 'Um projeto foi atribuído a você.';
 $lang['application_notification_quotation_subject'] = 'Nova cotação';
@@ -528,7 +528,7 @@ $lang['application_send_estimate_to_client'] = 'Enviar Orçamento para o cliente
 
 $lang['application_disputes'] = 'Certames';
 $lang['application_dispute'] = 'Certame';
-$lang['application_cdisputes'] = 'Certames';
+$lang['application_cdisputes'] = 'Caixa de Entrada';
 $lang['application_create_dispute'] = 'Novo Certame';
 $lang['application_dispute_details'] = 'Detalhes do Certame';
 $lang['application_dispute_id'] = 'Referência';
@@ -1013,7 +1013,7 @@ $lang['application_no_bids_yet'] = 'Nenhum lance ainda';
 
 $lang['application_no_disputes_yet'] = 'Nenhum certame ainda';
 $lang['application_no_bills_yet'] = 'Nenhuma conta ainda';
-$lang['application_no_plants_yet'] = 'Nenhuma planta ainda';
+$lang['application_no_plants_yet'] = 'Nenhuma usina ainda';
 
 $lang['application_integrator'] = 'Integrador';
 $lang['application_integratores'] = 'Integradores';
@@ -1030,6 +1030,7 @@ $lang['application_occupied_area'] = 'Área ocupada pelas placas';
 $lang['application_sent_date'] = 'Data do envio';
 
 $lang['application_compensated_bills'] = 'Contas a compensar';
+$lang['application_compensate_bills'] = 'Compensar contas';
 $lang['application_object_reason'] = 'O que espera da UFV';
 $lang['application_approximate_area'] = 'Área aproximada';
 $lang['application_installation_location'] = 'Local da instalação';
@@ -1052,10 +1053,10 @@ $lang['application_edit_bill'] = 'Editar conta';
 
 $lang['application_phone_pattern'] = '<small>(xx)xxxxx-xxxx</small>';
 
-$lang['application_plants'] = 'Plantas';
-$lang['application_plant'] = 'Planta';
-$lang['application_add_plant'] = 'Adicionar planta';
-$lang['application_edit_plant'] = 'Editar planta';
+$lang['application_plants'] = 'Usinas';
+$lang['application_plant'] = 'Usina';
+$lang['application_add_plant'] = 'Adicionar usina';
+$lang['application_edit_plant'] = 'Editar usina';
 
 $lang['application_ghi'] = 'GHI';
 $lang['application_ghi_year_measure'] = '<small>(kWh/m² por ano)</small>';
@@ -1066,8 +1067,9 @@ $lang['application_performance_ratio'] = 'PR';
 $lang['application_photovoltaic_system'] = 'UFV';
 $lang['application_minimum_power_pvs'] = 'Potência mínima UFV';
 $lang['application_compensate_consumn'] = 'Consumo a ser compensado';
-$lang['application_select_plants'] = 'Selecione as plantas';
-$lang['application_assign_plants_to_dispute'] = 'Atribuir plantas ao certame';
+$lang['application_select_plants'] = 'Selecione as usinas';
+$lang['application_select_plant'] = 'Selecione a usina';
+$lang['application_assign_plants_to_dispute'] = 'Atribuir usinas ao certame';
 
 $lang['application_select_dispute_participation_rule'] = 'Selecione a regra de participação no certame';
 $lang['application_dispute_participation_rule'] = 'Regra de participação';
@@ -1080,7 +1082,7 @@ $lang['application_new_dispute_started'] = 'Novo certame iniciado';
 $lang['application_send_your_proposal'] = 'Envie sua proposta';
 $lang['application_alert'] = 'Alerta';
 
-$lang['application_no_plant_assigned'] = 'Nenhuma planta atribuída';
+$lang['application_no_plant_assigned'] = 'Nenhuma usina atribuída';
 $lang['application_no_rule_assigned'] = 'Nenhuma regra selecionada';
 
 $lang['application_rule_type'] = 'Tipo de regra';
@@ -1138,3 +1140,12 @@ $lang['application_in_progress'] = 'Em andamento';
 $lang['application_suspended'] = 'Suspenso';
 $lang['application_completed'] = 'Concluído';
 $lang['application_impossible_update_dispute_object'] = 'Não é permitido alterar o Objeto de Disputa após o Certame ser criado';
+
+$lang['application_dispute_minimum_bids'] = 'Este Certame tem mais de uma usina. É necessário preencher a proposta para cada uma das usinas';
+$lang['application_important'] = 'Importante';
+$lang['application_attention'] = 'Atenção';
+$lang['application_location_type'] = 'Tipo de local';
+$lang['application_residence'] = 'Residencial';
+$lang['application_business'] = 'Comercial';
+$lang['application_rural'] = 'Rural';
+$lang['application_plant_has_no_area_file'] = 'Esta usina não possui foto da área de instalação';

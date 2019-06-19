@@ -190,3 +190,12 @@ div.dataTables_info {
 .detail-table td {
     font-weight: 400 !important;
 }
+
+.highlight-text {
+    -webkit-box-shadow: 0 -2px 0 0 orange inset;
+    box-shadow: inset 0 -2px 0 0 orange;
+}
+
+.tag--orange {
+    background: orange;
+}

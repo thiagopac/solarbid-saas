@@ -31,8 +31,8 @@ class Auth extends MY_Controller
 			$_POST['username'] = $this->security->xss_clean($_POST['username']);
 			$user = User::validate_login($_POST['username'], $_POST['password']);
 			if($user){
-				if($this->input->cookie('fc2_link') != ""){
-					redirect($this->input->cookie('fc2_link'));
+				if($this->input->cookie('bidbox_link') != ""){
+					redirect($this->input->cookie('bidbox_link'));
 				}else{
 					redirect('');
 				}

@@ -177,7 +177,7 @@
 							 </div>
 							<?php endif; ?>
 							<?php if ($value->internal == '1') : ?>
-								<i class="hidden-xs ionicons ion-eye-disabled tt pull-right" title="<?=$this->lang->line('application_not_visible_to_client'); ?>"> </i> 
+								<i class="hidden-xs ionicons ion-eye-disabled tt pull-right" title="<?=$this->lang->line('application_not_visible_to_client'); ?>"> </i>
 							<?php endif; ?>
 					  	</div>
 			 		</div>

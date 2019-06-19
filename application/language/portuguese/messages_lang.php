@@ -227,14 +227,14 @@ $lang['messages_delete_bill_error'] = "Erro ao excluir conta";
 $lang['messages_save_bill_error'] = "Erro ao salvar conta";
 $lang['messages_save_bill_success'] = "Conta salva";
 
-$lang['messages_create_plant_success'] = "Planta criada";
-$lang['messages_create_plant_error'] = "Erro ao criar planta";
-$lang['messages_edit_plant_success'] = "Planta salva";
-$lang['messages_edit_plant_error'] = "Erro ao salvar planta";
-$lang['messages_delete_plant_success'] = "Planta excluída";
-$lang['messages_delete_plant_error'] = "Erro ao excluir planta";
-$lang['messages_save_plant_error'] = "Erro ao salvar planta";
-$lang['messages_save_plant_success'] = "Planta salva";
+$lang['messages_create_plant_success'] = "Usina criada";
+$lang['messages_create_plant_error'] = "Erro ao criar usina";
+$lang['messages_edit_plant_success'] = "Usina salva";
+$lang['messages_edit_plant_error'] = "Erro ao salvar usina";
+$lang['messages_delete_plant_success'] = "Usina excluída";
+$lang['messages_delete_plant_error'] = "Erro ao excluir usina";
+$lang['messages_save_plant_error'] = "Erro ao salvar usina";
+$lang['messages_save_plant_success'] = "Usina salva";
 
 $lang['messages_updated_range_success'] = "Alcance atualizado";
 $lang['messages_updated_range_error'] = "Erro ao atualizar alcance";

@@ -65,18 +65,17 @@
             <div class="subcont">
                 <ul class="details col-xs-12 col-sm-6">
                     <li><span><?=$this->lang->line('application_dispute_id');?>:</span>
-                        <?=$core_settings->dispute_prefix;?>
-                        <?=$dispute->dispute_reference;?>
+                        <?=$core_settings->dispute_prefix;?><?=$dispute->dispute_reference;?>
                     </li>
                     <li class="<?=$dispute->dispute_sent;?>"><span><?=$this->lang->line('application_Sent');?>:</span>
                         <span class="label <?=$dispute->dispute_sent == 'yes' ? 'label-success' : 'label-important';?> tt"><?=$this->lang->line('application_' . $dispute->dispute_sent);?></span>
                     </li>
                     <li><span><?=$this->lang->line('application_start_date');?>:</span>
-                        <?=fnDateYMDHItoDMYHI($dispute->start_date);?>
+                        <?=date($core_settings->date_format." ".$core_settings->date_time_format, human_to_unix($dispute->start_date))?>
                     </li>
 
                     <li><span><?=$this->lang->line('application_due_date'); ?>:</span>
-                        <?=fnDateYMDHItoDMYHI($dispute->due_date);?>
+                        <?=date($core_settings->date_format." ".$core_settings->date_time_format, human_to_unix($dispute->due_date))?>
                     </li>
 
                     <li><span><?=$this->lang->line('application_dispute_object'); ?>:</span> <a href="<?=base_url()?>disputeobjects/view/<?=$dispute->dispute_object->id; ?>" class="label label-info"><?=$dispute->dispute_object->id.' -     '.$dispute->dispute_object->owner_name; ?></a></li>
@@ -212,7 +211,7 @@
                                 ?>
                             </td>
                             <td style="text-align:center;" class="hidden-xs">
-                                <?=fnDateYMDHItoDMYHI($value->timestamp)?>
+                                <?=date($core_settings->date_format." ".$core_settings->date_time_format, human_to_unix($value->timestamp))?>
                             </td>
                             <td style="text-align:right;">
                                 <?=count($value->bid_has_proposals) == 1 ? $value->bid_has_proposals[0]->occupied_area_mod." ".$core_settings->area_measurement : count($value->bid_has_proposals)." valores (".array_sum(array_column($value->bid_has_proposals, 'occupied_area_mod'))." ".$core_settings->area_measurement.")"?>

@@ -14,7 +14,7 @@
             <ul>
                 <li>
                     <div class="btn-group">
-                        <a class="btn btn-primary message-list-load inbox-folder" id="message-trigger" style="display: none;" role="button" href="<?=base_url()?>cdisputes/disputelist" title="Inbox"><i class="icon dripicons-inbox space"></i> <span class="hidden-xs"><?=$this->lang->line('application_INBOX');?></span></a>
+                        <a class="btn btn-primary message-list-load inbox-folder" id="message-trigger" style="display: ;" role="button" href="<?=base_url()?>cdisputes/disputelist" title="Inbox"><i class="icon glyphicon glyphicon-refresh"></i> <span class="hidden-xs"><?=$this->lang->line('application_refresh');?></span></a>
                     </div>
                 </li>
             </ul>

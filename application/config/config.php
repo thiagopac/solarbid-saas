@@ -227,7 +227,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '4gf3k3ylbl5fsdd5sf809r';
+$config['encryption_key'] = '5QlkF+iXzeDb/eV/gzLxOX';
 
 /*
 |--------------------------------------------------------------------------
@@ -305,8 +305,8 @@ if (isset($_SERVER['REQUEST_URI'])) {
 } else {
     $config['csrf_protection'] = true;
 }
-$config['csrf_token_name'] = 'fcs_csrf_token';
-$config['csrf_cookie_name'] = 'fc2_csrf_cookie';
+$config['csrf_token_name'] = 'bidbox_csrf_token';
+$config['csrf_cookie_name'] = 'bidbox_csrf_cookie';
 $config['csrf_expire'] = 7200;
 
 /*

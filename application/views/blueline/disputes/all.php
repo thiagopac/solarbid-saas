@@ -81,9 +81,9 @@
                                 <?/*=$value->dispute_object->rated_power_mod;*/?> <?/*=$core_settings->rated_power_measurement*/?>
                             </td>-->
 
-                            <td style="text-align: center" class="hidden-xs"><span><?=fnDateYMDHItoDMYHI($value->start_date);?></span>
+                            <td style="text-align: center" class="hidden-xs"><span><?=date($core_settings->date_format." ".$core_settings->date_time_format, human_to_unix($value->start_date))?></span>
                             </td>
-                            <td style="text-align: center" class="hidden-xs"><span><?=fnDateYMDHItoDMYHI($value->due_date);?></span>
+                            <td style="text-align: center" class="hidden-xs"><span><?=date($core_settings->date_format." ".$core_settings->date_time_format, human_to_unix($value->due_date))?></span>
                             </td>
                             <td style="text-align: center" class="hidden-xs" id="clock" data-countdown="<?=$value->due_date;?>"></span>
                             </td>

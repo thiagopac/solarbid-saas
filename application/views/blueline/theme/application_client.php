@@ -198,6 +198,15 @@ $message_icon = false;
     <!-- Js Files -->
 
     <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/app.js"></script>
+    <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/important.js"></script>
+    <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/utils.js"></script>
+    <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/jquery.mask.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.25/moment-timezone.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.25/moment-timezone-with-data.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.25/moment-timezone-utils.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/pt-br.js"></script>
     <script>
         flatdatepicker(false, langshort);
     </script>

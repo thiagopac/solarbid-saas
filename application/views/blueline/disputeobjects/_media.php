@@ -28,6 +28,26 @@ echo form_open_multipart($form_action, $attributes);
         echo form_dropdown('kind', $options, $kind, 'style="width:100%" class="chosen-select"'); ?>
     </div>
     <div class="form-group">
+        <label for="plant_id">
+            <?=$this->lang->line('application_plant');?>
+        </label>
+        <?php $options = array();
+        $options['0'] = $this->lang->line('application_select_plant');;
+        $plant_id = '';
+
+        $objects = [];
+        foreach ($plants as $value):
+            $options[$value->id] = $this->lang->line('application_plant')." ".$value->id." - "."[".$value->compensate_consumn." ".$core_settings->consumn_power_measurement."] ".$value->minimum_power_pvs." ".$core_settings->rated_power_measurement;
+        endforeach;
+        if (isset($media) && is_object($media)) {
+            $plant_id = $media->plant_id;
+        }else{
+            $plant_id = '';
+        }
+
+        echo form_dropdown('plant_id', $options, $plant_id, "style='width:100%' class='chosen-select' "); ?>
+    </div>
+    <div class="form-group">
         <label for="description">
             <?=$this->lang->line('application_observations');?>
         </label>

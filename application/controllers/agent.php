@@ -129,8 +129,8 @@ class Agent extends MY_Controller
 
             $this->input->set_cookie($cookie);
         }
-        if ($this->input->cookie('fc2_link') != '') {
-            redirect($this->input->cookie('fc2_link'));
+        if ($this->input->cookie('bidbox_link') != '') {
+            redirect($this->input->cookie('bidbox_link'));
         } else {
             redirect('');
         }

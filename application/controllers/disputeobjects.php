@@ -309,8 +309,8 @@ class DisputeObjects extends MY_Controller
             $config['create_thumb'] = false;
 //            $config['thumb_marker'] = "";
             $config['maintain_ratio'] = true;
-            $config['width'] = 170;
-            $config['height'] = 170;
+//            $config['width'] = 170;
+//            $config['height'] = 170;
             $config['master_dim'] = "height";
             $config['quality'] = "100%";
 
@@ -388,8 +388,8 @@ class DisputeObjects extends MY_Controller
                         $config['create_thumb'] = false;
 //                        $config['thumb_marker'] = "";
                         $config['maintain_ratio'] = true;
-                        $config['width']    = 170;
-                        $config['height']    = 170;
+//                        $config['width']    = 170;
+//                        $config['height']    = 170;
                         $config['master_dim']    = "height";
                         $config['quality']    = "100%";
 
@@ -414,6 +414,8 @@ class DisputeObjects extends MY_Controller
                     redirect('disputeobjects/view/'.$id);
                 } else {
                     $this->theme_view = 'modal';
+                    $dispute_object = DisputeObject::find_by_id($id);
+                    $this->view_data['plants'] = DisputeObjectHasPlant::find('all', ['conditions' => ['dispute_object_id = ?',$dispute_object->id]]);
                     $this->view_data['title'] = $this->lang->line('application_add_media');
                     $this->view_data['form_action'] = 'disputeobjects/media/'.$id.'/add';
                     $this->content_view = 'disputeobjects/_media';
@@ -438,7 +440,10 @@ class DisputeObjects extends MY_Controller
                     }
                     redirect('disputeobjects/view/'.$id);
                 } else {
+
+                    $dispute_object = DisputeObject::find_by_id($id);
                     $this->theme_view = 'modal';
+                    $this->view_data['plants'] = DisputeObjectHasPlant::find('all', ['conditions' => ['dispute_object_id = ?',$dispute_object->id]]);
                     $this->view_data['title'] = $this->lang->line('application_edit_media');
                     $this->view_data['form_action'] = 'disputeobjects/media/'.$id.'/update/'.$media_id;
                     $this->content_view = 'disputeobjects/_media';

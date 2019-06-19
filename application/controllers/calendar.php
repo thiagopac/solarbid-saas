@@ -9,8 +9,8 @@ class Calendar extends MY_Controller
         parent::__construct();
         $access = false;
         if ($this->client) {
-            if ($this->input->cookie('fc2_link') != '') {
-                $link = $this->input->cookie('fc2_link');
+            if ($this->input->cookie('bidbox_link') != '') {
+                $link = $this->input->cookie('bidbox_link');
                 $link = str_replace('/tickets/', '/ctickets/', $link);
                 redirect($link);
             } else {

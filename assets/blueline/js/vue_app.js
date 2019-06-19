@@ -316,7 +316,7 @@ if (document.querySelector("#kanban-page")) {
         this.commentForm.message = "";
 
         var params = new FormData();
-        params.append("fcs_csrf_token", csfrData.fcs_csrf_token);
+        params.append("bidbox_csrf_token", csfrData.bidbox_csrf_token);
         params.append("message", data.message);
         params.append("lead_id", data.lead_id);
         if (this.attachment.file) {
@@ -408,7 +408,7 @@ if (document.querySelector("#kanban-page")) {
       },
       updateDbRecord(id, field, value, order) {
         var params = new URLSearchParams();
-        params.append("fcs_csrf_token", csfrData.fcs_csrf_token);
+        params.append("bidbox_csrf_token", csfrData.bidbox_csrf_token);
         params.append("id", id);
         params.append("field", field);
         params.append("value", value);

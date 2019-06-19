@@ -53,27 +53,45 @@ echo form_open($form_action, $attributes);
     </div>
     <div class="form-group">
         <label for="compensate_consumn">
-            <?=$this->lang->line('application_compensate_consumn');?> (<?=$core_settings->consumn_power_measurement?>)
+            <?=$this->lang->line('application_compensate_consumn');?>
         </label>
         <div class="input-group">
+            <div class="input-group-addon"><?=$core_settings->consumn_power_measurement;?></div>
             <input id="compensate_consumn" style="text-align:left !important" type="text" name="compensate_consumn" class="form-control" value="<?php if (isset($plant)) {
                 echo $plant->compensate_consumn;
             } ?>" />
         </div>
     </div>
-    <div class="form-group">
+    <!--<div class="form-group">
         <label for="inactive">
-            <?=$this->lang->line('application_inactive');?>
+            <?/*=$this->lang->line('application_inactive');*/?>
         </label>
-        <?php $options = array();
+        <?php /*$options = array();
         $options['no'] = $this->lang->line('application_no');
         $options['yes'] = $this->lang->line('application_yes');
 
         if (isset($plant) && is_object($plant)) {
             $inactive = $plant->inactive;
         }
-        echo form_dropdown('inactive', $options, $inactive, 'style="width:100%" class="chosen-select"'); ?>
+        echo form_dropdown('inactive', $options, $inactive, 'style="width:100%" class="chosen-select"'); */?>
+    </div>-->
+
+    <div class="form-group">
+        <label for="location_type">
+            <?=$this->lang->line('application_location_type');?>
+        </label>
+        <?php $options = array();
+        $options[null] = $this->lang->line('application_select');
+        $options['residence'] = $this->lang->line('application_residence');
+        $options['business'] = $this->lang->line('application_business');
+        $options['rural'] = $this->lang->line('application_rural');
+
+        if (isset($plant) && is_object($plant)) {
+            $location_type = $plant->location_type;
+        }
+        echo form_dropdown('location_type', $options, $location_type, 'style="width:100%" class="chosen-select"'); ?>
     </div>
+
 
     <?php
 

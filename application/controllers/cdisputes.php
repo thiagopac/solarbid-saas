@@ -32,17 +32,12 @@ class cDisputes extends MY_Controller
         $this->content_view = 'disputes/client/all';
     }
 
-    function disputelist()
-    {
+    function disputelist(){
 
-        $this->view_data['disputes'] = Dispute::all();
+        $comp_has_disps = $this->view_data['comp_has_disps'] = Dispute::getDisputes(10, 10, $this->client->company_id);
 
-        if ($deleted) {
-            $this->view_data['deleted'] = '/' . $deleted;
-        }
-        $this->view_data['message_list_page_next'] = $con + $max_value;
-        $this->view_data['message_list_page_prev'] = $con - $max_value;
-        $this->view_data['filter'] = false;
+//        $this->view_data['message_list_page_next'] = $con + $max_value;
+//        $this->view_data['message_list_page_prev'] = $con - $max_value;
         $this->theme_view = 'ajax';
 
         $this->content_view = 'disputes/client/list';
@@ -210,80 +205,39 @@ class cDisputes extends MY_Controller
             exit;
         }
     }
-    function view($id = FALSE, $filter = FALSE, $additional = FALSE)
-    {
+
+    function view($id = false) {
         $this->view_data['submenu'] = array(
             $this->lang->line('application_back') => 'disputes',
         );
-        $message = Privatemessage::find_by_id($id);
-        $this->view_data["count"] = "1";
-        if(!$filter){
-            if($message->status == "New"){
-                $message->status = 'Read';
-                $message->save();
-            }
-            $this->view_data["filter"] = FALSE;
-            $query = Privatemessage::find_by_sql('SELECT privatemessages.id, privatemessages.conversation FROM privatemessages
-        				WHERE privatemessages.recipient = "c'.$this->client->id.'" AND privatemessages.`id`="'.$id.'"');
 
-            $row = $query[0];
-            $query2 = Privatemessage::find_by_sql('SELECT privatemessages.id, privatemessages.`status`, privatemessages.conversation, privatemessages.attachment, privatemessages.attachment_link, privatemessages.subject, privatemessages.message, privatemessages.sender, privatemessages.recipient, privatemessages.`time`, privatemessages.`sender` , clients.`userpic` as userpic_c, users.`userpic` as userpic_u , users.`email` as email_u , clients.`email` as email_c , CONCAT(users.firstname," ", users.lastname) as sender_u, CONCAT(clients.firstname," ", clients.lastname) as sender_c, CONCAT(rec_u.firstname," ", rec_u.lastname) as recipient_u, CONCAT(rec_c.firstname," ", rec_c.lastname) as recipient_c
-        				FROM privatemessages  
-        				LEFT JOIN clients ON CONCAT("c",clients.id) = privatemessages.sender
-        				LEFT JOIN users ON CONCAT("u",users.id) = privatemessages.sender
-        				LEFT JOIN clients AS rec_c ON CONCAT("c",rec_c.id) = privatemessages.recipient
-        				LEFT JOIN users AS rec_u ON CONCAT("u",rec_u.id) = privatemessages.recipient
+        $dispute = Dispute::getDispute($id);
 
-        				GROUP by privatemessages.id HAVING privatemessages.conversation = "'.$row->conversation.'" ORDER BY privatemessages.`id` DESC LIMIT 100');
-
-
-            $this->view_data["conversation"] = array_filter($query2);
-            $this->view_data["count"] = count($this->view_data["conversation"]);
-        }else{
-            if($message->status == 'deleted'){
-                $sql = Privatemessage::find_by_sql('SELECT privatemessages.id, privatemessages.`status`, privatemessages.conversation, privatemessages.attachment, privatemessages.attachment_link, privatemessages.subject, privatemessages.message, privatemessages.sender, privatemessages.recipient, privatemessages.`time`, privatemessages.`sender` , clients.`userpic` as userpic_c, users.`userpic` as userpic_u , users.`email` as email_u , clients.`email` as email_c , CONCAT(users.firstname," ", users.lastname) as sender_u, CONCAT(clients.firstname," ", clients.lastname) as sender_c, CONCAT(users.firstname," ", users.lastname) as recipient_u, CONCAT(clients.firstname," ", clients.lastname) as recipient_c
-        				FROM privatemessages
-        				LEFT JOIN clients ON (CONCAT("c",clients.id) = privatemessages.sender) OR (CONCAT("c",clients.id) = privatemessages.recipient)
-        				LEFT JOIN users ON (CONCAT("u",users.id) = privatemessages.sender) OR (CONCAT("u",users.id) = privatemessages.recipient)
-        				GROUP by privatemessages.id HAVING privatemessages.id = "'.$id.'" AND privatemessages.recipient = "c'.$this->client->id.'" ORDER BY privatemessages.`id` DESC LIMIT 100');
-
-            }else{
-                if($filter == "Sent"){
-                    $sql = Privatemessage::find_by_sql('SELECT privatemessages.id, privatemessages.`status`, privatemessages.conversation, privatemessages.attachment, privatemessages.attachment_link, privatemessages.subject, privatemessages.message, privatemessages.sender, privatemessages.recipient, privatemessages.`time`, privatemessages.`sender` , clients.`userpic` as userpic_c, users.`userpic` as userpic_u , users.`email` as email_u , clients.`email` as email_c , CONCAT(users.firstname," ", users.lastname) as sender_u, CONCAT(clients.firstname," ", clients.lastname) as sender_c, CONCAT(users.firstname," ", users.lastname) as recipient_u, CONCAT(clients.firstname," ", clients.lastname) as recipient_c
-        				FROM privatemessages
-        				LEFT JOIN clients ON CONCAT("c",clients.id) = privatemessages.recipient OR CONCAT("c",clients.id) = privatemessages.sender
-        				LEFT JOIN users ON  CONCAT("u",users.id) = privatemessages.recipient OR CONCAT("u",users.id) = privatemessages.sender
-        				GROUP by privatemessages.id HAVING privatemessages.id = "'.$id.'" AND privatemessages.sender = "c'.$this->client->id.'" ORDER BY privatemessages.`id` DESC LIMIT 100');
-
-                    $receiverart = substr($additional, 0, 1);
-                    $receiverid = substr($additional, 1, 9999);
-
-                    if( $receiverart == "u"){
-                        $receiver = User::find_by_id($receiverid);
-                        $this->view_data["recipient"] = $receiver->firstname.' '.$receiver->lastname;
-
-                    }else{
-                        $receiver = Client::find_by_id($receiverid);
-                        $this->view_data["recipient"] = $receiver->firstname.' '.$receiver->lastname;
-                    }
-
-                }else{
-                    $sql = Privatemessage::find_by_sql('SELECT privatemessages.id, privatemessages.`status`, privatemessages.conversation, privatemessages.attachment, privatemessages.attachment_link, privatemessages.subject, privatemessages.message, privatemessages.sender, privatemessages.recipient, privatemessages.`time`, privatemessages.`sender` , clients.`userpic` as userpic_c, users.`userpic` as userpic_u , users.`email` as email_u , clients.`email` as email_c , CONCAT(users.firstname," ", users.lastname) as sender_u, CONCAT(clients.firstname," ", clients.lastname) as sender_c, CONCAT(users.firstname," ", users.lastname) as recipient_u, CONCAT(clients.firstname," ", clients.lastname) as recipient_c
-			        				FROM privatemessages
-			        				LEFT JOIN clients ON (CONCAT("c",clients.id) = privatemessages.sender) OR (CONCAT("c",clients.id) = privatemessages.recipient)
-			        				LEFT JOIN users ON (CONCAT("u",users.id) = privatemessages.sender) OR (CONCAT("u",users.id) = privatemessages.recipient)
-			        				GROUP by privatemessages.id HAVING privatemessages.id = "'.$id.'" AND privatemessages.sender = "c'.$this->client->id.'" ORDER BY privatemessages.`id` DESC LIMIT 100');
-                }
-            }
-            $query = $sql;
-
-            $this->view_data["conversation"] = array_filter($query);
-            $this->view_data["filter"] = $filter;
-        }
+        $this->view_data["dispute"] = $dispute;
         $this->theme_view = 'ajax';
+
         $this->view_data['form_action'] = 'cdisputes/write';
         $this->view_data['id'] = $id;
         $this->content_view = 'disputes/client/view';
+    }
+
+    function media($dispute_id = false, $plant_id = false){
+
+        $this->content_view = 'disputes/client/_media';
+        $this->theme_view = 'modal';
+        $this->view_data['title'] = $this->lang->line('application_file');
+
+        $dispute = Dispute::find($dispute_id);
+
+        $media = DisputeObjectHasFile::find('first', ['conditions' => ['dispute_object_id = ? AND plant_id = ? AND kind = ?', $dispute->dispute_object_id, $plant_id, 'area']]);
+
+//        foreach ($dispute->dispute_object->dispute_object_has_files as $file){
+//            if ($file->kind == 'area'){
+//                $media_area = $file;
+//            }
+//        }
+
+        $this->view_data['media'] = $media;
     }
 
 

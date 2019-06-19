@@ -29,7 +29,7 @@ class cMessages extends MY_Controller {
 
 	function messagelist($con = FALSE, $deleted = FALSE)
 	{
-		$max_value = 60;
+		$max_value = 5;
         if ($deleted == 'deleted') {
             $qdeleted = " AND privatemessages.status = 'deleted' OR privatemessages.deleted = 1 ";
         } else {

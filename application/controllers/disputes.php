@@ -293,7 +293,7 @@ class Disputes extends MY_Controller
 
             $dispute = $this->view_data['dispute'] = Dispute::find($id);
 
-            $this->view_data['plants'] = DisputeObjectHasPlant::find('all', ['conditions' => ['dispute_object_id = ? AND inactive != ?', $dispute->dispute_object->id, 'yes']]);
+            $this->view_data['plants'] = DisputeObjectHasPlant::find('all', ['conditions' => ['dispute_object_id = ?', $dispute->dispute_object->id]]);
 
             $plants_ids = explode(',', $dispute->plants);
 
