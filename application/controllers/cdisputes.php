@@ -150,6 +150,8 @@ class cDisputes extends MY_Controller {
 
         $dispute = Dispute::getDispute($id);
 
+        $this->view_data['proposals'] = BidHasProposal::find('all', ['conditions' => ['dispute_id = ? AND company_id = ?', $id, $this->client->company_id]]);
+
         $this->view_data["dispute"] = $dispute;
         $this->theme_view = 'ajax';
 
@@ -249,6 +251,46 @@ class cDisputes extends MY_Controller {
         $data = array('proposals' => object_to_array($proposals));
 
         return json_response("success", htmlspecialchars($this->lang->line('messages_registries_retrieved_success')), $data);
+    }
+
+    public function updateProposal($id = false, $getview = false)
+    {
+        if ($_POST) {
+
+            $id = $_POST['id'];
+            $view = false;
+            if (isset($_POST['view'])) {
+                $view = $_POST['view'];
+            }
+            unset($_POST['view']);
+            unset($_POST['send']);
+
+            $proposal = BidHasProposal::find($id);
+
+            $proposal->update_attributes($_POST);
+
+            if (!$proposal) {
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_updated_proposal_error'));
+            } else {
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_updated_proposal_success'));
+            }
+            if ($view == 'true') {
+                redirect('cdisputes/view/' . $id);
+            } else {
+                redirect('cdisputes');
+            }
+        } else {
+            $this->view_data['proposal'] = BidHasProposal::find($id);
+
+            if ($getview == 'view') {
+                $this->view_data['view'] = 'true';
+            }
+            $this->theme_view = 'modal';
+            $this->view_data['title'] = $this->lang->line('application_edit_proposal');
+
+            $this->view_data['form_action'] = 'disputes/updateProposal';
+            $this->content_view = 'disputes/client/_proposal';
+        }
     }
 
 

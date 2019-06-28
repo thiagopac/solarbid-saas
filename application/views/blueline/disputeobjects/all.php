@@ -50,8 +50,8 @@
                                 <a href="<?=base_url()?>disputeobjects/update/<?=$value->id;?>" class="btn-option" data-toggle="mainmodal"><i class="icon dripicons-gear"></i></a>
                             </td>
                         </tr>
-                    </tbody>
                     <?php endforeach;?>
+                    </tbody>
                 </table>
             </div>
         </div>

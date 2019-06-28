@@ -1170,3 +1170,7 @@ $lang['application_no_participations_dispute_sent_yet'] = '<u>ATENÇÃO!</u> Voc
 $lang['application_click_to_view'] = 'Clique aqui para visualizar';
 $lang['application_are_you_sure'] = 'Você tem certeza?';
 $lang['application_sure'] = 'Certeza!';
+
+$lang['application_your_proposals_for_dispute'] = 'Abaixo estão suas precificações preenchidas para este Certame';
+$lang['application_proposals'] = 'Propostas';
+$lang['application_edit_proposal'] = 'Editar proposta';

@@ -177,8 +177,8 @@
                     </th>
                     </thead>
                     <?php foreach ($bids as $value):?>
+                        <?php if ($value->bid_sent == "no") continue; ?>
                         <tr id="<?=$value->id;?>" data-proposals="<?=$value->html?>">
-<!--                        <tr id="--><?//=$value->id;?><!--" data-proposals=''>-->
                             <td class="noclick <?=count($value->bid_has_proposals) > 1 ? 'details-control' : '' ;?>  no-sort">
                                 <i class="btn-option icon dripicons-plus <?=count($value->bid_has_proposals) > 1 ? '' : 'hidden' ;?>"></i>
                             </td>

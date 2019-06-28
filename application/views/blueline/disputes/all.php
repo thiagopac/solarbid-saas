@@ -119,8 +119,8 @@
                                 <button <?=$value->dispute_sent == 'no' ? '' : 'disabled style="color:lightgray"'?> href="<?=base_url()?>disputes/update/<?=$value->id;?>" class="btn-option" data-toggle="mainmodal"><i class="icon dripicons-gear"></i></button>
                             </td>
                         </tr>
-                    </tbody>
                     <?php endforeach;?>
+                    </tbody>
                 </table>
             </div>
         </div>

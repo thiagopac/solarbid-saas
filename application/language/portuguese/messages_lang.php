@@ -159,15 +159,12 @@ $lang['messages_delete_dispute_error'] = "Erro ao excluir certame";
 $lang['messages_save_dispute_error'] = "Erro ao salvar certame";
 $lang['messages_save_dispute_success'] = "Certame salvo";
 
-
-
 $lang['messages_create_dispute_object_error'] = "Erro ao criar objeto";
 $lang['messages_create_dispute_object_success'] = "Objeto criado";
 $lang['messages_delete_dispute_success'] = "Objeto excluído";
 $lang['messages_delete_dispute_object_error'] = "Erro ao excluir objeto";
 $lang['messages_save_dispute_object_error'] = "Erro ao salvar objeto";
 $lang['messages_save_dispute_object_success'] = "Objeto salvo";
-
 
 $lang['messages_save_expense_error'] = "Erro ao salvar despesa";
 $lang['messages_save_expense_success'] = "Despesa salva";
@@ -243,3 +240,8 @@ $lang['messages_participating_dispute_error'] = "Erro ao iniciar participação"
 $lang['messages_participating_dispute_success'] = "Agora você está participando deste Certame";
 
 $lang['messages_registries_retrieved_success'] = "Registros recuperados com sucesso";
+
+$lang['messages_updated_proposal_success'] = "Proposta atualizada";
+$lang['messages_updated_proposal_error'] = "Erro ao atualizar proposta";
+$lang['messages_create_proposal_success'] = "Proposta criada";
+$lang['messages_create_proposal_error'] = "Erro ao criar proposta";

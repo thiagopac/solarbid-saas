@@ -133,9 +133,7 @@ class Disputes extends MY_Controller
 
     public function view($id = false)
     {
-        $this->view_data['submenu'] = [
-                        $this->lang->line('application_back') => 'disputes',
-                        ];
+        $this->view_data['submenu'] = [$this->lang->line('application_back') => 'disputes'];
 
         $dispute = $this->view_data['dispute'] = Dispute::find($id);
 

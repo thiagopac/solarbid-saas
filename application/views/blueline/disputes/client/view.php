@@ -80,8 +80,8 @@ if ($dispute) { ?>
                 <li class="item">
                     <div class="details">
                         <div class="left">
-                            <label class="">
-                                <?=$this->lang->line('application_plant').' '.($idx+1)?>
+                            <label style="font-size: 15px" class="">
+                                <?=$this->lang->line('application_plant').' <span style="font-family:Monospace; font-size: 16px;">'.strtoupper(substr(md5($plant->id), 20, 5)).'</span>'?>
                             </label>
                         </div>
                         <!--<div class="right">
@@ -101,14 +101,82 @@ if ($dispute) { ?>
             </ul>
 
             <span>
+
+                <!-- Send Proposal -->
                 <div class="form-header el_send_proposal_dispute padding-left-25" style="padding-left: 25px;"><?=$this->lang->line('application_all_proposal_plants_filled')?></div>
-                <div class="form-header el_participate_dispute padding-left-25" style="padding-left: 25px;"><?=$this->lang->line('application_participation_dispute_needed')?></div>
-                <div class="form-header el_participate_dispute_again padding-left-25" style="padding-left: 25px;"><?=$this->lang->line('application_new_proposals_participation_dispute_needed')?></div>
-                <div class="row">
+                <div id="el_send_proposal_dispute" class="row">
                     <div class="col-md-12">
                         <button style="display: none" class="btn_send_proposal_dispute el_send_proposal_dispute pull-right btn btn--lg btn-lg btn--wide btn-success margin-right-15"><i class="icon glyphicon glyphicon glyphicon-ok"></i> <?=$this->lang->line('application_send_proposal')?></button>
+                    </div>
+                </div>
+
+                <!-- Participate Dispute -->
+                <div class="form-header el_participate_dispute padding-left-25" style="padding-left: 25px;"><?=$this->lang->line('application_participation_dispute_needed')?></div>
+                <div id="el_participate_dispute" class="row">
+                    <div class="col-md-12">
                         <button style="display: none" class="btn_participate_dispute el_participate_dispute ajax-silent pull-right btn btn--lg btn-lg btn--wide btn-primary margin-right-15"><i class="icon glyphicon glyphicon glyphicon-log-in"></i> <?=$this->lang->line('application_participate_dispute')?></button>
+                    </div>
+                </div>
+
+                <!-- Participate Dispute again -->
+                <div class="form-header el_participate_dispute_again padding-left-25" style="padding-left: 25px;"><?=$this->lang->line('application_new_proposals_participation_dispute_needed')?></div>
+                <div id="el_participate_dispute_again" class="row">
+                    <div class="col-md-12">
                         <button style="display: none" class="btn_participate_dispute_again el_participate_dispute_again ajax-silent pull-right btn btn--lg btn-lg btn--wide btn-primary margin-right-15"><i class="icon glyphicon glyphicon glyphicon-pencil"></i> <?=$this->lang->line('application_new_participate_dispute')?></button>
+                    </div>
+                </div>
+
+                <!-- Listing bids -->
+<!--                <div class="form-header el_table_proposals padding-left-25" style="padding-left: 25px;">--><?//=$this->lang->line('application_your_proposals_for_dispute')?><!--</div>-->
+<!--                <input type="button" class=" dynamic-reload" data-reload="proposals" />-->
+                <div style="width: auto; display: block; margin: 0 auto;" id="el_table_proposals" class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="">
+                                <div class="table-head" style="color: #0081ff;font-weight: 600; font-size: 11px; padding: 5px 25px 5px; text-transform: uppercase; height: 40px; letter-spacing: normal">
+                                    <?=$this->lang->line('application_your_proposals_for_dispute')?>
+                                </div>
+                                <div class="table-div">
+                                    <table class="table" id="proposals" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
+                                        <thead>
+                                            <th width="15%">
+                                                <?=$this->lang->line('application_plant');?>
+                                            </th>
+                                            <th>
+                                                <?=$this->lang->line('application_value');?>
+                                            </th>
+                                            <th width="25%" style="text-align: center">
+                                                <?=$this->lang->line('application_rated_power');?>
+                                            </th>
+                                            <th style="text-align: center">
+                                                <?=$this->lang->line('application_action');?>
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($proposals as $proposal): ?>
+                                                <tr id="<?=$proposal->id;?>">
+                                                        <td>
+                                                            <?=strtoupper(substr(md5($proposal->plant_id), 20, 5));?>
+                                                        </td>
+                                                        <td>
+                                                            <?=$core_settings->money_symbol." ".display_money(sprintf('%01.2f', $proposal->value))?>
+                                                        </td>
+                                                        <td style="text-align: center">
+                                                            <?=$proposal->rated_power_mod;?>
+                                                            <?=$core_settings->rated_power_measurement;?>
+                                                        </td>
+
+                                                        <td style="text-align: center" class="option" width="8%">
+                                                            <a href="<?=base_url()?>cdisputes/updateProposal/<?=$proposal->id;?>" class="btn-option" data-toggle="mainmodal"><i class="icon dripicons-gear"></i></a>
+                                                        </td>
+                                                </tr>
+                                            <?php endforeach;?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </span>
@@ -117,145 +185,143 @@ if ($dispute) { ?>
 <?php } ?>
     <br>
     <br>
-    <script>
-        jQuery(document).ready(function($) {
+<script>
+    jQuery(document).ready(function($) {
 
-            var due_date = moment.tz("<?=$dispute->due_date?>", "America/Sao_Paulo");
+        var due_date = moment.tz("<?=$dispute->due_date?>", "America/Sao_Paulo");
 
-            $('#clock').countdown(due_date.toDate(), function(event) {
-                var totalHours = event.offset.totalDays * 24 + event.offset.hours;
-                $(this).html(event.strftime(totalHours + 'hr %Mmin %Ss'));
-            });
+        $('#clock').countdown(due_date.toDate(), function(event) {
+            var totalHours = event.offset.totalDays * 24 + event.offset.hours;
+            $(this).html(event.strftime(totalHours + 'hr %Mmin %Ss'));
+        });
 
-            UIrender();
+        UIrender();
 
-            function participateDispute(){
+        function participateDispute(){
 
-                //async participate service
-                $.ajax({
-                    type: "GET",
-                    url: "<?=base_url()?>cdisputes/participateDisputeService/<?=$dispute->id;?>",
-                    success: function(response, status, xhr) {
-                        $('#count_participations').html(response.data.bids.length);
-                        //update UI
+            //async participate service
+            $.ajax({
+                type: "GET",
+                url: "<?=base_url()?>cdisputes/participateDisputeService/<?=$dispute->id;?>",
+                success: function(response, status, xhr) {
+                    $('#count_participations').html(response.data.bids.length);
+                    //update UI
 
-                        UIrender();
+                    UIrender();
 
-                    },
-                    complete: function() {
-
-                    }
-                });
-            };
-
-            $('.nano').nanoScroller();
-
-            $('.trigger-message-close').on('click', function() {
-                $('body').removeClass('show-message');
-                $('#main .message-list li').removeClass('active');
-                $("#main .message-list li .indicator").removeClass('dripicons-chevron-right');
-                $("#main .message-list li .indicator").addClass('dripicons-chevron-down');
-                messageIsOpen = false;
-                $('body').removeClass('show-main-overlay');
-            });
-
-
-            $(".btn_participate_dispute, .btn_participate_dispute_again").confirmation({
-                placement       : 'top',
-                title           : '<?=$this->lang->line('application_are_you_sure')?>',
-                btnOkClass      : 'btn btn-sm btn-success',
-                btnOkLabel      : '<?=$this->lang->line('application_sure')?>',
-                btnOkIcon       : 'glyphicon glyphicon-ok',
-                btnCancelClass  : 'btn btn-sm btn-danger',
-                btnCancelLabel  : '<?=$this->lang->line('application_no')?>',
-                btnCancelIcon   : 'glyphicon glyphicon-remove',
-                onConfirm: function() {
-                    participateDispute();
                 },
-                onCancel: function() {
-                    //do nothing
+                complete: function() {
+
                 }
             });
+        };
 
-            $(".btn_send_proposal_dispute").confirmation({
-                placement       : 'top',
-                title           : '<?=$this->lang->line('application_are_you_sure')?>',
-                btnOkClass      : 'btn btn-sm btn-success',
-                btnOkLabel      : '<?=$this->lang->line('application_sure')?>',
-                btnOkIcon       : 'glyphicon glyphicon-ok',
-                btnCancelClass  : 'btn btn-sm btn-danger',
-                btnCancelLabel  : '<?=$this->lang->line('application_no')?>',
-                btnCancelIcon   : 'glyphicon glyphicon-remove',
-                onConfirm: function() {
-                    //send bid and proposal
-                },
-                onCancel: function() {
-                    //do nothing
-                }
-            });
+        $('.nano').nanoScroller();
 
-            //get all screen components
-            function UIrender() {
-                $.ajax({
-                    type: "GET",
-                    url: "<?=base_url()?>cdisputes/allBidsByCompanyInDispute/<?=$this->client->company_id;?>/<?=$dispute->id;?>",
-                    success: function(response, status, xhr) {
-
-                        //already created one or more bids
-                        if (response.data.bids.length > 0) {
-
-                            var viewing_bid = response.data.bids[0];
-
-                            $('#bid_id').html(response.data.bids[0].id);
+        $('.trigger-message-close').on('click', function() {
+            $('body').removeClass('show-message');
+            $('#main .message-list li').removeClass('active');
+            $("#main .message-list li .indicator").removeClass('dripicons-chevron-right');
+            $("#main .message-list li .indicator").addClass('dripicons-chevron-down');
+            messageIsOpen = false;
+            $('body').removeClass('show-main-overlay');
+        });
 
 
-                            $('#count_participations').html(response.data.bids_sent); //inside language file
+        $(".btn_participate_dispute, .btn_participate_dispute_again").confirmation({
+            placement       : 'top',
+            title           : '<?=$this->lang->line('application_are_you_sure')?>',
+            btnOkClass      : 'btn btn-sm btn-success',
+            btnOkLabel      : '<?=$this->lang->line('application_sure')?>',
+            btnOkIcon       : 'glyphicon glyphicon-ok',
+            btnCancelClass  : 'btn btn-sm btn-danger',
+            btnCancelLabel  : '<?=$this->lang->line('application_no')?>',
+            btnCancelIcon   : 'glyphicon glyphicon-remove',
+            onConfirm: function() {
+                participateDispute();
+            },
+            onCancel: function() {
+                //do nothing
+            }
+        });
 
-                            //already sent one or more bids
-                            if (response.data.bids_sent > 0){
-                                $('#label_n_participations').attr('style', 'display: initial');
-                                $('#el_participate_dispute').attr('style', 'display: none');
-                            }
+        $(".btn_send_proposal_dispute").confirmation({
+            placement       : 'top',
+            title           : '<?=$this->lang->line('application_are_you_sure')?>',
+            btnOkClass      : 'btn btn-sm btn-success',
+            btnOkLabel      : '<?=$this->lang->line('application_sure')?>',
+            btnOkIcon       : 'glyphicon glyphicon-ok',
+            btnCancelClass  : 'btn btn-sm btn-danger',
+            btnCancelLabel  : '<?=$this->lang->line('application_no')?>',
+            btnCancelIcon   : 'glyphicon glyphicon-remove',
+            onConfirm: function() {
+                //send bid and proposal
+            },
+            onCancel: function() {
+                //do nothing
+            }
+        });
 
-                            //viewing bid is sent
-                            if (viewing_bid.bid_sent == 'yes'){
-                                $('.price_plant').attr('style', 'display: none');
+        //get all screen components
+        function UIrender() {
+            $.ajax({
+                type: "GET",
+                url: "<?=base_url()?>cdisputes/allBidsByCompanyInDispute/<?=$this->client->company_id;?>/<?=$dispute->id;?>",
+                success: function(response, status, xhr) {
 
-                                $('.el_send_proposal_dispute').attr('style', 'display: none');
-                                $('.el_participate_dispute').attr('style', 'display: none');
-                                $('.el_participate_dispute_again').attr('style', 'display: block');
+                    //already created one or more bids
+                    if (response.data.bids.length > 0) {
 
-                                $('#label_n_participations').attr('style', 'display: block');
-                                $('#label_participation_is_editing').attr('style', 'display: none');
-                            }else{//viewing bid not sent yet
-                                $('.price_plant').attr('style', 'display: initial');
+                        var viewing_bid = response.data.bids[0];
 
-                                $('.el_send_proposal_dispute').attr('style', 'display: block');
-                                $('.el_participate_dispute').attr('style', 'display: none');
-                                $('.el_participate_dispute_again').attr('style', 'display: none');
+                        $('#bid_id').html(response.data.bids[0].id);
 
-                                $('#label_n_participations').attr('style', 'display: none');
-                                $('#label_participation_is_editing').attr('style', 'display: block');
-                                $('#label_no_participations_sent').attr('style', 'display: none');
-                            }
 
-                        }else{ //no bids created for this dispute
+                        $('#count_participations').html(response.data.bids_sent); //inside language file
 
-                            $('.el_send_proposal_dispute').attr('style', 'display: none');
-                            $('.el_participate_dispute').attr('style', 'display: block');
-                            $('.el_participate_dispute_again').attr('style', 'display: none');
-
-                            $('.price_plant').attr('style', 'display: none');
-
-                            $('#label_no_participations_sent').attr('style', 'display: initial');
+                        //already sent one or more bids
+                        if (response.data.bids_sent > 0){
+                            $('#label_n_participations').attr('style', 'display: initial');
+                            $('#el_participate_dispute').attr('style', 'display: none');
                         }
 
-                    },
-                    complete: function() {}
-                });
-            }
+                        //viewing bid is sent
+                        if (viewing_bid.bid_sent == 'yes'){
+                            $('.price_plant').attr('style', 'display: none');
 
-        });
-    </script>
+                            $('.el_send_proposal_dispute').attr('style', 'display: none');
+                            $('.el_participate_dispute').attr('style', 'display: none');
+                            $('.el_participate_dispute_again').attr('style', 'display: block');
 
-<?=$disputes?>
+                            $('#label_n_participations').attr('style', 'display: block');
+                            $('#label_participation_is_editing').attr('style', 'display: none');
+                        }else{//viewing bid not sent yet
+                            $('.price_plant').attr('style', 'display: initial');
+
+                            $('.el_send_proposal_dispute').attr('style', 'display: block');
+                            $('.el_participate_dispute').attr('style', 'display: none');
+                            $('.el_participate_dispute_again').attr('style', 'display: none');
+
+                            $('#label_n_participations').attr('style', 'display: none');
+                            $('#label_participation_is_editing').attr('style', 'display: block');
+                            $('#label_no_participations_sent').attr('style', 'display: none');
+                        }
+
+                    }else{ //no bids created for this dispute
+
+                        $('.el_send_proposal_dispute').attr('style', 'display: none');
+                        $('.el_participate_dispute').attr('style', 'display: block');
+                        $('.el_participate_dispute_again').attr('style', 'display: none');
+
+                        $('.price_plant').attr('style', 'display: none');
+
+                        $('#label_no_participations_sent').attr('style', 'display: initial');
+                    }
+
+                },
+                complete: function() {}
+            });
+        }
+
+    });
+</script>
