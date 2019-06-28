@@ -238,3 +238,8 @@ $lang['messages_save_plant_success'] = "Usina salva";
 
 $lang['messages_updated_range_success'] = "Alcance atualizado";
 $lang['messages_updated_range_error'] = "Erro ao atualizar alcance";
+
+$lang['messages_participating_dispute_error'] = "Erro ao iniciar participação";
+$lang['messages_participating_dispute_success'] = "Agora você está participando deste Certame";
+
+$lang['messages_registries_retrieved_success'] = "Registros recuperados com sucesso";

@@ -46,8 +46,8 @@ class My_Controller extends CI_Controller
         $date = date('Y-m-d', time());
 
         //Languages
-        if ($this->input->cookie('fc2language') != "") {
-            $language = $this->input->cookie('fc2language');
+        if ($this->input->cookie('bidbox_language') != "") {
+            $language = $this->input->cookie('bidbox_language');
         } else {
             if (isset($this->view_data['language'])) {
                 $language = $this->view_data['language'];

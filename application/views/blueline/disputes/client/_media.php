@@ -4,7 +4,7 @@
             <?php if(!empty($media)) { ?>
                 <img width="100%" src="<?=base_url()?>files/media/<?=$media->savename;?>">
             <?php }else{ ?>
-                <img width="80" src="https://ih0.redbubble.net/image.485923660.1240/flat,550x550,075,f.u1.jpg" />
+                <img width="80" src="<?=base_url()?>files/media/no-photo.jpg" />
                 <h2><?=$this->lang->line('application_plant_has_no_area_file')?></h2>
             <?php } ?>
         </div>

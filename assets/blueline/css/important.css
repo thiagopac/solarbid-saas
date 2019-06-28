@@ -197,5 +197,33 @@ div.dataTables_info {
 }
 
 .tag--orange {
-    background: orange;
+    background: orange !important;
+}
+
+.tag--green {
+    background: #27ae60 !important;
+}
+
+.tag--blue {
+    background: #3498db !important;
+}
+
+.tag--red {
+    background: #e74c3c !important;
+}
+
+.warned {
+    font-size: 9pt !important;
+}
+
+.padding-left-25{
+    padding-left: 25px !important;
+}
+
+.tag {
+    margin: 0 0 10px 0 !important;
+}
+
+.margin-right-15 {
+    margin-right: 15px !important;
 }

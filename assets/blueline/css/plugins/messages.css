@@ -439,6 +439,7 @@ a:hover {
 #main .message-list li.active:hover {
   box-shadow: inset 5px 0 0 #61a3c7;
 }
+
 #main .message-list li.New {
   font-weight: 600;
   color: #555;

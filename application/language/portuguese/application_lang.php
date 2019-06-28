@@ -1141,7 +1141,7 @@ $lang['application_suspended'] = 'Suspenso';
 $lang['application_completed'] = 'Concluído';
 $lang['application_impossible_update_dispute_object'] = 'Não é permitido alterar o Objeto de Disputa após o Certame ser criado';
 
-$lang['application_dispute_minimum_bids'] = 'Este Certame tem mais de uma usina. É necessário preencher a proposta para cada uma das usinas';
+$lang['application_dispute_minimum_bids'] = '<u>ATENÇÃO!</u> Este Certame tem mais de uma usina. É necessário preencher a proposta para cada uma das usinas';
 $lang['application_important'] = 'Importante';
 $lang['application_attention'] = 'Atenção';
 $lang['application_location_type'] = 'Tipo de local';
@@ -1149,3 +1149,24 @@ $lang['application_residence'] = 'Residencial';
 $lang['application_business'] = 'Comercial';
 $lang['application_rural'] = 'Rural';
 $lang['application_plant_has_no_area_file'] = 'Esta usina não possui foto da área de instalação';
+
+$lang['application_price_plant'] = 'Precificar usina';
+$lang['application_send_proposal'] = 'Enviar proposta';
+
+$lang['application_all_proposal_plants_filled'] = 'Você precificou todas as usinas deste Certame, sua proposta já pode ser enviada';
+$lang['application_participation_dispute_needed'] = 'Para criar sua proposta, você precisa garantir sua participação';
+$lang['application_new_proposals_participation_dispute_needed'] = 'Você pode enviar novas propostas para este Certame';
+
+$lang['application_participate_dispute'] = 'Participar da disputa';
+$lang['application_new_participate_dispute'] = 'Criar nova proposta para disputa';
+
+$lang['application_you_participate_dispute'] = 'Você já tem participação nesta disputa';
+
+$lang['application_you_have_n_participations_dispute'] = "Você já enviou <span id='count_participations'>0</span> proposta(s) para este Certame";
+
+$lang['application_participations_dispute_is_not_sent'] = '<u>ATENÇÃO!</u> Esta proposta está modo de edição e ainda não foi enviada!';
+$lang['application_no_participations_dispute_sent_yet'] = '<u>ATENÇÃO!</u> Você não enviou nenhuma proposta para este Certame!';
+
+$lang['application_click_to_view'] = 'Clique aqui para visualizar';
+$lang['application_are_you_sure'] = 'Você tem certeza?';
+$lang['application_sure'] = 'Certeza!';

@@ -122,7 +122,7 @@ class Agent extends MY_Controller
         $languagefiles = scandir($folder);
         if (in_array($lang, $languagefiles)) {
             $cookie = [
-                   'name' => 'fc2language',
+                   'name' => 'bidbox_language',
                    'value' => $lang,
                    'expire' => '31536000',
                ];

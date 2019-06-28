@@ -66,7 +66,7 @@ class Auth extends MY_Controller
 		$languagefiles = scandir($folder);
 		if(in_array($lang, $languagefiles)){
 		$cookie = array(
-                   'name'   => 'fc2language',
+                   'name'   => 'bidbox_language',
                    'value'  => $lang,
                    'expire' => '31536000',
                );

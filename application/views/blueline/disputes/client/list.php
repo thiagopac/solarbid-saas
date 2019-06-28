@@ -1,9 +1,9 @@
 <?php
  if($comp_has_disps){
     foreach ($comp_has_disps as $comp_has_disp): ?>
-        <li class="hidden" data-link="<?=base_url()?>cdisputes/view/<?=$comp_has_disp->dispute->id;?>">
-          <div class="col col-1"><span class="dot"></span>
-              <p class="title"><?php echo $core_settings->dispute_prefix.$comp_has_disp->dispute->dispute_reference; ?></p><span class="star-toggle icon dripicons-chevron-right"></span>
+        <li class="hidden Read-dot" data-link="<?=base_url()?>cdisputes/view/<?=$comp_has_disp->dispute->id;?>">
+          <div class="col col-1"><span class="dot "></span>
+              <span class="indicator icon dripicons-chevron-down"></span><p class="title"><?php echo $core_settings->dispute_prefix.$comp_has_disp->dispute->dispute_reference; ?></p>
           </div>
           <div class="col col-2">
               <div class="subject"><?=date($core_settings->date_format." ".$core_settings->date_time_format, human_to_unix($comp_has_disp->dispute->due_date))?></div>
@@ -39,9 +39,10 @@ jQuery(document).ready(function($) {
         cols.hideMessage = function() {
             $('body').removeClass('show-message');
             $('#main .message-list li').removeClass('active');
+            $("#main .message-list li .indicator").removeClass('dripicons-chevron-right');
+            $("#main .message-list li .indicator").addClass('dripicons-chevron-down');
          messageIsOpen = false;
         };
-
 
         cols.showSidebar = function() {
             $('body').addClass('show-sidebar');
@@ -77,11 +78,19 @@ jQuery(document).ready(function($) {
                 if(messageIsOpen && item.is('.active')) {
                     cols.hideMessage();
                     cols.hideOverlay();
+
+                    item.find(".indicator").addClass('dripicons-chevron-down');
+                    item.find(".indicator").removeClass('dripicons-chevron-right');
+
                     NProgress.done();
                 } else {
                     if(messageIsOpen) {
                         cols.hideMessage();
                         item.addClass('active');
+
+                        item.find(".indicator").addClass('dripicons-chevron-right');
+                        item.find(".indicator").removeClass('dripicons-chevron-down');
+
                         setTimeout(function() {
                         var url = item.data('link');
                         if (url.indexOf('#') === 0) {
@@ -96,6 +105,9 @@ jQuery(document).ready(function($) {
                             }
                         }, 300);
                     } else {
+
+                        item.find(".indicator").addClass('dripicons-chevron-right');
+                        item.find(".indicator").removeClass('dripicons-chevron-down');
 
                         item.addClass('active');
 

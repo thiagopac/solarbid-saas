@@ -17,8 +17,8 @@
         </div>
       </div>
 <?php
-if ($this->input->cookie('fc2language') != '') {
-    $systemlanguage = $this->input->cookie('fc2language');
+if ($this->input->cookie('bidbox_language') != '') {
+    $systemlanguage = $this->input->cookie('bidbox_language');
 } else {
     $systemlanguage = $core_settings->language;
 }

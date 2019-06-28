@@ -4,8 +4,8 @@
 
 include_once(dirname(__FILE__).'/../third_party/functions.php');
 
-class cDisputes extends MY_Controller
-{
+class cDisputes extends MY_Controller {
+
     public function __construct()
     {
         parent::__construct();
@@ -21,6 +21,7 @@ class cDisputes extends MY_Controller
 
             redirect('login');
         }
+
         $this->view_data['submenu'] = [
                         $this->lang->line('application_all') => 'disputes',
                         $this->lang->line('application_pendings') => 'disputes/filter/pending',
@@ -30,6 +31,7 @@ class cDisputes extends MY_Controller
 
     public function index(){
         $this->content_view = 'disputes/client/all';
+        $this->view_data['company_last_bid'] = "TESTEEEEE";
     }
 
     function disputelist(){
@@ -42,26 +44,7 @@ class cDisputes extends MY_Controller
 
         $this->content_view = 'disputes/client/list';
     }
-    function filter($condition = FALSE, $con = FALSE)
-    {
-        $max_value = 60;
-        if (is_numeric($con)) {
-            $limit = $con . ',';
-        } else {
-            $limit = false;
-        }
 
-        $this->view_data['filter'] = ucfirst($condition);
-        $this->view_data['message'] = Privatemessage::getMessagesWithFilter($limit, $max_value, $condition, $this->client->id, true);
-
-        $this->view_data['message_list_page_next'] = $con + $max_value;
-        $this->view_data['message_list_page_prev'] = $con - $max_value;
-
-
-        $this->theme_view = 'ajax';
-
-        $this->content_view = 'disputes/client/list';
-    }
     function write($ajax = FALSE)
     {
         if($_POST){
@@ -158,55 +141,9 @@ class cDisputes extends MY_Controller
             $this->content_view = 'disputes/client/_messages';
         }
     }
-    function update($id = FALSE, $getview = FALSE)
-    {
-        if($_POST){
-            unset($_POST['send']);
-            unset($_POST['_wysihtml5_mode']);
-            unset($_POST['files']);
-            $id = $_POST['id'];
-            $message = Privatemessage::find($id);
-            $message->update_attributes($_POST);
-            if(!$message){$this->session->set_flashdata('message', 'error:'.$this->lang->line('messages_write_message_error'));}
-            else{$this->session->set_flashdata('message', 'success:'.$this->lang->line('messages_write_message_success'));}
-            if(isset($view)){redirect('cdisputes/view/'.$id);}else{redirect('cdisputes');}
-
-        }else
-        {
-            $this->view_data['id'] = $id;
-            $this->theme_view = 'modal';
-            $this->view_data['title'] = $this->lang->line('application_edit_message');
-            $this->view_data['form_action'] = 'cdisputes/update';
-            $this->content_view = 'disputes/client/_messages_update';
-        }
-    }
-
-    function attachment($id = FALSE){
-        $this->load->helper('download');
-        $this->load->helper('file');
-
-        $attachment = Privatemessage::find_by_id($id);
-
-        $file = './files/media/'.$attachment->attachment_link;
-        $mime = get_mime_by_extension($file);
-
-        if(file_exists($file)) {
-            header('Content-Description: File Transfer');
-            header('Content-Type: '.$mime);
-            header('Content-Disposition: attachment; filename='.basename($attachment->attachment));
-            header('Content-Transfer-Encoding: binary');
-            header('Expires: 0');
-            header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-            header('Pragma: public');
-            header('Content-Length: ' . filesize($file));
-            readfile($file);
-            ob_clean();
-            flush();
-            exit;
-        }
-    }
 
     function view($id = false) {
+
         $this->view_data['submenu'] = array(
             $this->lang->line('application_back') => 'disputes',
         );
@@ -215,6 +152,8 @@ class cDisputes extends MY_Controller
 
         $this->view_data["dispute"] = $dispute;
         $this->theme_view = 'ajax';
+
+//        $this->view_data['bids'] = $bids = DisputeHasBid::find('all', array('conditions' => array("company_id = ? AND dispute_id = ? ORDER BY id DESC", $this->client->company_id, $id)));
 
         $this->view_data['form_action'] = 'cdisputes/write';
         $this->view_data['id'] = $id;
@@ -231,13 +170,85 @@ class cDisputes extends MY_Controller
 
         $media = DisputeObjectHasFile::find('first', ['conditions' => ['dispute_object_id = ? AND plant_id = ? AND kind = ?', $dispute->dispute_object_id, $plant_id, 'area']]);
 
-//        foreach ($dispute->dispute_object->dispute_object_has_files as $file){
-//            if ($file->kind == 'area'){
-//                $media_area = $file;
-//            }
-//        }
-
         $this->view_data['media'] = $media;
+    }
+
+    public function participateDispute($id = false) {
+
+        $this->theme_view = 'ajax';
+
+        $dispute_has_bid = new DisputeHasBid();
+
+        $dispute_has_bid->dispute_id = $id;
+        $dispute_has_bid->client_id = $this->client->id;
+        $dispute_has_bid->company_id = $this->client->company_id;
+        $dispute_has_bid->save();
+
+//        $last_dispute_has_bid = DisputeHasBid::find('all', ['conditions' => ['id = ?', $dispute_has_bid->id]]);
+        $bids = DisputeHasBid::find('all', ['conditions' => ['dispute_id = ? ORDER BY id DESC', $id]]);
+
+        $data = array('bids' => object_to_array($bids, false));
+
+        if (!isset($dispute_has_bid)) {
+            json_response("error", htmlspecialchars($this->lang->line('messages_participating_dispute_error')), $data);
+            $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_participating_dispute_error'));
+        } else {
+            json_response("success", htmlspecialchars($this->lang->line('messages_participating_dispute_success')), $data);
+            $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_participating_dispute_success'));
+        }
+
+        redirect('disputes/client/view');
+    }
+
+    public function participateDisputeService($id = false){
+
+        $this->theme_view = 'blank';
+
+        $dispute_has_bid = new DisputeHasBid();
+
+        $dispute_has_bid->dispute_id = $id;
+        $dispute_has_bid->client_id = $this->client->id;
+        $dispute_has_bid->company_id = $this->client->company_id;
+        $dispute_has_bid->save();
+
+//        $bids = DisputeHasBid::find('all', array('conditions' => array("dispute_id = ? ORDER BY id DESC", $id)));
+        $bids = DisputeHasBid::find('all', ['conditions' => ['dispute_id = ? ORDER BY id DESC', $id]]);
+
+        $data = array('bids' => object_to_array($bids, false));
+
+        if (!isset($dispute_has_bid)) {
+            return json_response("error", htmlspecialchars($this->lang->line('messages_participating_dispute_error')), $data);
+        } else {
+            return json_response("success", htmlspecialchars($this->lang->line('messages_participating_dispute_success')), $data);
+        }
+
+    }
+
+    public function allBidsByCompanyInDispute($company_id = false, $dispute_id = false){
+
+        $this->theme_view = 'blank';
+
+        $bids = DisputeHasBid::find('all', array('conditions' => array("company_id = ? AND dispute_id = ? ORDER BY id DESC", $company_id, $dispute_id))); //last bid first
+
+        $sent = 0;
+        foreach ($bids as $bid) {
+            if ($bid->bid_sent == 'yes') $sent++;
+        }
+
+        $data = array('bids' => object_to_array($bids), 'bids_sent' => $sent);
+
+        return json_response("success", htmlspecialchars($this->lang->line('messages_registries_retrieved_success')), $data);
+    }
+
+    public function proposalsInBid($bid_id){
+
+        $this->theme_view = 'blank';
+
+        $proposals = BidHasProposal::find('all', array('conditions' => array("bid_id = ?", $bid_id)));
+
+        $data = array('proposals' => object_to_array($proposals));
+
+        return json_response("success", htmlspecialchars($this->lang->line('messages_registries_retrieved_success')), $data);
     }
 
 

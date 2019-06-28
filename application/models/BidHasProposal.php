@@ -1,6 +1,7 @@
 <?php
 
 class BidHasProposal extends ActiveRecord\Model {
+
     static $table_name = 'bid_has_proposals';
 
   	static $belongs_to = array(
