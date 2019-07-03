@@ -195,12 +195,27 @@ class cDisputes extends MY_Controller {
             unset($_POST['view']);
             unset($_POST['send']);
             unset($_POST['id']);
+            unset($_POST['proposal_id']);
 
             $_POST['dispute_id'] = $dispute_id;
             $_POST['bid_id'] = $bid_id;
             $_POST['plant_id'] = $plant_id;
             $_POST['client_id'] = $this->client->id;
             $_POST['company_id'] = $this->client->company_id;
+
+            if (!empty($_POST['modules_arr'])) {
+                $_POST['module_brands'] = implode(',', $_POST['modules_arr']);
+            } else {
+                $_POST['module_brands'] = implode(',', $_POST['modules_arr']);
+            }
+            unset($_POST['modules_arr']);
+
+            if (!empty($_POST['inverters_arr'])) {
+                $_POST['inverter_brands'] = implode(',', $_POST['inverters_arr']);
+            } else {
+                $_POST['inverter_brands'] = implode(',', $_POST['inverters_arr']);
+            }
+            unset($_POST['inverters_arr']);
 
             $_POST['value'] = str_replace('.', '', $_POST['value']);
             $_POST['value'] = str_replace(',', '.', $_POST['value']);
@@ -221,6 +236,20 @@ class cDisputes extends MY_Controller {
                 $this->view_data['view'] = 'true';
             }
 
+            $modules = array();
+            $all_modules = ModuleManufacturer::all();
+            foreach ($all_modules as $module){
+                array_push($modules, $module->name);
+            }
+            $this->view_data['modules'] = $modules;
+
+            $inverters = array();
+            $all_inverters = InverterManufacturer::all();
+            foreach ($all_inverters as $inverter){
+                array_push($inverters, $inverter->name);
+            }
+            $this->view_data['inverters'] = $inverters;
+
             $this->view_data['dispute_id'] = $dispute_id;
             $this->view_data['bid_id'] = $bid_id;
             $this->view_data['plant_id'] = $plant_id;
@@ -233,22 +262,37 @@ class cDisputes extends MY_Controller {
         }
     }
 
-    public function updateProposal($dispute_id = false, $id = false, $getview = false){
+    public function updateProposal($dispute_id = false, $proposal_id = false, $getview = false){
 
         if ($_POST) {
 
-            $id = $_POST['id'];
+            $proposal_id = $_POST['proposal_id'];
             $view = false;
             if (isset($_POST['view'])) {
                 $view = $_POST['view'];
             }
             unset($_POST['view']);
             unset($_POST['send']);
+            unset($_POST['proposal_id']);
+
+            if (!empty($_POST['modules_arr'])) {
+                $_POST['module_brands'] = implode(',', $_POST['modules_arr']);
+            } else {
+                $_POST['module_brands'] = implode(',', $_POST['modules_arr']);
+            }
+            unset($_POST['modules_arr']);
+
+            if (!empty($_POST['inverters_arr'])) {
+                $_POST['inverter_brands'] = implode(',', $_POST['inverters_arr']);
+            } else {
+                $_POST['inverter_brands'] = implode(',', $_POST['inverters_arr']);
+            }
+            unset($_POST['inverters_arr']);
 
             $_POST['value'] = str_replace('.', '', $_POST['value']);
             $_POST['value'] = str_replace(',', '.', $_POST['value']);
 
-            $proposal = BidHasProposal::find($id);
+            $proposal = BidHasProposal::find_by_id($proposal_id);
 
             $proposal->update_attributes($_POST);
 
@@ -261,7 +305,23 @@ class cDisputes extends MY_Controller {
             }
 
         } else {
-            $this->view_data['proposal'] = $proposal =  BidHasProposal::find($id);
+            $proposal = $this->view_data['proposal'] = BidHasProposal::find($proposal_id);
+
+            $this->view_data['proposal_id'] = $proposal_id;
+
+            $modules = array();
+            $all_modules = ModuleManufacturer::all();
+            foreach ($all_modules as $module){
+                array_push($modules, $module->name);
+            }
+            $this->view_data['modules'] = $modules;
+
+            $inverters = array();
+            $all_inverters = InverterManufacturer::all();
+            foreach ($all_inverters as $inverter){
+                array_push($inverters, $inverter->name);
+            }
+            $this->view_data['inverters'] = $inverters;
 
             if ($getview == 'view') {
                 $this->view_data['view'] = 'true';

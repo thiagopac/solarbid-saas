@@ -1196,3 +1196,8 @@ $lang['application_add_inverter'] = 'Adicionar inversor';
 
 $lang['application_edit_module'] = 'Editar módulo';
 $lang['application_edit_inverter'] = 'Editar inversor';
+
+$lang['application_select_modules'] = 'Selecione os módulos';
+$lang['application_select_inverters'] = 'Selecione os inversores';
+$lang['application_module_manufacturers'] = 'Fabricante dos módulos';
+$lang['application_inverter_manufacturers'] = 'Fabricante dos inversores';

@@ -11,10 +11,10 @@ if ($dispute->inactive == 'no') { ?>
             <div class="header">
                 <div class="message-content-menu">
                     <?if ($exp != null):?>
-                    <div class="alert alert-<?=$exp[0]?>" >
-                        <button id="alert-close" class="close" type="button" data-dismiss="alert">×</button>
-                        <?=$exp[1]?>
-                    </div>
+                        <div class="alert alert-<?=$exp[0]?>">
+                            <button id="alert-close" class="close" type="button" data-dismiss="alert">×</button>
+                            <?=$exp[1]?>
+                        </div>
                     <?php endif;?>
                     <h1 class="page-title"><?=$this->lang->line('application_dispute').": ".$core_settings->dispute_prefix.$dispute->dispute_reference?></h1>
                 </div>
