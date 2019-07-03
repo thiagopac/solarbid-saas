@@ -262,7 +262,7 @@ class Parameterization extends MY_Controller
         $this->view_data['breadcrumb'] = $this->lang->line('application_inverters');
         $this->view_data['breadcrumb_id'] = 'parameterization/inverters';
 
-        $inverters = inverterManufacturer::find('all');
+        $inverters = InverterManufacturer::find('all');
         $this->view_data['inverters'] = $inverters;
         $this->content_view = 'parameterization/inverters';
     }
