@@ -72,7 +72,7 @@ if ($dispute->inactive == 'no') { ?>
                 <?php endif; ?>
 
                 <!--current bit not sent-->
-                <?php if($viewing_bid->bid_sent == 'no') : ?>
+                <?php if($viewing_bid->bid_sent == 'no' && $out_of_date == false) : ?>
                 <div id="label_participation_is_editing" class="warned">
                     <i style="color: #3498db; font-size: 16px; vertical-align: middle" class="icon dripicons-document-edit"></i>
                     <span class="tag tag--blue">
@@ -163,7 +163,7 @@ if ($dispute->inactive == 'no') { ?>
                                             <th width="25%" style="text-align: center">
                                                 <?=$this->lang->line('application_rated_power');?>
                                             </th>
-                                            <?php if ($viewing_bid->bid_sent == no) : ?>
+                                            <?php if ($out_of_date == false && $viewing_bid->bid_sent == 'no') : ?>
                                             <th style="text-align: center">
                                                 <?=$this->lang->line('application_edit');?>
                                             </th>
@@ -182,7 +182,7 @@ if ($dispute->inactive == 'no') { ?>
                                                             <?=$proposal->rated_power_mod;?>
                                                             <?=$core_settings->rated_power_measurement;?>
                                                         </td>
-                                                        <?php if ($viewing_bid->bid_sent == no) : ?>
+                                                        <?php if ($out_of_date == false && $viewing_bid->bid_sent == 'no') : ?>
                                                         <td style="text-align: center" class="option" width="8%">
                                                             <a href="<?=base_url()?>cdisputes/updateProposal/<?=$dispute->id;?>/<?=$proposal->id;?>" class="btn-option" data-toggle="mainmodal"><i class="icon dripicons-gear"></i></a>
                                                         </td>
