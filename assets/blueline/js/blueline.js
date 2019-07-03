@@ -124,6 +124,7 @@ function chatActionLoader() {
     })
 }
 
+
 function show_alert(t, e) {
     $(".ajax-notify").html(e).addClass("active").addClass(t), setTimeout(function() {
         $(".ajax-notify").removeClass("active").removeClass(t)

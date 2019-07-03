@@ -116,7 +116,7 @@
                             ?>
                             <td style="text-align: center"><span class="label <?=$label_state;?> tt" ><?=$this->lang->line('application_'.$value->status) ?></span></td>
                             <td class="option" width="8%" style="text-align: center">
-                                <button <?=$value->dispute_sent == 'no' ? '' : 'disabled style="color:lightgray"'?> href="<?=base_url()?>disputes/update/<?=$value->id;?>" class="btn-option" data-toggle="mainmodal"><i class="icon dripicons-gear"></i></button>
+                                <button href="<?=base_url()?>disputes/update/<?=$value->id;?>" class="btn-option" data-toggle="mainmodal"><i class="icon dripicons-gear"></i></button>
                             </td>
                         </tr>
                     <?php endforeach;?>

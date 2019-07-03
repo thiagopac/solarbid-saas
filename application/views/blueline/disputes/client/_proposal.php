@@ -1,5 +1,5 @@
 <?php
-$attributes = array('class' => 'dynamic-form', 'id' => '_proposal', 'data-reload' => 'proposals');
+$attributes = array('class' => 'ajaxform', 'id' => '_proposal', 'data-reload' => 'proposals');
 echo form_open($form_action, $attributes);
 ?>
 
@@ -16,7 +16,26 @@ echo form_open($form_action, $attributes);
             <div class="input-group-addon">
                 <?=$core_settings->money_symbol;?>
             </div>
-            <input id="value" type="text" name="value" class="form-control" value="<?php if(isset($proposal)){echo $proposal->value;}?>" required />
+            <input id="value" type="text" name="value" class="form-control" value="<?php if(isset($proposal)){echo display_money(sprintf('%01.2f',$proposal->value));}?>" required />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="rated_power_mod">
+            <?=$this->lang->line('application_rated_power');?> *</label>
+        <div class="input-group">
+            <div class="input-group-addon">
+                <?=$core_settings->rated_power_measurement;?>
+            </div>
+            <input id="rated_power_mod" type="text" name="rated_power_mod" class="form-control" value="<?php if(isset($proposal)){echo display_money(sprintf('%01.2f',$proposal->rated_power_mod));}?>" required />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="delivery_time">
+            <?=$this->lang->line('application_delivery_time');?> *</label>
+        <div class="input-group">
+            <input id="delivery_time" type="number" name="delivery_time" class="form-control" value="<?php if(isset($proposal)){echo $proposal->delivery_time;}?>" required />
         </div>
     </div>
 
@@ -26,3 +45,17 @@ echo form_open($form_action, $attributes);
     </div>
 
 <?php echo form_close(); ?>
+<script>
+    $(document).ready(function(){
+
+        $('#send').on('click', function () {
+            $('.modal').modal('hide');
+        })
+
+        $("#value").maskMoney({allowNegative: false, thousands:'.', decimal:',', affixesStay: false});
+
+        $("#rated_power_mod").mask("#.00", {reverse: true});
+
+    });
+
+</script>

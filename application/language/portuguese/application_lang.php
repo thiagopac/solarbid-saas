@@ -1002,7 +1002,6 @@ $lang['application_disputeobjects'] = 'Objetos de disputa';
 $lang['application_dispute_objects'] = 'Objetos de disputa';
 $lang['application_dispute_object_owner'] = 'Beneficiado';
 $lang['application_dispute_object_compensated_bills'] = 'Beneficiado';
-$lang['application_dispute_object_aproximated_area'] = 'Área aproximada';
 
 $lang['application_pending'] = 'Pendente';
 $lang['application_pendings'] = 'Pendentes';
@@ -1033,6 +1032,7 @@ $lang['application_compensated_bills'] = 'Contas a compensar';
 $lang['application_compensate_bills'] = 'Compensar contas';
 $lang['application_object_reason'] = 'O que espera da UFV';
 $lang['application_approximate_area'] = 'Área aproximada';
+$lang['application_approximate_area_short'] = 'Área aprox.';
 $lang['application_installation_location'] = 'Local da instalação';
 $lang['application_additional_info'] = 'Informações adicionais';
 
@@ -1066,7 +1066,8 @@ $lang['application_pr_legend'] = 'Performance Ratio (PR)';
 $lang['application_performance_ratio'] = 'PR';
 $lang['application_photovoltaic_system'] = 'UFV';
 $lang['application_minimum_power_pvs'] = 'Potência mínima UFV';
-$lang['application_compensate_consumn'] = 'Consumo a ser compensado';
+$lang['application_minimum_power_pvs_short'] = 'Pᴍɪɴᵘᶠᵛ';
+$lang['application_compensate_consumn'] = 'Consumo a compensar';
 $lang['application_select_plants'] = 'Selecione as usinas';
 $lang['application_select_plant'] = 'Selecione a usina';
 $lang['application_assign_plants_to_dispute'] = 'Atribuir usinas ao certame';
@@ -1148,6 +1149,7 @@ $lang['application_location_type'] = 'Tipo de local';
 $lang['application_residence'] = 'Residencial';
 $lang['application_business'] = 'Comercial';
 $lang['application_rural'] = 'Rural';
+$lang['application_dispute_inactive'] = '<u>ATENÇÃO!</u> Este Certame está desativado. Não é possível enviar propostas.';
 $lang['application_plant_has_no_area_file'] = 'Esta usina não possui foto da área de instalação';
 
 $lang['application_price_plant'] = 'Precificar usina';
@@ -1157,15 +1159,15 @@ $lang['application_all_proposal_plants_filled'] = 'Você precificou todas as usi
 $lang['application_participation_dispute_needed'] = 'Para criar sua proposta, você precisa garantir sua participação';
 $lang['application_new_proposals_participation_dispute_needed'] = 'Você pode enviar novas propostas para este Certame';
 
-$lang['application_participate_dispute'] = 'Participar da disputa';
-$lang['application_new_participate_dispute'] = 'Criar nova proposta para disputa';
+$lang['application_participate_dispute'] = 'Participar do Certame';
+$lang['application_new_participate_dispute'] = 'Criar nova proposta para o Certame';
 
-$lang['application_you_participate_dispute'] = 'Você já tem participação nesta disputa';
+$lang['application_you_participate_dispute'] = 'Você já tem participação neste Certame';
 
-$lang['application_you_have_n_participations_dispute'] = "Você já enviou <span id='count_participations'>0</span> proposta(s) para este Certame";
+$lang['application_you_have_n_participations_dispute'] = "Você já enviou %d proposta(s) para este Certame";
 
 $lang['application_participations_dispute_is_not_sent'] = '<u>ATENÇÃO!</u> Esta proposta está modo de edição e ainda não foi enviada!';
-$lang['application_no_participations_dispute_sent_yet'] = '<u>ATENÇÃO!</u> Você não enviou nenhuma proposta para este Certame!';
+$lang['application_no_participations_dispute_sent_yet'] = 'Você não enviou nenhuma proposta para este Certame';
 
 $lang['application_click_to_view'] = 'Clique aqui para visualizar';
 $lang['application_are_you_sure'] = 'Você tem certeza?';
@@ -1174,3 +1176,23 @@ $lang['application_sure'] = 'Certeza!';
 $lang['application_your_proposals_for_dispute'] = 'Abaixo estão suas precificações preenchidas para este Certame';
 $lang['application_proposals'] = 'Propostas';
 $lang['application_edit_proposal'] = 'Editar proposta';
+$lang['application_create_proposal'] = 'Criar proposta';
+
+$lang['application_dispute_in_progress_are_not_allowed_to_edit'] = '*Certames <b><u>enviados</u></b> não podem ser alterados';
+
+$lang['application_dispute_out_of_date'] = 'A data limite deste Certame foi alcançada';
+$lang['application_dispute_confirm_participate'] = '<p><h5><b>Você tem certeza de que quer participar deste Certame?</b></h5></p>';
+$lang['application_dispute_confirm_participate_again'] = '<p><h5><b>Você tem certeza de que quer participar novamente deste Certame?</b></h5></p><p>Suas propostas anteriores continuarão concorrendo.</p>';
+
+$lang['application_send_bid'] = 'Enviar proposta';
+$lang['application_bid_confirm_send'] = '<p><h5><b>Você tem certeza de que quer enviar sua proposta?</b></h5></p><p>Ela não poderá mais ser alterada, mas você poderá enviar novas propostas para este Certame até sua data final.</p>';
+$lang['application_price_done'] = 'Precificação efetuada';
+$lang['application_delivery_time'] = 'Prazo para entrega (<span style="text-transform: lowercase !important;">em dias<span>)';
+
+$lang['application_days'] = 'dias';
+
+$lang['application_add_module'] = 'Adicionar módulo';
+$lang['application_add_inverter'] = 'Adicionar inversor';
+
+$lang['application_edit_module'] = 'Editar módulo';
+$lang['application_edit_inverter'] = 'Editar inversor';

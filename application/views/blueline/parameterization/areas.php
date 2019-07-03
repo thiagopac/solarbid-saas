@@ -25,6 +25,9 @@
                     <th class="hidden-xs">
                         <?=$this->lang->line('application_department');?>
                     </th>
+                    <th class="hidden-xs">
+                        <?=$this->lang->line('application_action');?>
+                    </th>
 				</thead>
 				<?php foreach ($areas as $area):?>
 

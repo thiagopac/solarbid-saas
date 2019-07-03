@@ -175,7 +175,7 @@
             <div class="table-div min-height-200">
                 <table class="table noclick" data-searching="false" id="plants" name="plants" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
                     <thead>
-                    <th width="4%">
+                    <th width="10%" style="text-align:center;">
                         <?=$this->lang->line('application_id');?>
                     </th>
                     <th width="5%">
@@ -185,7 +185,7 @@
                         <?=$this->lang->line('application_pr');?>
                     </th>
                     <th width="10%" style="text-align:center;">
-                        <?=$this->lang->line('application_approximate_area');?>
+                        <?=$this->lang->line('application_approximate_area_short');?>
                     </th>
                     <th width="1%" style="text-align:center;">
                         <?=$this->lang->line('application_type')?>
@@ -196,8 +196,8 @@
                     <th width="15%" style="text-align: center">
                         <?=$this->lang->line('application_compensate_consumn');?>
                     </th>
-                    <th width="20%" style="text-align: center">
-                        <?=$this->lang->line('application_minimum_power_pvs');?>
+                    <th width="14%" style="text-align: center">
+                        <?=$this->lang->line('application_minimum_power_pvs_short');?>
                     </th>
                     <th width="8%" style="text-align: center">
                         <?=$this->lang->line('application_action');?>
@@ -205,8 +205,8 @@
                     </thead>
                     <?php foreach ($disputeobject->dispute_object_has_plants as $value):?>
                         <tr id="<?=$value->id;?>">
-                            <td class="option" style="text-align:left;">
-                                <?=$value->id;?>
+                            <td class="option" style="text-align:center;">
+                                <?=$value->id;?> (<?=strtoupper(substr(md5($value->id), 20, 5));?>)
                             </td>
                             <td style="text-align:left;">
                                 <?=$value->global_horizontal_irradiance?>
@@ -268,10 +268,7 @@
                 <div class="box-shadow">
                     <div class="table-head">
                         <?=$this->lang->line('application_upload');?>
-                        <span class=" pull-right">
-    <a href="<?=base_url()?>disputeobjects/media/<?=$disputeobject->id;?>/add" class="btn btn-primary" data-toggle="mainmodal"><?=$this->lang->line('application_add_media');?></a>
-</span></div>
-
+                    </div>
                     <div class="media-uploader">
                         <?php $attributes = array('class' => 'dropzone', 'id' => 'dropzoneForm');
                         echo form_open_multipart(base_url()."disputeobjects/dropzone/".$disputeobject->id, $attributes); ?>
@@ -288,6 +285,9 @@
                 <div class="box-shadow">
                     <div class="table-head">
                         <?=$this->lang->line('application_files');?>
+                        <span class=" pull-right">
+                            <a href="<?=base_url()?>disputeobjects/media/<?=$disputeobject->id;?>/add" class="btn btn-primary" data-toggle="mainmodal"><?=$this->lang->line('application_add_media');?></a>
+                        </span>
                     </div>
                     <div class="table-div" style="margin-bottom: 0px;">
                         <table id="media" class="table data-media" data-searching="false" rel="<?=base_url()?>disputeobjects/media/<?=$disputeobject->id;?>" cellspacing="0" cellpadding="0">

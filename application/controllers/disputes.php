@@ -146,6 +146,8 @@ class Disputes extends MY_Controller
 
         $core_settings = Setting::first();
 
+        $str_days = $this->lang->line('application_days');
+
         foreach ($dispute->dispute_has_bids as $bid){
 
             $proposals_html = "<table class='table detail-table no-footer' role='grid' cellspacing='0' cellpadding='0'><thead>";
@@ -155,17 +157,18 @@ class Disputes extends MY_Controller
 
                 $bid->custom = $bid->custom + $proposal->value;
 
+                $plant_nickname = strtoupper(substr(md5($proposal->plant_id), 20, 5));
 
                 $tr.= "<tr role='row'>
                             <td style='tabindex='0' colspan='1' rowspan='1' width='2%'>&nbsp;</td>
                             <td style='width: 45px;' tabindex='0' colspan='1' rowspan='1' width='4%'>&nbsp;</td>
-                            <td style='width: 234px;' tabindex='0' colspan='1' rowspan='1' width='15%'>".$this->lang->line('application_plant')." $proposal->plant_id</td>
+                            <td style='width: 234px;' tabindex='0' colspan='1' rowspan='1' width='15%'>".$this->lang->line('application_plant')." $proposal->plant_id ($plant_nickname) </td>
                             <td style='text-align: center; width: 146px;' tabindex='0' colspan='1' rowspan='1' width='10%'>".$core_settings->money_symbol." ".display_money(sprintf('%01.2f', $proposal->value))."</td>
                             <td style='text-align: center; width: 110px;' tabindex='0' colspan='1' rowspan='1' width='5%'>$proposal->rated_power_mod $core_settings->rated_power_measurement</td>
                             <td style='text-align: center; width: 239px;' tabindex='0' colspan='1' rowspan='1' width='15%'>$proposal->module_brands</td>
                             <td style='text-align: center; width: 239px;' tabindex='0' colspan='1' rowspan='1' width='15%'>$proposal->inverter_brands</td>
-                            <td style='text-align: center; width: 109px;' tabindex='0' colspan='1' rowspan='1' width='8%'>".fnDateYMDHItoDMYHI($bid->timestamp)."</td>
-                            <td style='text-align: right; width: 172px;' tabindex='0' colspan='1' rowspan='1' width='8%'>$proposal->occupied_area_mod $core_settings->area_measurement</td>
+                            <td style='text-align: center; width: 109px;' tabindex='0' colspan='1' rowspan='1' width='8%'>".date($core_settings->date_format." ".$core_settings->date_time_format, strtotime($bid->timestamp))."</td>
+                            <td style='text-align: right; width: 172px;' tabindex='0' colspan='1' rowspan='1' width='8%'>$proposal->delivery_time $str_days</td>
                         </tr>";
 
                 $proposals_html.= $tr;

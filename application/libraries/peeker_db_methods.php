@@ -11,7 +11,7 @@
 class peeker_db_methods
 {
 	// hold the codeigniter object
-	public $CI
+	public $CI;
 	public $email_table = 'email';
 	
 	// create the link between this->that 

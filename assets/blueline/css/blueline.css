@@ -416,9 +416,9 @@ body{
 		}
 
 		.alert-success {
-			color: #FFF;
-			background-color: #43AC6E;
-			border-color: #43AC6E;
+			color: #3c763d;
+			background-color: #dff0d8;
+			border-color: #d6e9c;
 		}
 		
 		ul.todo li.priority1{

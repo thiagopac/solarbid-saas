@@ -173,7 +173,7 @@
                         <?=$this->lang->line('application_sent_date');?>
                     </th>
                     <th style="text-align:right;" class="hidden-xs" width="8%">
-                        <?=$this->lang->line('application_occupied_area');?>
+                        <?=$this->lang->line('application_delivery_time');?>
                     </th>
                     </thead>
                     <?php foreach ($bids as $value):?>
@@ -211,10 +211,10 @@
                                 ?>
                             </td>
                             <td style="text-align:center;" class="hidden-xs">
-                                <?=date($core_settings->date_format." ".$core_settings->date_time_format, human_to_unix($value->timestamp))?>
+                                <?=date($core_settings->date_format." ".$core_settings->date_time_format, strtotime($value->timestamp))?>
                             </td>
                             <td style="text-align:right;">
-                                <?=count($value->bid_has_proposals) == 1 ? $value->bid_has_proposals[0]->occupied_area_mod." ".$core_settings->area_measurement : count($value->bid_has_proposals)." valores (".array_sum(array_column($value->bid_has_proposals, 'occupied_area_mod'))." ".$core_settings->area_measurement.")"?>
+                                <?=count($value->bid_has_proposals) == 1 ? $value->bid_has_proposals[0]->delivery_time." ".$this->lang->line('application_days') : count($value->bid_has_proposals)." valores (".array_sum(array_column($value->bid_has_proposals, 'delivery_time'))." ".$this->lang->line('application_days').")"?>
                             </td>
 
                         </tr>

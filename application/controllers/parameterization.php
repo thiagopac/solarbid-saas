@@ -25,11 +25,15 @@ class Parameterization extends MY_Controller
         $this->view_data['submenu'] = [
             $this->lang->line('application_departments') => 'parameterization/departments',
             $this->lang->line('application_areas') => 'parameterization/areas',
+            $this->lang->line('application_modules') => 'parameterization/modules',
+            $this->lang->line('application_inverters') => 'parameterization/inverters',
         ];
 
         $this->view_data['iconlist'] = [
             'parameterization/departments' => 'dripicons-network-1',
-            'parameterization/areas' => 'dripicons-network-3'
+            'parameterization/areas' => 'dripicons-network-3',
+            'parameterization/modules' => 'dripicons-view-thumb',
+            'parameterization/inverters' => 'dripicons-pulse',
         ];
 
         $this->config->load('defaults');
@@ -188,6 +192,132 @@ class Parameterization extends MY_Controller
             $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_delete_area_error'));
         }
         redirect('parameterization/areas');
+    }
+
+    public function modules()
+    {
+        $this->view_data['breadcrumb'] = $this->lang->line('application_modules');
+        $this->view_data['breadcrumb_id'] = 'parameterization/modules';
+
+        $modules = ModuleManufacturer::find('all');
+        $this->view_data['modules'] = $modules;
+        $this->content_view = 'parameterization/modules';
+    }
+
+    public function module_update($module = false)
+    {
+        $module = ModuleManufacturer::find($module);
+
+        if ($_POST) {
+
+            $module->update_attributes($_POST);
+            $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_save_module_success'));
+            redirect('parameterization/modules');
+        } else {
+            $this->view_data['module'] = $module;
+            $this->theme_view = 'modal';
+
+            $this->view_data['title'] = $this->lang->line('application_edit_module');
+            $this->view_data['form_action'] = 'parameterization/module_update/' . $module->id;
+            $this->content_view = 'parameterization/_moduleform';
+        }
+    }
+
+    public function module_create()
+    {
+        if ($_POST) {
+
+            $options = ['conditions' => ['name = ?', $_POST['name']]];
+            $module_exists = ModuleManufacturer::find($options);
+            if (empty($module_exists)) {
+                $module = ModuleManufacturer::create($_POST);
+                if (!$module) {
+                    $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_create_module_error'));
+                } else {
+                    $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_create_module_success'));
+                }
+            } else {
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_create_module_exists'));
+            }
+            redirect('parameterization/modules');
+        } else {
+            $this->theme_view = 'modal';
+            $this->view_data['title'] = $this->lang->line('application_add_module');
+            $this->view_data['form_action'] = 'parameterization/module_create/';
+            $this->content_view = 'parameterization/_moduleform';
+        }
+    }
+
+    public function module_delete($module_id = false)
+    {
+        $module = ModuleManufacturer::find($module_id);
+        $module->delete();
+        $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_delete_module_success'));
+
+        redirect('parameterization/modules');
+    }
+
+    public function inverters()
+    {
+        $this->view_data['breadcrumb'] = $this->lang->line('application_inverters');
+        $this->view_data['breadcrumb_id'] = 'parameterization/inverters';
+
+        $inverters = inverterManufacturer::find('all');
+        $this->view_data['inverters'] = $inverters;
+        $this->content_view = 'parameterization/inverters';
+    }
+
+    public function inverter_update($inverter = false)
+    {
+        $inverter = InverterManufacturer::find($inverter);
+
+        if ($_POST) {
+
+            $inverter->update_attributes($_POST);
+            $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_save_inverter_success'));
+            redirect('parameterization/inverters');
+        } else {
+            $this->view_data['inverter'] = $inverter;
+            $this->theme_view = 'modal';
+
+            $this->view_data['title'] = $this->lang->line('application_edit_inverter');
+            $this->view_data['form_action'] = 'parameterization/inverter_update/' . $inverter->id;
+            $this->content_view = 'parameterization/_inverterform';
+        }
+    }
+
+    public function inverter_create()
+    {
+        if ($_POST) {
+
+            $options = ['conditions' => ['name = ?', $_POST['name']]];
+            $inverter_exists = InverterManufacturer::find($options);
+            if (empty($inverter_exists)) {
+                $inverter = InverterManufacturer::create($_POST);
+                if (!$inverter) {
+                    $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_create_inverter_error'));
+                } else {
+                    $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_create_inverter_success'));
+                }
+            } else {
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_create_inverter_exists'));
+            }
+            redirect('parameterization/inverters');
+        } else {
+            $this->theme_view = 'modal';
+            $this->view_data['title'] = $this->lang->line('application_add_inverter');
+            $this->view_data['form_action'] = 'parameterization/inverter_create/';
+            $this->content_view = 'parameterization/_inverterform';
+        }
+    }
+
+    public function inverter_delete($inverter_id = false){
+
+        $inverter = InverterManufacturer::find($inverter_id);
+        $inverter->delete();
+        $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_delete_inverter_success'));
+
+        redirect('parameterization/inverters');
     }
 
 

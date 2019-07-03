@@ -237,11 +237,26 @@ $lang['messages_updated_range_success'] = "Alcance atualizado";
 $lang['messages_updated_range_error'] = "Erro ao atualizar alcance";
 
 $lang['messages_participating_dispute_error'] = "Erro ao iniciar participação";
-$lang['messages_participating_dispute_success'] = "Agora você está participando deste Certame";
+$lang['messages_participating_dispute_success'] = "Agora você está participando deste Certame!";
 
 $lang['messages_registries_retrieved_success'] = "Registros recuperados com sucesso";
 
-$lang['messages_updated_proposal_success'] = "Proposta atualizada";
-$lang['messages_updated_proposal_error'] = "Erro ao atualizar proposta";
-$lang['messages_create_proposal_success'] = "Proposta criada";
-$lang['messages_create_proposal_error'] = "Erro ao criar proposta";
+$lang['messages_updated_proposal_success'] = "Precificação atualizada!";
+$lang['messages_updated_proposal_error'] = "Erro ao atualizar a precificação";
+$lang['messages_create_proposal_success'] = "Precificação para usina criada!";
+$lang['messages_create_proposal_error'] = "Erro ao criar precificação para usina";
+
+$lang['messages_send_bid_success'] = "Sua proposta foi enviada com sucesso!";
+$lang['messages_send_bid_error'] = "Erro ao enviar sua proposta";
+
+$lang['messages_delete_module_error'] = "Erro ao excluir Módulo";
+$lang['messages_delete_module_success'] = "Módulo excluído";
+$lang['messages_save_module_success'] = "Módulo salvo";
+$lang['messages_save_module_error'] = "Erro ao salvar Módulo";
+$lang['messages_create_module_exists'] = 'Já existe um Módulo com este nome';
+
+$lang['messages_delete_inverter_error'] = "Erro ao excluir Inversor";
+$lang['messages_delete_inverter_success'] = "Inversor excluído";
+$lang['messages_save_inverter_success'] = "Inversor salvo";
+$lang['messages_save_inverter_error'] = "Erro ao salvar Inversor";
+$lang['messages_create_inverter_exists'] = 'Já existe um Inversor com este nome';

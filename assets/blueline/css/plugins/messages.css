@@ -597,6 +597,19 @@ a:hover {
   margin: 0 0 60px 0;
   position: relative;
 }
+#message .message-container li.dispute-plant{
+
+  background: #FFF;
+  margin: 10px 0 0 0;
+  position: relative;
+}
+#message .message-container li .plant {
+  margin-bottom: 0px;
+  padding: 0 10px;
+  color: #444;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
 #message .message-container li:hover .details .left .arrow {
   background: #619cc7;
   border: 0px solid #6190c7;

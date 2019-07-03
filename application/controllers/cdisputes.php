@@ -45,103 +45,6 @@ class cDisputes extends MY_Controller {
         $this->content_view = 'disputes/client/list';
     }
 
-    function write($ajax = FALSE)
-    {
-        if($_POST){
-
-            $config['upload_path'] = './files/media/';
-            $config['encrypt_name'] = TRUE;
-            $config['allowed_types'] = '*';
-
-            $this->load->library('upload', $config);
-            $this->load->helper('notification');
-
-            unset($_POST['userfile']);
-            unset($_POST['file-name']);
-
-            unset($_POST['send']);
-            unset($_POST['note-codable']);
-            unset($_POST['files']);
-            $message = $_POST['message'];
-            $receiverart = substr($_POST['recipient'], 0, 1);
-            $receiverid = substr($_POST['recipient'], 1, 9999);
-            if( $receiverart == "u"){
-                $receiver = User::find($receiverid);
-                $receiveremail = $receiver->email;
-                $receiverPushActive = $receiver->push_active;
-            }
-            $_POST = array_map('htmlspecialchars', $_POST);
-            $_POST['message'] = $message;
-            $_POST['time'] = date('Y-m-d H:i', time());
-            $_POST['sender'] = "c".$this->client->id;
-            $_POST['status'] = "New";
-
-            if ( ! $this->upload->do_upload())
-            {
-                $error = $this->upload->display_errors('', ' ');
-
-                if($error != "You did not select a file to upload."){
-                    //$this->session->set_flashdata('message', 'error:'.$error);
-                }
-            }
-            else
-            {
-                $data = array('upload_data' => $this->upload->data());
-                $_POST['attachment'] = $data['upload_data']['orig_name'];
-                $_POST['attachment_link'] = $data['upload_data']['file_name'];
-
-            }
-
-            if(!isset($_POST['conversation'])){$_POST['conversation'] = random_string('sha1');}
-            if(isset($_POST['previousmessage'])){
-                $status = Privatemessage::find_by_id($_POST['previousmessage']);
-                if($receiveremail == $this->client->email){
-                    $receiverart = substr($status->recipient, 0, 1);
-                    $receiverid = substr($status->recipient, 1, 9999);
-                    $_POST['recipient'] = $status->recipient;
-
-                    if( $receiverart == "u"){
-                        $receiver = User::find($receiverid);
-                        $receiveremail = $receiver->email;
-                        $receiverId = $receiver->id;
-                        $receiverPushActive = $receiver->push_active;
-                    }
-                }
-                $status->status = 'Replied';
-                $status->save();
-                unset($_POST['previousmessage']);
-            }
-            $message = Privatemessage::create($_POST);
-            $push_receivers = array();
-            if(!$message){$this->session->set_flashdata('message', 'error:'.$this->lang->line('messages_write_message_error'));}
-            else{
-                $this->session->set_flashdata('message', 'success:'.$this->lang->line('messages_write_message_success'));
-                $this->load->helper('notification');
-//       				send_notification($receiveremail, $message->subject, $this->lang->line('application_notification_new_message').'<br><hr style="border-top: 1px solid #CCCCCC; border-left: 1px solid whitesmoke; border-bottom: 1px solid whitesmoke;"/>'.$_POST['message'].'<hr style="border-top: 1px solid #CCCCCC; border-left: 1px solid whitesmoke; border-bottom: 1px solid whitesmoke;"/>');
-
-                $attributes = array('user_id' => $receiverId, 'message' => $this->lang->line('application_notification_new_message').' de <b>'.$this->client->firstname.'</b>', 'url' => base_url().'disputes');
-                Notification::create($attributes);
-
-                if ($receiverPushActive == 1) {
-                    array_push($push_receivers, $receiveremail);
-                    Notification::sendPushNotification($push_receivers, $this->client->firstname . ' te enviou uma mensagem', base_url() . 'disputes');
-                }
-
-
-            }
-            if($ajax != "reply"){ redirect('cdisputes'); }else{
-                $this->theme_view = 'ajax';
-            }
-        }else
-        {
-            $this->view_data['users'] = $this->client->company->users; // User::find('all',array('conditions' => array('status=?','active')));
-            $this->theme_view = 'modal';
-            $this->view_data['title'] = $this->lang->line('application_write_message');
-            $this->view_data['form_action'] = 'cdisputes/write';
-            $this->content_view = 'disputes/client/_messages';
-        }
-    }
-
     function view($id = false) {
 
         $this->view_data['submenu'] = array(
@@ -150,14 +53,35 @@ class cDisputes extends MY_Controller {
 
         $dispute = Dispute::getDispute($id);
 
-        $this->view_data['proposals'] = BidHasProposal::find('all', ['conditions' => ['dispute_id = ? AND company_id = ?', $id, $this->client->company_id]]);
-
         $this->view_data["dispute"] = $dispute;
         $this->theme_view = 'ajax';
 
-//        $this->view_data['bids'] = $bids = DisputeHasBid::find('all', array('conditions' => array("company_id = ? AND dispute_id = ? ORDER BY id DESC", $this->client->company_id, $id)));
+        $this->view_data['out_of_date'] = strtotime($dispute->due_date) < time() ? true : false;
 
-        $this->view_data['form_action'] = 'cdisputes/write';
+        $bids = DisputeHasBid::find('all', array('conditions' => array("company_id = ? AND dispute_id = ? ORDER BY id DESC", $this->client->company_id, $id))); //last bid first
+
+        $sent = 0;
+        foreach ($bids as $bid) {
+            if ($bid->bid_sent == 'yes') $sent++;
+        }
+
+        //all bids for the dispute and the sum
+        $this->view_data['bids'] = $bids;
+        $this->view_data['sent'] = $sent;
+
+        //viewing bid
+        $this->view_data['viewing_bid'] = $bids[0];
+
+        $this->view_data['proposals'] = $proposals = BidHasProposal::find('all', ['conditions' => ['dispute_id = ? AND company_id = ? AND bid_id = ?', $id, $this->client->company_id, $bids[0]->id]]);
+
+        $plants_with_proposal = array();
+
+        foreach ($proposals as $proposal){
+            array_push($plants_with_proposal, $proposal->plant_id);
+        }
+
+        $this->view_data['plants_with_proposal'] = $plants_with_proposal;
+
         $this->view_data['id'] = $id;
         $this->content_view = 'disputes/client/view';
     }
@@ -175,55 +99,62 @@ class cDisputes extends MY_Controller {
         $this->view_data['media'] = $media;
     }
 
-    public function participateDispute($id = false) {
+    public function participateDispute($id = false, $getview = false){
 
-        $this->theme_view = 'ajax';
+        if ($_POST) {
 
-        $dispute_has_bid = new DisputeHasBid();
+            $id = $_POST['id'];
+            $view = false;
+            if (isset($_POST['view'])) {
+                $view = $_POST['view'];
+            }
 
-        $dispute_has_bid->dispute_id = $id;
-        $dispute_has_bid->client_id = $this->client->id;
-        $dispute_has_bid->company_id = $this->client->company_id;
-        $dispute_has_bid->save();
+            unset($_POST['view']);
+            unset($_POST['send']);
 
-//        $last_dispute_has_bid = DisputeHasBid::find('all', ['conditions' => ['id = ?', $dispute_has_bid->id]]);
-        $bids = DisputeHasBid::find('all', ['conditions' => ['dispute_id = ? ORDER BY id DESC', $id]]);
+            $dispute = Dispute::find($id);
 
-        $data = array('bids' => object_to_array($bids, false));
+            $out_of_date = strtotime($dispute->due_date) < time() ? true : false;
 
-        if (!isset($dispute_has_bid)) {
-            json_response("error", htmlspecialchars($this->lang->line('messages_participating_dispute_error')), $data);
-            $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_participating_dispute_error'));
+            if ($dispute->inactive == 'no' && $out_of_date == false){
+                $dispute_has_bid = new DisputeHasBid();
+
+                $dispute_has_bid->dispute_id = $id;
+                $dispute_has_bid->client_id = $this->client->id;
+                $dispute_has_bid->company_id = $this->client->company_id;
+                $dispute_has_bid->save();
+            }
+
+            $this->theme_view = 'ajax';
+
+            if (!isset($dispute_has_bid)) {
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_participating_dispute_error'));
+            } else {
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_participating_dispute_success'));
+            }
+
+//            return json_response("success", htmlspecialchars($this->lang->line('messages_updated_proposal_success')));
+
         } else {
-            json_response("success", htmlspecialchars($this->lang->line('messages_participating_dispute_success')), $data);
-            $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_participating_dispute_success'));
+
+            $this->view_data['dispute'] = Dispute::find($id);
+
+            $bids = DisputeHasBid::find('all', array('conditions' => array("company_id = ? AND dispute_id = ? ORDER BY id DESC", $this->client->company_id, $id)));
+
+            $title = count($bids) > 0 ? $this->lang->line('application_new_participate_dispute') : $this->lang->line('application_participate_dispute') ;
+
+            $again = count($bids) > 0 ? '_again' : '';
+            $this->view_data['again'] = $again;
+
+            if ($getview == 'view') {
+                $this->view_data['view'] = 'true';
+            }
+            $this->theme_view = 'modal';
+            $this->view_data['title'] = $title;
+
+            $this->view_data['form_action'] = 'cdisputes/participateDispute/'.$id;
+            $this->content_view = 'disputes/client/_participate';
         }
-
-        redirect('disputes/client/view');
-    }
-
-    public function participateDisputeService($id = false){
-
-        $this->theme_view = 'blank';
-
-        $dispute_has_bid = new DisputeHasBid();
-
-        $dispute_has_bid->dispute_id = $id;
-        $dispute_has_bid->client_id = $this->client->id;
-        $dispute_has_bid->company_id = $this->client->company_id;
-        $dispute_has_bid->save();
-
-//        $bids = DisputeHasBid::find('all', array('conditions' => array("dispute_id = ? ORDER BY id DESC", $id)));
-        $bids = DisputeHasBid::find('all', ['conditions' => ['dispute_id = ? ORDER BY id DESC', $id]]);
-
-        $data = array('bids' => object_to_array($bids, false));
-
-        if (!isset($dispute_has_bid)) {
-            return json_response("error", htmlspecialchars($this->lang->line('messages_participating_dispute_error')), $data);
-        } else {
-            return json_response("success", htmlspecialchars($this->lang->line('messages_participating_dispute_success')), $data);
-        }
-
     }
 
     public function allBidsByCompanyInDispute($company_id = false, $dispute_id = false){
@@ -253,8 +184,57 @@ class cDisputes extends MY_Controller {
         return json_response("success", htmlspecialchars($this->lang->line('messages_registries_retrieved_success')), $data);
     }
 
-    public function updateProposal($id = false, $getview = false)
-    {
+    public function createProposal($dispute_id = false, $bid_id = false, $plant_id = false, $getview = false){
+
+        if ($_POST) {
+
+            $view = false;
+            if (isset($_POST['view'])) {
+                $view = $_POST['view'];
+            }
+            unset($_POST['view']);
+            unset($_POST['send']);
+            unset($_POST['id']);
+
+            $_POST['dispute_id'] = $dispute_id;
+            $_POST['bid_id'] = $bid_id;
+            $_POST['plant_id'] = $plant_id;
+            $_POST['client_id'] = $this->client->id;
+            $_POST['company_id'] = $this->client->company_id;
+
+            $_POST['value'] = str_replace('.', '', $_POST['value']);
+            $_POST['value'] = str_replace(',', '.', $_POST['value']);
+
+            $proposal = BidHasProposal::create($_POST);
+
+            $this->theme_view = 'ajax';
+
+            if (!$proposal) {
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_create_proposal_error'));
+            } else {
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_create_proposal_success'));
+            }
+
+        } else {
+
+            if ($getview == 'view') {
+                $this->view_data['view'] = 'true';
+            }
+
+            $this->view_data['dispute_id'] = $dispute_id;
+            $this->view_data['bid_id'] = $bid_id;
+            $this->view_data['plant_id'] = $plant_id;
+
+            $this->theme_view = 'modal';
+            $this->view_data['title'] = $this->lang->line('application_create_proposal')." (".$this->lang->line('application_plant')." ".strtoupper(substr(md5($plant_id), 20, 5)).")";
+
+            $this->view_data['form_action'] = 'cdisputes/createProposal/'.$dispute_id."/".$bid_id."/".$plant_id;
+            $this->content_view = 'disputes/client/_proposal';
+        }
+    }
+
+    public function updateProposal($dispute_id = false, $id = false, $getview = false){
+
         if ($_POST) {
 
             $id = $_POST['id'];
@@ -265,31 +245,76 @@ class cDisputes extends MY_Controller {
             unset($_POST['view']);
             unset($_POST['send']);
 
+            $_POST['value'] = str_replace('.', '', $_POST['value']);
+            $_POST['value'] = str_replace(',', '.', $_POST['value']);
+
             $proposal = BidHasProposal::find($id);
 
             $proposal->update_attributes($_POST);
+
+            $this->theme_view = 'ajax';
 
             if (!$proposal) {
                 $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_updated_proposal_error'));
             } else {
                 $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_updated_proposal_success'));
             }
-            if ($view == 'true') {
-                redirect('cdisputes/view/' . $id);
-            } else {
-                redirect('cdisputes');
-            }
+
         } else {
-            $this->view_data['proposal'] = BidHasProposal::find($id);
+            $this->view_data['proposal'] = $proposal =  BidHasProposal::find($id);
 
             if ($getview == 'view') {
                 $this->view_data['view'] = 'true';
             }
             $this->theme_view = 'modal';
-            $this->view_data['title'] = $this->lang->line('application_edit_proposal');
+            $this->view_data['title'] = $this->lang->line('application_edit_proposal')." (".$this->lang->line('application_plant')." ".strtoupper(substr(md5($proposal->plant_id), 20, 5)).")";
 
-            $this->view_data['form_action'] = 'disputes/updateProposal';
+            $this->view_data['form_action'] = 'cdisputes/updateProposal';
             $this->content_view = 'disputes/client/_proposal';
+        }
+    }
+
+    public function sendBid($dispute_id = false, $bid_id = false, $getview = false){
+
+        if ($_POST) {
+
+            $bid_id = $_POST['bid_id'];
+            $dispute_id = $_POST['dispute_id'];
+            $view = false;
+            if (isset($_POST['view'])) {
+                $view = $_POST['view'];
+            }
+            unset($_POST['view']);
+            unset($_POST['send']);
+
+
+            $bid = DisputeHasBid::find($bid_id);
+
+            $bid->bid_sent = 'yes';
+
+            $bid->save();
+
+            $this->theme_view = 'ajax';
+
+            if (!$bid) {
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_send_bid_error'));
+            }else{
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_send_bid_success'));
+            }
+
+        }else{
+
+            $this->view_data['bid_id'] = $bid_id;
+            $this->view_data['dispute_id'] = $dispute_id;
+
+            if ($getview == 'view') {
+                $this->view_data['view'] = 'true';
+            }
+            $this->theme_view = 'modal';
+            $this->view_data['title'] = $this->lang->line('application_send_bid');
+
+            $this->view_data['form_action'] = 'cdisputes/sendBid';
+            $this->content_view = 'disputes/client/_send';
         }
     }
 
