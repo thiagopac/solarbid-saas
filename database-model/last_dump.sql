@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03/07/2019 às 20:54
+-- Tempo de geração: 05/07/2019 às 19:50
 -- Versão do servidor: 5.6.37
 -- Versão do PHP: 7.1.8
 
@@ -52,22 +52,32 @@ CREATE TABLE IF NOT EXISTS `bid_has_proposals` (
   `inverter_brands` varchar(500) DEFAULT NULL,
   `occupied_area_mod` int(10) DEFAULT NULL,
   `delivery_time` int(5) DEFAULT NULL COMMENT 'Em dias',
-  `payment_conditions` text COMMENT 'json com condições para cada parcela e valores'
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `payment_conditions` enum('own_installment','direct_billing_and_own_installment') DEFAULT NULL COMMENT 'tipo de pagamento',
+  `direct_billing_percentage` int(11) DEFAULT NULL COMMENT 'Porcentagem que será o pagamento de faturamento direto',
+  `own_installment_percentage` int(11) DEFAULT NULL COMMENT 'Porcentagem que será o pagamento de parcelamento próprio',
+  `own_installment_payment_trigger` enum('per_month','per_event') DEFAULT NULL COMMENT 'Tipo de pagamento, se será mensal ou a cada etapa',
+  `own_installment_quantity` int(11) DEFAULT NULL COMMENT 'Quantidade de parcelas próprias',
+  `own_installment_payment_events` varchar(10000) DEFAULT NULL COMMENT 'Ordem dos eventos que gerarão os pagamentos',
+  `own_installment_values` varchar(10000) DEFAULT NULL COMMENT 'Valor de cada parcela própria, separados por vírgula',
+  `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- Fazendo dump de dados para tabela `bid_has_proposals`
 --
 
-INSERT INTO `bid_has_proposals` (`id`, `bid_id`, `plant_id`, `dispute_id`, `client_id`, `company_id`, `value`, `rated_power_mod`, `module_brands`, `inverter_brands`, `occupied_area_mod`, `delivery_time`, `payment_conditions`) VALUES
-(1, 1, 2, 2, 1, 1, 20445.50, NULL, NULL, NULL, NULL, 45, NULL),
-(2, 1, 5, 2, 1, 1, 22345.12, NULL, NULL, NULL, NULL, 35, NULL),
-(3, 2, 2, 2, 1, 1, 24560.78, NULL, NULL, NULL, NULL, 15, NULL),
-(4, 2, 5, 2, 1, 1, 22310.45, NULL, NULL, NULL, NULL, 78, NULL),
-(5, 3, 2, 2, 1, 1, 30900.45, 15.97, 'GCL,Canadian', 'ABB,Fronius', NULL, 46, NULL),
-(6, 3, 5, 2, 1, 1, 26560.75, 15.13, NULL, NULL, NULL, 38, NULL),
-(7, 4, 4, 4, 1, 1, 23560.90, 4.25, 'GCL,Canadian', 'ABB,Fronius', NULL, 43, NULL),
-(8, 5, 4, 4, 1, 1, 32450.88, 4.30, 'GCL,BYD,Canadian', 'Sungrow,ABB,Fronius', NULL, 39, NULL);
+INSERT INTO `bid_has_proposals` (`id`, `bid_id`, `plant_id`, `dispute_id`, `client_id`, `company_id`, `value`, `rated_power_mod`, `module_brands`, `inverter_brands`, `occupied_area_mod`, `delivery_time`, `payment_conditions`, `direct_billing_percentage`, `own_installment_percentage`, `own_installment_payment_trigger`, `own_installment_quantity`, `own_installment_payment_events`, `own_installment_values`, `timestamp`) VALUES
+(1, 1, 2, 2, 1, 1, 20445.50, 16.20, 'GCL,Canadian', 'Sungrow,Fronius', NULL, 45, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-07-05 15:17:29'),
+(2, 1, 5, 2, 1, 1, 22345.12, 15.20, 'GCL,BYD', 'ABB,Fronius', NULL, 35, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-07-05 15:17:19'),
+(3, 2, 2, 2, 1, 1, 24560.78, 15.99, 'Canadian,BYD', 'ABB', NULL, 15, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-07-05 15:17:13'),
+(4, 2, 5, 2, 1, 1, 22310.45, 15.30, 'BYD', 'Fronius', NULL, 78, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-07-05 15:17:11'),
+(5, 3, 2, 2, 1, 1, 30900.45, 15.97, 'GCL,Canadian', 'ABB,Fronius', NULL, 46, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-06-28 11:51:26'),
+(6, 3, 5, 2, 1, 1, 26560.75, 15.13, 'Canadian', 'Sungrow', NULL, 38, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-07-05 15:17:17'),
+(7, 4, 4, 4, 1, 1, 23560.90, 4.25, 'GCL,Canadian', 'ABB,Fronius', NULL, 43, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-06-13 11:36:42'),
+(8, 5, 4, 4, 1, 1, 32450.88, 4.30, 'GCL,BYD,Canadian', 'Sungrow,ABB,Fronius', NULL, 39, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-06-22 13:35:38'),
+(9, 6, 4, 4, 1, 1, 25670.55, 4.35, 'BYD,Canadian', 'Sungrow,Fronius', NULL, 57, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-07-04 17:51:26'),
+(10, 7, 4, 4, 1, 1, 27290.45, 4.26, 'GCL', 'Fronius', NULL, 46, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-07-05 14:00:23'),
+(11, 8, 4, 4, 1, 1, 24500.75, 4.35, 'GCL', 'Fronius', NULL, 60, 'direct_billing_and_own_installment', 10, 90, 'per_month', 4, NULL, NULL, '2019-07-05 19:49:11');
 
 -- --------------------------------------------------------
 
@@ -5710,7 +5720,7 @@ CREATE TABLE IF NOT EXISTS `clients` (
 --
 
 INSERT INTO `clients` (`id`, `company_id`, `firstname`, `lastname`, `email`, `phone`, `mobile`, `userpic`, `hashed_password`, `inactive`, `access`, `last_active`, `last_login`, `token`, `language`, `push_active`) VALUES
-(1, 1, 'Usuário 1', 'Cliente 1', 'thiagopac@gmail.com', '(11)1111-1111', '(11)91111-1111', 'no-pic.png', '46396a46355c472c6c703b337b4b703c34777170594f7d387371787755315f388b4b70aac220c8e3d87409cb92cdc221a012ae724a086d96f4c16ad71e5d29c1', 0, '110,106', '1562186845', '1562155678', NULL, NULL, '1'),
+(1, 1, 'Usuário 1', 'Cliente 1', 'thiagopac@gmail.com', '(11)1111-1111', '(11)91111-1111', 'no-pic.png', '46396a46355c472c6c703b337b4b703c34777170594f7d387371787755315f388b4b70aac220c8e3d87409cb92cdc221a012ae724a086d96f4c16ad71e5d29c1', 0, '110,106', '1562356151', '1562329016', NULL, NULL, '1'),
 (2, 1, 'Usuário 2', 'Cliente 1', 'contato2@cliente1.com.br', '(11)1111-1111', '(11)92222-2222', 'no-pic.png', '4b36287b26787a4468756649217c2b5e5c515629404a37486173352d3a545c74c389ff63605d2611d4354351acafd70e4ac7c5755227a306fdacbfa562fdbd07', 0, '110,106', '0', '1560425721', NULL, NULL, '1');
 
 -- --------------------------------------------------------
@@ -6332,7 +6342,7 @@ CREATE TABLE IF NOT EXISTS `disputes` (
 
 INSERT INTO `disputes` (`id`, `dispute_reference`, `dispute_sent`, `dispute_object_id`, `plants`, `currency`, `start_date`, `due_date`, `inactive`, `rule_name`, `rule_value`, `rule_level`, `range_participants`, `participants`, `status`) VALUES
 (1, 2000, 'yes', 1, '2,5', 'BRL', '2019-05-10 17:40', '2019-06-10 08:35', 'no', 'state', '11', 1, 5, '1,2,3,4,5', 'completed'),
-(2, 2001, 'yes', 1, '2,5', 'BRL', '2019-05-01 12:00', '2019-07-03 17:25', 'no', 'city', '2308', 2, 3, '1,2,3', 'in_progress'),
+(2, 2001, 'yes', 1, '2,5', 'BRL', '2019-05-01 12:00', '2019-07-03 17:25', 'no', 'city', '2308', 2, 3, '1,2,3', 'completed'),
 (3, 2002, 'no', 2, NULL, 'BRL', '2019-05-29 12:00', '2019-06-13 12:00', 'no', 'city', '2308', 2, 3, '1,2,3', 'suspended'),
 (4, 2003, 'yes', 3, '4', 'BRL', '2019-06-14 12:00', '2019-07-06 12:00', 'no', 'city', '2308', 2, 3, '1,2,3', 'in_progress'),
 (5, 2004, 'no', 5, '7', 'BRL', '2019-06-07 12:00', '2019-06-14 12:00', 'no', 'city', '2308,2314,2339,2447,2673,2818', 2, 5, '1,2,3,4,5', NULL);
@@ -6351,20 +6361,23 @@ CREATE TABLE IF NOT EXISTS `dispute_has_bids` (
   `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `html` text NOT NULL COMMENT 'Coluna para suporte de propriedade no codigo fonte',
   `custom` text NOT NULL COMMENT 'Coluna para suporte de propriedade no codigo fonte',
-  `bid_sent` enum('yes','no') DEFAULT 'no',
-  `winner` enum('no','yes') DEFAULT 'no'
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `bid_sent` tinyint(4) DEFAULT '0',
+  `winner` tinyint(4) DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Fazendo dump de dados para tabela `dispute_has_bids`
 --
 
 INSERT INTO `dispute_has_bids` (`id`, `dispute_id`, `client_id`, `company_id`, `timestamp`, `html`, `custom`, `bid_sent`, `winner`) VALUES
-(1, 2, 1, 1, '2019-07-03 11:28:01', '', '', 'yes', 'no'),
-(2, 2, 1, 1, '2019-07-03 11:31:16', '', '', 'yes', 'no'),
-(3, 2, 1, 1, '2019-07-03 17:06:51', '', '', 'yes', 'no'),
-(4, 4, 1, 1, '2019-07-03 17:11:31', '', '', 'yes', 'no'),
-(5, 4, 1, 1, '2019-07-03 17:11:52', '', '', 'no', 'no');
+(1, 2, 1, 1, '2019-07-05 12:19:40', '', '', 1, 1),
+(2, 2, 1, 1, '2019-07-05 10:51:30', '', '', 1, 0),
+(3, 2, 1, 1, '2019-07-05 12:19:37', '', '', 1, 0),
+(4, 4, 1, 1, '2019-07-05 10:51:35', '', '', 1, 0),
+(5, 4, 1, 1, '2019-07-05 10:51:37', '', '', 1, 0),
+(6, 4, 1, 1, '2019-07-05 10:51:39', '', '', 1, 0),
+(7, 4, 1, 1, '2019-07-05 12:19:10', '', '', 1, 0),
+(8, 4, 1, 1, '2019-07-05 12:22:19', '', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -7349,7 +7362,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `firstname`, `lastname`, `hashed_password`, `email`, `status`, `admin`, `created`, `userpic`, `title`, `access`, `last_active`, `last_login`, `queue`, `token`, `language`, `signature`, `push_active`) VALUES
-(1, 'thiago', 'Thiago', 'Pires', '3048405e5d403b655b452b316e2566325d4d4d625c565d4e7654626358572743b1dd243ebe064dd6095e80fbfb32b0a767c20c8db0b334fd189f5e8de98a0231', 'thiago@solarbid.com.br', 'active', '1', '2019-05-13 23:00:00', '6a7db41b635e4c43bfd61f79ef7c78ec.jpeg', 'Diretor de Tecnologia', '1,2,4,15,14,34,105,9,11', '1562185654', '1562164303', 4, '8dacf92301e47aa845f807057cd04abc', 'english', 'Thiago Pires', '1'),
+(1, 'thiago', 'Thiago', 'Pires', '3048405e5d403b655b452b316e2566325d4d4d625c565d4e7654626358572743b1dd243ebe064dd6095e80fbfb32b0a767c20c8db0b334fd189f5e8de98a0231', 'thiago@solarbid.com.br', 'active', '1', '2019-05-13 23:00:00', '6a7db41b635e4c43bfd61f79ef7c78ec.jpeg', 'Diretor de Tecnologia', '1,2,4,15,14,34,105,9,11', '1562346759', '1562329319', 4, '8dacf92301e47aa845f807057cd04abc', 'english', 'Thiago Pires', '1'),
 (2, 'patrick', 'Patrick', 'Lüdtke', '237c53674047616c36643f295d413e6a4e70633a597959675e29372937673646f52753b55ef4f5edf9d2ca773736a799f32aaea3568358e059d9da1c75c63cc8', 'patrick1111@solarbid.com.br', 'active', '1', '2019-05-15 19:32:13', '02f428caf9e66a7eb3c33f2e7f2c5315.png', 'Diretor Executivo', '1,4,105,11', '1560794513', NULL, 3, NULL, 'english', 'Patrick Lüdtke', '0');
 
 -- --------------------------------------------------------
@@ -7805,7 +7818,7 @@ ALTER TABLE `article_has_attachments`
 -- AUTO_INCREMENT de tabela `bid_has_proposals`
 --
 ALTER TABLE `bid_has_proposals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de tabela `cities`
 --
@@ -7865,7 +7878,7 @@ ALTER TABLE `disputes`
 -- AUTO_INCREMENT de tabela `dispute_has_bids`
 --
 ALTER TABLE `dispute_has_bids`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de tabela `dispute_objects`
 --
