@@ -143,6 +143,7 @@ $lang['application_restore_notice'] = 'Atenção! Todos os dados que foram adici
 $lang['application_save'] = 'Salvar';
 $lang['application_send_invoice_to_client'] = 'Enviar fatura ao cliente';
 $lang['application_Sent'] = 'Enviado';
+$lang['application_sent_in'] = 'enviada em';
 $lang['application_sent_invoices'] = 'Faturas enviadas';
 $lang['application_settings'] = 'Configurações';
 $lang['application_short_tags'] = 'Tags';
@@ -1164,7 +1165,7 @@ $lang['application_new_participate_dispute'] = 'Criar nova proposta para o Certa
 
 $lang['application_you_participate_dispute'] = 'Você já tem participação neste Certame';
 
-$lang['application_you_have_n_participations_dispute'] = "Você já enviou %d proposta(s) para este Certame";
+$lang['application_you_have_n_participations_dispute'] = "Você enviou %d proposta(s) para este Certame";
 
 $lang['application_participations_dispute_is_not_sent'] = '<u>ATENÇÃO!</u> Esta proposta está modo de edição e ainda não foi enviada!';
 $lang['application_no_participations_dispute_sent_yet'] = 'Você não enviou nenhuma proposta para este Certame';
@@ -1173,7 +1174,9 @@ $lang['application_click_to_view'] = 'Clique aqui para visualizar';
 $lang['application_are_you_sure'] = 'Você tem certeza?';
 $lang['application_sure'] = 'Certeza!';
 
-$lang['application_your_proposals_for_dispute'] = 'Abaixo estão suas precificações preenchidas para este Certame';
+$lang['application_your_prices_for_dispute'] = 'Abaixo estão suas precificações preenchidas para este Certame';
+$lang['application_your_proposals_for_dispute'] = 'Abaixo estão suas propostas preenchidas para este Certame';
+$lang['application_proposal'] = 'Proposta';
 $lang['application_proposals'] = 'Propostas';
 $lang['application_edit_proposal'] = 'Editar proposta';
 $lang['application_create_proposal'] = 'Criar proposta';
@@ -1201,3 +1204,15 @@ $lang['application_select_modules'] = 'Selecione os módulos';
 $lang['application_select_inverters'] = 'Selecione os inversores';
 $lang['application_module_manufacturers'] = 'Fabricante dos módulos';
 $lang['application_inverter_manufacturers'] = 'Fabricante dos inversores';
+
+$lang['application_direct_billing'] = 'Faturamento Direto';
+$lang['application_direct_billing_percentage'] = 'Porcentagem de Faturamento Direto';
+$lang['application_own_installment'] = 'Parcelamento Próprio';
+$lang['application_own_installment_percentage'] = 'Porcentagem de Parcelamento Próprio';
+$lang['application_direct_billing_and_own_installment'] = 'Faturamento Direto + Parcelamento Próprio';
+$lang['application_payment_conditions'] = 'Condições de pagamento';
+$lang['application_own_installment_payment_trigger'] = 'Gatilhos para pagamento';
+$lang['application_per_month'] = 'Pagamento mensal';
+$lang['application_per_event'] = 'Pagamento por evento';
+$lang['own_installment_quantity_per_month'] = 'Quantidade de meses';
+$lang['own_installment_quantity_per_event'] = 'Quantidade de eventos';

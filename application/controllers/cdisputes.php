@@ -58,25 +58,21 @@ class cDisputes extends MY_Controller {
 
         $this->view_data['out_of_date'] = strtotime($dispute->due_date) < time() ? true : false;
 
-        $bids = DisputeHasBid::find('all', array('conditions' => array("company_id = ? AND dispute_id = ? ORDER BY id DESC", $this->client->company_id, $id))); //last bid first
 
-        $sent = 0;
-        foreach ($bids as $bid) {
-            if ($bid->bid_sent == 'yes') $sent++;
-        }
+        $this->view_data['all_proposals'] = BidHasProposal::find('all', ['conditions' => ['dispute_id = ? AND company_id = ? ORDER BY id DESC', $id, $this->client->company_id]]);
+
+        $all_bids_in_dispute = $this->view_data['all_bids_in_dispute'] = DisputeHasBid::find('all', ['conditions' => ['dispute_id = ? AND company_id = ?', $id, $this->client->company_id], 'include' => 'bid_has_proposals']);
 
         //all bids for the dispute and the sum
-        $this->view_data['bids'] = $bids;
-        $this->view_data['sent'] = $sent;
+        $this->view_data['bids'] = $all_bids_in_dispute;
+        $this->view_data['sent'] = array_sum(array_column($all_bids_in_dispute, 'bid_sent'));
 
-        //viewing bid
-        $this->view_data['viewing_bid'] = $bids[0];
-
-        $this->view_data['proposals'] = $proposals = BidHasProposal::find('all', ['conditions' => ['dispute_id = ? AND company_id = ? AND bid_id = ?', $id, $this->client->company_id, $bids[0]->id]]);
+        //viewing bid - last bid in array
+        $viewing_bid = $this->view_data['viewing_bid'] = $all_bids_in_dispute[count($all_bids_in_dispute)-1];
 
         $plants_with_proposal = array();
 
-        foreach ($proposals as $proposal){
+        foreach ($viewing_bid->bid_has_proposals as $proposal){
             array_push($plants_with_proposal, $proposal->plant_id);
         }
 
@@ -165,7 +161,7 @@ class cDisputes extends MY_Controller {
 
         $sent = 0;
         foreach ($bids as $bid) {
-            if ($bid->bid_sent == 'yes') $sent++;
+            if ($bid->bid_sent == true) $sent++;
         }
 
         $data = array('bids' => object_to_array($bids), 'bids_sent' => $sent);
@@ -293,8 +289,18 @@ class cDisputes extends MY_Controller {
             $_POST['value'] = str_replace(',', '.', $_POST['value']);
 
             $proposal = BidHasProposal::find_by_id($proposal_id);
+            $proposal->value = $_POST['value'];
+            $proposal->rated_power_mod = $_POST['rated_power_mod'];
+            $proposal->module_brands = $_POST['module_brands'];
+            $proposal->inverter_brands = $_POST['inverter_brands'];
+            $proposal->delivery_time = $_POST['delivery_time'];
+            $proposal->payment_conditions = $_POST['payment_conditions'];
+            $proposal->direct_billing_percentage = $_POST['direct_billing_percentage'];
+            $proposal->own_installment_percentage = $_POST['own_installment_percentage'];
+            $proposal->own_installment_payment_trigger = $_POST['own_installment_payment_trigger'];
+            $proposal->own_installment_quantity = $_POST['own_installment_quantity'];
 
-            $proposal->update_attributes($_POST);
+            $proposal->save();
 
             $this->theme_view = 'ajax';
 
@@ -350,7 +356,7 @@ class cDisputes extends MY_Controller {
 
             $bid = DisputeHasBid::find($bid_id);
 
-            $bid->bid_sent = 'yes';
+            $bid->bid_sent = 1;
 
             $bid->save();
 

@@ -32,7 +32,7 @@ if ($dispute->inactive == 'no') { ?>
                             <b><?=$this->lang->line('application_end')?>:</b> <?=date($core_settings->date_format." ".$core_settings->date_time_format, human_to_unix($dispute->due_date))?>
                         </div>
                         <div class="col-md-5">
-                            <b><?=$this->lang->line('application_remaining_time')?>:</b> <span class="<?php echo $out_of_date == true ? 'tag tag--red' : 'tag tag--green' ?>" id="clock"></span>
+                            <b><?=$this->lang->line('application_remaining_time')?>:</b> <span class="<?php echo $out_of_date == true ? 'tag tag--red' : 'tag tag--green' ?>" style="font-weight: normal !important;" id="clock"></span>
 
                         </div>
                     </div>
@@ -72,7 +72,7 @@ if ($dispute->inactive == 'no') { ?>
                 <?php endif; ?>
 
                 <!--current bit not sent-->
-                <?php if($viewing_bid->bid_sent == 'no' && $out_of_date == false) : ?>
+                <?php if($viewing_bid->bid_sent == false && $out_of_date == false) : ?>
                 <div id="label_participation_is_editing" class="warned">
                     <i style="color: #3498db; font-size: 16px; vertical-align: middle" class="icon dripicons-document-edit"></i>
                     <span class="tag tag--blue">
@@ -113,8 +113,7 @@ if ($dispute->inactive == 'no') { ?>
                                 <?=$this->lang->line('application_plant').' <span style="font-family:Monospace; font-size: 16px;">'.strtoupper(substr(md5($plant->id), 20, 5)).'</span>'?>
                             </label>
                         </div>
-
-                        <?php if ($viewing_bid->bid_sent == "no" && $out_of_date == false) : ?>
+                        <?php if ($viewing_bid->bid_sent == false && $out_of_date == false) : ?>
                             <?php if (in_array($plant->id, $plants_with_proposal) == false) : ?>
                         <div class="right">
                             <a class="price_plant btn btn-small" href="<?=base_url()?>cdisputes/createProposal/<?=$dispute->id;?>/<?=$viewing_bid->id;?>/<?=$plant->id;?>" data-toggle="mainmodal"><i class="icon glyphicon glyphicon glyphicon-usd"></i> <?=$this->lang->line('application_price_plant')?></a>
@@ -143,16 +142,16 @@ if ($dispute->inactive == 'no') { ?>
 <!--                <div class="form-header el_table_proposals padding-left-25" style="padding-left: 25px;">--><?//=$this->lang->line('application_your_proposals_for_dispute')?><!--</div>-->
 <!--                <input type="button" class=" dynamic-reload" data-reload="proposals" />-->
 
-                <?php if (count($proposals) > 0) : ?>
+                <?php if (count($viewing_bid->bid_has_proposals) > 0 && $viewing_bid->bid_sent == false) : ?>
                 <div style="width: auto; display: block; margin: 0 auto;" id="el_table_proposals" class="row">
                     <div class="col-md-12">
                         <div class="row">
                             <div class="">
                                 <div class="table-head" style="color: #0081ff;font-weight: 600; font-size: 11px; padding: 5px 25px 5px; text-transform: uppercase; height: 40px; letter-spacing: normal">
-                                    <?=$this->lang->line('application_your_proposals_for_dispute')?>
+                                    <?=$this->lang->line('application_your_prices_for_dispute')?>
                                 </div>
                                 <div class="table-div">
-                                    <table class="table" id="proposals" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
+                                    <table class="table noclick" id="proposals" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
                                         <thead>
                                             <th width="15%">
                                                 <?=$this->lang->line('application_plant');?>
@@ -163,14 +162,14 @@ if ($dispute->inactive == 'no') { ?>
                                             <th width="25%" style="text-align: center">
                                                 <?=$this->lang->line('application_rated_power');?>
                                             </th>
-                                            <?php if ($out_of_date == false && $viewing_bid->bid_sent == 'no') : ?>
+                                            <?php if ($out_of_date == false && $viewing_bid->bid_sent == false) : ?>
                                             <th style="text-align: center">
                                                 <?=$this->lang->line('application_edit');?>
                                             </th>
                                             <?php endif; ?>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($proposals as $proposal): ?>
+                                            <?php foreach ($viewing_bid->bid_has_proposals as $proposal): ?>
                                                 <tr id="<?=$proposal->id;?>">
                                                         <td>
                                                             <?=strtoupper(substr(md5($proposal->plant_id), 20, 5));?>
@@ -182,12 +181,68 @@ if ($dispute->inactive == 'no') { ?>
                                                             <?=$proposal->rated_power_mod;?>
                                                             <?=$core_settings->rated_power_measurement;?>
                                                         </td>
-                                                        <?php if ($out_of_date == false && $viewing_bid->bid_sent == 'no') : ?>
+                                                        <?php if ($out_of_date == false && $viewing_bid->bid_sent == false) : ?>
                                                         <td style="text-align: center" class="option" width="8%">
                                                             <a href="<?=base_url()?>cdisputes/updateProposal/<?=$dispute->id;?>/<?=$proposal->id;?>" class="btn-option" data-toggle="mainmodal"><i class="icon dripicons-gear"></i></a>
                                                         </td>
                                                         <?php endif; ?>
                                                 </tr>
+                                            <?php endforeach;?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <?php elseif (count($viewing_bid->bid_has_proposals) > 0 && $viewing_bid->bid_sent == true) : ?>
+                <div style="width: auto; display: block; margin: 0 auto;" id="el_table_proposals" class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="">
+                                <div class="table-head" style="color: #0081ff;font-weight: 600; font-size: 11px; padding: 5px 25px 5px; text-transform: uppercase; height: 40px; letter-spacing: normal">
+                                    <?=$this->lang->line('application_your_proposals_for_dispute')?>
+                                </div>
+                                <div class="table-div">
+                                    <table class="table noclick" id="proposals" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
+                                        <thead>
+                                            <th width="15%">
+                                                <?=$this->lang->line('application_plant');?>
+                                            </th>
+                                            <th>
+                                                <?=$this->lang->line('application_value');?>
+                                            </th>
+                                            <th width="25%" style="text-align: center">
+                                                <?=$this->lang->line('application_rated_power');?>
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <?php $last_bid_id = 0; ?>
+                                            <?php foreach ($all_bids_in_dispute as $idx => $bid): ?>
+                                                <?php foreach ($bid->bid_has_proposals as $proposal): ?>
+                                                    <?php if ($proposal->bid_id != $last_bid_id) : ?>
+                                                        <tr class="active <?php echo ($bid->winner == 1) ? 'winner' : ''; ?>">
+                                                            <td colspan="3">
+                                                                <?php if ($bid->winner == 1) : ?><span class="pull-left"><i style="font-size: 16px; color: darkorange" class="icon dripicons-trophy"></i></span><?php endif; ?>
+                                                                <div style="text-align: center"><?=($idx+1)."ª ".$this->lang->line('application_proposal')." ".$this->lang->line('application_sent_in')." ".date($core_settings->date_format." \à\s ".$core_settings->date_time_format, strtotime($bid->timestamp))?></div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endif; ?>
+                                                        <tr id="<?=$proposal->id;?>">
+                                                                <td>
+                                                                    <?=strtoupper(substr(md5($proposal->plant_id), 20, 5));?>
+                                                                </td>
+                                                                <td>
+                                                                    <?=$core_settings->money_symbol." ".display_money(sprintf('%01.2f', $proposal->value))?>
+                                                                </td>
+                                                                <td style="text-align: center">
+                                                                    <?=$proposal->rated_power_mod;?>
+                                                                    <?=$core_settings->rated_power_measurement;?>
+                                                                </td>
+                                                        </tr>
+                                                    <?php $last_bid_id = $proposal->bid_id; ?>
+                                                <?php endforeach;?>
                                             <?php endforeach;?>
                                         </tbody>
                                     </table>
@@ -211,7 +266,7 @@ if ($dispute->inactive == 'no') { ?>
                 <?php endif; ?>
 
                 <!--bid is sent-->
-                <?php if(count($bids) > 0 && $viewing_bid->bid_sent == 'yes' && $out_of_date == false) : ?>
+                <?php if(count($bids) > 0 && $viewing_bid->bid_sent == true && $out_of_date == false) : ?>
                     <!-- Participate Dispute again -->
                     <div class="form-header el_participate_dispute_again padding-left-25" style="padding-left: 25px;"><?=$this->lang->line('application_new_proposals_participation_dispute_needed')?></div>
                     <div id="el_participate_dispute_again" class="row">
@@ -222,7 +277,7 @@ if ($dispute->inactive == 'no') { ?>
                 <?php endif; ?>
 
                 <!-- Qty of plants equal number of proposals -->
-                <?php if (count($dispute->dispute_object->dispute_object_has_plants) == count($proposals) && $viewing_bid->bid_sent == "no" && $out_of_date == false) : ?>
+                <?php if (count($dispute->dispute_object->dispute_object_has_plants) == count($viewing_bid->bid_has_proposals) && $viewing_bid->bid_sent == "no" && $out_of_date == false) : ?>
                 <!-- Send Proposal -->
                 <div class="form-header el_send_proposal_dispute padding-left-25" style="padding-left: 25px;"><?=$this->lang->line('application_all_proposal_plants_filled')?></div>
                 <div id="el_send_proposal_dispute" class="row">
@@ -289,8 +344,8 @@ if ($dispute->inactive == 'no') { ?>
         </div>
     </div>
 <?php }?>
-    <br>
-    <br>
+    <br />
+    <br />
 <script>
     jQuery(document).ready(function($) {
 
