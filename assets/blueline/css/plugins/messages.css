@@ -515,8 +515,9 @@ a:hover {
 }
 #main .message-list li .col-2 .date {
   right: 0;
-  width: 200px;
+  width: auto;
   padding-left: 80px;
+  padding-right: 10px;
 }
 #main .load-more-link {
   display: block;

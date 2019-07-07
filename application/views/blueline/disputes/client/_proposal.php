@@ -85,7 +85,7 @@ echo form_open($form_action, $attributes);
             $selected_inverters[$inverter] = $inverter;
         endforeach;
 
-        echo form_dropdown('inverters_arr[]', $options, $selected_inverters, 'style="width:100%" class="chosen-select" data-placeholder="'.$this->lang->line('application_select_inverters').'" multiple tabindex="3"');
+        echo form_dropdown('inverters_arr[]', $options, $selected_inverters, 'style="width:100%" class="chosen-select" data-placeholder="'.$this->lang->line('application_select_inverters').'" multiple id="inverters_arr" tabindex="3"');
         ?>
     </div>
 
@@ -139,6 +139,8 @@ echo form_open($form_action, $attributes);
 
         <?php
 
+        $disabled = 'disabled = "disabled"';
+
         echo form_dropdown('own_installment_payment_trigger', $options, $proposal->own_installment_payment_trigger, 'style="width:100%" class="chosen-select" id="own_installment_payment_trigger" '); ?>
     </div>
 
@@ -185,6 +187,8 @@ echo form_open($form_action, $attributes);
             $('.modal').modal('hide');
         });
 
+        $("#inverters_arr").multiselect("disable");
+
         set_own_installment_percentage($('#direct_billing_percentage').val());
         prepareUI();
 
@@ -223,11 +227,11 @@ echo form_open($form_action, $attributes);
 
             if (own_installment_payment_trigger == 1){ //per month
                 console.log(own_installment_payment_trigger);
-                $('#div_own_installment_quantity label').html('<?=$this->lang->line('own_installment_quantity_per_month')?> *');
+                $('#div_own_installment_quantity label').html('<?=$this->lang->line('application_own_installment_quantity_per_month')?> *');
                 $('#div_own_installment_quantity').removeClass('hidden');
             }else if (own_installment_payment_trigger == 2){
                 console.log(own_installment_payment_trigger);
-                $('#div_own_installment_quantity label').html('<?=$this->lang->line('own_installment_quantity_per_event')?> *');
+                $('#div_own_installment_quantity label').html('<?=$this->lang->line('application_own_installment_quantity_per_event')?> *');
                 $('#div_own_installment_quantity').removeClass('hidden');
             }
         };

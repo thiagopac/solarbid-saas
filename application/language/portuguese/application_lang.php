@@ -195,6 +195,7 @@ $lang['application_write_message'] = 'Escrever nova mensagem';
 $lang['application_messages'] = 'Mensagens';
 $lang['application_message'] = 'Mensagem';
 $lang['application_received'] = 'Recebido';
+$lang['application_received_ago'] = 'Recebido há';
 $lang['application_subject'] = 'Assunto';
 $lang['application_to'] = 'para';
 $lang['application_new_messages'] = 'Novas mensagens';
@@ -1214,5 +1215,7 @@ $lang['application_payment_conditions'] = 'Condições de pagamento';
 $lang['application_own_installment_payment_trigger'] = 'Gatilhos para pagamento';
 $lang['application_per_month'] = 'Pagamento mensal';
 $lang['application_per_event'] = 'Pagamento por evento';
-$lang['own_installment_quantity_per_month'] = 'Quantidade de meses';
-$lang['own_installment_quantity_per_event'] = 'Quantidade de eventos';
+$lang['application_own_installment_quantity_per_month'] = 'Quantidade de meses';
+$lang['application_own_installment_quantity_per_event'] = 'Quantidade de eventos';
+
+$lang['application_deadline_reached'] = 'Prazo expirado';

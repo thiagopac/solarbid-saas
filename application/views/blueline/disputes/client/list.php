@@ -1,23 +1,45 @@
 <?php
- if($comp_has_disps){
-    foreach ($comp_has_disps as $comp_has_disp): ?>
+if($comp_has_disps) : ?>
+    <?php foreach ($comp_has_disps as $comp_has_disp): ?>
         <li class="hidden Read-dot" data-link="<?=base_url()?>cdisputes/view/<?=$comp_has_disp->dispute->id;?>">
-          <div class="col col-1"><span class="dot "></span>
-              <span class="indicator icon dripicons-chevron-down"></span><p class="title"><?php echo $core_settings->dispute_prefix.$comp_has_disp->dispute->dispute_reference; ?></p>
-          </div>
-          <div class="col col-2">
-              <div class="subject"><?=date($core_settings->date_format." ".$core_settings->date_time_format, human_to_unix($comp_has_disp->dispute->due_date))?></div>
-              <div class="date"><?=fnTimeElapsed($comp_has_disp->time, false, 'pt_BR') ?></div>
-          </div>
+            <div class="col col-1"><span class="dot "></span>
+                <span class="indicator icon dripicons-chevron-down"></span><p class="title"><?php echo $core_settings->dispute_prefix.$comp_has_disp->dispute->dispute_reference; ?></p>
+            </div>
+            <div class="col col-2">
+                <div class="subject">
+                    <?=$this->lang->line('application_valid_until');?> <?=date($core_settings->date_format." ".$core_settings->date_time_format, human_to_unix($comp_has_disp->dispute->due_date))?>
+                    <span data-countdown="<?=$comp_has_disp->dispute->due_date?>" class="clock <?php echo strtotime($comp_has_disp->dispute->due_date) < time() == true ? 'label label-important' : 'label label-success' ?>" style="font-weight: normal !important; vertical-align: middle; margin-left: 50px"></span>
+                </div>
+                <div class="date">
+                    <?=$this->lang->line('application_received_ago');?> <?=fnTimeElapsed($comp_has_disp->time, false, 'pt_BR') ?>
+                </div>
+            </div>
         </li>
-    <?php endforeach;?>
+    <?php endforeach; ?>
 
-<?php } else{ ?>
-        <li style="padding-left:21px"><?=$this->lang->line('application_no_messages');?></li>
-<?php } ?>
-
+<?php else: ?>
+    <li style="padding-left:21px"><?=$this->lang->line('application_no_messages');?></li>
+<?php endif; ?>
 <script>
 jQuery(document).ready(function($) {
+
+    $('[data-countdown]').each(function() {
+
+        var $this = $(this), finalDate = $(this).data('countdown');
+
+        $this.countdown(finalDate, function(event) {
+            var totalHours = event.offset.totalDays * 24 + event.offset.hours;
+            $this.html(event.strftime(totalHours+'hr %Mmin %Ss'));
+        })
+
+         if($this.html() == '0hr 00min 00s'){
+        $this.html("<?=$this->lang->line('application_deadline_reached')?>");
+    }
+
+    });
+
+
+
 
     $("#main .message-list li").removeClass("hidden").delay(300).addClass("visible");
     var cols = {},
@@ -149,4 +171,3 @@ jQuery(document).ready(function($) {
 
 });
 </script>
-<?//=var_dump($comp_has_disp->time)?>
