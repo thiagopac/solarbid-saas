@@ -1143,14 +1143,14 @@ $lang['application_suspended'] = 'Suspenso';
 $lang['application_completed'] = 'Concluído';
 $lang['application_impossible_update_dispute_object'] = 'Não é permitido alterar o Objeto de Disputa após o Certame ser criado';
 
-$lang['application_dispute_minimum_bids'] = '<u>ATENÇÃO!</u> Este Certame tem mais de uma usina. É necessário preencher a proposta para cada uma das usinas';
+$lang['application_dispute_minimum_bids'] = 'Este Certame tem mais de uma usina. É necessário preencher a proposta para cada uma das usinas';
 $lang['application_important'] = 'Importante';
 $lang['application_attention'] = 'Atenção';
 $lang['application_location_type'] = 'Tipo de local';
 $lang['application_residence'] = 'Residencial';
 $lang['application_business'] = 'Comercial';
 $lang['application_rural'] = 'Rural';
-$lang['application_dispute_inactive'] = '<u>ATENÇÃO!</u> Este Certame está desativado. Não é possível enviar propostas.';
+$lang['application_dispute_inactive'] = 'Este Certame está desativado. Não é possível enviar propostas.';
 $lang['application_plant_has_no_area_file'] = 'Esta usina não possui foto da área de instalação';
 
 $lang['application_price_plant'] = 'Precificar usina';
@@ -1167,15 +1167,15 @@ $lang['application_you_participate_dispute'] = 'Você já tem participação nes
 
 $lang['application_you_have_n_participations_dispute'] = "Você enviou %d proposta(s) para este Certame";
 
-$lang['application_participations_dispute_is_not_sent'] = '<u>ATENÇÃO!</u> Esta proposta está modo de edição e ainda não foi enviada!';
+$lang['application_participations_dispute_is_not_sent'] = 'Proposta em modo de edição e ainda não   enviada!';
 $lang['application_no_participations_dispute_sent_yet'] = 'Você não enviou nenhuma proposta para este Certame';
 
 $lang['application_click_to_view'] = 'Clique aqui para visualizar';
 $lang['application_are_you_sure'] = 'Você tem certeza?';
 $lang['application_sure'] = 'Certeza!';
 
-$lang['application_your_prices_for_dispute'] = 'Abaixo estão suas precificações preenchidas para este Certame';
-$lang['application_your_proposals_for_dispute'] = 'Abaixo estão suas propostas preenchidas para este Certame';
+$lang['application_your_prices_for_dispute'] = 'Abaixo estão suas precificações para este Certame';
+$lang['application_your_proposals_for_dispute'] = 'Abaixo estão suas propostas para este Certame';
 $lang['application_proposal'] = 'Proposta';
 $lang['application_proposals'] = 'Propostas';
 $lang['application_edit_proposal'] = 'Editar proposta';

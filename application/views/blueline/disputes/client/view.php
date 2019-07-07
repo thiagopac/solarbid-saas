@@ -76,7 +76,7 @@ if ($dispute->inactive == 'no') { ?>
                 <div id="label_participation_is_editing" class="warned">
                     <i style="color: #3498db; font-size: 16px; vertical-align: middle" class="icon dripicons-document-edit"></i>
                     <span class="tag tag--blue">
-                        <?=$this->lang->line('application_participations_dispute_is_not_sent');?>
+                            <?=$this->lang->line('application_participations_dispute_is_not_sent');?>
                     </span>
                 </div>
                 <?php endif; ?>

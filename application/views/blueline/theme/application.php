@@ -266,7 +266,13 @@ $message_icon = false;
 
       </div>
       <div class="topbar noselect">
-      <?php  $userimage = $this->user->userpic; ?>
+          <?php
+              if ($this->user->userpic){
+                  $userimage = $this->user->userpic;
+              }else{
+                  $userimage = base_url()."files/media/user-placeholder.png  ";
+              }
+          ?>
 
       <img class="img-circle topbar-userpic" src="<?=$userimage;?>" height="21px">
       <span class="topbar__name fc-dropdown--trigger">
