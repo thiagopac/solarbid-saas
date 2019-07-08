@@ -5,13 +5,15 @@ if($comp_has_disps) : ?>
             <div class="col col-1"><span class="dot "></span>
                 <span class="indicator icon dripicons-chevron-down"></span><p class="title"><?php echo $core_settings->dispute_prefix.$comp_has_disp->dispute->dispute_reference; ?></p>
             </div>
+
             <div class="col col-2">
                 <div class="subject">
                     <?=$this->lang->line('application_valid_until');?> <?=date($core_settings->date_format." ".$core_settings->date_time_format, human_to_unix($comp_has_disp->dispute->due_date))?>
-                    <span data-countdown="<?=$comp_has_disp->dispute->due_date?>" class="clock <?php echo strtotime($comp_has_disp->dispute->due_date) < time() == true ? 'label label-important' : 'label label-success' ?>" style="font-weight: normal !important; vertical-align: middle; margin-left: 50px"></span>
+                    <span data-countdown="<?=$comp_has_disp->dispute->due_date?>" class="clock <?php echo strtotime($comp_has_disp->dispute->due_date) < time() == true ? 'label label-width-constant label-pill label-important' : 'label label-width-constant label-pill label-success' ?>" style="font-weight: bold !important; vertical-align: middle; margin-left: 50px"></span>
                 </div>
                 <div class="date">
-                    <?=$this->lang->line('application_received_ago');?> <?=fnTimeElapsed($comp_has_disp->time, false, 'pt_BR') ?>
+                    <span class="hidden-sm hidden-xs"><?=$this->lang->line('application_received_ago');?> <?=fnTimeElapsed($comp_has_disp->time, false, 'pt_BR') ?></span>
+                    <span data-countdown="<?=$comp_has_disp->dispute->due_date?>" class="visible-xs visible-sm clock <?php echo strtotime($comp_has_disp->dispute->due_date) < time() == true ? 'label label-width-constant label-pill label-important' : 'label label-width-constant label-pill label-success' ?>" style="margin-top: 15px; font-weight: bold !important; vertical-align: middle; margin-left: 10px"></span>
                 </div>
             </div>
         </li>
@@ -32,13 +34,11 @@ jQuery(document).ready(function($) {
             $this.html(event.strftime(totalHours+'hr %Mmin'));
         })
 
-         if($this.html() == '0hr 00min'){
-        $this.html("<?=$this->lang->line('application_deadline_reached')?>");
-    }
+        if($this.html() == '0hr 00min'){
+            $this.html("<?=$this->lang->line('application_deadline_reached')?>");
+        }
 
     });
-
-
 
 
     $("#main .message-list li").removeClass("hidden").delay(300).addClass("visible");

@@ -157,7 +157,7 @@ class Disputes extends MY_Controller
 
                 $bid->custom = $bid->custom + $proposal->value;
 
-                $plant_nickname = strtoupper(substr(md5($proposal->plant_id), 20, 5));
+                $plant_nickname = DisputeObjectHasPlant::plantNickname($proposal->plant_id);
 
                 $tr.= "<tr role='row'>
                             <td style='tabindex='0' colspan='1' rowspan='1' width='2%'>&nbsp;</td>

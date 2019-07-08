@@ -8,4 +8,9 @@ class DisputeObjectHasPlant extends ActiveRecord\Model {
         array('dispute_object', 'foreign_key' => 'dispute_object_id'),
     );
 
+    function plantNickname($id = false){
+        return $plant_nickname = strtoupper(substr(md5($id), 20, 5));
+
+    }
+
 }

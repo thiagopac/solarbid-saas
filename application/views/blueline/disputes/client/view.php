@@ -110,7 +110,7 @@ if ($dispute->inactive == 'no') { ?>
                     <div class="details" style="padding-top: 20px">
                         <div class="left">
                             <label style="font-size: 15px" class="">
-                                <?=$this->lang->line('application_plant').' <span style="font-family:Monospace; font-size: 16px;">'.strtoupper(substr(md5($plant->id), 20, 5)).'</span>'?>
+                                <?=$this->lang->line('application_plant').' <span style="font-family:Monospace; font-size: 16px;">'.DisputeObjectHasPlant::plantNickname($plant->id).'</span>'?>
                             </label>
                         </div>
                         <?php if ($viewing_bid->bid_sent == false && $out_of_date == false) : ?>
@@ -172,7 +172,7 @@ if ($dispute->inactive == 'no') { ?>
                                             <?php foreach ($viewing_bid->bid_has_proposals as $proposal): ?>
                                                 <tr id="<?=$proposal->id;?>">
                                                         <td>
-                                                            <?=strtoupper(substr(md5($proposal->plant_id), 20, 5));?>
+                                                            <?=DisputeObjectHasPlant::plantNickname($proposal->plant_id);?>
                                                         </td>
                                                         <td>
                                                             <?=$core_settings->money_symbol." ".display_money(sprintf('%01.2f', $proposal->value))?>
@@ -231,7 +231,7 @@ if ($dispute->inactive == 'no') { ?>
                                                     <?php endif; ?>
                                                         <tr id="<?=$proposal->id;?>">
                                                                 <td>
-                                                                    <?=strtoupper(substr(md5($proposal->plant_id), 20, 5));?>
+                                                                    <?=DisputeObjectHasPlant::plantNickname($proposal->plant_id);?>
                                                                 </td>
                                                                 <td>
                                                                     <?=$core_settings->money_symbol." ".display_money(sprintf('%01.2f', $proposal->value))?>

@@ -93,7 +93,7 @@
                             <?php
                                 if(!empty($plants)){
                                     foreach ($plants as $plant) : ?>
-                                        <?="<span class='minus'> [".$plant->minimum_power_pvs." ".$core_settings->rated_power_measurement."] </span>"?>
+                                        <?="<span class='minus'> [".$this->lang->line('application_plant')." ".$plant->id." (".DisputeObjectHasPlant::plantNickname($plant->id).") ".$plant->minimum_power_pvs." ".$core_settings->rated_power_measurement."] - </span>"?>
                                     <?php endforeach;
                                 }else{?>
                                         <?="<span class='minus'> [".$this->lang->line('application_no_plant_assigned')."] </span>"?>
@@ -186,7 +186,11 @@
                                 <?=$value->id;?>
                             </td>
                             <td style="text-align:left;">
-                                <?=$value->company->name?>
+                                <?php if (count($value->bid_has_proposals) == 1) : ?>
+                                    <?=$value->company->name?> - <?=$this->lang->line('application_plant')?> <?=$value->bid_has_proposals[0]->plant_id?> (<?=DisputeObjectHasPlant::plantNickname($value->bid_has_proposals[0]->plant_id)?>)
+                                <?php else: ?>
+                                    <?=$value->company->name?>
+                                <?php endif; ?>
                             </td>
                             <td style="text-align:center;">
                                 <?=count($value->bid_has_proposals) == 1 ? $core_settings->money_symbol." ".display_money(sprintf('%01.2f',$value->bid_has_proposals[0]->value)) : count($value->bid_has_proposals)." valores (".$core_settings->money_symbol.' '.display_money(array_sum(array_column($value->bid_has_proposals, 'value'))).")"?>

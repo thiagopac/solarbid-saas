@@ -1218,4 +1218,4 @@ $lang['application_per_event'] = 'Pagamento por evento';
 $lang['application_own_installment_quantity_per_month'] = 'Quantidade de meses';
 $lang['application_own_installment_quantity_per_event'] = 'Quantidade de eventos';
 
-$lang['application_deadline_reached'] = 'Prazo expirado';
+$lang['application_deadline_reached'] = 'Expirado';
