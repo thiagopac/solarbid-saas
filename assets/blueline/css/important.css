@@ -227,3 +227,13 @@ div.dataTables_info {
 .margin-right-15 {
     margin-right: 15px !important;
 }
+
+.label-pill {
+    padding-right: .6em !important;
+    padding-left: .6em !important;
+    border-radius: 10rem !important;
+}
+
+.label-width-constant {
+    width: 110px !important;
+}
