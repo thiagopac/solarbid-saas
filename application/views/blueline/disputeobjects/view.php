@@ -206,7 +206,7 @@
                     <?php foreach ($disputeobject->dispute_object_has_plants as $value):?>
                         <tr id="<?=$value->id;?>">
                             <td class="option" style="text-align:center;">
-                                <?=$value->id;?> (<?=strtoupper(substr(md5($value->id), 20, 5));?>)
+                                <?=$value->id;?> (<?=DisputeObjectHasPlant::plantNickname($value->id);?>)
                             </td>
                             <td style="text-align:left;">
                                 <?=$value->global_horizontal_irradiance?>

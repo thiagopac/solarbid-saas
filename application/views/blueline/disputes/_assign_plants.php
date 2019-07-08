@@ -14,7 +14,7 @@ if(isset($dispute)){ ?>
         $plant = array();
 
         foreach ($plants as $value):
-            $options[$value->id] = $this->lang->line('application_plant')." ".$value->id." - "."[".$value->compensate_consumn." ".$core_settings->consumn_power_measurement."] ".$value->minimum_power_pvs." ".$core_settings->rated_power_measurement;
+            $options[$value->id] = $this->lang->line('application_plant')." ".$value->id." (".DisputeObjectHasPlant::plantNickname($value->id).")"." - "."[".$value->compensate_consumn." ".$core_settings->consumn_power_measurement."] ".$value->minimum_power_pvs." ".$core_settings->rated_power_measurement;
         endforeach;
 
         if(isset($dispute)){}else{$plant = "";}

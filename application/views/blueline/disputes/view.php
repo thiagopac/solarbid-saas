@@ -93,7 +93,7 @@
                             <?php
                                 if(!empty($plants)){
                                     foreach ($plants as $plant) : ?>
-                                        <?="<span class='minus'> [".$plant->minimum_power_pvs." ".$core_settings->rated_power_measurement."] </span>"?>
+                                        <?="<span class='minus'> [".$this->lang->line('application_plant')." ".$plant->id." (".DisputeObjectHasPlant::plantNickname($plant->id).") ".$plant->minimum_power_pvs." ".$core_settings->rated_power_measurement."] - </span>"?>
                                     <?php endforeach;
                                 }else{?>
                                         <?="<span class='minus'> [".$this->lang->line('application_no_plant_assigned')."] </span>"?>

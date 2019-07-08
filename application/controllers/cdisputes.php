@@ -251,7 +251,7 @@ class cDisputes extends MY_Controller {
             $this->view_data['plant_id'] = $plant_id;
 
             $this->theme_view = 'modal';
-            $this->view_data['title'] = $this->lang->line('application_create_proposal')." (".$this->lang->line('application_plant')." ".strtoupper(substr(md5($plant_id), 20, 5)).")";
+            $this->view_data['title'] = $this->lang->line('application_create_proposal')." (".$this->lang->line('application_plant')." ".DisputeObjectHasPlant::plantNickname($plant_id).")";
 
             $this->view_data['form_action'] = 'cdisputes/createProposal/'.$dispute_id."/".$bid_id."/".$plant_id;
             $this->content_view = 'disputes/client/_proposal';
@@ -333,7 +333,7 @@ class cDisputes extends MY_Controller {
                 $this->view_data['view'] = 'true';
             }
             $this->theme_view = 'modal';
-            $this->view_data['title'] = $this->lang->line('application_edit_proposal')." (".$this->lang->line('application_plant')." ".strtoupper(substr(md5($proposal->plant_id), 20, 5)).")";
+            $this->view_data['title'] = $this->lang->line('application_edit_proposal')." (".$this->lang->line('application_plant')." ".DisputeObjectHasPlant::plantNickname($proposal->plant_id).")";
 
             $this->view_data['form_action'] = 'cdisputes/updateProposal';
             $this->content_view = 'disputes/client/_proposal';
