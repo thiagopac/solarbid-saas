@@ -29,10 +29,10 @@ jQuery(document).ready(function($) {
 
         $this.countdown(finalDate, function(event) {
             var totalHours = event.offset.totalDays * 24 + event.offset.hours;
-            $this.html(event.strftime(totalHours+'hr %Mmin %Ss'));
+            $this.html(event.strftime(totalHours+'hr %Mmin'));
         })
 
-         if($this.html() == '0hr 00min 00s'){
+         if($this.html() == '0hr 00min'){
         $this.html("<?=$this->lang->line('application_deadline_reached')?>");
     }
 
