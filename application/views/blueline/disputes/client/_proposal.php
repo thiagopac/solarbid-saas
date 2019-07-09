@@ -243,23 +243,17 @@ echo form_open($form_action, $attributes);
                 $('#div_direct_billing_percentage').removeClass('hidden');
             }
 
-            /*if (own_installment_payment_trigger == 1){ //per month
+            if (own_installment_payment_trigger == 1){ //per month
                 $('#div_own_installment_quantity label').html('<?=$this->lang->line('application_own_installment_quantity_per_month')?> *');
                 $('#div_own_installment_quantity').removeClass('hidden');
             }else if (own_installment_payment_trigger == 2){
                 $('#div_own_installment_quantity label').html('<?=$this->lang->line('application_own_installment_quantity_per_event')?> *');
                 $('#div_own_installment_quantity').removeClass('hidden');
-            }*/
+            }
 
 
             preparePaymentFields(own_installment_quantity);
 
-
-            /*if (own_installment_quantity != 0){
-                preparePaymentFields(own_installment_quantity);
-            }else{
-                preparePaymentFields(own_installment_quantity);
-            }*/
         };
 
         function preparePaymentFields(timesLoop){
@@ -285,7 +279,7 @@ echo form_open($form_action, $attributes);
 
         };
 
-        /*var div_dynamic_field_month = $('#div_dynamic_field_month');
+        var div_dynamic_field_month = $('#div_dynamic_field_month');
         var dynamic_fields = $('#dynamic_fields');
 
         function preparePaymentFields(timesLoop){
@@ -307,7 +301,7 @@ echo form_open($form_action, $attributes);
                 timesLoopDecrease--;
                 countSequencial++;
             }
-        };*/
+        };
 
         $('#direct_billing_percentage').on('change paste',function(e){
             set_own_installment_percentage($(this).val())

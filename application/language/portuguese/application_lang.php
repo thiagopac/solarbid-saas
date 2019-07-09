@@ -1219,3 +1219,5 @@ $lang['application_own_installment_quantity_per_month'] = 'Quantidade de meses';
 $lang['application_own_installment_quantity_per_event'] = 'Quantidade de eventos';
 
 $lang['application_deadline_reached'] = 'Expirado';
+$lang['application_event'] = 'Evento';
+$lang['application_percentage'] = 'Porcentagem';
