@@ -72,7 +72,7 @@ if ($dispute->inactive == 'no') { ?>
                 <?php endif; ?>
 
                 <!--current bit not sent-->
-                <?php if($viewing_bid->bid_sent == false && $out_of_date == false) : ?>
+                <?php if(!is_null($viewing_bid) && $viewing_bid->bid_sent == false && $out_of_date == false) : ?>
                 <div id="label_participation_is_editing" class="warned">
                     <i style="color: #3498db; font-size: 16px; vertical-align: middle" class="icon dripicons-document-edit"></i>
                     <span class="tag tag--blue">
@@ -113,7 +113,7 @@ if ($dispute->inactive == 'no') { ?>
                                 <?=$this->lang->line('application_plant').' <span style="font-family:Monospace; font-size: 16px;">'.DisputeObjectHasPlant::plantNickname($plant->id).'</span>'?>
                             </label>
                         </div>
-                        <?php if ($viewing_bid->bid_sent == false && $out_of_date == false) : ?>
+                        <?php if (!is_null($viewing_bid) && $viewing_bid->bid_sent == false && $out_of_date == false) : ?>
                             <?php if (in_array($plant->id, $plants_with_proposal) == false) : ?>
                         <div class="right">
                             <a class="price_plant btn btn-small" href="<?=base_url()?>cdisputes/createProposal/<?=$dispute->id;?>/<?=$viewing_bid->id;?>/<?=$plant->id;?>" data-toggle="mainmodal"><i class="icon glyphicon glyphicon glyphicon-usd"></i> <?=$this->lang->line('application_price_plant')?></a>
@@ -142,7 +142,7 @@ if ($dispute->inactive == 'no') { ?>
 <!--                <div class="form-header el_table_proposals padding-left-25" style="padding-left: 25px;">--><?//=$this->lang->line('application_your_proposals_for_dispute')?><!--</div>-->
 <!--                <input type="button" class=" dynamic-reload" data-reload="proposals" />-->
 
-                <?php if (count($viewing_bid->bid_has_proposals) > 0 && $viewing_bid->bid_sent == false) : ?>
+                <?php if (!is_null($viewing_bid) && count($viewing_bid->bid_has_proposals) > 0 && $viewing_bid->bid_sent == false) : ?>
                 <div style="width: auto; display: block; margin: 0 auto;" id="el_table_proposals" class="row">
                     <div class="col-md-12">
                         <div class="row">
@@ -196,7 +196,7 @@ if ($dispute->inactive == 'no') { ?>
 
                     </div>
                 </div>
-                <?php elseif (count($viewing_bid->bid_has_proposals) > 0 && $viewing_bid->bid_sent == true) : ?>
+                <?php elseif (!is_null($viewing_bid) && count($viewing_bid->bid_has_proposals) > 0 && $viewing_bid->bid_sent == true) : ?>
                 <div style="width: auto; display: block; margin: 0 auto;" id="el_table_proposals" class="row">
                     <div class="col-md-12">
                         <div class="row">
@@ -266,7 +266,7 @@ if ($dispute->inactive == 'no') { ?>
                 <?php endif; ?>
 
                 <!--bid is sent-->
-                <?php if(count($bids) > 0 && $viewing_bid->bid_sent == true && $out_of_date == false) : ?>
+                <?php if(count($bids) > 0 && !is_null($viewing_bid) && $viewing_bid->bid_sent == true && $out_of_date == false) : ?>
                     <!-- Participate Dispute again -->
                     <div class="form-header el_participate_dispute_again padding-left-25" style="padding-left: 25px;"><?=$this->lang->line('application_new_proposals_participation_dispute_needed')?></div>
                     <div id="el_participate_dispute_again" class="row">

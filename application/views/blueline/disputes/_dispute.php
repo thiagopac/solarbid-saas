@@ -44,13 +44,13 @@ echo form_open($form_action, $attributes);
     <div class="form-group">
         <label for="start_date">
             <?=$this->lang->line('application_start_date');?> *</label>
-        <input <?php echo $dispute->dispute_sent == 'yes' ? 'disabled' : ''; ?> id="start_date" type="text" name="issue_date" data-enable-time=true class="form-control datepicker-time required" value="<?php if(isset($dispute)){echo $dispute->start_date;} ?>" required/>
+        <input <?php echo $dispute->dispute_sent == 'yes' ? 'disabled' : ''; ?> id="start_date" type="text" name="start_date" data-enable-time=true class="form-control datepicker-time required" value="<?php if(isset($dispute)){echo $dispute->start_date;} ?>" required/>
         <!--<input id="due_date" type="text" name="due_date" data-enable-time=true class="required datepicker-time datepicker-time-linked form-control" value="<?php /*if(isset($dispute)){echo $dispute->due_date;} */?>" required/>-->
     </div>
     <div class="form-group">
         <label for="due_date">
             <?=$this->lang->line('application_due_date');?> *</label>
-        <input <?php echo $dispute->dispute_sent == 'yes' ? 'disabled' : ''; ?> id="due_date" type="text" name="due_date" data-enable-time=true class="form-control datepicker-time-linked form-control required" value="<?php if(isset($dispute)){echo $dispute->due_date;} ?>" required/>
+        <input <?php echo $dispute->dispute_sent == 'yes' ? 'disabled' : ''; ?> id="due_date" type="text" name="due_date" data-enable-time=true class="form-control datepicker-time datepicker-time-linked form-control required" value="<?php if(isset($dispute)){echo $dispute->due_date;} ?>" required/>
     </div>
     <div class="form-group">
         <label for="inactive">
