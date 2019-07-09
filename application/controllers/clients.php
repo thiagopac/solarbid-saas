@@ -209,6 +209,11 @@ class Clients extends MY_Controller
                 redirect('clients/view/' . $companyid->id);
             } else {
                 $this->view_data['clients'] = Company::find('all', ['conditions' => ['inactive=?', '0']]);
+
+                $this->view_data['cities'] = City::find('all');
+                $this->view_data['states'] = State::find('all');
+                $this->view_data['countries'] = Country::find('all', ['conditions' => ['status = ?', 1]]);
+
                 $this->view_data['next_reference'] = Company::last();
                 $this->theme_view = 'modal';
                 $this->view_data['title'] = $this->lang->line('application_add_new_company');
