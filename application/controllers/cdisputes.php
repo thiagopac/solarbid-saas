@@ -288,6 +288,35 @@ class cDisputes extends MY_Controller {
             $_POST['value'] = str_replace('.', '', $_POST['value']);
             $_POST['value'] = str_replace(',', '.', $_POST['value']);
 
+
+            /*- begin payment conditions code -*/
+
+
+
+            $arr_installment_values = array();
+
+            if ($_POST['own_installment_payment_trigger'] == 'per_month'){
+                foreach ($_POST['month_percent'] as $month_percent){
+                    if ($month_percent != '0'){
+                        array_push($arr_installment_values, $month_percent);
+                    }
+                }
+            }else if($_POST['own_installment_payment_trigger'] == 'per_event'){
+                foreach ($_POST['event_percent'] as $event_percent){
+                    if ($event_percent != '0'){
+                        array_push($arr_installment_values, $event_percent);
+                    }
+                }
+            }
+
+            $str_installment_values = implode(',', $arr_installment_values);
+
+            unset($_POST['month_percent']);
+            unset($_POST['event_percent']);
+            unset($_POST['event']);
+
+            /*- end payment conditions code -*/
+
             $proposal = BidHasProposal::find_by_id($proposal_id);
             $proposal->value = $_POST['value'];
             $proposal->rated_power_mod = $_POST['rated_power_mod'];
@@ -299,6 +328,7 @@ class cDisputes extends MY_Controller {
             $proposal->own_installment_percentage = $_POST['own_installment_percentage'];
             $proposal->own_installment_payment_trigger = $_POST['own_installment_payment_trigger'];
             $proposal->own_installment_quantity = $_POST['own_installment_quantity'];
+            $proposal->own_installment_values = $str_installment_values;
 
             $proposal->save();
 
@@ -314,6 +344,14 @@ class cDisputes extends MY_Controller {
             $proposal = $this->view_data['proposal'] = BidHasProposal::find($proposal_id);
 
             $this->view_data['proposal_id'] = $proposal_id;
+
+            //payment load data
+            $this->view_data['payment_events'] = PaymentEvent::find('all');
+            $this->view_data['payment_events_selected'] = explode(',', $proposal->own_installment_payment_events);
+            //same column - the differece is what the value stands for, an event or a month
+            $this->view_data['event_values'] = explode(',', $proposal->own_installment_values);
+            $this->view_data['months'] = explode(',', $proposal->own_installment_values);
+
 
             $modules = array();
             $all_modules = ModuleManufacturer::all();

@@ -174,7 +174,7 @@ $message_icon = false;
                 ?>
                 <img class="img-circle topbar-userpic" src="<?=$userimage;?>" height="32px">
                 <span class="topbar__name fc-dropdown--trigger">
-                    <span class="hidden-xs"><?php echo character_limiter($this->client->firstname . ' ' . $this->client->lastname, 25);?></span><i class="icon dripicons-chevron-down topbar__drop"></i></span>
+                    <span class="hidden-xs"><?php echo character_limiter($this->client->firstname, 25);?></span><i class="icon dripicons-chevron-down topbar__drop"></i></span>
                     <div class="fc-dropdown profile-dropdown">
                         <ul>
                             <li>

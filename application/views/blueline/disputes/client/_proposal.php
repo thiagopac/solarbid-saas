@@ -170,7 +170,624 @@ echo form_open($form_action, $attributes);
         echo form_dropdown('own_installment_quantity', $options, $proposal->own_installment_quantity, 'style="width:100%" class="chosen-select" id="own_installment_quantity" '); ?>
     </div>
 
+    <div id="dynamic_months">
 
+        <!-- month 1 -->
+        <div class="form-group hidden" id="div_month_1">
+            <label>
+                <?=$this->lang->line('application_month');?> 1 *
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    %
+                </div>
+                <input id="month_1_percent" maxlength="2" type="text" name="month_percent[]" class="integerInput form-control" value="<?php if(count($months) > 0){echo $months[0];}else{echo '0';}?>" required />
+            </div>
+        </div>
+
+        <!-- month 2 -->
+        <div class="form-group hidden" id="div_month_2">
+            <label>
+                <?=$this->lang->line('application_month');?> 2 *
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    %
+                </div>
+                <input id="month_2_percent" maxlength="2" type="text" name="month_percent[]" class="integerInput form-control" value="<?php if(count($months) > 1){echo $months[1];}else{echo '0';}?>" required />
+            </div>
+        </div>
+
+        <!-- month 3 -->
+        <div class="form-group hidden" id="div_month_3">
+            <label>
+                <?=$this->lang->line('application_month');?> 3 *
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    %
+                </div>
+                <input id="month_3_percent" maxlength="2" type="text" name="month_percent[]" class="integerInput form-control" value="<?php if(count($months) > 2){echo $months[2];}else{echo '0';}?>" required />
+            </div>
+        </div>
+
+        <!-- month 4 -->
+        <div class="form-group hidden" id="div_month_4">
+            <label>
+                <?=$this->lang->line('application_month');?> 4 *
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    %
+                </div>
+                <input id="month_4_percent" maxlength="2" type="text" name="month_percent[]" class="integerInput form-control" value="<?php if(count($months) > 3){echo $months[3];}else{echo '0';}?>" required />
+            </div>
+        </div>
+
+        <!-- month 5 -->
+        <div class="form-group hidden" id="div_month_5">
+            <label>
+                <?=$this->lang->line('application_month');?> 5 *
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    %
+                </div>
+                <input id="month_5_percent" maxlength="2" type="text" name="month_percent[]" class="integerInput form-control" value="<?php if(count($months) > 4){echo $months[4];}else{echo '0';}?>" required />
+            </div>
+        </div>
+
+        <!-- month 6 -->
+        <div class="form-group hidden" id="div_month_6">
+            <label>
+                <?=$this->lang->line('application_month');?> 6 *
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    %
+                </div>
+                <input id="month_6_percent" maxlength="2" type="text" name="month_percent[]" class="integerInput form-control" value="<?php if(count($months) > 5){echo $months[5];}else{echo '0';}?>" required />
+            </div>
+        </div>
+
+        <!-- month 7 -->
+        <div class="form-group hidden" id="div_month_7">
+            <label>
+                <?=$this->lang->line('application_month');?> 7 *
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    %
+                </div>
+                <input id="month_7_percent" maxlength="2" type="text" name="month_percent[]" class="integerInput form-control" value="<?php if(count($months) > 6){echo $months[6];}else{echo '0';}?>" required />
+            </div>
+        </div>
+
+        <!-- month 8 -->
+        <div class="form-group hidden" id="div_month_8">
+            <label>
+                <?=$this->lang->line('application_month');?> 8 *
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    %
+                </div>
+                <input id="month_8_percent" maxlength="2" type="text" name="month_percent[]" class="integerInput form-control" value="<?php if(count($months) > 7){echo $months[7];}else{echo '0';}?>" required />
+            </div>
+        </div>
+
+        <!-- month 9 -->
+        <div class="form-group hidden" id="div_month_9">
+            <label>
+                <?=$this->lang->line('application_month');?> 9 *
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    %
+                </div>
+                <input id="month_9_percent" maxlength="2" type="text" name="month_percent[]" class="integerInput form-control" value="<?php if(count($months) > 8){echo $months[8];}else{echo '0';}?>" required />
+            </div>
+        </div>
+
+        <!-- month 10 -->
+        <div class="form-group hidden" id="div_month_10">
+            <label for="month_10">
+                <?=$this->lang->line('application_month');?> 10 *
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    %
+                </div>
+                <input id="month_10_percent" maxlength="2" type="text" name="month_percent[]" class="integerInput form-control" value="<?php if(count($months) > 9){echo $months[9];}else{echo '0';}?>" required />
+            </div>
+        </div>
+
+        <!-- month 11 -->
+        <div class="form-group hidden" id="div_month_11">
+            <label for="month_11">
+                <?=$this->lang->line('application_month');?> 11 *
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    %
+                </div>
+                <input id="month_11_percent" maxlength="2" type="text" name="month_percent[]" class="integerInput form-control" value="<?php if(count($months) > 10){echo $months[10];}else{echo '0';}?>" required />
+            </div>
+        </div>
+
+        <!-- month 12 -->
+        <div class="form-group hidden" id="div_month_12">
+            <label for="month_12">
+                <?=$this->lang->line('application_month');?> 12 *
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    %
+                </div>
+                <input id="month_12_percent" maxlength="2" type="text" name="month_percent[]" class="integerInput form-control" value="<?php if(count($months) > 11){echo $months[11];}else{echo '0';}?>" required />
+            </div>
+        </div>
+
+        <!-- month 13 -->
+        <div class="form-group hidden" id="div_month_13">
+            <label for="month_13">
+                <?=$this->lang->line('application_month');?> 13 *
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    %
+                </div>
+                <input id="month_13_percent" maxlength="2" type="text" name="month_percent[]" class="integerInput form-control" value="<?php if(count($months) > 12){echo $months[12];}else{echo '0';}?>" required />
+            </div>
+        </div>
+
+    </div>
+
+    <div id="dynamic_events">
+
+        <!-- event 1 -->
+        <div class="row hidden" id="div_event_1">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_event'); ?> 1 *
+                    </label>
+                    <?php
+                    $options = array();
+
+                    $options[null] = $this->lang->line('application_select_event');
+
+                    foreach ($payment_events as $value):
+                        $options[$value->name] = $this->lang->line("application_event_$value->name");
+                    endforeach;
+
+                    echo form_dropdown('event[]', $options, $payment_events_selected[0], 'style="width:100%" class="chosen-select"');?>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_percentage_event');?> 1 *
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            %
+                        </div>
+                        <input id="event_1_percent" maxlength="2" type="text" name="event_percent[]" class="integerInput form-control" value="<?php if(count($event_values) > 0){echo $event_values[0];}else{echo '0';}?>" required />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- event 2 -->
+        <div class="row hidden" id="div_event_2">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_event'); ?> 2 *
+                    </label>
+                    <?php
+                    $options = array();
+
+                    $options[null] = $this->lang->line('application_select_event');
+
+                    foreach ($payment_events as $value):
+                        $options[$value->name] = $this->lang->line("application_event_$value->name");
+                    endforeach;
+
+                    echo form_dropdown('event[]', $options, $payment_events_selected[1], 'style="width:100%" class="chosen-select"');?>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_percentage_event');?> 2 *
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            %
+                        </div>
+                        <input id="event_2_percent" maxlength="2" type="text" name="event_percent[]" class="integerInput form-control" value="<?php if(count($event_values) > 1){echo $event_values[1];}else{echo '0';}?>" required />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- event 3 -->
+        <div class="row hidden" id="div_event_3">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_event'); ?> 3 *
+                    </label>
+                    <?php
+                    $options = array();
+
+                    $options[null] = $this->lang->line('application_select_event');
+
+                    foreach ($payment_events as $value):
+                        $options[$value->name] = $this->lang->line("application_event_$value->name");
+                    endforeach;
+
+                    echo form_dropdown('event[]', $options, $payment_events_selected[2], 'style="width:100%" class="chosen-select"');?>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_percentage_event');?> 3 *
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            %
+                        </div>
+                        <input id="event_3_percent" maxlength="2" type="text" name="event_percent[]" class="integerInput form-control" value="<?php if(count($event_values) > 2){echo $event_values[2];}else{echo '0';}?>" required />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- event 4 -->
+        <div class="row hidden" id="div_event_4">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_event'); ?> 4 *
+                    </label>
+                    <?php
+                    $options = array();
+
+                    $options[null] = $this->lang->line('application_select_event');
+
+                    foreach ($payment_events as $value):
+                        $options[$value->name] = $this->lang->line("application_event_$value->name");
+                    endforeach;
+
+                    echo form_dropdown('event[]', $options, $payment_events_selected[3], 'style="width:100%" class="chosen-select"');?>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_percentage_event');?> 4 *
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            %
+                        </div>
+                        <input id="event_4_percent" maxlength="2" type="text" name="event_percent[]" class="integerInput form-control" value="<?php if(count($event_values) > 3){echo $event_values[3];}else{echo '0';}?>" required />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- event 5 -->
+        <div class="row hidden" id="div_event_5">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_event'); ?> 5 *
+                    </label>
+                    <?php
+                    $options = array();
+
+                    $options[null] = $this->lang->line('application_select_event');
+
+                    foreach ($payment_events as $value):
+                        $options[$value->name] = $this->lang->line("application_event_$value->name");
+                    endforeach;
+
+                    echo form_dropdown('event[]', $options, $payment_events_selected[4], 'style="width:100%" class="chosen-select"');?>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_percentage_event');?> 5 *
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            %
+                        </div>
+                        <input id="event_5_percent" maxlength="2" type="text" name="event_percent[]" class="integerInput form-control" value="<?php if(count($event_values) > 4){echo $event_values[4];}else{echo '0';}?>" required />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- event 6 -->
+        <div class="row hidden" id="div_event_6">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_event'); ?> 6 *
+                    </label>
+                    <?php
+                    $options = array();
+
+                    $options[null] = $this->lang->line('application_select_event');
+
+                    foreach ($payment_events as $value):
+                        $options[$value->name] = $this->lang->line("application_event_$value->name");
+                    endforeach;
+
+                    echo form_dropdown('event[]', $options, $payment_events_selected[5], 'style="width:100%" class="chosen-select"');?>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_percentage_event');?> 6 *
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            %
+                        </div>
+                        <input id="event_6_percent" maxlength="2" type="text" name="event_percent[]" class="integerInput form-control" value="<?php if(count($event_values) > 5){echo $event_values[5];}else{echo '0';}?>" required />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- event 7 -->
+        <div class="row hidden" id="div_event_7">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_event'); ?> 7 *
+                    </label>
+                    <?php
+                    $options = array();
+
+                    $options[null] = $this->lang->line('application_select_event');
+
+                    foreach ($payment_events as $value):
+                        $options[$value->name] = $this->lang->line("application_event_$value->name");
+                    endforeach;
+
+                    echo form_dropdown('event[]', $options, $payment_events_selected[6], 'style="width:100%" class="chosen-select"');?>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_percentage_event');?> 7 *
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            %
+                        </div>
+                        <input id="event_7_percent" maxlength="2" type="text" name="event_percent[]" class="integerInput form-control" value="<?php if(count($event_values) > 6){echo $event_values[6];}else{echo '0';}?>" required />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- event 8 -->
+        <div class="row hidden" id="div_event_8">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_event'); ?> 8 *
+                    </label>
+                    <?php
+                    $options = array();
+
+                    $options[null] = $this->lang->line('application_select_event');
+
+                    foreach ($payment_events as $value):
+                        $options[$value->name] = $this->lang->line("application_event_$value->name");
+                    endforeach;
+
+                    echo form_dropdown('event[]', $options, $payment_events_selected[7], 'style="width:100%" class="chosen-select"');?>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_percentage_event');?> 8 *
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            %
+                        </div>
+                        <input id="event_8_percent" maxlength="2" type="text" name="event_percent[]" class="integerInput form-control" value="<?php if(count($event_values) > 7){echo $event_values[7];}else{echo '0';}?>" required />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- event 9 -->
+        <div class="row hidden" id="div_event_9">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_event'); ?> 9 *
+                    </label>
+                    <?php
+                    $options = array();
+
+                    $options[null] = $this->lang->line('application_select_event');
+
+                    foreach ($payment_events as $value):
+                        $options[$value->name] = $this->lang->line("application_event_$value->name");
+                    endforeach;
+
+                    echo form_dropdown('event[]', $options, $payment_events_selected[8], 'style="width:100%" class="chosen-select"');?>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_percentage_event');?> 9 *
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            %
+                        </div>
+                        <input id="event_9_percent" maxlength="2" type="text" name="event_percent[]" class="integerInput form-control" value="<?php if(count($event_values) > 8){echo $event_values[8];}else{echo '0';}?>" required />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- event 10 -->
+        <div class="row hidden" id="div_event_10">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_event'); ?> 10 *
+                    </label>
+                    <?php
+                    $options = array();
+
+                    $options[null] = $this->lang->line('application_select_event');
+
+                    foreach ($payment_events as $value):
+                        $options[$value->name] = $this->lang->line("application_event_$value->name");
+                    endforeach;
+
+                    echo form_dropdown('event[]', $options, $payment_events_selected[9], 'style="width:100%" class="chosen-select"');?>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_percentage_event');?> 10 *
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            %
+                        </div>
+                        <input id="event_10_percent" maxlength="2" type="text" name="event_percent[]" class="integerInput form-control" value="<?php if(count($event_values) > 9){echo $event_values[9];}else{echo '0';}?>" required />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- event 11 -->
+        <div class="row hidden" id="div_event_11">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_event'); ?> 11 *
+                    </label>
+                    <?php
+                    $options = array();
+
+                    $options[null] = $this->lang->line('application_select_event');
+
+                    foreach ($payment_events as $value):
+                        $options[$value->name] = $this->lang->line("application_event_$value->name");
+                    endforeach;
+
+                    echo form_dropdown('event[]', $options, $payment_events_selected[10], 'style="width:100%" class="chosen-select"');?>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_percentage_event');?> 11 *
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            %
+                        </div>
+                        <input id="event_11_percent" maxlength="2" type="text" name="event_percent[]" class="integerInput form-control" value="<?php if(count($event_values) > 10){echo $event_values[10];}else{echo '0';}?>" required />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- event 12 -->
+        <div class="row hidden" id="div_event_12">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_event'); ?> 12 *
+                    </label>
+                    <?php
+                    $options = array();
+
+                    $options[null] = $this->lang->line('application_select_event');
+
+                    foreach ($payment_events as $value):
+                        $options[$value->name] = $this->lang->line("application_event_$value->name");
+                    endforeach;
+
+                    echo form_dropdown('event[]', $options, $payment_events_selected[11], 'style="width:100%" class="chosen-select"');?>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_percentage_event');?> 12 *
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            %
+                        </div>
+                        <input id="event_12_percent" maxlength="2" type="text" name="event_percent[]" class="integerInput form-control" value="<?php if(count($event_values) > 11){echo $event_values[11];}else{echo '0';}?>" required />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- event 13 -->
+        <div class="row hidden" id="div_event_13">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_event'); ?> 13 *
+                    </label>
+                    <?php
+                    $options = array();
+
+                    $options[null] = $this->lang->line('application_select_event');
+
+                    foreach ($payment_events as $value):
+                        $options[$value->name] = $this->lang->line("application_event_$value->name");
+                    endforeach;
+
+                    echo form_dropdown('event[]', $options, $payment_events_selected[12], 'style="width:100%" class="chosen-select"');?>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <?=$this->lang->line('application_percentage_event');?> 13 *
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            %
+                        </div>
+                        <input id="event_13_percent" maxlength="2" type="text" name="event_percent[]" class="integerInput form-control" value="<?php if(count($event_values) > 12){echo $event_values[12];}else{echo '0';}?>" required />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <div class="modal-footer">
         <input type="submit" name="send" id="send" class="btn btn-primary button-loader" data value="<?=$this->lang->line('application_save');?>" />
@@ -226,6 +843,10 @@ echo form_open($form_action, $attributes);
             prepareUI();
         });
 
+        $('#direct_billing_percentage').on('change paste',function(e){
+            set_own_installment_percentage($(this).val())
+        });
+
         function set_own_installment_percentage(value){
             $('#own_installment_percentage').val(100-value);
         };
@@ -246,13 +867,16 @@ echo form_open($form_action, $attributes);
             if (own_installment_payment_trigger == 1){ //per month
                 $('#div_own_installment_quantity label').html('<?=$this->lang->line('application_own_installment_quantity_per_month')?> *');
                 $('#div_own_installment_quantity').removeClass('hidden');
-            }else if (own_installment_payment_trigger == 2){
+                $('#dynamic_months').removeClass('hidden');
+            }else if (own_installment_payment_trigger == 2){ //per event
                 $('#div_own_installment_quantity label').html('<?=$this->lang->line('application_own_installment_quantity_per_event')?> *');
                 $('#div_own_installment_quantity').removeClass('hidden');
+                $('#dynamic_events').removeClass('hidden');
             }
 
 
             preparePaymentFields(own_installment_quantity);
+            // console.log(own_installment_quantity);
 
         };
 
@@ -260,31 +884,49 @@ echo form_open($form_action, $attributes);
 
             var elementIncrease = 0;
 
-            $('#dynamic_fields').children().addClass('hidden');
+            console.log(timesLoop);
 
-            while (elementIncrease < timesLoop){
+            $('#dynamic_months').children().addClass('hidden');
+            $('#dynamic_events').children().addClass('hidden');
 
-                var field = $('#dynamic_fields').find($("#div_month_"+(elementIncrease+1)));
+            if ($('#own_installment_payment_trigger option:selected').index() == 1){ //per month
 
-                $(field).removeClass('hidden');
 
-                if (elementIncrease % 2 == 0){
-                    $(field).attr('style', 'width: 48%; display: inline-block;');
-                }else{
-                    $(field).attr('style', 'width: 48%; display: inline-block; float: right;');
+                while (elementIncrease < timesLoop){
+
+                    var field = $('#dynamic_months').find($("#div_month_"+(elementIncrease+1)));
+
+                    $(field).removeClass('hidden');
+
+                    if (elementIncrease % 2 == 0){
+                        $(field).attr('style', 'width: 48%; display: inline-block;');
+                    }else{
+                        $(field).attr('style', 'width: 48%; display: inline-block; float: right;');
+                    }
+
+                    elementIncrease++;
                 }
+            }else if ($('#own_installment_payment_trigger option:selected').index() == 2) { //per event
 
-                elementIncrease++;
+
+                while (elementIncrease < timesLoop){
+
+                    var field = $('#dynamic_events').find($("#div_event_"+(elementIncrease+1)));
+
+                    $(field).removeClass('hidden');
+
+                    elementIncrease++;
+                }
             }
 
         };
 
-        var div_dynamic_field_month = $('#div_dynamic_field_month');
-        var dynamic_fields = $('#dynamic_fields');
+        /*var div_dynamic_field_month = $('#div_dynamic_field_month');
+        var dynamic_months = $('#dynamic_months');
 
         function preparePaymentFields(timesLoop){
 
-            $(dynamic_fields).empty();
+            $(dynamic_months).empty();
 
             var timesLoopDecrease = timesLoop;
             var countSequencial = 1;
@@ -296,16 +938,12 @@ echo form_open($form_action, $attributes);
                 $(clone_div_dynamic_field_month).find('.month_number').html(countSequencial);
                 $(clone_div_dynamic_field_month).removeClass('hidden');
 
-                $(dynamic_fields).append($(clone_div_dynamic_field_month));
+                $(dynamic_months).append($(clone_div_dynamic_field_month));
 
                 timesLoopDecrease--;
                 countSequencial++;
             }
-        };
-
-        $('#direct_billing_percentage').on('change paste',function(e){
-            set_own_installment_percentage($(this).val())
-        });
+        };*/
 
 
     });
