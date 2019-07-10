@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05/07/2019 às 19:50
+-- Tempo de geração: 10/07/2019 às 20:17
 -- Versão do servidor: 5.6.37
 -- Versão do PHP: 7.1.8
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `bid_has_proposals` (
   `own_installment_payment_events` varchar(10000) DEFAULT NULL COMMENT 'Ordem dos eventos que gerarão os pagamentos',
   `own_installment_values` varchar(10000) DEFAULT NULL COMMENT 'Valor de cada parcela própria, separados por vírgula',
   `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Fazendo dump de dados para tabela `bid_has_proposals`
@@ -77,7 +77,8 @@ INSERT INTO `bid_has_proposals` (`id`, `bid_id`, `plant_id`, `dispute_id`, `clie
 (8, 5, 4, 4, 1, 1, 32450.88, 4.30, 'GCL,BYD,Canadian', 'Sungrow,ABB,Fronius', NULL, 39, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-06-22 13:35:38'),
 (9, 6, 4, 4, 1, 1, 25670.55, 4.35, 'BYD,Canadian', 'Sungrow,Fronius', NULL, 57, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-07-04 17:51:26'),
 (10, 7, 4, 4, 1, 1, 27290.45, 4.26, 'GCL', 'Fronius', NULL, 46, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-07-05 14:00:23'),
-(11, 8, 4, 4, 1, 1, 24500.75, 4.35, 'GCL', 'Fronius', NULL, 60, 'direct_billing_and_own_installment', 10, 90, 'per_month', 4, NULL, NULL, '2019-07-05 19:49:11');
+(11, 8, 4, 4, 1, 1, 24500.75, 4.35, 'GCL', 'Fronius', NULL, 60, 'direct_billing_and_own_installment', 10, 90, 'per_month', 4, NULL, NULL, '2019-07-05 19:49:11'),
+(12, 9, 7, 5, 3, 8, 24560.95, 6.15, 'Canadian', 'Fronius', NULL, 45, 'own_installment', 0, 100, 'per_event', 4, 'project_completion,works_completion,eletrical_installation_completion,bill_compensate_credits', '30,40,10,20', '2019-07-10 18:06:58');
 
 -- --------------------------------------------------------
 
@@ -5713,15 +5714,16 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `token` varchar(255) DEFAULT NULL,
   `language` varchar(255) DEFAULT NULL,
   `push_active` enum('0','1') NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Fazendo dump de dados para tabela `clients`
 --
 
 INSERT INTO `clients` (`id`, `company_id`, `firstname`, `lastname`, `email`, `phone`, `mobile`, `userpic`, `hashed_password`, `inactive`, `access`, `last_active`, `last_login`, `token`, `language`, `push_active`) VALUES
-(1, 1, 'Usuário 1', 'Cliente 1', 'thiagopac@gmail.com', '(11)1111-1111', '(11)91111-1111', 'no-pic.png', '46396a46355c472c6c703b337b4b703c34777170594f7d387371787755315f388b4b70aac220c8e3d87409cb92cdc221a012ae724a086d96f4c16ad71e5d29c1', 0, '110,106', '1562356151', '1562329016', NULL, NULL, '1'),
-(2, 1, 'Usuário 2', 'Cliente 1', 'contato2@cliente1.com.br', '(11)1111-1111', '(11)92222-2222', 'no-pic.png', '4b36287b26787a4468756649217c2b5e5c515629404a37486173352d3a545c74c389ff63605d2611d4354351acafd70e4ac7c5755227a306fdacbfa562fdbd07', 0, '110,106', '0', '1560425721', NULL, NULL, '1');
+(1, 1, 'Usuário 1', 'Cliente 1', 'thiagopac@gmail.com', '(11)1111-1111', '(11)91111-1111', 'no-pic.png', '46396a46355c472c6c703b337b4b703c34777170594f7d387371787755315f388b4b70aac220c8e3d87409cb92cdc221a012ae724a086d96f4c16ad71e5d29c1', 0, '110,106', '1562620812', '1562606215', NULL, NULL, '1'),
+(2, 1, 'Usuário 2', 'Cliente 1', 'contato2@cliente1.com.br', '(11)1111-1111', '(11)92222-2222', 'no-pic.png', '4b36287b26787a4468756649217c2b5e5c515629404a37486173352d3a545c74c389ff63605d2611d4354351acafd70e4ac7c5755227a306fdacbfa562fdbd07', 0, '110,106', '0', '1560425721', NULL, NULL, '1'),
+(3, 8, 'Jay William', 'Patrick', 'integrador_um@outlook.com', '', '', 'ed62c6d3e6bfc31be135f87bf832ce25.jpg', '48405f70742c563d2b45525b2f2233575b4d3c276136553d5a6c64266e296330a8ad161db619f89ad6a387de469c232ca98f6cdef39d71fc85cd5d8dfb2f6baa', 0, '110,106', '1562789481', '1562778919', NULL, NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -5736,7 +5738,7 @@ CREATE TABLE IF NOT EXISTS `client_notifications` (
   `created_at` varchar(50) DEFAULT NULL,
   `url` varchar(500) DEFAULT NULL,
   `status` enum('new','read') DEFAULT 'new'
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Fazendo dump de dados para tabela `client_notifications`
@@ -5746,7 +5748,8 @@ INSERT INTO `client_notifications` (`id`, `client_id`, `message`, `created_at`, 
 (1, 1, '<b>CER2001</b> - Novo certame iniciado', '2019-06-17 12:13:11', 'http://localhost/solarbid/bidbox/cdisputes', 'read'),
 (2, 2, '<b>CER2001</b> - Novo certame iniciado', '2019-06-17 12:13:11', 'http://localhost/solarbid/bidbox/cdisputes', 'new'),
 (3, 1, '<b>CER2003</b> - Novo certame iniciado', '2019-06-17 12:36:56', 'http://localhost/solarbid/bidbox/cdisputes', 'read'),
-(4, 2, '<b>CER2003</b> - Novo certame iniciado', '2019-06-17 12:36:56', 'http://localhost/solarbid/bidbox/cdisputes', 'new');
+(4, 2, '<b>CER2003</b> - Novo certame iniciado', '2019-06-17 12:36:56', 'http://localhost/solarbid/bidbox/cdisputes', 'new'),
+(5, 3, '<b>CER2004</b> - Novo certame iniciado', '2019-07-09 16:16:36', 'http://localhost/solarbid/bidbox/cdisputes', 'new');
 
 -- --------------------------------------------------------
 
@@ -5771,8 +5774,8 @@ CREATE TABLE IF NOT EXISTS `companies` (
   `vat` varchar(250) DEFAULT NULL,
   `note` longtext,
   `terms` text,
-  `level` int(2) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `level` int(2) NOT NULL DEFAULT '2'
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Fazendo dump de dados para tabela `companies`
@@ -5785,7 +5788,8 @@ INSERT INTO `companies` (`id`, `reference`, `name`, `client_id`, `phone`, `mobil
 (4, 1003, 'Cliente 4', NULL, '', '', '', '', 'Betim', 'MG', 'Brasil', 0, NULL, NULL, NULL, '', 3),
 (5, 1004, 'Cliente 5', NULL, '', '', '', '', 'Contagem', 'MG', 'Brasil', 0, NULL, NULL, NULL, '', 4),
 (6, 1005, 'Cliente 6', NULL, '', '', '', '', 'Campinas', 'SP', 'Brasil', 0, NULL, NULL, NULL, '', 6),
-(7, 1006, 'Cliente 7', NULL, '', '', '', '', 'Manaus', 'AM', 'Brasil', 0, NULL, NULL, NULL, '', 8);
+(7, 1006, 'Cliente 7', NULL, '', '', '', '', 'Manaus', 'AM', 'Brasil', 0, NULL, NULL, NULL, '', 8),
+(8, 1007, 'Integrador Um', '3', '(31)3333-4444', '', 'Rua Integrador Um, 1', '11111-111', 'Mucuri', 'BA', 'Brasil', 0, NULL, NULL, NULL, NULL, 10);
 
 -- --------------------------------------------------------
 
@@ -5798,7 +5802,7 @@ CREATE TABLE IF NOT EXISTS `company_has_admins` (
   `company_id` int(10) DEFAULT NULL,
   `user_id` int(10) DEFAULT NULL,
   `access` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Fazendo dump de dados para tabela `company_has_admins`
@@ -5812,7 +5816,8 @@ INSERT INTO `company_has_admins` (`id`, `company_id`, `user_id`, `access`) VALUE
 (5, 4, 1, NULL),
 (6, 5, 1, NULL),
 (7, 6, 1, NULL),
-(8, 7, 1, NULL);
+(8, 7, 1, NULL),
+(9, 8, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -5825,7 +5830,7 @@ CREATE TABLE IF NOT EXISTS `company_has_disputes` (
   `company_id` int(11) NOT NULL,
   `dispute_id` int(11) NOT NULL,
   `time` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Fazendo dump de dados para tabela `company_has_disputes`
@@ -5837,7 +5842,8 @@ INSERT INTO `company_has_disputes` (`id`, `company_id`, `dispute_id`, `time`) VA
 (3, 3, 2, '2019-06-17 15:21:33'),
 (4, 1, 4, '2019-06-17 15:36:56'),
 (5, 2, 4, '2019-06-17 15:36:56'),
-(6, 3, 4, '2019-06-17 15:36:56');
+(6, 3, 4, '2019-06-17 15:36:56'),
+(7, 8, 5, '2019-07-09 19:16:36');
 
 -- --------------------------------------------------------
 
@@ -5973,7 +5979,7 @@ CREATE TABLE IF NOT EXISTS `core` (
 --
 
 INSERT INTO `core` (`id`, `version`, `domain`, `email`, `company`, `tax`, `second_tax`, `currency`, `autobackup`, `cronjob`, `last_cronjob`, `last_autobackup`, `invoice_terms`, `company_reference`, `project_reference`, `invoice_reference`, `subscription_reference`, `ticket_reference`, `date_format`, `date_time_format`, `invoice_mail_subject`, `pw_reset_mail_subject`, `pw_reset_link_mail_subject`, `credentials_mail_subject`, `notification_mail_subject`, `language`, `invoice_address`, `invoice_city`, `invoice_contact`, `invoice_tel`, `subscription_mail_subject`, `logo`, `colored_logo`, `template`, `paypal`, `paypal_currency`, `paypal_account`, `invoice_logo`, `pc`, `vat`, `ticket_email`, `ticket_default_owner`, `ticket_default_queue`, `ticket_default_type`, `ticket_default_status`, `ticket_config_host`, `ticket_config_login`, `ticket_config_pass`, `ticket_config_port`, `ticket_config_ssl`, `ticket_config_email`, `ticket_config_flags`, `ticket_config_search`, `ticket_config_timestamp`, `ticket_config_mailbox`, `ticket_config_delete`, `ticket_config_active`, `ticket_config_imap`, `stripe`, `stripe_key`, `stripe_p_key`, `bank_transfer`, `bank_transfer_text`, `stripe_currency`, `estimate_terms`, `estimate_prefix`, `estimate_pdf_template`, `invoice_pdf_template`, `estimate_mail_subject`, `money_currency_position`, `money_format`, `pdf_font`, `pdf_path`, `registration`, `authorize_api_login_id`, `authorize_api_transaction_key`, `authorize_net`, `authorize_currency`, `invoice_prefix`, `company_prefix`, `quotation_prefix`, `project_prefix`, `subscription_prefix`, `calendar_google_api_key`, `calendar_google_event_address`, `default_client_modules`, `estimate_reference`, `login_background`, `custom_colors`, `top_bar_background`, `top_bar_color`, `body_background`, `menu_background`, `menu_color`, `primary_color`, `twocheckout_seller_id`, `twocheckout_publishable_key`, `twocheckout_private_key`, `twocheckout`, `twocheckout_currency`, `login_logo`, `login_style`, `reference_lenght`, `stripe_ideal`, `zip_position`, `timezone`, `notifications`, `last_notification`, `receipt_mail_subject`, `push_active`, `push_rest_api_key`, `push_app_id`, `money_symbol`, `rated_power_measurement`, `consumn_power_measurement`, `dispute_reference`, `dispute_prefix`, `area_measurement`, `disputeobject_reference`, `disputeobject_prefix`) VALUES
-(1, '1.0.0', 'http://localhost/solarbid/bidbox', 'contato@solarbid.com.br', 'Solarbid bidbox', '0', '', 'BRL', 1, 1, NULL, NULL, '', 1007, 1, 8000, 9000, 5000, 'd/m/Y', 'H:i', 'New Invoice', 'Password Reset', 'Password Reset', 'Login Details', 'Notification', 'portuguese', 'Rua Araguari, 1156, Sala 1301', 'Belo Horizonte', '(31)99134-0000', '(31)99134-0000', 'New Subscription', 'files/media/bidbox_logo_dev.png', 'files/media/bidbox_logo_colored_dev.png', 'blueline', '0', 'BRL', '', 'files/media/solarbid_logo.png', 'nulled', '', NULL, 1, 1, 1, 'new', NULL, NULL, NULL, NULL, NULL, NULL, '/notls', 'UNSEEN', NULL, NULL, NULL, NULL, 1, 0, '', '', NULL, NULL, 'BRL', '', 'CET', 'templates/estimate/darkblue', 'templates/invoice/blueline', 'New Estimate #{estimate_id}', 1, 2, 'NotoSans', 1, 0, NULL, NULL, 0, NULL, 'FAT', 'CLI', 'COT', 'UFV', 'SUB', '1022232899186-1k9itl671m7t18t81b6dj7k02m10bms3.apps.googleusercontent.com', '', NULL, 90001, 'Hexagon-3.jpg', 1, '#0081ff', '#ffffff', '#f1f4fa', '#0073e5', '#ffffff', '#0081ff', NULL, NULL, NULL, 0, NULL, NULL, 'center', NULL, NULL, 'left', 'America/Sao_Paulo', 1, '1552676687', NULL, 1, 'NmNmNjExYjAtNjllNS00YTExLTgzNjUtMTc5YzE3ODhmMmYy', '0cf01001-7b23-4cec-afef-13fb84ec7e82', 'R$', 'kWp', 'kWh', 2005, 'CER', 'm²', 2005, 'OBJ');
+(1, '1.0.0', 'http://localhost/solarbid/bidbox', 'contato@solarbid.com.br', 'Solarbid bidbox', '0', '', 'BRL', 1, 1, NULL, NULL, '', 1008, 1, 8000, 9000, 5000, 'd/m/Y', 'H:i', 'New Invoice', 'Password Reset', 'Password Reset', 'Login Details', 'Notification', 'portuguese', 'Rua Araguari, 1156, Sala 1301', 'Belo Horizonte', '(31)99134-0000', '(31)99134-0000', 'New Subscription', 'files/media/bidbox_logo_dev.png', 'files/media/bidbox_logo_colored_dev.png', 'blueline', '0', 'BRL', '', 'files/media/solarbid_logo.png', 'nulled', '', NULL, 1, 1, 1, 'new', NULL, NULL, NULL, NULL, NULL, NULL, '/notls', 'UNSEEN', NULL, NULL, NULL, NULL, 1, 0, '', '', NULL, NULL, 'BRL', '', 'CET', 'templates/estimate/darkblue', 'templates/invoice/blueline', 'New Estimate #{estimate_id}', 1, 2, 'NotoSans', 1, 0, NULL, NULL, 0, NULL, 'FAT', 'CLI', 'COT', 'UFV', 'SUB', '1022232899186-1k9itl671m7t18t81b6dj7k02m10bms3.apps.googleusercontent.com', '', NULL, 90001, 'Hexagon-3.jpg', 1, '#0081ff', '#ffffff', '#f1f4fa', '#0073e5', '#ffffff', '#0081ff', NULL, NULL, NULL, 0, NULL, NULL, 'center', NULL, NULL, 'left', 'America/Sao_Paulo', 1, '1552676687', NULL, 1, 'NmNmNjExYjAtNjllNS00YTExLTgzNjUtMTc5YzE3ODhmMmYy', '0cf01001-7b23-4cec-afef-13fb84ec7e82', 'R$', 'kWp', 'kWh', 2005, 'CER', 'm²', 2005, 'OBJ');
 
 -- --------------------------------------------------------
 
@@ -6344,8 +6350,8 @@ INSERT INTO `disputes` (`id`, `dispute_reference`, `dispute_sent`, `dispute_obje
 (1, 2000, 'yes', 1, '2,5', 'BRL', '2019-05-10 17:40', '2019-06-10 08:35', 'no', 'state', '11', 1, 5, '1,2,3,4,5', 'completed'),
 (2, 2001, 'yes', 1, '2,5', 'BRL', '2019-05-01 12:00', '2019-07-03 17:25', 'no', 'city', '2308', 2, 3, '1,2,3', 'completed'),
 (3, 2002, 'no', 2, NULL, 'BRL', '2019-05-29 12:00', '2019-06-13 12:00', 'no', 'city', '2308', 2, 3, '1,2,3', 'suspended'),
-(4, 2003, 'yes', 3, '4', 'BRL', '2019-06-14 12:00', '2019-07-06 12:00', 'no', 'city', '2308', 2, 3, '1,2,3', 'in_progress'),
-(5, 2004, 'no', 5, '7', 'BRL', '2019-06-07 12:00', '2019-06-14 12:00', 'no', 'city', '2308,2314,2339,2447,2673,2818', 2, 5, '1,2,3,4,5', NULL);
+(4, 2003, 'yes', 3, '4', 'BRL', '2019-06-14 12:00', '2019-07-15 12:00', 'no', 'city', '2308', 2, 3, '1,2,3', 'in_progress'),
+(5, 2004, 'yes', 5, '7', 'BRL', '2019-06-07 12:00', '2019-07-31 12:00', 'no', 'city', '2090', 2, 1, '8', 'in_progress');
 
 -- --------------------------------------------------------
 
@@ -6363,7 +6369,7 @@ CREATE TABLE IF NOT EXISTS `dispute_has_bids` (
   `custom` text NOT NULL COMMENT 'Coluna para suporte de propriedade no codigo fonte',
   `bid_sent` tinyint(4) DEFAULT '0',
   `winner` tinyint(4) DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Fazendo dump de dados para tabela `dispute_has_bids`
@@ -6377,7 +6383,8 @@ INSERT INTO `dispute_has_bids` (`id`, `dispute_id`, `client_id`, `company_id`, `
 (5, 4, 1, 1, '2019-07-05 10:51:37', '', '', 1, 0),
 (6, 4, 1, 1, '2019-07-05 10:51:39', '', '', 1, 0),
 (7, 4, 1, 1, '2019-07-05 12:19:10', '', '', 1, 0),
-(8, 4, 1, 1, '2019-07-05 12:22:19', '', '', 0, 0);
+(8, 4, 1, 1, '2019-07-05 12:22:19', '', '', 0, 0),
+(9, 5, 3, 8, '2019-07-09 16:18:03', '', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -6863,8 +6870,38 @@ CREATE TABLE IF NOT EXISTS `notifications` (
 
 INSERT INTO `notifications` (`id`, `user_id`, `message`, `created_at`, `url`, `status`) VALUES
 (1, 1, 'Teste de mensagem para usuário', '2019-05-16 10:35:00', 'http://www.google.com/images', 'read'),
-(2, 1, 'Você recebeu uma nova mensagem. de <b>Usuário 1</b>', '2019-05-16 11:54:37', 'http://localhost/solarbid/bidbox/messages', 'new'),
+(2, 1, 'Você recebeu uma nova mensagem. de <b>Usuário 1</b>', '2019-05-16 11:54:37', 'http://localhost/solarbid/bidbox/messages', 'read'),
 (3, NULL, 'Você recebeu uma nova mensagem. de <b>Usuário 1</b>', '2019-06-17 16:19:05', 'http://localhost/solarbid/bidbox/messages', 'new');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `payment_events`
+--
+
+CREATE TABLE IF NOT EXISTS `payment_events` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+
+--
+-- Fazendo dump de dados para tabela `payment_events`
+--
+
+INSERT INTO `payment_events` (`id`, `name`) VALUES
+(1, 'signing_contract'),
+(2, 'project_completion'),
+(3, 'access_request'),
+(4, 'access_receipt'),
+(5, 'material_delivery'),
+(6, 'works_completion'),
+(7, 'mechanical_assembly_completion'),
+(8, 'infrastructure_assembly_completion'),
+(9, 'eletrical_installation_completion'),
+(10, 'installation_completion'),
+(11, 'concessionaire_inspection'),
+(12, 'distributor_plant_connection'),
+(13, 'bill_compensate_credits');
 
 -- --------------------------------------------------------
 
@@ -7362,7 +7399,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `firstname`, `lastname`, `hashed_password`, `email`, `status`, `admin`, `created`, `userpic`, `title`, `access`, `last_active`, `last_login`, `queue`, `token`, `language`, `signature`, `push_active`) VALUES
-(1, 'thiago', 'Thiago', 'Pires', '3048405e5d403b655b452b316e2566325d4d4d625c565d4e7654626358572743b1dd243ebe064dd6095e80fbfb32b0a767c20c8db0b334fd189f5e8de98a0231', 'thiago@solarbid.com.br', 'active', '1', '2019-05-13 23:00:00', '6a7db41b635e4c43bfd61f79ef7c78ec.jpeg', 'Diretor de Tecnologia', '1,2,4,15,14,34,105,9,11', '1562346759', '1562329319', 4, '8dacf92301e47aa845f807057cd04abc', 'english', 'Thiago Pires', '1'),
+(1, 'thiago', 'Thiago', 'Pires', '3048405e5d403b655b452b316e2566325d4d4d625c565d4e7654626358572743b1dd243ebe064dd6095e80fbfb32b0a767c20c8db0b334fd189f5e8de98a0231', 'thiago@solarbid.com.br', 'active', '1', '2019-05-13 23:00:00', '6a7db41b635e4c43bfd61f79ef7c78ec.jpeg', 'Diretor de Tecnologia', '1,2,3,4,15,108,14,34,105,9,11', '1562769492', '1562763365', 4, '8dacf92301e47aa845f807057cd04abc', 'english', 'Thiago Pires', '1'),
 (2, 'patrick', 'Patrick', 'Lüdtke', '237c53674047616c36643f295d413e6a4e70633a597959675e29372937673646f52753b55ef4f5edf9d2ca773736a799f32aaea3568358e059d9da1c75c63cc8', 'patrick1111@solarbid.com.br', 'active', '1', '2019-05-15 19:32:13', '02f428caf9e66a7eb3c33f2e7f2c5315.png', 'Diretor Executivo', '1,4,105,11', '1560794513', NULL, 3, NULL, 'english', 'Patrick Lüdtke', '0');
 
 -- --------------------------------------------------------
@@ -7671,6 +7708,12 @@ ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices de tabela `payment_events`
+--
+ALTER TABLE `payment_events`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices de tabela `privatemessages`
 --
 ALTER TABLE `privatemessages`
@@ -7818,7 +7861,7 @@ ALTER TABLE `article_has_attachments`
 -- AUTO_INCREMENT de tabela `bid_has_proposals`
 --
 ALTER TABLE `bid_has_proposals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de tabela `cities`
 --
@@ -7828,27 +7871,27 @@ ALTER TABLE `cities`
 -- AUTO_INCREMENT de tabela `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de tabela `client_notifications`
 --
 ALTER TABLE `client_notifications`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de tabela `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de tabela `company_has_admins`
 --
 ALTER TABLE `company_has_admins`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de tabela `company_has_disputes`
 --
 ALTER TABLE `company_has_disputes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de tabela `core`
 --
@@ -7878,7 +7921,7 @@ ALTER TABLE `disputes`
 -- AUTO_INCREMENT de tabela `dispute_has_bids`
 --
 ALTER TABLE `dispute_has_bids`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de tabela `dispute_objects`
 --
@@ -7979,6 +8022,11 @@ ALTER TABLE `module_manufacturers`
 --
 ALTER TABLE `notifications`
   MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT de tabela `payment_events`
+--
+ALTER TABLE `payment_events`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de tabela `privatemessages`
 --
