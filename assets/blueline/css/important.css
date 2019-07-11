@@ -214,6 +214,7 @@ div.dataTables_info {
 
 .warned {
     font-size: 9pt !important;
+    display: flex !important;
 }
 
 .padding-left-25{

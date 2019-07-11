@@ -54,17 +54,37 @@ if ($dispute->inactive == 'no') { ?>
 
                 <?php if(count($dispute->dispute_object->dispute_object_has_plants) > 1) : ?>
                 <!--<div class="warned" style="display: block">
-                    <i style="color: orange; font-size: 16px; vertical-align: middle" class="icon dripicons-warning"></i>
+                    <i style="padding: 2px; color: orange; font-size: 16px; vertical-align: middle" class="icon dripicons-warning"></i>
                     <span class="tag tag--orange">
                         <?/*=$this->lang->line('application_dispute_minimum_bids');*/?>
                     </span>
                 </div>-->
                 <?php endif; ?>
 
+                <!--direct billing percentage and own installment percentage sum is higher than 100-->
+                <?php if($sum_values_direct_own != 100) : ?>
+                    <div id="label_n_participations" class="warned">
+                        <i style="padding: 2px; color: #FFA500; font-size: 16px; vertical-align: middle" class="icon dripicons-warning"></i>
+                        <span class="tag tag--orange">
+                            <?=$sum_values_direct_own > 100 ? $this->lang->line('application_direct_billing_and_own_installment_higher'):$this->lang->line('application_direct_billing_and_own_installment_lower');?>
+                    </span>
+                    </div>
+                <?php endif; ?>
+
+                <!--value percent sum is higher than 100-->
+                <?php if($sum_values_percent != 'equal') : ?>
+                    <div id="label_value_percent" class="warned">
+                        <i style="padding: 2px; color: #FFA500; font-size: 16px; vertical-align: middle" class="icon dripicons-warning"></i>
+                        <span class="tag tag--orange">
+                        <?=$this->lang->line("application_event_values_percent_$sum_values_percent");?>
+                    </span>
+                    </div>
+                <?php endif; ?>
+
                 <!--one of more bids sent-->
                 <?php if($sent) : ?>
                 <div id="label_n_participations" class="warned">
-                    <i style="color: #27ae60; font-size: 16px; vertical-align: middle" class="icon dripicons-thumbs-up"></i>
+                    <i style="padding: 2px; color: #27ae60; font-size: 16px; vertical-align: middle" class="icon dripicons-thumbs-up"></i>
                     <span class="tag tag--green">
                         <?=sprintf($this->lang->line('application_you_have_n_participations_dispute'), $sent);?>
                     </span>
@@ -74,7 +94,7 @@ if ($dispute->inactive == 'no') { ?>
                 <!--current bit not sent-->
                 <?php if(!is_null($viewing_bid) && $viewing_bid->bid_sent == false && $out_of_date == false) : ?>
                 <div id="label_participation_is_editing" class="warned">
-                    <i style="color: #3498db; font-size: 16px; vertical-align: middle" class="icon dripicons-document-edit"></i>
+                    <i style="padding: 2px; color: #3498db; font-size: 16px; vertical-align: middle" class="icon dripicons-document-edit"></i>
                     <span class="tag tag--blue">
                             <?=$this->lang->line('application_participations_dispute_is_not_sent');?>
                     </span>
@@ -84,7 +104,7 @@ if ($dispute->inactive == 'no') { ?>
                 <!--no bids at all-->
                 <?php if(count($bids) < 1) : ?>
                 <div id="label_no_participations_sent" class="warned">
-                    <i style="color: orange; font-size: 16px; vertical-align: middle" class="icon dripicons-document-delete"></i>
+                    <i style="padding: 2px; color: orange; font-size: 16px; vertical-align: middle" class="icon dripicons-document-delete"></i>
                     <span class="tag tag--orange">
                         <?=$this->lang->line('application_no_participations_dispute_sent_yet');?>
                     </span>
@@ -94,7 +114,7 @@ if ($dispute->inactive == 'no') { ?>
                 <!--out of date-->
                 <?php if($out_of_date == true) : ?>
                     <div id="label_out_of_date" class="warned">
-                        <i style="color: #e74c3c; font-size: 16px; vertical-align: middle" class="icon dripicons-clock"></i>
+                        <i style="padding: 2px; color: #e74c3c; font-size: 16px; vertical-align: middle" class="icon dripicons-clock"></i>
                         <span class="tag tag--red">
                         <?=$this->lang->line('application_dispute_out_of_date');?>
                     </span>
@@ -172,6 +192,9 @@ if ($dispute->inactive == 'no') { ?>
                                             <?php foreach ($viewing_bid->bid_has_proposals as $proposal): ?>
                                                 <tr id="<?=$proposal->id;?>">
                                                         <td>
+                                                            <?php if (in_array($proposal->id, $arr_incorrect_proposals)) : ?>
+                                                                <i style="padding: 2px; color: #FFA500; font-size: 14px; vertical-align: middle" class="icon dripicons-warning"></i>
+                                                            <?php endif; ?>
                                                             <?=DisputeObjectHasPlant::plantNickname($proposal->plant_id);?>
                                                         </td>
                                                         <td>
@@ -277,7 +300,7 @@ if ($dispute->inactive == 'no') { ?>
                 <?php endif; ?>
 
                 <!-- Qty of plants equal number of proposals -->
-                <?php if (count($dispute->dispute_object->dispute_object_has_plants) == count($viewing_bid->bid_has_proposals) && $viewing_bid->bid_sent == "no" && $out_of_date == false) : ?>
+                <?php if (count($dispute->dispute_object->dispute_object_has_plants) == count($viewing_bid->bid_has_proposals) && $viewing_bid->bid_sent == "no" && $out_of_date == false && $at_least_one_wrong_percent == false) : ?>
                 <!-- Send Proposal -->
                 <div class="form-header el_send_proposal_dispute padding-left-25" style="padding-left: 25px;"><?=$this->lang->line('application_all_proposal_plants_filled')?></div>
                 <div id="el_send_proposal_dispute" class="row">

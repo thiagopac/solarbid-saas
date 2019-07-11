@@ -1168,7 +1168,7 @@ $lang['application_you_participate_dispute'] = 'Você já tem participação nes
 
 $lang['application_you_have_n_participations_dispute'] = "Você enviou %d proposta(s) para este Certame";
 
-$lang['application_participations_dispute_is_not_sent'] = 'Proposta em modo de edição e ainda não   enviada!';
+$lang['application_participations_dispute_is_not_sent'] = 'Proposta em modo de edição e ainda não enviada';
 $lang['application_no_participations_dispute_sent_yet'] = 'Você não enviou nenhuma proposta para este Certame';
 
 $lang['application_click_to_view'] = 'Clique aqui para visualizar';
@@ -1237,3 +1237,8 @@ $lang['application_event_distributor_plant_connection'] = 'Conexão da usina pel
 $lang['application_event_bill_compensate_credits'] = 'Compensação dos créditos na conta de luz';
 $lang['application_percentage_event'] = 'Porcentagem do evento';
 $lang['application_select_event'] = 'Selecione o evento';
+
+$lang['application_event_values_percent_higher'] = 'As porcentagens das parcelas ultrapassam 100%';
+$lang['application_event_values_percent_lower'] = 'As porcentagens das parcelas não atingiram 100%';
+$lang['application_direct_billing_and_own_installment_higher'] = 'A valor do Faturamento Direto e Parcelamento Próprio ultrapassa 100%';
+$lang['application_direct_billing_and_own_installment_lower'] = 'A valor do Faturamento Direto e Parcelamento Próprio não atingiu 100%';

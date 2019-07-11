@@ -61,6 +61,7 @@ class cDisputes extends MY_Controller {
 
         $this->view_data['all_proposals'] = BidHasProposal::find('all', ['conditions' => ['dispute_id = ? AND company_id = ? ORDER BY id DESC', $id, $this->client->company_id]]);
 
+
         $all_bids_in_dispute = $this->view_data['all_bids_in_dispute'] = DisputeHasBid::find('all', ['conditions' => ['dispute_id = ? AND company_id = ?', $id, $this->client->company_id], 'include' => 'bid_has_proposals']);
 
         //all bids for the dispute and the sum
@@ -69,6 +70,36 @@ class cDisputes extends MY_Controller {
 
         //viewing bid - last bid in array
         $viewing_bid = $this->view_data['viewing_bid'] = $all_bids_in_dispute[count($all_bids_in_dispute)-1];
+
+        $sum_values_percent = 'equal';
+        $sum_values_direct_own = '100';
+        $at_least_one_wrong_percent = true;
+        $arr_incorrect_proposals = array();
+
+        foreach ($viewing_bid->bid_has_proposals as $proposal){
+            $arr_values_sum = array_sum(explode(',',$proposal->own_installment_values));
+
+            if ($arr_values_sum > 100){
+                $sum_values_percent = 'higher';
+            }else if ($arr_values_sum < 100){
+                $sum_values_percent = 'lower';
+            }else if ($arr_values_sum == 100){
+                $sum_values_percent = 'equal';
+            }
+
+            $sum_values_direct_own = ($proposal->direct_billing_percentage + $proposal->own_installment_percentage);
+
+            if ($sum_values_direct_own > 100 || $arr_values_sum > 100){
+                array_push($arr_incorrect_proposals, $proposal->id);
+                $at_least_one_wrong_percent = true;
+            }
+        }
+
+        $this->view_data['sum_values_direct_own'] = $sum_values_direct_own;
+        $this->view_data['sum_values_percent'] = $sum_values_percent;
+        $this->view_data['at_least_one_wrong_percent'] = $at_least_one_wrong_percent;
+        $this->view_data['arr_incorrect_proposals'] = $arr_incorrect_proposals;
+
 
         $plants_with_proposal = array();
 
@@ -193,12 +224,6 @@ class cDisputes extends MY_Controller {
             unset($_POST['id']);
             unset($_POST['proposal_id']);
 
-            $_POST['dispute_id'] = $dispute_id;
-            $_POST['bid_id'] = $bid_id;
-            $_POST['plant_id'] = $plant_id;
-            $_POST['client_id'] = $this->client->id;
-            $_POST['company_id'] = $this->client->company_id;
-
             if (!empty($_POST['modules_arr'])) {
                 $_POST['module_brands'] = implode(',', $_POST['modules_arr']);
             } else {
@@ -216,7 +241,58 @@ class cDisputes extends MY_Controller {
             $_POST['value'] = str_replace('.', '', $_POST['value']);
             $_POST['value'] = str_replace(',', '.', $_POST['value']);
 
-            $proposal = BidHasProposal::create($_POST);
+            /*- begin payment conditions code -*/
+
+            $arr_installment_values = array();
+
+            if ($_POST['own_installment_payment_trigger'] == 'per_month'){
+                unset($_POST['event']);
+                foreach ($_POST['month_percent'] as $month_percent){
+                    if ($month_percent != '0'){
+                        array_push($arr_installment_values, $month_percent);
+                    }
+                }
+            }else if($_POST['own_installment_payment_trigger'] == 'per_event'){
+                foreach ($_POST['event_percent'] as $event_percent){
+                    if ($event_percent != '0'){
+                        array_push($arr_installment_values, $event_percent);
+                    }
+                }
+            }
+
+            $arr_installment_values = array_slice($arr_installment_values, 0, $_POST['own_installment_quantity']); //values needs to store only the number of quantity filled
+            $str_installment_values = implode(',', $arr_installment_values);
+
+            $arr_events = array_filter($_POST['event'], 'strlen');
+            $arr_events = array_slice($arr_events, 0, $_POST['own_installment_quantity']); //events needs to store only the number of quantity filled
+            $str_events = implode(',', $arr_events);
+
+            unset($_POST['month_percent']);
+            unset($_POST['event_percent']);
+            unset($_POST['event']);
+
+            /*- end payment conditions code -*/
+
+            $proposal = new BidHasProposal();
+            $proposal->dispute_id = $dispute_id;
+            $proposal->bid_id = $bid_id;
+            $proposal->plant_id = $plant_id;
+            $proposal->client_id  = $this->client->id;
+            $proposal->company_id = $this->client->company_id;
+            $proposal->value = $_POST['value'];
+            $proposal->rated_power_mod = $_POST['rated_power_mod'];
+            $proposal->module_brands = $_POST['module_brands'];
+            $proposal->inverter_brands = $_POST['inverter_brands'];
+            $proposal->delivery_time = $_POST['delivery_time'];
+            $proposal->payment_conditions = $_POST['payment_conditions'];
+            $proposal->direct_billing_percentage = $_POST['direct_billing_percentage'];
+            $proposal->own_installment_percentage = $_POST['own_installment_percentage'];
+            $proposal->own_installment_payment_trigger = $_POST['own_installment_payment_trigger'];
+            $proposal->own_installment_quantity = $_POST['own_installment_quantity'];
+            $proposal->own_installment_values = $str_installment_values;
+            $proposal->own_installment_payment_events = $str_events;
+
+            $proposal->save();
 
             $this->theme_view = 'ajax';
 
@@ -231,6 +307,9 @@ class cDisputes extends MY_Controller {
             if ($getview == 'view') {
                 $this->view_data['view'] = 'true';
             }
+
+            //payment load data
+            $this->view_data['payment_events'] = PaymentEvent::find('all');
 
             $modules = array();
             $all_modules = ModuleManufacturer::all();

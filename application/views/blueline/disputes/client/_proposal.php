@@ -123,7 +123,7 @@ echo form_open($form_action, $attributes);
             <div class="input-group-addon">
                 %
             </div>
-            <input id="own_installment_percentage" maxlength="3" type="text" name="own_installment_percentage" class="integerInput form-control" value="100" required />
+            <input id="own_installment_percentage" maxlength="3" type="text" name="own_installment_percentage" class="integerInput form-control" value="<?php if($proposal->own_installment_percentage != null){echo $proposal->own_installment_percentage;}else{echo '0';}?>" required />
         </div>
     </div>
 
@@ -804,7 +804,7 @@ echo form_open($form_action, $attributes);
         <div class="input-group-addon">
             %
         </div>
-        <input id="dynamic_field_month" maxlength="2" type="text" name="dynamic_field_month" class="integerInput form-control" value="<?php /*if($proposal->direct_billing_percentage != null){echo $proposal->direct_billing_percentage;}else{echo '0';}*/?>" required />
+        <input id="dynamic_field_month" maxlength="2" type="text" name="month_percent[]" class="integerInput form-control" value="<?php /*if(count($months) > 0){echo $months[0];}else{echo '0';}*/?>" required />
     </div>
 </div>-->
 
@@ -819,10 +819,10 @@ echo form_open($form_action, $attributes);
             $('.modal').modal('hide');
         });
 
-        set_own_installment_percentage($('#direct_billing_percentage').val());
+        //set_own_installment_percentage($('#direct_billing_percentage').val());
         prepareUI();
 
-        /* Modal Algor */
+        /* Modal Algol */
 
         $(function() {
             $('.integerInput').on('input', function() {
@@ -844,6 +844,7 @@ echo form_open($form_action, $attributes);
         });
 
         $('#direct_billing_percentage').on('change paste',function(e){
+
             set_own_installment_percentage($(this).val())
         });
 
