@@ -288,14 +288,12 @@ class cDisputes extends MY_Controller {
             $_POST['value'] = str_replace('.', '', $_POST['value']);
             $_POST['value'] = str_replace(',', '.', $_POST['value']);
 
-
             /*- begin payment conditions code -*/
-
-
 
             $arr_installment_values = array();
 
             if ($_POST['own_installment_payment_trigger'] == 'per_month'){
+                unset($_POST['event']);
                 foreach ($_POST['month_percent'] as $month_percent){
                     if ($month_percent != '0'){
                         array_push($arr_installment_values, $month_percent);
@@ -309,7 +307,12 @@ class cDisputes extends MY_Controller {
                 }
             }
 
+            $arr_installment_values = array_slice($arr_installment_values, 0, $_POST['own_installment_quantity']); //values needs to store only the number of quantity filled
             $str_installment_values = implode(',', $arr_installment_values);
+
+            $arr_events = array_filter($_POST['event'], 'strlen');
+            $arr_events = array_slice($arr_events, 0, $_POST['own_installment_quantity']); //events needs to store only the number of quantity filled
+            $str_events = implode(',', $arr_events);
 
             unset($_POST['month_percent']);
             unset($_POST['event_percent']);
@@ -329,6 +332,7 @@ class cDisputes extends MY_Controller {
             $proposal->own_installment_payment_trigger = $_POST['own_installment_payment_trigger'];
             $proposal->own_installment_quantity = $_POST['own_installment_quantity'];
             $proposal->own_installment_values = $str_installment_values;
+            $proposal->own_installment_payment_events = $str_events;
 
             $proposal->save();
 
