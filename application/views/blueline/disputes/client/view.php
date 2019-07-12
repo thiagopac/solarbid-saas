@@ -62,12 +62,12 @@ if ($dispute->inactive == 'no') { ?>
                 <?php endif; ?>
 
                 <!--direct billing percentage and own installment percentage sum is higher than 100-->
-                <?php if($sum_values_direct_own != 100) : ?>
+                <?php if($sum_values_direct_own != 'equal') : ?>
                     <div id="label_n_participations" class="warned">
                         <i style="padding: 2px; color: #FFA500; font-size: 16px; vertical-align: middle" class="icon dripicons-warning"></i>
                         <span class="tag tag--orange">
-                            <?=$sum_values_direct_own > 100 ? $this->lang->line('application_direct_billing_and_own_installment_higher'):$this->lang->line('application_direct_billing_and_own_installment_lower');?>
-                    </span>
+                            <?=$this->lang->line('application_direct_billing_and_own_installment_incorrect_percentage') ;?>
+                        </span>
                     </div>
                 <?php endif; ?>
 
@@ -76,7 +76,7 @@ if ($dispute->inactive == 'no') { ?>
                     <div id="label_value_percent" class="warned">
                         <i style="padding: 2px; color: #FFA500; font-size: 16px; vertical-align: middle" class="icon dripicons-warning"></i>
                         <span class="tag tag--orange">
-                        <?=$this->lang->line("application_event_values_percent_$sum_values_percent");?>
+                        <?=$this->lang->line("application_event_values_percent_incorrect_percentage");?>
                     </span>
                     </div>
                 <?php endif; ?>
@@ -135,13 +135,13 @@ if ($dispute->inactive == 'no') { ?>
                         </div>
                         <?php if (!is_null($viewing_bid) && $viewing_bid->bid_sent == false && $out_of_date == false) : ?>
                             <?php if (in_array($plant->id, $plants_with_proposal) == false) : ?>
-                        <div class="right">
-                            <a class="price_plant btn btn-small" href="<?=base_url()?>cdisputes/createProposal/<?=$dispute->id;?>/<?=$viewing_bid->id;?>/<?=$plant->id;?>" data-toggle="mainmodal"><i class="icon glyphicon glyphicon glyphicon-usd"></i> <?=$this->lang->line('application_price_plant')?></a>
-                        </div>
+                                <div class="right">
+                                    <a class="price_plant btn btn-small" href="<?=base_url()?>cdisputes/createProposal/<?=$dispute->id;?>/<?=$viewing_bid->id;?>/<?=$plant->id;?>" data-toggle="mainmodal"><i class="icon glyphicon glyphicon glyphicon-usd"></i> <?=$this->lang->line('application_price_plant')?></a>
+                                </div>
                             <?php else: ?>
-                        <div class="right">
-                            <label class="tag tag--grey"> <?=$this->lang->line('application_price_done')?></label>
-                        </div>
+                                <div class="right">
+                                    <label class="tag tag--grey"> <?=$this->lang->line('application_price_done')?></label>
+                                </div>
                             <?php endif; ?>
                         <?php endif; ?>
                     </div>
@@ -150,7 +150,6 @@ if ($dispute->inactive == 'no') { ?>
                         <p><b><?=$this->lang->line('application_location_type')?>: </b><?=$this->lang->line("application_$plant->location_type")?></p>
                         <p><b><?=$this->lang->line('application_installation_location')?>: </b><?=$plant->installation_location;?></p>
                         <p><b><?=$this->lang->line('application_installation_location')?>: </b><a data-toggle='mainmodal' href=<?=base_url()."cdisputes/media/".$dispute->id."/".$plant->id?> > <?=$this->lang->line('application_click_to_view')?></a> </p>
-
                     </div>
 
                 </li>
@@ -173,6 +172,8 @@ if ($dispute->inactive == 'no') { ?>
                                 <div class="table-div">
                                     <table class="table noclick" id="proposals" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
                                         <thead>
+                                            <th width="1%">
+                                            </th>
                                             <th width="15%">
                                                 <?=$this->lang->line('application_plant');?>
                                             </th>
@@ -193,8 +194,11 @@ if ($dispute->inactive == 'no') { ?>
                                                 <tr id="<?=$proposal->id;?>">
                                                         <td>
                                                             <?php if (in_array($proposal->id, $arr_incorrect_proposals)) : ?>
-                                                                <i style="padding: 2px; color: #FFA500; font-size: 14px; vertical-align: middle" class="icon dripicons-warning"></i>
+                                                            <i style="padding: 2px; color: #FFA500; font-size: 14px; vertical-align: middle" class="icon dripicons-warning"></i>
                                                             <?php endif; ?>
+                                                        </td>
+
+                                                        <td>
                                                             <?=DisputeObjectHasPlant::plantNickname($proposal->plant_id);?>
                                                         </td>
                                                         <td>

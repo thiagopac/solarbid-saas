@@ -187,6 +187,7 @@ class Clients extends MY_Controller
             case 'create':
             if ($_POST) {
                 unset($_POST['send']);
+                $_POST["city"] = substr($_POST["city"], 0, -3);
 
                 $company = Company::create($_POST);
                 $companyid = Company::last();
@@ -195,8 +196,6 @@ class Clients extends MY_Controller
                 if (!$adminExists) {
                     $addUserAsClientAdmin = CompanyHasAdmin::create($attributes);
                 }
-
-                $_POST["city"] = substr($_POST["city"], 0, -3);
 
                 $new_company_reference = $_POST['reference'] + 1;
                 $company_reference = Setting::first();

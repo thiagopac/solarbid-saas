@@ -72,8 +72,8 @@ class cDisputes extends MY_Controller {
         $viewing_bid = $this->view_data['viewing_bid'] = $all_bids_in_dispute[count($all_bids_in_dispute)-1];
 
         $sum_values_percent = 'equal';
-        $sum_values_direct_own = '100';
-        $at_least_one_wrong_percent = true;
+        $sum_values_direct_own = 'equal';
+        $at_least_one_wrong_percent = false;
         $arr_incorrect_proposals = array();
 
         foreach ($viewing_bid->bid_has_proposals as $proposal){
@@ -81,15 +81,19 @@ class cDisputes extends MY_Controller {
 
             if ($arr_values_sum > 100){
                 $sum_values_percent = 'higher';
+                $at_least_one_wrong_percent = true;
             }else if ($arr_values_sum < 100){
                 $sum_values_percent = 'lower';
-            }else if ($arr_values_sum == 100){
-                $sum_values_percent = 'equal';
+                $at_least_one_wrong_percent = true;
             }
 
-            $sum_values_direct_own = ($proposal->direct_billing_percentage + $proposal->own_installment_percentage);
+            if ($proposal->direct_billing_percentage + $proposal->own_installment_percentage > 100){
+                $sum_values_direct_own = 'higher';
+            }else if($proposal->direct_billing_percentage + $proposal->own_installment_percentage < 100){
+                $sum_values_direct_own = 'lower';
+            }
 
-            if ($sum_values_direct_own > 100 || $arr_values_sum > 100){
+            if ($proposal->direct_billing_percentage + $proposal->own_installment_percentage != 100 || $arr_values_sum != 100){
                 array_push($arr_incorrect_proposals, $proposal->id);
                 $at_least_one_wrong_percent = true;
             }

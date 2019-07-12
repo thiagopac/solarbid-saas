@@ -1238,7 +1238,5 @@ $lang['application_event_bill_compensate_credits'] = 'Compensação dos crédito
 $lang['application_percentage_event'] = 'Porcentagem do evento';
 $lang['application_select_event'] = 'Selecione o evento';
 
-$lang['application_event_values_percent_higher'] = 'As porcentagens das parcelas ultrapassam 100%';
-$lang['application_event_values_percent_lower'] = 'As porcentagens das parcelas não atingiram 100%';
-$lang['application_direct_billing_and_own_installment_higher'] = 'A valor do Faturamento Direto e Parcelamento Próprio ultrapassa 100%';
-$lang['application_direct_billing_and_own_installment_lower'] = 'A valor do Faturamento Direto e Parcelamento Próprio não atingiu 100%';
+$lang['application_event_values_percent_incorrect_percentage'] = 'Verifique o valor das porcentagens das parcelas, elas precisam somar 100%';
+$lang['application_direct_billing_and_own_installment_incorrect_percentage'] = 'Verifique o valor da porcentagem do Faturamento Direto e/ou Parcelamento Próprio, eles precisam somar 100%';
