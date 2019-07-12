@@ -216,7 +216,7 @@ if ($dispute->inactive == 'no') { ?>
                                                             <?php if (in_array($proposal->id, $arr_incorrect_proposals)) : ?>
                                                                 <i title="<?=$this->lang->line('application_incorrect_fields_in_proposal')?>" style="color: #FFA500; font-size: 16px; vertical-align: middle" class="icon dripicons-warning"></i>
                                                             <?php else : ?>
-                                                                <i title="<?=$this->lang->line('application_valid_proposal')?>" style="color: green; font-size: 16px; vertical-align: middle" class="icon dripicons-checkmark"></i>
+                                                                <i title="<?=$this->lang->line('application_valid_proposal')?>" style="color: green; font-size: 16px; vertical-align: middle" class="icon glyphicon glyphicon-ok"></i>
                                                             <?php endif; ?>
 
                                                         </td>
