@@ -73,18 +73,30 @@ class cDisputes extends MY_Controller {
 
         $sum_values_percent = 'equal';
         $sum_values_direct_own = 'equal';
-        $at_least_one_wrong_percent = false;
+        $at_least_one_wrong_proposal_field = false;
         $arr_incorrect_proposals = array();
+        $modules_exceeded = false;
+        $inverters_exceeded = false;
 
         foreach ($viewing_bid->bid_has_proposals as $proposal){
             $arr_values_sum = array_sum(explode(',',$proposal->own_installment_values));
+            $qty_modules = count(explode(',',$proposal->module_brands));
+            $qty_inverters = count(explode(',',$proposal->inverter_brands));
+
+            if ($qty_modules > 3){
+                $modules_exceeded = true;
+            }
+
+            if ($qty_inverters > 3){
+                $inverters_exceeded = true;
+            }
 
             if ($arr_values_sum > 100){
                 $sum_values_percent = 'higher';
-                $at_least_one_wrong_percent = true;
+                $at_least_one_wrong_proposal_field = true;
             }else if ($arr_values_sum < 100){
                 $sum_values_percent = 'lower';
-                $at_least_one_wrong_percent = true;
+                $at_least_one_wrong_proposal_field = true;
             }
 
             if ($proposal->direct_billing_percentage + $proposal->own_installment_percentage > 100){
@@ -93,16 +105,18 @@ class cDisputes extends MY_Controller {
                 $sum_values_direct_own = 'lower';
             }
 
-            if ($proposal->direct_billing_percentage + $proposal->own_installment_percentage != 100 || $arr_values_sum != 100){
+            if ($proposal->direct_billing_percentage + $proposal->own_installment_percentage != 100 || $arr_values_sum != 100 || $qty_modules > 3 || $qty_inverters > 3){
                 array_push($arr_incorrect_proposals, $proposal->id);
-                $at_least_one_wrong_percent = true;
+                $at_least_one_wrong_proposal_field = true;
             }
         }
 
         $this->view_data['sum_values_direct_own'] = $sum_values_direct_own;
         $this->view_data['sum_values_percent'] = $sum_values_percent;
-        $this->view_data['at_least_one_wrong_percent'] = $at_least_one_wrong_percent;
+        $this->view_data['at_least_one_wrong_proposal_field'] = $at_least_one_wrong_proposal_field;
         $this->view_data['arr_incorrect_proposals'] = $arr_incorrect_proposals;
+        $this->view_data['modules_exceeded'] = $modules_exceeded;
+        $this->view_data['inverters_exceeded'] = $inverters_exceeded;
 
 
         $plants_with_proposal = array();

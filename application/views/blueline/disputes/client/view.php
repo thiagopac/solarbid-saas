@@ -61,9 +61,29 @@ if ($dispute->inactive == 'no') { ?>
                 </div>-->
                 <?php endif; ?>
 
+                <!--modules brands exceeded 3-->
+                <?php if($modules_exceeded != false) : ?>
+                    <div id="" class="warned">
+                        <i style="padding: 2px; color: #FFA500; font-size: 16px; vertical-align: middle" class="icon dripicons-warning"></i>
+                        <span class="tag tag--orange">
+                            <?=$this->lang->line('application_modules_maximum_limit_exceeded') ;?>
+                        </span>
+                    </div>
+                <?php endif; ?>
+
+                <!--modules brands exceeded 3-->
+                <?php if($inverters_exceeded != false) : ?>
+                    <div id="" class="warned">
+                        <i style="padding: 2px; color: #FFA500; font-size: 16px; vertical-align: middle" class="icon dripicons-warning"></i>
+                        <span class="tag tag--orange">
+                            <?=$this->lang->line('application_inverters_maximum_limit_exceeded') ;?>
+                        </span>
+                    </div>
+                <?php endif; ?>
+
                 <!--direct billing percentage and own installment percentage sum is higher than 100-->
                 <?php if($sum_values_direct_own != 'equal') : ?>
-                    <div id="label_n_participations" class="warned">
+                    <div id="" class="warned">
                         <i style="padding: 2px; color: #FFA500; font-size: 16px; vertical-align: middle" class="icon dripicons-warning"></i>
                         <span class="tag tag--orange">
                             <?=$this->lang->line('application_direct_billing_and_own_installment_incorrect_percentage') ;?>
@@ -194,8 +214,11 @@ if ($dispute->inactive == 'no') { ?>
                                                 <tr id="<?=$proposal->id;?>">
                                                         <td>
                                                             <?php if (in_array($proposal->id, $arr_incorrect_proposals)) : ?>
-                                                            <i style="padding: 2px; color: #FFA500; font-size: 14px; vertical-align: middle" class="icon dripicons-warning"></i>
+                                                                <i title="<?=$this->lang->line('application_incorrect_fields_in_proposal')?>" style="color: #FFA500; font-size: 16px; vertical-align: middle" class="icon dripicons-warning"></i>
+                                                            <?php else : ?>
+                                                                <i title="<?=$this->lang->line('application_valid_proposal')?>" style="color: green; font-size: 16px; vertical-align: middle" class="icon dripicons-checkmark"></i>
                                                             <?php endif; ?>
+
                                                         </td>
 
                                                         <td>
@@ -304,7 +327,7 @@ if ($dispute->inactive == 'no') { ?>
                 <?php endif; ?>
 
                 <!-- Qty of plants equal number of proposals -->
-                <?php if (count($dispute->dispute_object->dispute_object_has_plants) == count($viewing_bid->bid_has_proposals) && $viewing_bid->bid_sent == "no" && $out_of_date == false && $at_least_one_wrong_percent == false) : ?>
+                <?php if (count($dispute->dispute_object->dispute_object_has_plants) == count($viewing_bid->bid_has_proposals) && $viewing_bid->bid_sent == "no" && $out_of_date == false && $at_least_one_wrong_proposal_field == false) : ?>
                 <!-- Send Proposal -->
                 <div class="form-header el_send_proposal_dispute padding-left-25" style="padding-left: 25px;"><?=$this->lang->line('application_all_proposal_plants_filled')?></div>
                 <div id="el_send_proposal_dispute" class="row">
