@@ -43,7 +43,7 @@ echo form_open($form_action, $attributes);
 
     <div class="form-group">
         <label for="modules_arr">
-            <?=$this->lang->line('application_module_manufacturers');?> *
+            <?=$this->lang->line('application_module_manufacturers');?> * <small>(<?=$this->lang->line('application_choose_max_brands');?>)</small>
         </label>
         <?php
         $options = array();
@@ -67,7 +67,7 @@ echo form_open($form_action, $attributes);
 
     <div class="form-group">
         <label for="inverters_arr">
-            <?=$this->lang->line('application_inverter_manufacturers');?> *
+            <?=$this->lang->line('application_inverter_manufacturers');?> * <small>(<?=$this->lang->line('application_choose_max_brands');?>)</small>
         </label>
         <?php
         $options = array();

@@ -1244,3 +1244,5 @@ $lang['application_incorrect_fields_in_proposal'] = 'Você preencheu campos inco
 $lang['application_valid_proposal'] = 'Esta proposta é válida';
 $lang['application_modules_maximum_limit_exceeded'] = 'Você selecionou mais de 3 marcas de módulos';
 $lang['application_inverters_maximum_limit_exceeded'] = 'Você selecionou mais de 3 marcas de inversores';
+
+$lang['application_choose_max_brands'] = 'Escolha no máximo 3 marcas';
