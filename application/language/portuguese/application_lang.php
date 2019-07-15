@@ -1240,7 +1240,7 @@ $lang['application_select_event'] = 'Selecione o evento';
 
 $lang['application_event_values_percent_incorrect_percentage'] = 'Verifique o valor das porcentagens das parcelas, elas precisam somar 100%';
 $lang['application_direct_billing_and_own_installment_incorrect_percentage'] = 'Verifique o valor da porcentagem do Faturamento Direto e/ou Parcelamento Próprio, eles precisam somar 100%';
-$lang['application_incorrect_fields_in_proposal'] = 'Você preencheu campos incorretamente nesta precificação';
+$lang['application_incorrect_fields_in_proposal'] = 'Verifique as mensagens de alerta no cabeçalho deste Certame';
 $lang['application_valid_proposal'] = 'Esta proposta é válida';
 $lang['application_modules_maximum_limit_exceeded'] = 'Você selecionou mais de 3 marcas de módulos';
 $lang['application_inverters_maximum_limit_exceeded'] = 'Você selecionou mais de 3 marcas de inversores';
