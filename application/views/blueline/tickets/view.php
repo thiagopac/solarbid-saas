@@ -54,16 +54,6 @@
     } else {
         echo '-';
     } ?></li>
-
-				<li><span><?=$this->lang->line('application_project');?></span> <?php if (is_object($ticket->project)) {
-        ?>
-					<a href="<?=base_url(); ?>projects/view/<?=$ticket->project_id?>" class="label label-info"><?=$ticket->project->name; ?></a>
-					<?php
-    } else {
-        echo '-';
-    } ?>
-				</li>
-				
 				</ul>
 
 			

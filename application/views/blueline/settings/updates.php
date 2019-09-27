@@ -124,14 +124,6 @@
                     } ?>
 				</table>
 
-				<?php if ($supported == null) {
-                        ?>
-				<div class='alert alert-warning'>Your support has been expired.
-					<a href="http://codecanyon.net/item/freelance-cockpit-2-project-management/4203727" target="_blank">Please renew your support.</a>
-				</div>
-				<?php
-                    } ?>
-
 			</div>
 		</div>
 	</div>

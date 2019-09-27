@@ -863,7 +863,6 @@ $lang['application_notifications_cronjob'] = 'Notifications Cronjob';
 $lang['application_notification_cronjob_help'] = 'Enable this cronjob in order to activate notification emails like lead reminders etc.';
 $lang['application_last_reply'] = 'Last reply';
 
-$lang['application_thanks_for_chosing_FC'] = 'Thank you for chosing Freelance Cockpit!';
 $lang['application_the_first_steps_to_setup'] = 'This guide will help you to setup your personal settings.';
 $lang['application_welcome'] = 'Welcome';
 $lang['application_later'] = 'Later';

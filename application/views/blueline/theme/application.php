@@ -56,6 +56,8 @@ $message_icon = false;
     <link rel="stylesheet" href="<?=base_url()?>assets/blueline/css/user.css" rel="stylesheet" />
     <link rel="stylesheet" href="<?=base_url()?>assets/blueline/css/important.css" />
     <link rel="stylesheet" href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css">
+    <link rel="stylesheet" href="<?=base_url()?>assets/blueline/css/line-awesome.min.css">
+
     <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">-->
 
     <?=get_theme_colors($core_settings);?>
@@ -339,22 +341,15 @@ $message_icon = false;
 
     <!-- Js Files -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.8.3/apexcharts.min.js"></script>
 
     <!--    <script type="text/javascript" src="https://diagramclub.github.io/js/app.js"></script>-->
     <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/app.js"></script>
-    <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/important.js"></script>
-    <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/utils.js"></script>
-    <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/jquery.mask.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.25/moment-timezone.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.25/moment-timezone-with-data.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.25/moment-timezone-utils.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/pt-br.js"></script>
-    <script type="text/javascript" src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-confirmation/1.0.7/bootstrap-confirmation.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+
+<!--    <script type="text/javascript" src="--><?//=base_url()?><!--assets/blueline/js/important.js"></script>-->
+<!--    <script type="text/javascript" src="--><?//=base_url()?><!--assets/blueline/js/utils.js"></script>-->
+<!--    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>-->
 
     <script>
         flatdatepicker(false, langshort);

@@ -47,21 +47,6 @@ if(isset($ticket)){ ?>
         echo form_dropdown('user_id', $options, $user, 'style="width:100%" class="chosen-select"');?>
 </div> 
 
-  <div class="form-group">
-        <label for="project"><?=$this->lang->line('application_projects');?></label>
-        <select name="project_id" id="getProjects" style="width:100%" class="chosen-select">
-            <option value="0">-</option>
-            <?php foreach ($companies as $comp): ?>
-                <optgroup label="<?=$comp->name?>" id="optID_<?=$comp->id?>"    >
-                  <?php foreach ($comp->projects as $pro): ?>
-                    <option value="<?=$pro->id?>" <?php if($project == $pro->id){ ?>selected="selected"<?php } ?>><?=$pro->name?></option>
-                    <?php endforeach; ?>
-                </optgroup>
-           <?php endforeach; ?>
-        </select>
-
- </div> 
-
  <div class="form-group">
         <label for="subject"><?=$this->lang->line('application_subject');?> *</label>
         <input id="subject" type="text" name="subject" class="form-control" value="<?php if(isset($ticket)){echo $ticket->subject;} ?>"  required/>

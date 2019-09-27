@@ -1,6 +1,4 @@
-
-				
-				.btn-danger {
+.btn-danger {
     background: #f0284a !important;
 }
 
@@ -138,4 +136,60 @@
 
 .dashboard-label {
     width: 60px !important;
+}
+
+.box-shadow {
+    border: 1px #e9ecef solid !important;
+	-webkit-box-shadow: 1px 1px 4px rgba(255, 255, 255, 0.11), 1px 1px 3px rgba(0,0,0,.08);
+    box-shadow: 1px 1px 4px rgba(255, 255, 255, 0.11), 1px 1px 3px rgba(0,0,0,.08);
+}
+
+.table-head {
+    line-height: 46px;
+    height: 46px;
+    padding: 0 15px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: .6px;
+    text-transform: none !important;
+    font-family: Montserrat,Helvetica,Arial,sans-serif !important;
+    color: #3e5569 !important;
+}
+
+.box-shadow .table-head {
+    border-radius: 6px 6px 0 0 !important;
+}
+
+.table-head, #main .action-bar, #message .header, .form-header, .notification-center__header a.active {
+    box-shadow: 0 -4px 0 0 #edeff1 inset !important;
+}
+
+.box-shadow {
+    border-radius: 6px;
+}
+
+.stats-icon {
+    vertical-align: middle;
+    margin-left: -5px;
+    margin-right: 10px;
+}
+
+.stats-label {
+    margin-top: 2px;
+    font-size: 14px;
+    font-weight: lighter;
+    color: #888;
+}
+
+.stats-number {
+    font-size: 18px;
+    font-weight: 100;
+    color: #555;
+}
+
+.stats-separator {
+    border: 0.5px dashed #dadada !important;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 30px;
 }

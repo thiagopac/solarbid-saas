@@ -1,4 +1,4 @@
-/*! X-editable - v1.5.1 
+/*! X-editable - v1.5.1
 * In-place editing with Twitter Bootstrap, jQuery UI or pure jQuery
 * http://github.com/vitalets/x-editable
 * Copyright (c) 2013 Vitaliy Potapov; Licensed MIT */
@@ -12,8 +12,8 @@
   line-height: 20px; /* overwriting bootstrap line-height. See #133 */
 }
 
-/* 
-  BS3 width:1005 for inputs breaks editable form in popup 
+/*
+  BS3 width:1005 for inputs breaks editable form in popup
   See: https://github.com/vitalets/x-editable/issues/393
 */
 .editableform .form-control {

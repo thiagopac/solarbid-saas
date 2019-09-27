@@ -8,7 +8,6 @@ class Ticket extends ActiveRecord\Model
      ['user'],
      ['queue'],
      ['type'],
-     ['project'],
   ];
 
     public static $has_many = [

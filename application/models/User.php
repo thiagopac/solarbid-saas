@@ -5,11 +5,7 @@ class User extends ActiveRecord\Model
     public static $has_many = [
          ['company_has_admins'],
          ['tickets'],
-         ['project_has_workers'],
          ['companies', 'through' => 'company_has_admins'],
-         ['projects', 'through' => 'project_has_workers'],
-         ['project_has_tasks'],
-         ['project_has_timesheets'],
          ['notifications'],
     ];
     public static $belongs_to = [

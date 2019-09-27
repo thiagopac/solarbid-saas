@@ -50,6 +50,7 @@ $message_icon = false;
     <link rel="stylesheet" href="<?=base_url()?>assets/blueline/css/app.css" />
     <link rel="stylesheet" href="<?=base_url()?>assets/blueline/css/user.css" />
     <link rel="stylesheet" href="<?=base_url()?>assets/blueline/css/important.css" />
+    <link rel="stylesheet" href="<?=base_url()?>assets/blueline/css/line-awesome.min.css">
     <?=get_theme_colors($core_settings);?>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -212,6 +213,8 @@ $message_icon = false;
     <div class="modal fade" id="mainModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="mainModalLabel" aria-hidden="true"></div>
 
     <!-- Js Files -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.8.3/apexcharts.min.js"></script>
 
     <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/app.js"></script>
     <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/important.js"></script>

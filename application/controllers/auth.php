@@ -16,7 +16,6 @@ class Auth extends MY_Controller
 			    $response = $_POST['g-recaptcha-response'];     
 			    $remoteIp = $_SERVER['REMOTE_ADDR'];
 
-
 			    $reCaptchaValidationUrl = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$response&remoteip=$remoteIp");
 			    $result = json_decode($reCaptchaValidationUrl, TRUE);
 
@@ -34,7 +33,7 @@ class Auth extends MY_Controller
 				if($this->input->cookie('bidbox_link') != ""){
 					redirect($this->input->cookie('bidbox_link'));
 				}else{
-					redirect('');
+					redirect('cdashboard');
 				}
 			}
 			else {
@@ -73,7 +72,7 @@ class Auth extends MY_Controller
  
 		$this->input->set_cookie($cookie);
 		}
-		redirect(''); 
+		redirect('');
 	}
 	
 }

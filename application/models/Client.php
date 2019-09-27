@@ -59,10 +59,6 @@ class Client extends ActiveRecord\Model
         return in_array($module->id, $access);
     }
 
-    public static $has_many = [
-    ['projects','dispute_has_bids']
-    ];
-
     public static $belongs_to = [
     ['company']
     ];

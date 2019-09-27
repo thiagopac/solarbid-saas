@@ -60,8 +60,8 @@ class Api extends MY_Controller {
 		define('DATE_ICAL', 'Ymd\THis');
 		
 		$output = "BEGIN:VCALENDAR\r\n" .
-		"VERSION:2.0\r\n" .
-		"PRODID:FreelanceCockpit\r\n" .
+		"VERSION:1.0\r\n" .
+		"PRODID:SolarbidBidbox\r\n" .
 		"CALSCALE:GREGORIAN\r\n" .
 		"X-WR-TIMEZONE:".date_default_timezone_get()."\r\n" .
 		"METHOD:PUBLISH\r\n";
