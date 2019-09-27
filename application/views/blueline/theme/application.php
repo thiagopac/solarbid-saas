@@ -340,16 +340,8 @@ $message_icon = false;
     <div class="modal fade" id="mainModal" data-easein="flipXIn" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="mainModalLabel" aria-hidden="true"></div>
 
     <!-- Js Files -->
-
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.8.3/apexcharts.min.js"></script>
-
-    <!--    <script type="text/javascript" src="https://diagramclub.github.io/js/app.js"></script>-->
     <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/app.js"></script>
-
-<!--    <script type="text/javascript" src="--><?//=base_url()?><!--assets/blueline/js/important.js"></script>-->
-<!--    <script type="text/javascript" src="--><?//=base_url()?><!--assets/blueline/js/utils.js"></script>-->
-<!--    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>-->
 
     <script>
         flatdatepicker(false, langshort);
