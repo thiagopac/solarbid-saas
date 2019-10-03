@@ -1,7 +1,9 @@
 <?php
 
-class Client extends ActiveRecord\Model
-{
+class Client extends ActiveRecord\Model{
+
+    static $table_name = 'client';
+
     public $password = false;
 
     public function before_save()

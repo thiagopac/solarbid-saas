@@ -237,8 +237,8 @@ body{
         </tr> 
         <tr>
             <td style="vertical-align:top"><?=$core_settings->invoice_contact;?></td>
-            <td class="right" style="vertical-align:top"><strong><?php if (is_object($invoice->company->client)) {
-        ?> <?=$invoice->company->client->firstname; ?> <?=$invoice->company->client->lastname; ?></strong><?php
+            <td class="right" style="vertical-align:top"><strong><?php if (is_object($invoice->company->clients)) {
+        ?> <?=$invoice->company->clients->firstname; ?> <?=$invoice->company->clients->lastname; ?></strong><?php
     } ?></td>
         </tr>
         <tr>

@@ -231,16 +231,13 @@ body{
   <div>  
   <p class="recipient-address">
   <strong><?=$invoice->company->name;?></strong><br />
-<?php if(is_object($invoice->company->client)){ ?> <?=$invoice->company->client->firstname;?> <?=$invoice->company->client->lastname;?> <br><?php } ?>
+<?php if(is_object($invoice->company->clients)){ ?> <?=$invoice->company->clients->firstname;?> <?=$invoice->company->clients->lastname;?> <br><?php } ?>
 <?=$invoice->company->address;?><br>
 <?=$invoice->company->city;?><br>
 <?=$invoice->company->zipcode;?>
 <?php if($invoice->company->state != ""){?>
 <br><?=$invoice->company->state;?>
 <?php } ?>
-<?php if($invoice->company->vat != ""){?>
-<br><?=$this->lang->line('application_vat');?>: <?php echo $invoice->company->vat; ?>
-      <?php } ?>
 </p>
 
 

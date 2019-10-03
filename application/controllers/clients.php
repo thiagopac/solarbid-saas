@@ -192,9 +192,9 @@ class Clients extends MY_Controller
                 $company = Company::create($_POST);
                 $companyid = Company::last();
                 $attributes = ['company_id' => $companyid->id, 'user_id' => $this->user->id];
-                $adminExists = CompanyHasAdmin::exists($attributes);
+                $adminExists = CompanyAdmin::exists($attributes);
                 if (!$adminExists) {
-                    $addUserAsClientAdmin = CompanyHasAdmin::create($attributes);
+                    $addUserAsClientAdmin = CompanyAdmin::create($attributes);
                 }
 
                 $new_company_reference = $_POST['reference'] + 1;
@@ -241,9 +241,9 @@ class Clients extends MY_Controller
                 $company = Company::create($company_data);
                 $companyid = Company::last();
                 $attributes = ['company_id' => $companyid->id, 'user_id' => $this->user->id];
-                $adminExists = CompanyHasAdmin::exists($attributes);
+                $adminExists = CompanyAdmin::exists($attributes);
                 if (!$adminExists) {
-                    $addUserAsClientAdmin = CompanyHasAdmin::create($attributes);
+                    $addUserAsClientAdmin = CompanyAdmin::create($attributes);
                 }
                 $client_data = [
                                         'company_id' => $companyid->id,
@@ -350,12 +350,12 @@ class Clients extends MY_Controller
             $id = addslashes($_POST['id']);
             $company = Company::find_by_id($id);
 
-            $users_query = $company->company_has_admins;
+            $users_query = $company->company_admin;
             $still_assigned_users = [];
             //remove unselected users
             foreach ($users_query as $value) {
                 if (!in_array($value->user_id, $_POST['user_id'])) {
-                    $delete = CompanyHasAdmin::find_by_id($value->id);
+                    $delete = CompanyAdmin::find_by_id($value->id);
                     $delete->delete();
                 } else {
                     array_push($still_assigned_users, $value->user_id);
@@ -365,7 +365,7 @@ class Clients extends MY_Controller
             foreach ($_POST['user_id'] as $value) {
                 if (!in_array($value, $still_assigned_users)) {
                     $attributes = ['company_id' => $id, 'user_id' => $value];
-                    $create = CompanyHasAdmin::create($attributes);
+                    $create = CompanyAdmin::create($attributes);
                 }
             }
 
@@ -387,7 +387,7 @@ class Clients extends MY_Controller
 
     public function removeassigned($id = false, $companyid = false)
     {
-        $delete = CompanyHasAdmin::find(['conditions' => ['user_id = ? AND company_id = ?', $id, $companyid]]);
+        $delete = CompanyAdmin::find(['conditions' => ['user_id = ? AND company_id = ?', $id, $companyid]]);
         $delete->delete();
         $this->theme_view = 'ajax';
     }

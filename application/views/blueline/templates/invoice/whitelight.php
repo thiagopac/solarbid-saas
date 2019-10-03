@@ -243,8 +243,8 @@ body{
             <td class="right" style="vertical-align:top"></td>
         </tr> 
         <tr>
-            <td style="vertical-align:top"><strong><?php if (isset($invoice->company->client->firstname)) {
-        ?> <?=$invoice->company->client->firstname; ?> <?=$invoice->company->client->lastname; ?></strong><?php
+            <td style="vertical-align:top"><strong><?php if (isset($invoice->company->clients->firstname)) {
+        ?> <?=$invoice->company->clients->firstname; ?> <?=$invoice->company->clients->lastname; ?></strong><?php
     } ?></td>
             <td class="right" style="vertical-align:top"></td>
         </tr>

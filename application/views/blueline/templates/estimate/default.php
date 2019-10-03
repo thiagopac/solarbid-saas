@@ -212,7 +212,7 @@ body{
         </tr> 
         <tr>
             <td style="vertical-align:top"><?=$core_settings->invoice_contact;?></td>
-            <td class="right" style="vertical-align:top"><strong><?php if(is_object($estimate->company->client)){ ?> <?=$estimate->company->client->firstname;?> <?=$estimate->company->client->lastname;?></strong><?php } ?></td>
+            <td class="right" style="vertical-align:top"><strong><?php if(is_object($estimate->company->clients)){ ?> <?=$estimate->company->clients->firstname;?> <?=$estimate->company->clients->lastname;?></strong><?php } ?></td>
         </tr>
         <tr>
             <td style="vertical-align:top"><?=$core_settings->invoice_address;?></td>

@@ -1,11 +1,13 @@
 <?php
 
-class User extends ActiveRecord\Model
-{
+class User extends ActiveRecord\Model {
+
+    static $table_name = 'user';
+
     public static $has_many = [
-         ['company_has_admins'],
+         ['company_admin'],
          ['tickets'],
-         ['companies', 'through' => 'company_has_admins'],
+         ['companies', 'through' => 'company_admin'],
          ['notifications'],
     ];
     public static $belongs_to = [
@@ -36,8 +38,8 @@ class User extends ActiveRecord\Model
     public function department_has_user($department_name, $user)
     {
         $department = Department::find('first', ['conditions' => ['name = ?', $department_name]]);
-        $department_has_workers = DepartmentHasWorker::find('all', ['conditions' => ['department_id = ? AND user_id = ?', $department->id, $user->id]]);
-        return count($department_has_workers) == 0 ? false : true;
+        $department_worker = DepartmentWorker::find('all', ['conditions' => ['department_id = ? AND user_id = ?', $department->id, $user->id]]);
+        return count($department_worker) == 0 ? false : true;
     }
 
     public function getSalt()

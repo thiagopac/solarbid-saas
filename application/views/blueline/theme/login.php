@@ -2,7 +2,7 @@
 /**
  * @file        Login View
  * @author      Thiago Pires
- * @copyright   Ownergy Solar
+ * @copyright   Solarbid
  * @version     1.x.x
  */
 ?>

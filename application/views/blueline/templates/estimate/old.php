@@ -219,7 +219,7 @@ body{
   <div>  
   <p class="recipient-address">
   <strong><?=$estimate->company->name;?></strong><br />
-<?php if(is_object($estimate->company->client)){ ?> <?=$estimate->company->client->firstname;?> <?=$estimate->company->client->lastname;?> <br><?php } ?>
+<?php if(is_object($estimate->company->clients)){ ?> <?=$estimate->company->clients->firstname;?> <?=$estimate->company->clients->lastname;?> <br><?php } ?>
 <?=$estimate->company->address;?><br>
 <?=$estimate->company->city;?><br>
 <?=$estimate->company->zipcode;?>

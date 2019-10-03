@@ -1,7 +1,8 @@
 <?php
 
 class ClientNotification extends ActiveRecord\Model {
-	static $table_name = 'client_notifications';
+
+	static $table_name = 'client_notification';
 	
 	static $belongs_to = array(
      array('client')

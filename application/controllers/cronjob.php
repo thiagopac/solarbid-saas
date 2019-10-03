@@ -132,11 +132,11 @@ class Cronjob extends MY_Controller
 
         log_message('error', '[cronjob][' . $subscription_count . '] PDF for invoice ' . $core_settings->invoice_prefix . $invoice->reference . ' has been created and is ready to be sent out!');
 
-        if (is_object($invoice->company) && is_object($invoice->company->client) && $invoice->company->client->email != '') {
+        if (is_object($invoice->company) && is_object($invoice->company->clients) && $invoice->company->clients->email != '') {
             //Set parse values for Email
             $due_date = date($core_settings->date_format, human_to_unix($data['invoice']->due_date . ' 00:00:00'));
             $parse_data = [
-                                'client_contact' => $data['invoice']->company->client->firstname . ' ' . $data['invoice']->company->client->lastname,
+                                'client_contact' => $data['invoice']->company->clients->firstname . ' ' . $data['invoice']->company->clients->lastname,
                                 'client_company' => $data['invoice']->company->name,
                                 'balance' => display_money($data['invoice']->outstanding, $data['invoice']->currency),
                                 'due_date' => $due_date,
@@ -152,7 +152,7 @@ class Cronjob extends MY_Controller
 
             //email
             $this->email->from($core_settings->email, $core_settings->company);
-            $this->email->to($data['invoice']->company->client->email);
+            $this->email->to($data['invoice']->company->clients->email);
             $this->email->subject($mail_subject);
             $this->email->attach('files/temp/' . $filename . '.pdf');
 
@@ -162,7 +162,7 @@ class Cronjob extends MY_Controller
             if (!$this->email->send()) {
                 log_message('error', '[cronjob][' . $subscription_count . '] ERROR Invoice email ' . $core_settings->invoice_prefix . $invoice->reference . ' could not be sent!');
             } else {
-                log_message('error', '[cronjob][' . $subscription_count . '] Invoice email ' . $core_settings->invoice_prefix . $invoice->reference . ' was sent to ' . $data['invoice']->company->client->email . ' successfully!');
+                log_message('error', '[cronjob][' . $subscription_count . '] Invoice email ' . $core_settings->invoice_prefix . $invoice->reference . ' was sent to ' . $data['invoice']->company->clients->email . ' successfully!');
                 $data['invoice']->update_attributes(['status' => 'Sent', 'sent_date' => date('Y-m-d')]);
             }
         } else {

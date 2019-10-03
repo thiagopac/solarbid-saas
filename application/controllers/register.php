@@ -68,7 +68,7 @@ class Register extends MY_Controller
                 if ($client) {
                     $client->password = $client->set_password($_POST['password']);
                     $client->save();
-                    $company->client_id = $client->id;
+                    $company->clients_id = $client->id;
                     $company->save();
 
                     $this->email->from($core_settings->email, $core_settings->company);

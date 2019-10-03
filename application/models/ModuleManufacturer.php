@@ -2,6 +2,6 @@
 
 class ModuleManufacturer extends ActiveRecord\Model {
 
-    static $table_name = 'module_manufacturers';
+    static $table_name = 'module_manufacturer';
 
 }

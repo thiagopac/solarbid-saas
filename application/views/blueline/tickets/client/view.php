@@ -16,8 +16,8 @@
 	
 				<li><span><?=$this->lang->line('application_ticket_number');?></span> #<?=$ticket->reference;?></li>
 				<li><span><?=$this->lang->line('application_status');?></span> <span class="label <?php echo $lable; ?>"><?=$this->lang->line('application_ticket_status_' . $ticket->status);?></span></li>
-				<li><span><?=$this->lang->line('application_type');?></span> <?php if (is_object($ticket->type)) {
-    ?><?=$ticket->type->name; ?> <?php
+				<li><span><?=$this->lang->line('application_type');?></span> <?php if (is_object($ticket->ticket_type)) {
+    ?><?=$ticket->ticket_type->name; ?> <?php
 } ?></li>
 				<li><span><?=$this->lang->line('application_from');?></span> <?php if (is_object($ticket->client)) {
         echo '<a class="tt" title="' . $ticket->client->email . '">' . $ticket->client->firstname . ' ' . $ticket->client->lastname . '</a>';
@@ -144,10 +144,10 @@
 			 		<div class="article-body">
 			 		<?php $text = preg_replace('#(^\w.+:\n)?(^>.*(\n|$))+#mi', '', $value->message); echo $text;?>
 
-			 		<?php if (isset($value->article_has_attachments[0])) {
+			 		<?php if (isset($value->article_attachment[0])) {
                     echo '<hr>';
                 } ?>
-			 		<?php foreach ($value->article_has_attachments as $attachments):  ?>
+			 		<?php foreach ($value->article_attachment as $attachments):  ?>
 			 				<a class="label label-success" href="<?=base_url()?>ctickets/articleattachment/<?php echo $attachments->savename; ?>"><?php echo $attachments->filename; ?></a>
 			 		<?php endforeach;?>
 
@@ -180,10 +180,10 @@
 					 <div class="article-body">
 						<?=$ticket->text;?>
 					</div>
-						<?php if (isset($ticket->ticket_has_attachments[0])) {
+						<?php if (isset($ticket->ticket_attachment[0])) {
                     echo '<hr>';
                 } ?>
-						<?php foreach ($ticket->ticket_has_attachments as $ticket_attachments):
+						<?php foreach ($ticket->ticket_attachment as $ticket_attachments):
                             $mime = get_mime_by_extension('files/media/' . $ticket_attachments->savename);
                             $mime = explode('/', $mime);
                             $image = ($mime[0] == 'image') ? true : false;

@@ -450,7 +450,7 @@ class Settings extends MY_Controller
             }
         } else {
             $this->view_data['settings'] = Setting::first();
-            $this->view_data['types'] = Type::find('all', ['conditions' => ['inactive = ?', '0']]);
+            $this->view_data['types'] = TicketType::find('all', ['conditions' => ['inactive = ?', '0']]);
             $this->view_data['queues'] = Queue::find('all', ['conditions' => ['inactive = ?', '0']]);
             $this->view_data['owners'] = User::find('all', ['conditions' => ['status = ?', 'active']]);
             $this->view_data['form_action'] = 'settings/ticket';
@@ -462,17 +462,17 @@ class Settings extends MY_Controller
     {
         if ($condition == 'delete') {
             $_POST['inactive'] = '1';
-            $type = Type::find_by_id($id);
+            $type = TicketType::find_by_id($id);
             $type->update_attributes($_POST);
         } else {
             if ($_POST) {
                 unset($_POST['send']);
 
                 if ($id) {
-                    $type = Type::find_by_id($id);
+                    $type = TicketType::find_by_id($id);
                     $type->update_attributes($_POST);
                 } else {
-                    $type = Type::create($_POST);
+                    $type = TicketType::create($_POST);
                 }
                 if ($type) {
                     $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_save_settings_success'));
@@ -483,7 +483,7 @@ class Settings extends MY_Controller
                 }
             } else {
                 if ($id) {
-                    $this->view_data['type'] = Type::find_by_id($id);
+                    $this->view_data['type'] = TicketType::find_by_id($id);
                 }
 
                 $this->view_data['title'] = $this->lang->line('application_type');
@@ -737,7 +737,7 @@ class Settings extends MY_Controller
 
             $query = array();
 
-            $user_is_on_departments = DepartmentHasWorker::find('all', array('conditions' => array("user_id =? ", $user->id)));
+            $user_is_on_departments = DepartmentWorker::find('all', array('conditions' => array("user_id =? ", $user->id)));
 
             foreach ($user_is_on_departments as $function_of_user) {
                 array_push($query, $function_of_user->department_id);
@@ -749,12 +749,12 @@ class Settings extends MY_Controller
             foreach ($added as $value) {
                 $atributes = array('department_id' => $value, 'user_id' => $user->id);
 
-                DepartmentHasWorker::create($atributes);
+                DepartmentWorker::create($atributes);
             }
 
             foreach ($removed as $value) {
                 $atributes = array('department_id' => $value, 'user_id' => $user->id);
-                $registry = DepartmentHasWorker::find($atributes);
+                $registry = DepartmentWorker::find($atributes);
                 $registry->delete();
             }
 
@@ -768,7 +768,7 @@ class Settings extends MY_Controller
 
             $this->view_data['departments'] = Department::find('all');
 
-            $this->view_data['worker_departments'] = DepartmentHasWorker::find('all', array('conditions' => array("user_id =? ", $user->id)));
+            $this->view_data['worker_departments'] = DepartmentWorker::find('all', array('conditions' => array("user_id =? ", $user->id)));
 
             $this->theme_view = 'modal';
             $this->view_data['modules'] = Module::find('all', ['order' => 'sort asc', 'conditions' => ['type != ?', 'client']]);

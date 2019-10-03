@@ -58,7 +58,7 @@ function send_ticket_notification($email, $subject, $text, $ticket_id, $attachme
     $data['core_settings'] = Setting::first();
 
     $ticket = Ticket::find_by_id($ticket_id);
-    $ticket_articles = TicketHasArticle::find('all', ['conditions' => ['ticket_id=?', $ticket_id], 'order' => 'id DESC', 'limit' => '3']);
+    $ticket_articles = TicketArticle::find('all', ['conditions' => ['ticket_id=?', $ticket_id], 'order' => 'id DESC', 'limit' => '3']);
 
     $ticket_link = base_url() . 'tickets/view/' . $ticket->id;
 

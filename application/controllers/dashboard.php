@@ -10,9 +10,9 @@ class Dashboard extends MY_Controller
     {
         parent::__construct();
         $access = false;
-        $this->view_data['update'] = false;
+
         if ($this->client) {
-            redirect('login');
+            redirect('cdashboard');
         } elseif ($this->user) {
             if (in_array('dashboard', $this->view_data['module_permissions'])) {
                 $access = true;

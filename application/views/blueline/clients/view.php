@@ -20,9 +20,16 @@
             <div class="subcont">
                 <ul class="details col-md-12">
                     <li>
-					<span>
-						<?=$this->lang->line('application_company_name');?>:</span>
+                        <span>
+                            <?=$this->lang->line('application_company_name');?>:
+                        </span>
                         <?php echo $company->name = empty($company->name) ? '-' : $company->name; ?>
+                    </li>
+                    <li>
+                        <span>
+                            <?=$this->lang->line('application_corporate_name');?>:
+                        </span>
+                        <?php echo $company->corporate_name = empty($company->corporate_name) ? '-' : $company->corporate_name; ?>
                     </li>
                     <li>
                             <span>
@@ -43,13 +50,6 @@
                         } ?>
                     </li>
 
-                    <!-- WEBSITE DO CLIENTE / APAGADO -->
-                    <!-- <li>
-					<span>
-						<?=$this->lang->line('application_website');?>:</span>
-					<?php echo $company->website = empty($company->website) ? '-' : '<a target="_blank" href="http://' . $company->website . '">' . $company->website . '</a>' ?>
-				</li> -->
-
                     <li>
                             <span>
 						<?=$this->lang->line('application_phone');?>:</span>
@@ -60,19 +60,6 @@
 						<?=$this->lang->line('application_mobile');?>:</span>
                         <?php echo $company->mobile = empty($company->mobile) ? '-' : $company->mobile; ?>
                     </li>
-
-                </ul>
-                <span class="visible-xs"></span>
-                <ul class="details col-md-12">
-
-                    <!-- IMPOSTO SOBRE O VALOR AGREGADO - IVA / APAGADO -->
-                    <!-- <?php if ($company->vat != '') { ?>
-				<li>
-					<span>
-						<?=$this->lang->line('application_vat'); ?>:</span>
-					<?php echo $company->vat; ?>
-				</li>
-				<?php } ?> -->
 
                     <li>
                                 <span>
@@ -104,31 +91,11 @@
                 <br clear="all">
             </div>
         </div>
-        <br clear="all">
-        <div class="box-shadow">
-            <?php $attributes = ['class' => 'note-form', 'id' => '_notes'];
-            echo form_open(base_url() . 'clients/notes/' . $company->id, $attributes); ?>
-            <div class="table-head">
-                <?=$this->lang->line('application_notes');?>
-                <span class=" pull-right">
-					<a id="send" name="send" class="btn btn-primary">
-						<?=$this->lang->line('application_save');?>
-					</a>
-				</span>
-                <span id="changed" class="pull-right label label-warning">
-					<?=$this->lang->line('application_unsaved');?>
-				</span>
-            </div>
 
-            <textarea class="input-block-level summernote-note" name="note" id="textfield">
-                    <?=$company->note;?>
-                </textarea>
-            </form>
-        </div>
     </div>
 
     <div class="col-md-9">
-        <?php if (!array_key_exists(0, $company->clients)) {
+        <?php if (!array_key_exists(0, $company->client)) {
             ?>
             <div class="alert alert-warning">
                 <?=$this->lang->line('application_client_has_no_contacts'); ?>
@@ -165,11 +132,6 @@
                         <th class="hidden-xs">
                             <?=$this->lang->line('application_mobile');?>
                         </th>
-                        <!-- REDES SOCIAIS NA GRADE DE CONTATO AO CLIENTE / ESCONDIDO -->
-                        <!--								<th class="hidden-xs">-->
-                        <!--									-->
-                        <?//=$this->lang->line('application_social_media');?>
-                        <!--								</th>-->
                         <th class="hidden-xs">
                             <?=$this->lang->line('application_last_login');?>
                         </th>
@@ -225,8 +187,10 @@
         </div>
     </div>
 
+    <div>&nbsp;</div>
+
     <div class="col-md-9">
-        <?php if (!array_key_exists(0, $company->users)) {
+        <?php if (!array_key_exists(0, $company->user)) {
             ?>
             <div class="alert alert-warning">
                 <?=$this->lang->line('application_client_has_no_admins'); ?>
@@ -275,7 +239,7 @@
                             <?php
                         } ?>
                         </thead>
-                        <?php foreach ($company->users as $value):?>
+                        <?php foreach ($company->user as $value):?>
 
                             <tr id="<?=$value->id;?>">
                                 <td style="width:10px" class="sorting_disabled">

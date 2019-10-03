@@ -1248,3 +1248,6 @@ $lang['application_inverters_maximum_limit_exceeded'] = 'Você selecionou mais d
 $lang['application_choose_max_brands'] = 'Escolha no máximo 3 marcas';
 
 $lang['application_cdashboard'] = 'Dashboard';
+
+$lang['application_corporate_name'] = 'Razão social';
+$lang['application_registered_number'] = 'CNPJ';

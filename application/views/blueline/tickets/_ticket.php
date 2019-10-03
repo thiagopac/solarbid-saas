@@ -11,7 +11,7 @@ if(isset($ticket)){ ?>
                 foreach ($types as $value):  
                 $options[$value->id] = $value->name;
                 endforeach;
-        if(isset($ticket) && is_object($ticket->type)){$type = $ticket->type->id;}else{$type = $settings->ticket_default_type;}
+        if(isset($ticket) && is_object($ticket->ticket_type)){$type = $ticket->ticket_type->id;}else{$type = $settings->ticket_default_type;}
         echo form_dropdown('type_id', $options, $type, 'style="width:100%" class="chosen-select"');?>
 </div> 
 
