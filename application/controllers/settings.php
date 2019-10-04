@@ -10,7 +10,7 @@ class Settings extends MY_Controller
         $access = false;
         unset($_POST['DataTables_Table_0_length']);
         if ($this->client) {
-            redirect('cprojects');
+            redirect('cdashboard');
         } elseif ($this->user) {
             foreach ($this->view_data['menu'] as $key => $value) {
                 if ($value->link == 'settings') {

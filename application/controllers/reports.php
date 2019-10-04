@@ -9,7 +9,7 @@ class reports extends MY_Controller
 		$access = FALSE;	
 		$this->view_data['update'] = FALSE;
 		if($this->client){	
-			redirect('cprojects');
+			redirect('cdashboard');
 		}elseif($this->user){
 				if(in_array("reports", $this->view_data['module_permissions'])){
 					$access = TRUE;

@@ -1,8 +1,10 @@
+
+
 <div class="row">
 
     <div class="col-md-12">
         <h2>
-            <?=$company->name;?>
+            <?=$core_settings->company_prefix."".$company->reference;?> - <?=$company->name;?>
         </h2>
     </div>
 </div>
@@ -16,6 +18,7 @@
 						<i class="icon-edit"></i>
 						<?=$this->lang->line('application_edit');?>
 					</a>
+                </span>
             </div>
             <div class="subcont">
                 <ul class="details col-md-12">
@@ -23,68 +26,69 @@
                         <span>
                             <?=$this->lang->line('application_company_name');?>:
                         </span>
-                        <?php echo $company->name = empty($company->name) ? '-' : $company->name; ?>
+                        <?php echo empty($company->name) ? '-' : $company->name; ?>
                     </li>
                     <li>
                         <span>
                             <?=$this->lang->line('application_corporate_name');?>:
                         </span>
-                        <?php echo $company->corporate_name = empty($company->corporate_name) ? '-' : $company->corporate_name; ?>
+                        <?php echo empty($company->corporate_name) ? '-' : $company->corporate_name; ?>
                     </li>
                     <li>
-                            <span>
-						<?=$this->lang->line('application_primary_contact');?>:</span>
-                        <?php if (is_object($company->client)) {
-                            echo $company->client->firstname . ' ' . $company->client->lastname;
-                        } else {
-                            echo '-';
-                        } ?>
+                        <span>
+                            <?=$this->lang->line('application_registered_number');?>:
+                        </span>
+                        <?php echo empty($company->registered_number) ? '-' : $company->registered_number; ?>
                     </li>
                     <li>
-                            <span>
-						<?=$this->lang->line('application_email');?>:</span>
-                        <?php if (is_object($company->client) && $company->client->email != '') {
-                            echo $company->client->email;
-                        } else {
-                            echo '-';
-                        } ?>
+                        <span>
+                            <?=$this->lang->line('application_email');?>:
+                        </span>
+                        <?php echo empty($company->email) ? '-' : $company->email; ?>
                     </li>
 
                     <li>
-                            <span>
-						<?=$this->lang->line('application_phone');?>:</span>
-                        <?php echo $company->phone = empty($company->phone) ? '-' : $company->phone; ?>
+                        <span>
+						    <?=$this->lang->line('application_phone');?>:
+                        </span>
+                        <?php echo empty($company->phone) ? '-' : $company->phone; ?>
                     </li>
                     <li>
-                            <span>
-						<?=$this->lang->line('application_mobile');?>:</span>
-                        <?php echo $company->mobile = empty($company->mobile) ? '-' : $company->mobile; ?>
+                        <span>
+						    <?=$this->lang->line('application_mobile');?>:
+                        </span>
+                        <?php echo empty($company->mobile) ? '-' : $company->mobile; ?>
                     </li>
 
                     <li>
-                                <span>
-							<?=$this->lang->line('application_address');?>:</span>
-                        <?php echo $company->address = empty($company->address) ? '-' : $company->address; ?>
+                        <span>
+							<?=$this->lang->line('application_address');?>:
+                        </span>
+                        <?php echo empty($company->address) ? '-' : $company->address; ?>
                     </li>
                     <li>
-                                <span>
-							<?=$this->lang->line('application_zip_code');?>:</span>
-                        <?php echo $company->zipcode = empty($company->zipcode) ? '-' : $company->zipcode; ?>
+                        <span>
+							<?=$this->lang->line('application_zip_code');?>:
+                        </span>
+                        <?php echo empty($company->zipcode) ? '-' : $company->zipcode; ?>
                     </li>
                     <li>
-                                <span>
-							<?=$this->lang->line('application_city');?>:</span>
-                        <?php echo $company->city = empty($company->city) ? '-' : $company->city; ?>
+                        <span>
+							<?=$this->lang->line('application_city');?>:
+                        </span>
+                        <?php echo empty($company->city) ? '-' : $company->city; ?>
                     </li>
                     <li>
-                                <span>
-							<?=$this->lang->line('application_state');?>:</span>
-                        <?php echo $company->state = empty($company->state) ? '-' : $company->state; ?>
+                        <span>
+							<?=$this->lang->line('application_state');?>:
+                        </span>
+                        <?php echo empty($company->state) ? '-' : $company->state; ?>
                     </li>
                     <li>
-                                <span>
-							<?=$this->lang->line('application_country');?>:</span>
-                        <?php echo $company->country = empty($company->country) ? '-' : $company->country; ?>
+                        <span>
+							<?=$this->lang->line('application_country');?>:
+                        </span>
+                        <?php echo empty($company->country) ? '-' : $company->country; ?>
                     </li>
 
                 </ul>
@@ -95,7 +99,7 @@
     </div>
 
     <div class="col-md-9">
-        <?php if (!array_key_exists(0, $company->client)) {
+        <?php if (!array_key_exists(0, $company->clients)) {
             ?>
             <div class="alert alert-warning">
                 <?=$this->lang->line('application_client_has_no_contacts'); ?>
@@ -412,4 +416,42 @@
         </div>
         <?php
     } ?>
+</div>
+
+<div class="row">
+    <div class="col-md-3 marginbottom20">
+        <div class="box-shadow">
+            <div class="table-head">
+                <?=$this->lang->line('application_primary_contact');?>
+            </div>
+            <div class="subcont">
+                <ul class="details col-md-12">
+
+                    <li>
+                        <span>
+						    <?=$this->lang->line('application_primary_contact');?>:
+                        </span>
+                        <?php if (is_object($company->client)) {
+                            echo $company->client->firstname . ' ' . $company->client->lastname;
+                        } else {
+                            echo '-';
+                        } ?>
+                    </li>
+                    <li>
+                        <span>
+						    <?=$this->lang->line('application_email');?>:
+                        </span>
+                        <?php if (is_object($company->client) && $company->client->email != '') {
+                            echo $company->client->email;
+                        } else {
+                            echo '-';
+                        } ?>
+                    </li>
+                </ul>
+                <br clear="all">
+            </div>
+        </div>
+
+    </div>
+
 </div>

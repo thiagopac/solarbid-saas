@@ -17,6 +17,9 @@
                     <th>
                         <?=$this->lang->line('application_company_name');?>
                     </th>
+                    <th>
+                        <?=$this->lang->line('application_registered_number');?>
+                    </th>
                     <th class="hidden-xs">
                         <?=$this->lang->line('application_primary_contact');?>
                     </th>
@@ -30,7 +33,7 @@
                     <th style="text-align: center" class="hidden-xs">
                         <?=$this->lang->line('application_level');?>
                     </th>
-                    <th>
+                    <th style="text-align: center">
                         <?=$this->lang->line('application_action');?>
                     </th>
                     </thead>
@@ -38,17 +41,18 @@
 
                         <tr id="<?=$value->id;?>">
                             <td class="hidden-xs" style="width:70px">
-                                <?=$core_settings->company_prefix;?>
-                                <?php if (isset($value->reference)) {
-                                    echo $value->reference;
-                                } ?>
+                                <?=$core_settings->company_prefix;?><?php if (isset($value->reference)) {echo $value->reference;} ?>
                             </td>
 
-                            <td><span class="label label-info"><?php if (is_object($value)) {
+                            <td><span class="bold"><?php if (is_object($value)) {
                                         echo $value->name;
                                     } else {
                                         echo $this->lang->line('application_no_company_assigned');
-                                    }?></span></td>
+                                    }?></span>
+                            </td>
+                            <td>
+                                <?= $value->registered_number; ?>
+                            </td>
                             <td class="hidden-xs">
                                 <?php if (is_object($value->client)) {
                                     echo $value->client->firstname . ' ' . $value->client->lastname;

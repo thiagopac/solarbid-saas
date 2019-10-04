@@ -2,6 +2,8 @@
     exit('No direct script access allowed');
 }
 
+include_once(dirname(__FILE__).'/../third_party/functions.php');
+
 class Clients extends MY_Controller
 {
     public function __construct()
@@ -9,7 +11,7 @@ class Clients extends MY_Controller
         parent::__construct();
         $access = false;
         if ($this->client) {
-            redirect('cprojects');
+            redirect('cdashboard');
         } elseif ($this->user) {
             $this->view_data['project_access'] = false;
             foreach ($this->view_data['menu'] as $key => $value) {
