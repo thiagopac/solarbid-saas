@@ -1251,3 +1251,14 @@ $lang['application_cdashboard'] = 'Dashboard';
 
 $lang['application_corporate_name'] = 'Razão social';
 $lang['application_registered_number'] = 'CNPJ';
+
+$lang['application_pricing'] = 'Precificação';
+$lang['application_cpricing'] = 'Precificação';
+$lang['application_price_table'] = 'Tabela de preço';
+$lang['application_price_tables'] = 'Tabelas de preço';
+$lang['application_tables'] = 'tabelas';
+$lang['application_at_least_one_pricing_table'] = 'Você precisa ter pelo menos uma tabela de preços para estar ativo na plataforma';
+$lang['application_your_pricing_table_is_ok'] = 'Tudo certo por aqui! Sua precificação está de acordo com os requisitos';
+$lang['application_created_at'] = 'Criado em';
+$lang['application_valid_until'] = 'Válido até';
+$lang['application_new_table'] = 'Nova tabela';

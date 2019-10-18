@@ -238,3 +238,29 @@ div.dataTables_info {
 .label-width-constant {
     width: 110px !important;
 }
+
+.small-text-grey {
+    color: #a9a9a9;
+    font-family: open sans;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.dot-colored {
+    width:8px;
+    height:8px;
+    position:initial;
+    box-shadow:none;
+    -webkit-box-shadow:none;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.dot-colored.active {
+    background-color: yellowgreen !important;
+}
+
+.dot-colored.inactive {
+    background-color: red !important;
+}

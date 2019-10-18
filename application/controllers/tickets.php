@@ -110,8 +110,7 @@ class Tickets extends MY_Controller
         $this->content_view = 'tickets/all';
     }
 
-    public function filter($condition)
-    {
+    public function filter($condition) {
         $this->view_data['ticketFilter'] = $this->lang->line('application_all');
         $this->view_data['queues'] = Queue::find('all', ['conditions' => ['inactive=?', '0']]);
         switch ($condition) {
