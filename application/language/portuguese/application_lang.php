@@ -1262,3 +1262,4 @@ $lang['application_your_pricing_table_is_ok'] = 'Tudo certo por aqui! Sua precif
 $lang['application_created_at'] = 'Criado em';
 $lang['application_valid_until'] = 'Válido até';
 $lang['application_new_table'] = 'Nova tabela';
+$lang['application_create_new_table'] = 'Criar nova tabela';

@@ -344,6 +344,7 @@ $message_icon = false;
     <script src="//cdnjs.cloudflare.com/ajax/libs/apexcharts/3.8.3/apexcharts.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/apexcharts/3.8.3/apexcharts.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
+    <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
 
     <script>
         flatdatepicker(false, langshort);

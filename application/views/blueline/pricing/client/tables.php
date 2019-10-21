@@ -12,28 +12,27 @@
 
 <div class="col-sm-13  col-md-12 main">
 <div class="row tile-row">
-    <div class="col-md-3 col-xs-6 tile">
-        <div class="icon-frame hidden-xs">
-            <i class="ion-ios-lightbulb"></i>
+
+    <div class="tile-button">
+        <a href="<?=base_url()?>cpricing/create" data-toggle="mainmodal">
+        <div class="col-md-3 col-xs-6 tile">
+
+            <div class="icon-frame hidden-xs">
+                <span class="iconify" data-icon="ion:add-circle-outline" data-inline="true"></span>
+            </div>
+            <h1>
+                <span>
+                    <?=$this->lang->line('application_create_new_table');?>
+                </span>
+            </h1>
         </div>
-        <h1>
-            <span>
-					<?=$this->lang->line('application_price_tables');?>
-				</span>
-        </h1>
-        <h2 >
-            <?=count($pricing_tables)?> <?=$this->lang->line('application_tables');?>
-        </h2>
-    </div>
-    <div class="col-md-6 col-xs-12 tile hidden-xs">
-        <div style="width:97%; margin-top: -4px; margin-bottom: 17px; height: 80px;">
-            <!--                <canvas id="tileChart" width="auto" height="80"></canvas>-->
+        <div class="col-md-6 col-xs-12 tile hidden-xs">
+            <div style="width:97%; margin-top: -4px; margin-bottom: 17px; height: 80px;">
+            </div>
         </div>
+        </a>
     </div>
 </div>
-    <div class="pull-right">
-        <a href="<?=base_url()?>cpricing/create" class="btn btn-primary" data-toggle="mainmodal"><?=$this->lang->line('application_new_table');?></a>
-    </div>
 <div class="grid">
     <div class="grid__col-md-7 dashboard-header">
         <h1><?=$this->lang->line('application_price_tables')?></h1>

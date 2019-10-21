@@ -264,3 +264,17 @@ div.dataTables_info {
 .dot-colored.inactive {
     background-color: red !important;
 }
+
+.tile-button:hover {
+    /*filter: brightness(85%) !important;*/
+}
+
+.tile-button svg:hover {
+    -webkit-transform: rotateZ(-90deg) !important;
+    -ms-transform: rotateZ(-90deg) !important;
+    transform: rotateZ(-90deg) !important;
+    -webkit-transition: -webkit-transform .8s ease-in-out;
+    -ms-transition: -ms-transform .8s ease-in-out;
+    transition: transform .8s ease-in-out;
+
+}

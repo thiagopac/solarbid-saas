@@ -215,6 +215,7 @@ $message_icon = false;
     <!-- Js Files -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.8.3/apexcharts.min.js"></script>
+    <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
 
     <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/app.js"></script>
     <script>
