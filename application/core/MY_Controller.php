@@ -46,8 +46,8 @@ class My_Controller extends CI_Controller
         $date = date('Y-m-d', time());
 
         //Languages
-        if ($this->input->cookie('bidbox_language') != "") {
-            $language = $this->input->cookie('bidbox_language');
+        if ($this->input->cookie('saas_language') != "") {
+            $language = $this->input->cookie('saas_language');
         } else {
             if (isset($this->view_data['language'])) {
                 $language = $this->view_data['language'];
@@ -192,7 +192,7 @@ class My_Controller extends CI_Controller
         if (!in_array($this->uri->uri_string(), $no_link) && empty($_POST) && (!isset($url[1]) || $url[1] == "view")) {
             $link = '/'.$this->uri->uri_string();
             $cookie = array(
-                       'name'   => 'bidbox_link',
+                       'name'   => 'saas_link',
                        'value'  => $link,
                        'expire' => '500',
                    );

@@ -10,7 +10,8 @@ class PricingTable extends ActiveRecord\Model{
   ];
 
     public static $has_many = [
-    ['pricing_record'],
+        ['pricing_record'],
+        ['pricing_field', 'through' => 'pricing_schema'],
     ];
 
 //    public static function newTicketCount($userId, $comp_array)

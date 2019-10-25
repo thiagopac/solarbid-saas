@@ -611,7 +611,7 @@ function inlineEdit(t, e, a) {
         syncid = $(this).data("syncto"), $("#" + syncid).css("width", e.newValue + "%")
     }), $(".editable").editable({
         params: {
-            bidbox_csrf_token: t
+            saas_csrf_token: t
         },
         success: function(t, e) {
             console.log("attribute saved" + t)
@@ -621,7 +621,7 @@ function inlineEdit(t, e, a) {
         }
     }), $(".editable-select").editable({
         params: {
-            bidbox_csrf_token: t
+            saas_csrf_token: t
         },
         escape: !1,
         sourceCache: !1,

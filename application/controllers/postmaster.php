@@ -60,8 +60,8 @@ class Postmaster extends MY_Controller
                     $queue = $settings->ticket_default_queue;
 
                     /* Check if Queue header is set */
-                    if (isset($email->header_array['bidbox-queue'])) {
-                        $queueHeader = $email->header_array['bidbox-queue'];
+                    if (isset($email->header_array['saas-queue'])) {
+                        $queueHeader = $email->header_array['saas-queue'];
                         $queueQuery = Queue::find_by_id($queueHeader);
                         if ($queueQuery) {
                             $queue = $queueHeader;

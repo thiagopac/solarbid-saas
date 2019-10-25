@@ -122,15 +122,15 @@ class Agent extends MY_Controller
         $languagefiles = scandir($folder);
         if (in_array($lang, $languagefiles)) {
             $cookie = [
-                   'name' => 'bidbox_language',
+                   'name' => 'saas_language',
                    'value' => $lang,
                    'expire' => '31536000',
                ];
 
             $this->input->set_cookie($cookie);
         }
-        if ($this->input->cookie('bidbox_link') != '') {
-            redirect($this->input->cookie('bidbox_link'));
+        if ($this->input->cookie('saas_link') != '') {
+            redirect($this->input->cookie('saas_link'));
         } else {
             redirect('');
         }

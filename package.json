@@ -10,11 +10,11 @@
     "production":
       "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
-  "name": "solarbid-bidbox",
+  "name": "solarbid-saas",
   "version": "1.0.0",
-  "description": "Solarbid Business Inteligence Development",
+  "description": "Solarbid SaaS",
   "main": "app.js",
-  "keywords": ["solarbid", "bidbox"],
+  "keywords": ["solarbid", "saas"],
   "author": "Thiago Castro",
   "license": "ISC",
   "dependencies": {

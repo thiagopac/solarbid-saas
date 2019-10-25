@@ -30,8 +30,8 @@ class Auth extends MY_Controller
 			$_POST['username'] = $this->security->xss_clean($_POST['username']);
 			$user = User::validate_login($_POST['username'], $_POST['password']);
 			if($user){
-				if($this->input->cookie('bidbox_link') != ""){
-					redirect($this->input->cookie('bidbox_link'));
+				if($this->input->cookie('saas_link') != ""){
+					redirect($this->input->cookie('saas_link'));
 				}else{
 					redirect('cdashboard');
 				}
@@ -65,7 +65,7 @@ class Auth extends MY_Controller
 		$languagefiles = scandir($folder);
 		if(in_array($lang, $languagefiles)){
 		$cookie = array(
-                   'name'   => 'bidbox_language',
+                   'name'   => 'saas_language',
                    'value'  => $lang,
                    'expire' => '31536000',
                );

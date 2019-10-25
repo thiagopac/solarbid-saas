@@ -266,15 +266,27 @@ div.dataTables_info {
 }
 
 .tile-button:hover {
-    /*filter: brightness(85%) !important;*/
+    filter: brightness(85%) !important;
 }
 
-.tile-button svg:hover {
-    -webkit-transform: rotateZ(-90deg) !important;
-    -ms-transform: rotateZ(-90deg) !important;
-    transform: rotateZ(-90deg) !important;
-    -webkit-transition: -webkit-transform .8s ease-in-out;
-    -ms-transition: -ms-transform .8s ease-in-out;
-    transition: transform .8s ease-in-out;
+/*.tile-button svg:hover {*/
+    /*-webkit-transform: rotateZ(-90deg) !important;*/
+    /*-ms-transform: rotateZ(-90deg) !important;*/
+    /*transform: rotateZ(-90deg) !important;*/
+    /*-webkit-transition: -webkit-transform .8s ease-in-out;*/
+    /*-ms-transition: -ms-transform .8s ease-in-out;*/
+    /*transition: transform .8s ease-in-out;*/
+/*}*/
 
+.btn {
+    padding: 8px 20px !important;
+    font-size: 12px !important;
+}
+
+.btn:hover {
+    filter: brightness(80%) !important;
+}
+
+.fileUpload {
+    height: auto !important;
 }

@@ -61,7 +61,7 @@ class Api extends MY_Controller {
 		
 		$output = "BEGIN:VCALENDAR\r\n" .
 		"VERSION:1.0\r\n" .
-		"PRODID:SolarbidBidbox\r\n" .
+		"PRODID:Solarbidsaas\r\n" .
 		"CALSCALE:GREGORIAN\r\n" .
 		"X-WR-TIMEZONE:".date_default_timezone_get()."\r\n" .
 		"METHOD:PUBLISH\r\n";

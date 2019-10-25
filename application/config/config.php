@@ -305,8 +305,8 @@ if (isset($_SERVER['REQUEST_URI'])) {
 } else {
     $config['csrf_protection'] = true;
 }
-$config['csrf_token_name'] = 'bidbox_csrf_token';
-$config['csrf_cookie_name'] = 'bidbox_csrf_cookie';
+$config['csrf_token_name'] = 'saas_csrf_token';
+$config['csrf_cookie_name'] = 'saas_csrf_cookie';
 $config['csrf_expire'] = 7200;
 
 /*

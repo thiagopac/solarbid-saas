@@ -1263,3 +1263,6 @@ $lang['application_created_at'] = 'Criado em';
 $lang['application_valid_until'] = 'Válido até';
 $lang['application_new_table'] = 'Nova tabela';
 $lang['application_create_new_table'] = 'Criar nova tabela';
+$lang['application_edit_table'] = 'Editar tabela';
+$lang['application_Wp_value'] = 'Valor do <span style="text-transform: none !important;">Wp</span>';
+$lang['application_undefined'] = 'Não definido';

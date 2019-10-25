@@ -17,10 +17,10 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 #server
-#RewriteBase /bidbox/
+#RewriteBase /saas/
 
 #local
-RewriteBase /solarbid/bidbox/
+RewriteBase /solarbid-saas/
 
 RewriteRule ^(.*)$ index.php?/$1 [L]
 

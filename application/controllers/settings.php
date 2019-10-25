@@ -31,7 +31,7 @@ class Settings extends MY_Controller
             $this->lang->line('application_settings') => 'settings',
             $this->lang->line('application_agents') => 'settings/users',
 
-            // opções de configuração do bidbox suprimidas / ESCONDIDO
+            // opções de configuração do saas suprimidas / ESCONDIDO
             // $this->lang->line('application_registration') => 'settings/registration',
 
             $this->lang->line('application_calendar') => 'settings/calendar',
@@ -897,11 +897,11 @@ class Settings extends MY_Controller
         $this->load->dbutil();
         $settings = Setting::first();
         $version = str_replace('.', '-', $settings->version);
-        $prefs = ['format' => 'zip', 'filename' => 'bidbox-manual-backup_'. date('d-m-Y_H:i')];
+        $prefs = ['format' => 'zip', 'filename' => 'saas-manual-backup_'. date('d-m-Y_H:i')];
 
         $backup = &$this->dbutil->backup($prefs);
 
-        if (!write_file('./files/backup/bidbox-manual-backup_' . date('d-m-Y_H:i') . '.zip', $backup)) {
+        if (!write_file('./files/backup/saas-manual-backup_' . date('d-m-Y_H:i') . '.zip', $backup)) {
             $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_create_backup_error'));
         } else {
             $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_create_backup_success'));

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/zenit.iml" filepath="$PROJECT_DIR$/.idea/zenit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/solarbid-saas.iml" filepath="$PROJECT_DIR$/.idea/solarbid-saas.iml" />
     </modules>
   </component>
 </project>

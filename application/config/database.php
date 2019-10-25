@@ -14,9 +14,9 @@
               $active_record = TRUE;
 
               $db['default']['hostname'] = 'localhost';
-              $db['default']['username'] = 'loyaltee_sb_user';
-              $db['default']['password'] = 'LPFfs2798A';
-              $db['default']['database'] = 'loyaltee_solarbid_bidbox';
+              $db['default']['username'] = 'solarbid_db_saas_user';
+              $db['default']['password'] = 'tn9deswnd8fjrgP1';
+              $db['default']['database'] = 'solarbid_db';
               $db['default']['dbdriver'] = 'mysql';
               $db['default']['dbprefix'] = '';
               $db['default']['pconnect'] = TRUE;

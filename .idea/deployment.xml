@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="Zenit Prod" showNewOnSourceInSync="false" showNewOnTargetInSync="false">
+  <component name="PublishConfigData" serverName="Solarbid">
     <serverData>
-      <paths name="Zenit">
+      <paths name="Solarbid">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="zenit" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="Zenit Prod">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/zenit" local="$PROJECT_DIR$" web="/zenit" />
+            <mapping local="$PROJECT_DIR$" web="solarbid-saas" />
           </mappings>
         </serverdata>
       </paths>
