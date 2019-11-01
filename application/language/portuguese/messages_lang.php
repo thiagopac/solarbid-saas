@@ -260,3 +260,8 @@ $lang['messages_delete_inverter_success'] = "Inversor excluído";
 $lang['messages_save_inverter_success'] = "Inversor salvo";
 $lang['messages_save_inverter_error'] = "Erro ao salvar Inversor";
 $lang['messages_create_inverter_exists'] = 'Já existe um Inversor com este nome';
+
+$lang['messages_updated_pricing_record_success'] = "Valor atualizado";
+$lang['messages_updated_pricing_record_error'] = "Erro ao atualizar o valor";
+$lang['messages_create_pricing_record_success'] = "Valor criado com sucesso";
+$lang['messages_create_pricing_record_error'] = "Erro ao criar valor";

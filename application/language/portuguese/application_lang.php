@@ -1264,5 +1264,24 @@ $lang['application_valid_until'] = 'Válido até';
 $lang['application_new_table'] = 'Nova tabela';
 $lang['application_create_new_table'] = 'Criar nova tabela';
 $lang['application_edit_table'] = 'Editar tabela';
+$lang['application_edit_table_desc'] = 'Alterar prazos da tabela';
+$lang['application_activate_table'] = 'Ativar tabela';
+$lang['application_activate_table_desc'] = 'Usar tabela de preços como precificação atual';
 $lang['application_Wp_value'] = 'Valor do <span style="text-transform: none !important;">Wp</span>';
 $lang['application_undefined'] = 'Não definido';
+$lang['application_define_price'] = 'Defina o preço';
+$lang['application_until'] = 'até';
+$lang['application_over_number'] = 'acima de';
+$lang['application_power_of_plant'] = 'Potência da usina';
+$lang['application_distance_installation_location'] = 'Distância até local de instalação';
+
+$lang['application_metallic'] = 'Metálico';
+$lang['application_fiber_cement'] = 'Fibrocimento';
+$lang['application_ceramic'] = 'Cerâmico';
+$lang['application_slab'] = 'Laje';
+$lang['application_soil'] = 'Solo';
+
+$lang['application_edit_pricing_record'] = 'Alterar valor';
+$lang['application_create_pricing_record'] = 'Adicionar valor';
+$lang['application_delivery_time_days'] = 'Prazo para instalação (em dias)';
+$lang['application_delivery_time'] = 'Prazo';
