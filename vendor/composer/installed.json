@@ -46,42 +46,35 @@
         ]
     },
     {
-        "name": "stripe/stripe-php",
-        "version": "v4.12.0",
-        "version_normalized": "4.12.0.0",
+        "name": "paquettg/php-html-parser",
+        "version": "1.7.0",
+        "version_normalized": "1.7.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/stripe/stripe-php.git",
-            "reference": "a4d64ebe8fff63e9c490674cd3bf6d773e3db1df"
+            "url": "https://github.com/paquettg/php-html-parser.git",
+            "reference": "18845e09831dd0772b88b51e788a4f74c701224c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/stripe/stripe-php/zipball/a4d64ebe8fff63e9c490674cd3bf6d773e3db1df",
-            "reference": "a4d64ebe8fff63e9c490674cd3bf6d773e3db1df",
+            "url": "https://api.github.com/repos/paquettg/php-html-parser/zipball/18845e09831dd0772b88b51e788a4f74c701224c",
+            "reference": "18845e09831dd0772b88b51e788a4f74c701224c",
             "shasum": ""
         },
         "require": {
-            "ext-curl": "*",
-            "ext-json": "*",
-            "ext-mbstring": "*",
-            "php": ">=5.3.3"
+            "paquettg/string-encode": "~0.1.0",
+            "php": ">=5.4"
         },
         "require-dev": {
-            "phpunit/phpunit": "~4.0",
-            "satooshi/php-coveralls": "~0.6.1",
-            "squizlabs/php_codesniffer": "~2.0"
+            "mockery/mockery": "~0.9.0",
+            "phpunit/phpunit": "~4.8.0",
+            "satooshi/php-coveralls": "~0.6.0"
         },
-        "time": "2017-06-06T00:06:25+00:00",
+        "time": "2016-04-06T15:24:40+00:00",
         "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.0-dev"
-            }
-        },
         "installation-source": "dist",
         "autoload": {
-            "psr-4": {
-                "Stripe\\": "lib/"
+            "psr-0": {
+                "PHPHtmlParser": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -90,16 +83,17 @@
         ],
         "authors": [
             {
-                "name": "Stripe and contributors",
-                "homepage": "https://github.com/stripe/stripe-php/contributors"
+                "name": "Gilles Paquette",
+                "email": "paquettg@gmail.com",
+                "homepage": "http://gillespaquette.ca"
             }
         ],
-        "description": "Stripe PHP Library",
-        "homepage": "https://stripe.com/",
+        "description": "An HTML DOM parser. It allows you to manipulate HTML. Find tags on an HTML page with selectors just like jQuery.",
+        "homepage": "https://github.com/paquettg/php-html-parser",
         "keywords": [
-            "api",
-            "payment processing",
-            "stripe"
+            "dom",
+            "html",
+            "parser"
         ]
     },
     {
@@ -151,35 +145,42 @@
         ]
     },
     {
-        "name": "paquettg/php-html-parser",
-        "version": "1.7.0",
-        "version_normalized": "1.7.0.0",
+        "name": "stripe/stripe-php",
+        "version": "v4.13.0",
+        "version_normalized": "4.13.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/paquettg/php-html-parser.git",
-            "reference": "18845e09831dd0772b88b51e788a4f74c701224c"
+            "url": "https://github.com/stripe/stripe-php.git",
+            "reference": "834681b9cdfa68d88a27e36ec9e356b598a5f0e6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/paquettg/php-html-parser/zipball/18845e09831dd0772b88b51e788a4f74c701224c",
-            "reference": "18845e09831dd0772b88b51e788a4f74c701224c",
+            "url": "https://api.github.com/repos/stripe/stripe-php/zipball/834681b9cdfa68d88a27e36ec9e356b598a5f0e6",
+            "reference": "834681b9cdfa68d88a27e36ec9e356b598a5f0e6",
             "shasum": ""
         },
         "require": {
-            "paquettg/string-encode": "~0.1.0",
-            "php": ">=5.4"
+            "ext-curl": "*",
+            "ext-json": "*",
+            "ext-mbstring": "*",
+            "php": ">=5.3.3"
         },
         "require-dev": {
-            "mockery/mockery": "~0.9.0",
-            "phpunit/phpunit": "~4.8.0",
-            "satooshi/php-coveralls": "~0.6.0"
+            "phpunit/phpunit": "~4.0",
+            "satooshi/php-coveralls": "~0.6.1",
+            "squizlabs/php_codesniffer": "~2.0"
         },
-        "time": "2016-04-06T15:24:40+00:00",
+        "time": "2017-06-20T01:39:06+00:00",
         "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0-dev"
+            }
+        },
         "installation-source": "dist",
         "autoload": {
-            "psr-0": {
-                "PHPHtmlParser": "src/"
+            "psr-4": {
+                "Stripe\\": "lib/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -188,17 +189,16 @@
         ],
         "authors": [
             {
-                "name": "Gilles Paquette",
-                "email": "paquettg@gmail.com",
-                "homepage": "http://gillespaquette.ca"
+                "name": "Stripe and contributors",
+                "homepage": "https://github.com/stripe/stripe-php/contributors"
             }
         ],
-        "description": "An HTML DOM parser. It allows you to manipulate HTML. Find tags on an HTML page with selectors just like jQuery.",
-        "homepage": "https://github.com/paquettg/php-html-parser",
+        "description": "Stripe PHP Library",
+        "homepage": "https://stripe.com/",
         "keywords": [
-            "dom",
-            "html",
-            "parser"
+            "api",
+            "payment processing",
+            "stripe"
         ]
     }
 ]

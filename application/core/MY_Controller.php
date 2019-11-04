@@ -1,4 +1,5 @@
 <?php
+
 class My_Controller extends CI_Controller
 {
     public $user = false;
@@ -15,7 +16,7 @@ class My_Controller extends CI_Controller
 
         /* XSS Filtering */
         if (!empty($_POST)) {
-            $fieldList = array("description","message", "terms", "note", "smtp_pass", "password", "ticket_config_pass", "css-area");
+            $fieldList = array("description", "message", "terms", "note", "smtp_pass", "password", "ticket_config_pass", "css-area");
             $ignoreXSS = array("mail_body");
             function remove_bad_tags_from($field)
             {
@@ -62,9 +63,23 @@ class My_Controller extends CI_Controller
         $this->view_data['time24hours'] = "true";
         switch ($language) {
 
-              case "english": $this->view_data['langshort'] = "en"; $this->view_data['timeformat'] = "h:i K"; $this->view_data['dateformat'] = "F j, Y"; $this->view_data['time24hours'] = "false"; break;
-              case "portuguese": $this->view_data['langshort'] = "pt"; $this->view_data['timeformat'] = "H:i"; $this->view_data['dateformat'] = "d/m/Y"; break;
-              default: $this->view_data['langshort'] = "en"; $this->view_data['timeformat'] = "h:i K"; $this->view_data['dateformat'] = "F j, Y"; $this->view_data['time24hours'] = "false"; break;
+            case "english":
+                $this->view_data['langshort'] = "en";
+                $this->view_data['timeformat'] = "h:i K";
+                $this->view_data['dateformat'] = "F j, Y";
+                $this->view_data['time24hours'] = "false";
+                break;
+            case "portuguese":
+                $this->view_data['langshort'] = "pt";
+                $this->view_data['timeformat'] = "H:i";
+                $this->view_data['dateformat'] = "d/m/Y";
+                break;
+            default:
+                $this->view_data['langshort'] = "en";
+                $this->view_data['timeformat'] = "h:i K";
+                $this->view_data['dateformat'] = "F j, Y";
+                $this->view_data['time24hours'] = "false";
+                break;
 
         }
 
@@ -80,7 +95,7 @@ class My_Controller extends CI_Controller
         }
 
         $this->lang->load('application', $language);
-        if (file_exists("./application/language/".$language."/custom_lang.php")) {
+        if (file_exists("./application/language/" . $language . "/custom_lang.php")) {
             $this->lang->load('custom', $language);
         }
         $this->lang->load('messages', $language);
@@ -98,20 +113,20 @@ class My_Controller extends CI_Controller
 
             //check if user or client
             if ($this->user) {
-                $access            = explode(",", $this->user->access);
-                $update            = $this->user;
-                $email                = 'u'.$this->user->id;
-                $userIsSuperAdmin    = ($this->user->admin == '1') ? true : false;
-                $comp_array            = false;
+                $access = explode(",", $this->user->access);
+                $update = $this->user;
+                $email = 'u' . $this->user->id;
+                $userIsSuperAdmin = ($this->user->admin == '1') ? true : false;
+                $comp_array = false;
                 //Create client access list if active user is not super admin
                 if (!$userIsSuperAdmin) {
                     $comp_array = array();
-                    $thisUserHasCompanies = (array) $this->user->companies;
+                    $thisUserHasCompanies = (array)$this->user->companies;
                     if (!empty($thisUserHasCompanies)) {
                         foreach ($this->user->companies as $value) {
                             array_push($comp_array, $value->id);
                         }
-                        $comp_array = "'".implode(',', $comp_array)."'";
+                        $comp_array = "'" . implode(',', $comp_array) . "'";
                     } else {
                         $comp_array = 0;
                     }
@@ -125,9 +140,9 @@ class My_Controller extends CI_Controller
                     array_push($this->view_data['module_permissions'], $value->link);
                 }
 
-                $this->view_data['widgets']        = Module::find('all', array('conditions' => array('id in (?) AND type = ?', $access, 'widget')));
-                $this->view_data['user_online']    = User::all(array('conditions' => array('last_active+(30 * 60) > ? AND status = ?', time(), "active")));
-                $this->view_data['client_online']    = Client::all(array('conditions' => array('last_active+(30 * 60) > ? AND inactive = ?', time(), "0")));
+                $this->view_data['widgets'] = Module::find('all', array('conditions' => array('id in (?) AND type = ?', $access, 'widget')));
+                $this->view_data['user_online'] = User::all(array('conditions' => array('last_active+(30 * 60) > ? AND status = ?', time(), "active")));
+                $this->view_data['client_online'] = Client::all(array('conditions' => array('last_active+(30 * 60) > ? AND inactive = ?', time(), "0")));
 
                 $this->view_data['tickets_access'] = false;
                 if (in_array("tickets", $this->view_data['module_permissions'])) {
@@ -139,15 +154,15 @@ class My_Controller extends CI_Controller
 
                 $hasUnredNotifications = 0;
 
-                foreach ($notification_list as $notification){
-                    if ($notification->status == "new"){
-                        $hasUnredNotifications = $hasUnredNotifications +1;
+                foreach ($notification_list as $notification) {
+                    if ($notification->status == "new") {
+                        $hasUnredNotifications = $hasUnredNotifications + 1;
                     }
                 }
 
                 $this->view_data["unread_notifications"] = $hasUnredNotifications;
 
-                    krsort($notification_list);
+                krsort($notification_list);
                 $this->view_data["notification_list"] = $notification_list;
                 $this->view_data["notification_count"] = count($notification_list);
             } else {
@@ -156,9 +171,9 @@ class My_Controller extends CI_Controller
 
                 $hasUnredNotifications = 0;
 
-                foreach ($notification_list as $notification){
-                    if ($notification->status == "new"){
-                        $hasUnredNotifications = $hasUnredNotifications +1;
+                foreach ($notification_list as $notification) {
+                    if ($notification->status == "new") {
+                        $hasUnredNotifications = $hasUnredNotifications + 1;
                     }
                 }
 
@@ -171,9 +186,24 @@ class My_Controller extends CI_Controller
                 $this->theme_view = 'application_client';
                 $access = $this->client->access;
                 $access = explode(",", $access);
-                $email = 'c'.$this->client->id;
+                $email = 'c' . $this->client->id;
                 $this->view_data['menu'] = Module::find('all', array('order' => 'sort asc', 'conditions' => array('id in (?) AND type = ?', $access, 'client')));
                 $update = Client::find($this->client->id);
+
+                $active_pricing_table = PricingTable::find('all', array('conditions' => array('company_id = ? AND active = 1', $this->client->company_id)));
+
+                $this->view_data['integrator_online'] = count($active_pricing_table) > 0;
+
+                $integrator_status_desc = '';
+
+                if (count($active_pricing_table) > 0){
+                    $integrator_status_desc = "Tudo certo! Todas as configurações estão corretas e você está sendo apresentado corretamente na plataforma.";
+                }else{
+                    $integrator_status_desc = "Você não tem uma tabela de preços ativa na plataforma. Corrija este problema para ficar ativo.";
+                }
+
+                $this->view_data['integrator_status_desc'] = $integrator_status_desc;
+
             }
 
             //Update user last active
@@ -181,21 +211,19 @@ class My_Controller extends CI_Controller
             $update->save();
         }
 
-        /*$this->load->database();
-        $sql = "select * FROM templates WHERE type='notes'";
-        $query = $this->db->query($sql); */
-        $this->view_data["note_templates"] = "";//$query->result();
+
+        $this->view_data["note_templates"] = "";
 
         /* save current url */
         $url = explode('/', $this->uri->uri_string());
         $no_link = array('login', 'register', 'logout', 'language', 'forgotpass', 'postmaster', 'cronjob', 'agent', 'api');
         if (!in_array($this->uri->uri_string(), $no_link) && empty($_POST) && (!isset($url[1]) || $url[1] == "view")) {
-            $link = '/'.$this->uri->uri_string();
+            $link = '/' . $this->uri->uri_string();
             $cookie = array(
-                       'name'   => 'saas_link',
-                       'value'  => $link,
-                       'expire' => '500',
-                   );
+                'name' => 'saas_link',
+                'value' => $link,
+                'expire' => '500',
+            );
 
             $this->input->set_cookie($cookie);
         }
@@ -212,7 +240,7 @@ class My_Controller extends CI_Controller
 
         //render the theme
         if ($this->theme_view) {
-            echo $this->load->view($this->view_data['core_settings']->template . '/' .'theme/' . $this->theme_view, array('yield' => $yield), true);
+            echo $this->load->view($this->view_data['core_settings']->template . '/' . 'theme/' . $this->theme_view, array('yield' => $yield), true);
         } else {
             echo $yield;
         }
@@ -221,10 +249,11 @@ class My_Controller extends CI_Controller
     }
 
 //    Debug para php + javascript
-    function debug_to_console( $data ) {
+    function debug_to_console($data)
+    {
         $output = $data;
-        if ( is_array( $output ) )
-            $output = implode( ',', $output);
+        if (is_array($output))
+            $output = implode(',', $output);
 
         echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
     }

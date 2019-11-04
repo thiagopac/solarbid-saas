@@ -12,6 +12,10 @@ mix.webpackConfig({
   }
 });
 
+mix.options({
+    processCssUrls: true
+});
+
 mix
 .babel(
     [
@@ -54,5 +58,5 @@ mix
         "./assets/blueline/js/important.js",
         "./assets/blueline/js/blueline.js"
     ],
-    "./assets/blueline/js/app.js"
-)
+    "./assets/blueline/js/app.js")
+    .sass("./assets/blueline/css/bootstrap.scss", "./assets/blueline/css/app.css");

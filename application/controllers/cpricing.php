@@ -63,6 +63,8 @@ class cPricing extends MY_Controller
 
 //        $this->view_data['var_dump'] = $pricing_records;
         $this->content_view = 'pricing/client/records';
+
+        $this->view_data['pricing_table_complete'] = 2*count($pricing_fields) === count($pricing_records) ? true : false;
     }
 
     public function update($pricing_record_id = false)
@@ -92,6 +94,7 @@ class cPricing extends MY_Controller
             $this->theme_view = 'modal';
             $this->view_data['title'] = $this->lang->line('application_edit_pricing_record');
             $this->view_data['form_action'] = 'cpricing/update/'.$pricing_record_id;
+            $this->view_data['pricing_record_structure_types'] = $pricing_record->structure_type_ids;
             $this->content_view = 'pricing/client/_record';
         }
     }
@@ -131,7 +134,83 @@ class cPricing extends MY_Controller
             $this->theme_view = 'modal';
             $this->view_data['title'] = $this->lang->line('application_create_pricing_record');
             $this->view_data['form_action'] = 'cpricing/create/'.$pricing_table_id.'/'.$pricing_field_id.'/'.$structures_type_ids;
+
             $this->content_view = 'pricing/client/_record';
+
+            if ($structures_type_ids === '123'){
+                $this->view_data['pricing_record_structure_types'] = '1,2,3';
+            }else{
+                $this->view_data['pricing_record_structure_types'] = '4,5';
+            }
+        }
+    }
+
+    public function activate($pricing_table_id = false) {
+
+        if ($_POST) {
+
+            $pricing_table = PricingTable::find($_POST['pricing_table_id']);
+
+            unset($_POST['pricing_table_id']);
+
+            $_POST['active'] = $pricing_table->active == true ? 0 : 1;
+
+            //deactivate all active pricing_tables before change to chosen state
+            PricingTable::update_all(['set' => [ 'active' => '0'], 'conditions' => [ 'company_id = ? AND active = 1', $this->client->company_id]]);
+
+            $pricing_table->update_attributes($_POST);
+
+            if (!$pricing_table) {
+
+                if ($_POST['active'] == 0){
+                    $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_deactivated_pricing_table_error'));
+                }else{
+                    $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_activated_pricing_table_error'));
+                }
+
+            } else {
+
+                if ($_POST['active'] == 0){
+                    $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_deactivated_pricing_table_success'));
+                }else{
+                    $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_activated_pricing_table_success'));
+                }
+
+            }
+            redirect('cpricing/view/'.$pricing_table_id);
+        } else {
+
+            $pricing_table = PricingTable::find($pricing_table_id);
+
+            $this->view_data['pricing_table'] = $pricing_table;
+            $this->theme_view = 'modal';
+            $this->view_data['title'] = $pricing_table->active == true ? $this->lang->line('application_deactivate_pricing_table') : $this->lang->line('application_activate_pricing_table');
+            $this->view_data['form_action'] = 'cpricing/activate/'.$pricing_table_id;
+            $this->content_view = 'pricing/client/_activate';
+        }
+    }
+
+    public function update_table($pricing_table_id = false)
+    {
+
+        $pricing_table = PricingTable::find($pricing_table_id);
+
+        if ($_POST) {
+
+            $pricing_table->update_attributes($_POST);
+            if (!$pricing_table) {
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_updated_pricing_table_error'));
+            } else {
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_updated_pricing_table_success'));
+            }
+            redirect('cpricing/view/'.$pricing_table_id);
+        } else {
+            $pricing_table = PricingTable::find($pricing_table_id);
+            $this->view_data['pricing_table'] = $pricing_table;
+            $this->theme_view = 'modal';
+            $this->view_data['title'] = $this->lang->line('application_edit_pricing_table');
+            $this->view_data['form_action'] = 'cpricing/update_table/'.$pricing_table_id;
+            $this->content_view = 'pricing/client/_table';
         }
     }
 

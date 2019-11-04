@@ -247,6 +247,14 @@ div.dataTables_info {
     font-weight: 600;
 }
 
+.small-text {
+    color: white !important;
+    font-family: open sans;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+}
+
 .dot-colored {
     width:8px;
     height:8px;
@@ -289,4 +297,8 @@ div.dataTables_info {
 
 .fileUpload {
     height: auto !important;
+}
+
+.read-only {
+    background: #ececec !important;
 }

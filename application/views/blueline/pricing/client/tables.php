@@ -61,12 +61,12 @@
                             </div>
                             <div class="tile-body">
                                 <p style="margin-top: 20px">
-                                    <small><small><small><span style="text-transform: uppercase"><?=$this->lang->line('application_created_at')?>: </span></small></small></small><strong><small><?=date($core_settings->date_format, strtotime($pricing_table->start))?></small></strong><br />
-                                    <?php if($pricing_table->end != null) : ?> <small><small><small><span style="text-transform: uppercase"><?=$this->lang->line('application_valid_until')?>: </span></small></small></small><strong><small><?=date($core_settings->date_format, strtotime($pricing_table->end))?></small></strong><?php endif; ?>
+                                    <small><small><small><span style="text-transform: uppercase"><?=$this->lang->line('application_valid_from')?>: </span></small></small></small><strong><small><?=date($core_settings->date_format, strtotime($pricing_table->start))?></small></strong><br />
+                                    <?php if($pricing_table->end != null) : ?> <small><small><small><span style="text-transform: uppercase"><?=$this->lang->line('application_valid_to')?>: </span></small></small></small><strong><small><?=date($core_settings->date_format, strtotime($pricing_table->end))?></small></strong><?php endif; ?>
                                 </p>
                             </div>
                             <div class="tile-bottom">
-                                <small style="color: grey;"><?=$pricing_table->pricing_schema->name?></small><div class="pull-right small-text-grey"><small><?=$this->lang->line('application_'.$active)?> </small><span class="dot-colored <?=$active?>"></span></div>
+                                <small style="color: grey;"><?=$pricing_table->pricing_schema->name?></small><div class="pull-right small-text-grey"><small><?=$this->lang->line('application_table_'.$active)?> </small><span class="dot-colored <?=$active?>"></span></div>
                             </div>
                         </div>
                     </a>

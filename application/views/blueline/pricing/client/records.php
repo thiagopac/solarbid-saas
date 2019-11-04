@@ -1,9 +1,10 @@
+<?php $active = $pricing_table->active == 1 ? 'active' : 'inactive'; ?>
 <div class="col-md-12 col-lg-12">
     <div class="row tile-row">
 
         <div class="tile-button">
-            <a href="<?= base_url() ?>cpricing/edit" data-toggle="mainmodal">
-                <div class="col-md-3 col-xs-6 tile">
+            <a href="<?= base_url() ?>cpricing/update_table/<?=$pricing_table->id?>" data-toggle="mainmodal">
+                <div class="col-md-3 col-xs-3 tile">
                     <div class="icon-frame hidden-xs">
                         <span class="iconify" data-icon="mdi:pencil" data-inline="true"></span>
                     </div>
@@ -16,20 +17,56 @@
                 </div>
             </a>
         </div>
-        <div class="tile-button">
-            <a href="<?= base_url() ?>cpricing/edit" data-toggle="mainmodal">
-                <div class="col-md-6 col-xs-6 tile">
-                    <div class="icon-frame hidden-xs">
-                        <span class="iconify" data-icon="mdi:check-bold" data-inline="true"></span>
-                    </div>
-                    <h1>
-                        <span>
-                            <?= $this->lang->line('application_activate_table'); ?>
-                        </span>
-                    </h1>
-                    <h2><?= $this->lang->line('application_activate_table_desc'); ?></h2>
+        <?php if($pricing_table_complete == true) : ?>
+            <?php if($pricing_table->active == false) : ?>
+                <div class="tile-button">
+                    <a href="<?= base_url() ?>cpricing/activate/<?=$pricing_table->id?>" data-toggle="mainmodal">
+                        <div class="col-md-4 col-xs-4 tile">
+                            <div class="icon-frame btn-success">
+                                <span class="iconify" data-icon="mdi:check-bold" data-inline="true"></span>
+                            </div>
+                            <h1>
+                                <span>
+                                    <?= $this->lang->line('application_activate_table'); ?>
+                                </span>
+                            </h1>
+                            <h2><?= $this->lang->line('application_activate_table_desc'); ?></h2>
+                        </div>
+                    </a>
                 </div>
-            </a>
+            <?php elseif($pricing_table->active == true) : ?>
+                <div class="tile-button">
+                    <a href="<?= base_url() ?>cpricing/activate/<?=$pricing_table->id?>" data-toggle="mainmodal">
+                        <div class="col-md-4 col-xs-4 tile">
+                            <div class="icon-frame btn-danger">
+                                <span class="iconify" data-icon="mdi:close" data-inline="true"></span>
+                            </div>
+                            <h1>
+                                <span>
+                                    <?= $this->lang->line('application_deactivate_table'); ?>
+                                </span>
+                            </h1>
+                            <h2><?= $this->lang->line('application_deactivate_table_desc'); ?></h2>
+                        </div>
+                    </a>
+                </div>
+            <?php endif; ?>
+        <?php elseif($pricing_table_complete == false) : ?>
+            <div class="col-md-4 col-xs-4 tile">
+
+            </div>
+        <?php endif; ?>
+        <div class="col-md-4 col-xs-4 ">
+            <div style="text-align: right">
+                <?php if($pricing_table_complete == true): ?>
+                    <label class=""><?=$this->lang->line('application_price_table_complete')?>: </label>
+                <?php else: ?>
+                    <label class=""><?=$this->lang->line('application_price_table_incomplete')?>: </label>
+                <?php endif; ?>
+                <label><?=2*count($pricing_fields)?></label>/<label><?=count($pricing_records)?></label>
+                <br />
+                <div class="pull-right small-text-grey"><span><?=$this->lang->line('application_table_'.$active)?> </span><span class="dot-colored <?=$active?>"></span></div>
+            </div>
         </div>
         <div class="col-md-1 col-xs-1 tile">
             <div style="width:97%; margin-top: -4px; margin-bottom: 17px; height: 80px;"></div>
@@ -201,8 +238,6 @@
                                                     title="<?= $this->lang->line('application_edit') ?>"
                                                     class="icon dripicons-document-edit"></i></a></h2>
                                 <?php endif; ?>
-                                <? // var_dump($price123); ?>
-                                <? // var_dump($price45); ?>
                             </li>
                         </ul>
                     </div>

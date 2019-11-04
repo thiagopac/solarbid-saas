@@ -1266,12 +1266,14 @@ $lang['application_create_new_table'] = 'Criar nova tabela';
 $lang['application_edit_table'] = 'Editar tabela';
 $lang['application_edit_table_desc'] = 'Alterar prazos da tabela';
 $lang['application_activate_table'] = 'Ativar tabela';
-$lang['application_activate_table_desc'] = 'Usar tabela de preços como precificação atual';
+$lang['application_activate_table_desc'] = 'Utilizar tabela de preços como precificação atual';
+$lang['application_deactivate_table'] = 'Desativar tabela';
+$lang['application_deactivate_table_desc'] = 'Não de utilizar tabela de preços como precificação atual';
 $lang['application_Wp_value'] = 'Valor do <span style="text-transform: none !important;">Wp</span>';
 $lang['application_undefined'] = 'Não definido';
 $lang['application_define_price'] = 'Defina o preço';
 $lang['application_until'] = 'até';
-$lang['application_over_number'] = 'acima de';
+$lang['application_over_number'] = 'Acima de';
 $lang['application_power_of_plant'] = 'Potência da usina';
 $lang['application_distance_installation_location'] = 'Distância até local de instalação';
 
@@ -1285,3 +1287,25 @@ $lang['application_edit_pricing_record'] = 'Alterar valor';
 $lang['application_create_pricing_record'] = 'Adicionar valor';
 $lang['application_delivery_time_days'] = 'Prazo para instalação (em dias)';
 $lang['application_delivery_time'] = 'Prazo';
+$lang['application_structure_types'] = 'Tipos de estrutura';
+
+$lang['application_price_table_complete'] = 'Tabela de preço completa';
+$lang['application_price_table_incomplete'] = 'Tabela de preço incompleta';
+
+$lang['application_table_active'] = 'Ativa';
+$lang['application_table_inactive'] = 'Inativa';
+$lang['application_activate_pricing_table'] = 'Ativar tabela de preço';
+$lang['application_deactivate_pricing_table'] = 'Desativar tabela de preço';
+$lang['application_activate_pricing_table_desc'] = '<h5><strong>Você tem certeza de que quer utilizar esta tabela de preço?</strong></h5> <h6>Esta ação desativará qualquer outra tabela que esteja em utilização neste momento e você passará a utilizar a precificação desta tabela.</h6>';
+$lang['application_deactivate_pricing_table_desc'] = '<h5><strong>Tem certeza de que quer desativar esta tabela de preço?</strong></h5> <h6>Se você não tiver nenhuma tabela de preço ativa na plataforma, sua empresa não será apresentada na página de resultados de integradores.</h6>';
+$lang['application_activate'] = 'Ativar';
+$lang['application_deactivate'] = 'Desativar';
+
+$lang['application_valid_from'] = 'De';
+$lang['application_valid_to'] = 'Até';
+
+$lang['application_edit_pricing_table'] = 'Editar tabela de preço';
+$lang['application_create_pricing_table'] = 'Criar tabela de preço';
+
+$lang['application_integrator_active_platform'] = 'Integrador ativo';
+$lang['application_integrator_inactive_platform'] = 'Integrador inativo';

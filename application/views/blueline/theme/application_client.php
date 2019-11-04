@@ -165,6 +165,21 @@ $message_icon = false;
 
             </div>
             <div class="topbar noselect">
+
+                <span class="badge" style="cursor: help">
+                    <div class="pull-right small-text" title="<?=$integrator_status_desc?>">
+                        <small>
+                            <?php if ($integrator_online == true) : ?>
+                                <?=$this->lang->line('application_integrator_active_platform')?>
+                            <?php else : ?>
+                                <?=$this->lang->line('application_integrator_inactive_platform')?>
+                            <?php endif; ?>
+
+                        </small>
+                        <span class="dot-colored <?=$integrator_online == true ? 'active' : 'inactive';?>"></span>
+                    </div>
+                </span>
+
                 <span class=" topbar__name hidden-xs">• <?php echo character_limiter($this->client->company->name, 25);?> •</span>
                 <?php
                 if ($this->client->userpic){

@@ -1,20 +1,19 @@
 {
   "private": true,
   "scripts": {
-    "dev":
-      "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch":
-      "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "hot":
-      "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "production":
-      "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "dev": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "name": "solarbid-saas",
   "version": "1.0.0",
   "description": "Solarbid SaaS",
   "main": "app.js",
-  "keywords": ["solarbid", "saas"],
+  "keywords": [
+    "solarbid",
+    "saas"
+  ],
   "author": "Thiago Castro",
   "license": "ISC",
   "dependencies": {
@@ -24,7 +23,8 @@
     "flatpickr": "^4.1.4",
     "lodash.orderby": "^4.6.0",
     "phone-formatter": "0.0.2",
-    "tippy.js": "^1.4.2"
+    "tippy.js": "^1.4.2",
+    "url-loader": "^2.2.0"
   },
   "devDependencies": {
     "ajv": "^5.5.2",
@@ -33,7 +33,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "cross-env": "^5.1.3",
     "css-loader": "^0.28.7",
-    "file-loader": "^1.1.6",
+    "file-loader": "^4.2.0",
     "laravel-mix": "^1.7.2",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
