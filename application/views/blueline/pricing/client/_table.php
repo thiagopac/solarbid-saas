@@ -2,8 +2,12 @@
     $attributes = ['class' => '', 'id' => 'table_form'];
     echo form_open_multipart($form_action, $attributes);
 ?>
+    <div class="form-header">
+        <?=$this->lang->line('application_select_validity_range_and_type')?>
+    </div>
     <div class="row">
         <div class="col-md-6">
+
             <div class="form-group">
                 <label>
                     <?=$this->lang->line('application_start');?>
@@ -30,7 +34,8 @@
         $options = array();
 //        $pricing_schemas = array();
 
-        $options[null] = $this->lang->line('application_select');
+        //Add label as first item
+//        $options[null] = $this->lang->line('application_select');
 
         foreach ($pricing_schemas as $value):
             $options[$value->id] = $value->name;
@@ -38,7 +43,7 @@
 
         $label = $this->lang->line('application_select');
 
-        echo form_dropdown('schema_id', $options, null, "style='width:100%' class='chosen-select' data-placeholder='$label'");
+        echo form_dropdown('schema_id', $options, null, "style='width:100%' required class='chosen-select' data-placeholder='$label'");
         ?>
     </div>
     <?php endif; ?>

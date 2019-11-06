@@ -302,3 +302,12 @@ div.dataTables_info {
 .read-only {
     background: #ececec !important;
 }
+
+.form-header {
+    color: #6a6679 !important;
+    font-size: 12px !important;
+    font-family: Open Sans;
+    letter-spacing: .3px;
+    font-weight: 600 !important;
+    padding: 10px 5px 5px !important;
+}

@@ -31,6 +31,13 @@ class cPricing extends MY_Controller
         $pricing_tables = PricingTable::all($options);
         $this->view_data['pricing_tables'] = $pricing_tables;
 
+        $active_pricing_table = PricingTable::first(['conditions' => ['active = 1 AND company_id = ?', $this->client->company_id]]);
+        $this->view_data['active_pricing_table'] = $active_pricing_table;
+
+        $pricing_records_options = ['conditions' => ['table_id = (?) AND company_id = (?)', $active_pricing_table->id, $active_pricing_table->company_id], "order" => 'id ASC', 'include' => ['pricing_field']];
+        $pricing_records = PricingRecord::all($pricing_records_options);
+        $this->view_data['pricing_records'] = $pricing_records;
+
         $this->content_view = 'pricing/client/tables';
     }
 

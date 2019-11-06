@@ -1311,3 +1311,9 @@ $lang['application_integrator_active_platform'] = 'Integrador ativo';
 $lang['application_integrator_inactive_platform'] = 'Integrador inativo';
 
 $lang['application_select_pricing_schema'] = 'Tipo de tabela';
+$lang['application_active_pricing_table'] = 'Tabela de preço ativa';
+
+$lang['application_met_fib_cer'] = 'Met, Fib, Cer';
+$lang['application_slab_soil'] = 'Laje, Solo';
+
+$lang['application_select_validity_range_and_type'] = 'Selecione o período de validade e o tipo';
