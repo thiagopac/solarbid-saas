@@ -56,8 +56,37 @@
 
             </div>
         <?php endif; ?>
-        <div class="col-md-4 col-xs-4 ">
+        <div class="col-md-5 col-xs-5">
             <div style="text-align: right">
+                <p style="margin-top: 0px">
+                    <small>
+                        <small>
+                            <span style="text-transform: uppercase">
+                                <?= $this->lang->line('application_valid_from') ?>:
+                            </span>
+                        </small>
+                    </small>
+                    <strong>
+                        <small>
+                            <?= date($core_settings->date_format, strtotime($pricing_table->start)) ?>
+                        </small>
+                    </strong>
+                    <br/>
+                    <?php if ($pricing_table->end != null) : ?>
+                        <small>
+                            <small>
+                                <span style="text-transform: uppercase"><?= $this->lang->line('application_valid_to') ?>: </span>
+                            </small>
+                        </small>
+                        <strong>
+                            <small>
+                                <?= date($core_settings->date_format, strtotime($pricing_table->end)) ?>
+                            </small>
+                        </strong>
+                    <?php else: ?>
+                        <br />
+                    <?php endif; ?>
+                </p>
                 <?php if($pricing_table_complete == true): ?>
                     <label class=""><?=$this->lang->line('application_price_table_complete')?>: </label>
                 <?php else: ?>
@@ -66,10 +95,11 @@
                 <label><?=2*count($pricing_fields)?></label>/<label><?=count($pricing_records)?></label>
                 <br />
                 <div class="pull-right small-text-grey"><span><?=$this->lang->line('application_table_'.$active)?> </span><span class="dot-colored <?=$active?>"></span></div>
+
             </div>
         </div>
         <div class="col-md-1 col-xs-1 tile">
-            <div style="width:97%; margin-top: -4px; margin-bottom: 17px; height: 80px;"></div>
+            <div style="width:97%; margin-top: -4px; margin-bottom: 17px;"></div>
         </div>
     </div>
     <div class="grid__col-md-7 dashboard-header">

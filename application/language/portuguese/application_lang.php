@@ -1254,8 +1254,8 @@ $lang['application_registered_number'] = 'CNPJ';
 
 $lang['application_pricing'] = 'Precificação';
 $lang['application_cpricing'] = 'Precificação';
-$lang['application_price_table'] = 'Tabela de preço';
-$lang['application_price_tables'] = 'Tabelas de preço';
+$lang['application_price_table'] = 'Tabela de preços';
+$lang['application_price_tables'] = 'Tabelas de preços';
 $lang['application_tables'] = 'tabelas';
 $lang['application_at_least_one_pricing_table'] = 'Você precisa ter pelo menos uma tabela de preços para estar ativo na plataforma';
 $lang['application_your_pricing_table_is_ok'] = 'Tudo certo por aqui! Sua precificação está de acordo com os requisitos';
@@ -1268,7 +1268,7 @@ $lang['application_edit_table_desc'] = 'Alterar prazos da tabela';
 $lang['application_activate_table'] = 'Ativar tabela';
 $lang['application_activate_table_desc'] = 'Utilizar tabela de preços como precificação atual';
 $lang['application_deactivate_table'] = 'Desativar tabela';
-$lang['application_deactivate_table_desc'] = 'Não de utilizar tabela de preços como precificação atual';
+$lang['application_deactivate_table_desc'] = 'Parar de utilizar tabela de preços como precificação atual';
 $lang['application_Wp_value'] = 'Valor do <span style="text-transform: none !important;">Wp</span>';
 $lang['application_undefined'] = 'Não definido';
 $lang['application_define_price'] = 'Defina o preço';
@@ -1289,23 +1289,25 @@ $lang['application_delivery_time_days'] = 'Prazo para instalação (em dias)';
 $lang['application_delivery_time'] = 'Prazo';
 $lang['application_structure_types'] = 'Tipos de estrutura';
 
-$lang['application_price_table_complete'] = 'Tabela de preço completa';
-$lang['application_price_table_incomplete'] = 'Tabela de preço incompleta';
+$lang['application_price_table_complete'] = 'Tabela de preços completa';
+$lang['application_price_table_incomplete'] = 'Tabela de preços incompleta';
 
 $lang['application_table_active'] = 'Ativa';
 $lang['application_table_inactive'] = 'Inativa';
-$lang['application_activate_pricing_table'] = 'Ativar tabela de preço';
-$lang['application_deactivate_pricing_table'] = 'Desativar tabela de preço';
-$lang['application_activate_pricing_table_desc'] = '<h5><strong>Você tem certeza de que quer utilizar esta tabela de preço?</strong></h5> <h6>Esta ação desativará qualquer outra tabela que esteja em utilização neste momento e você passará a utilizar a precificação desta tabela.</h6>';
-$lang['application_deactivate_pricing_table_desc'] = '<h5><strong>Tem certeza de que quer desativar esta tabela de preço?</strong></h5> <h6>Se você não tiver nenhuma tabela de preço ativa na plataforma, sua empresa não será apresentada na página de resultados de integradores.</h6>';
+$lang['application_activate_pricing_table'] = 'Ativar tabela de preços';
+$lang['application_deactivate_pricing_table'] = 'Desativar tabela de preços';
+$lang['application_activate_pricing_table_desc'] = '<h5><strong>Você tem certeza de que quer utilizar esta tabela de preços?</strong></h5> <h6>Esta ação desativará qualquer outra tabela que esteja em utilização neste momento e você passará a utilizar a precificação desta tabela.</h6>';
+$lang['application_deactivate_pricing_table_desc'] = '<h5><strong>Tem certeza de que quer desativar esta tabela de preços?</strong></h5> <h6>Se você não tiver nenhuma tabela de preços ativa na plataforma, sua empresa não será apresentada na página de resultados de integradores.</h6>';
 $lang['application_activate'] = 'Ativar';
 $lang['application_deactivate'] = 'Desativar';
 
 $lang['application_valid_from'] = 'De';
 $lang['application_valid_to'] = 'Até';
 
-$lang['application_edit_pricing_table'] = 'Editar tabela de preço';
-$lang['application_create_pricing_table'] = 'Criar tabela de preço';
+$lang['application_edit_pricing_table'] = 'Editar tabela de preços';
+$lang['application_create_pricing_table'] = 'Criar tabela de preços';
 
 $lang['application_integrator_active_platform'] = 'Integrador ativo';
 $lang['application_integrator_inactive_platform'] = 'Integrador inativo';
+
+$lang['application_select_pricing_schema'] = 'Tipo de tabela';

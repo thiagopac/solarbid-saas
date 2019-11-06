@@ -190,8 +190,7 @@ class cPricing extends MY_Controller
         }
     }
 
-    public function update_table($pricing_table_id = false)
-    {
+    public function update_table($pricing_table_id = false) {
 
         $pricing_table = PricingTable::find($pricing_table_id);
 
@@ -210,6 +209,39 @@ class cPricing extends MY_Controller
             $this->theme_view = 'modal';
             $this->view_data['title'] = $this->lang->line('application_edit_pricing_table');
             $this->view_data['form_action'] = 'cpricing/update_table/'.$pricing_table_id;
+            $this->content_view = 'pricing/client/_table';
+        }
+    }
+
+    public function create_table() {
+
+        $company = Company::find($this->client->company_id);
+
+        if ($_POST) {
+
+//            $_POST['schema_id'] = 1; //force pricing_schema to be 1 if needed
+
+            $_POST['company_id'] = $company->id;
+            $_POST['active'] = 0;
+
+            $pricing_table = PricingTable::create($_POST);
+
+            if (!$pricing_table) {
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_create_pricing_table_error'));
+            } else {
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_create_pricing_table_success'));
+            }
+            redirect('cpricing');
+        } else {
+
+            $plan_schemas = IntegratorPlan::first(['conditions' => ['id = ?', $company->plan_id], 'select'=>'pricing_schemas']);
+
+            $pricing_schemas = PricingSchema::find('all', ['conditions' => ['id IN (?)', explode(',',$plan_schemas->pricing_schemas)]]);
+            $this->view_data['pricing_schemas'] = $pricing_schemas;
+
+            $this->theme_view = 'modal';
+            $this->view_data['title'] = $this->lang->line('application_create_pricing_table');
+            $this->view_data['form_action'] = 'cpricing/create_table/';
             $this->content_view = 'pricing/client/_table';
         }
     }

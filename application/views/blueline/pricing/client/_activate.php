@@ -4,7 +4,7 @@
 ?>
     <div class="form-group">
         <input type="hidden" id="pricing_table_id" name="pricing_table_id" value="<?=$pricing_table->id?>">
-        <label>
+        <label style="text-transform: none">
             <?php if($pricing_table->active) : ?>
                 <?=$this->lang->line('application_deactivate_pricing_table_desc');?>
             <?php else : ?>

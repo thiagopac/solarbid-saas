@@ -190,17 +190,27 @@ class My_Controller extends CI_Controller
                 $this->view_data['menu'] = Module::find('all', array('order' => 'sort asc', 'conditions' => array('id in (?) AND type = ?', $access, 'client')));
                 $update = Client::find($this->client->id);
 
-                $active_pricing_table = PricingTable::find('all', array('conditions' => array('company_id = ? AND active = 1', $this->client->company_id)));
+                //platform integrators listing issues and inconsistencies
 
-                $this->view_data['integrator_online'] = count($active_pricing_table) > 0;
+                $active_pricing_table = PricingTable::find('first', array('conditions' => array('company_id = ? AND active = 1', $this->client->company_id)));
 
                 $integrator_status_desc = '';
 
-                if (count($active_pricing_table) > 0){
+                if ($active_pricing_table != null){
+                    $this->view_data['integrator_online'] = true;
                     $integrator_status_desc = "Tudo certo! Todas as configurações estão corretas e você está sendo apresentado corretamente na plataforma.";
                 }else{
+                    $this->view_data['integrator_online'] = false;
                     $integrator_status_desc = "Você não tem uma tabela de preços ativa na plataforma. Corrija este problema para ficar ativo.";
                 }
+
+                if ($active_pricing_table->end != null){
+                    if (strtotime($active_pricing_table->start) > strtotime(date("Y-m-d"))  || strtotime($active_pricing_table->end) < strtotime(date("Y-m-d")) ){
+                        $this->view_data['integrator_online'] = false;
+                        $integrator_status_desc = "Você não possui nenhuma tabela de preços com período de validade funcional. Corrija este problema para ficar ativo.";
+                    }
+                }
+
 
                 $this->view_data['integrator_status_desc'] = $integrator_status_desc;
 

@@ -266,10 +266,12 @@ $lang['messages_updated_pricing_record_error'] = "Erro ao atualizar o valor";
 $lang['messages_create_pricing_record_success'] = "Valor criado com sucesso";
 $lang['messages_create_pricing_record_error'] = "Erro ao criar valor";
 
-$lang['messages_activated_pricing_table_success'] = "Tabela de preço ativada";
-$lang['messages_activated_pricing_table_error'] = "Erro ao ativar tabela de preço";
-$lang['messages_deactivated_pricing_table_success'] = "Tabela de preço deativada";
-$lang['messages_deactivated_pricing_table_error'] = "Erro ao desativar tabela de preço";
+$lang['messages_activated_pricing_table_success'] = "Tabela de preços ativada";
+$lang['messages_activated_pricing_table_error'] = "Erro ao ativar tabela de preços";
+$lang['messages_deactivated_pricing_table_success'] = "Tabela de preços desativada";
+$lang['messages_deactivated_pricing_table_error'] = "Erro ao desativar tabela de preços";
 
+$lang['messages_create_pricing_table_success'] = "Tabela criada";
+$lang['messages_create_pricing_table_error'] = "Erro ao criar tabela";
 $lang['messages_updated_pricing_table_success'] = "Tabela atualizada";
-$lang['messages_updated_pricing_table_error'] = "Erro ao atualizar a tabela";
+$lang['messages_updated_pricing_table_error'] = "Erro ao atualizar tabela";
