@@ -275,3 +275,8 @@ $lang['messages_create_pricing_table_success'] = "Tabela criada";
 $lang['messages_create_pricing_table_error'] = "Erro ao criar tabela";
 $lang['messages_updated_pricing_table_success'] = "Tabela atualizada";
 $lang['messages_updated_pricing_table_error'] = "Erro ao atualizar tabela";
+
+$lang['messages_upload_photo_success'] = "Foto enviada com sucesso";
+$lang['messages_upload_photo_error'] = "Erro ao enviar foto";
+$lang['messages_delete_photo_success'] = "Foto apagada com sucesso";
+$lang['messages_delete_photo_error'] = "Erro ao apagar foto";

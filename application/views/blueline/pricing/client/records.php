@@ -1,7 +1,6 @@
 <?php $active = $pricing_table->active == 1 ? 'active' : 'inactive'; ?>
 <div class="col-md-12 col-lg-12">
     <div class="row tile-row">
-
         <div class="tile-button">
             <a href="<?= base_url() ?>cpricing/update_table/<?=$pricing_table->id?>" data-toggle="mainmodal">
                 <div class="col-md-3 col-xs-3 tile">
@@ -99,11 +98,11 @@
             </div>
         </div>
         <div class="col-md-1 col-xs-1 tile">
-            <div style="width:97%; margin-top: -4px; margin-bottom: 17px;"></div>
+            <div style="margin-bottom: 3px;"></div>
         </div>
     </div>
     <div class="grid__col-md-7 dashboard-header">
-        <h1><?= $this->lang->line('application_price_table') ?> #<?= $pricing_table->id ?></h1>
+        <h1><?= $this->lang->line('application_price_table') ?>: <span style="font-size: 15px" class="badge">#<?= ellipsize($pricing_table->name, 35, .8);?></span></h1>
         <small>
             <?= $this->lang->line('application_at_least_one_pricing_table'); ?>
         </small>

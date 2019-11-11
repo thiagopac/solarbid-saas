@@ -2,8 +2,14 @@
     $attributes = ['class' => '', 'id' => 'table_form'];
     echo form_open_multipart($form_action, $attributes);
 ?>
+    <div class="form-group">
+        <label for="name">
+            <?=$this->lang->line('application_name');?> *
+        </label>
+        <input id="name" type="text" name="name" class="required form-control"  value="<?php if(isset($pricing_table)){echo $pricing_table->name;}else{echo random_string('alnum', 6);}?>"  required/>
+    </div>
     <div class="form-header">
-        <?=$this->lang->line('application_select_validity_range_and_type')?>
+        <?=$this->lang->line('application_select_validity_range')?>
     </div>
     <div class="row">
         <div class="col-md-6">

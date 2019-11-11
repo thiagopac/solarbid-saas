@@ -2,20 +2,19 @@
     exit('No direct script access allowed');
 }
 
-include_once(dirname(__FILE__).'/../third_party/functions.php');
+//include_once(dirname(__FILE__).'/../../system/helpers/download_helper.php');
 
-class cPricing extends MY_Controller
-{
+class cPortfolio extends MY_Controller {
     function __construct() {
         parent::__construct();
         $access = FALSE;
         if($this->client){
             foreach ($this->view_data['menu'] as $key => $value) {
-                if($value->link == "cpricing"){ $access = TRUE;}
+                if($value->link == "cportfolio"){ $access = TRUE;}
             }
             if(!$access){redirect('login');}
         }elseif($this->user){
-            redirect('pricing');
+            redirect('cportfolio');
         }else{
             redirect('login');
         }
@@ -24,52 +23,18 @@ class cPricing extends MY_Controller
 
     function index() {
 
-        $options = array('conditions' => 'company_id = '.$this->client->company_id, "order" => 'id DESC', 'include' => ['pricing_schema']);
-        $pricing_tables = PricingTable::all($options);
-        $this->view_data['pricing_tables'] = $pricing_tables;
+        $company = Company::first(['conditions' => ['id = ?', $this->client->company_id]]);
+        $this->view_data['company'] = $company;
 
-        $active_pricing_table = PricingTable::first(['conditions' => ['active = 1 AND company_id = ?', $this->client->company_id]]);
-        $this->view_data['active_pricing_table'] = $active_pricing_table;
+        $company_profile = CompanyProfile::first(['conditions' => ['company_id = ?', $this->client->company_id]]);
+        $this->view_data['company_profile'] = $company_profile;
 
-        $pricing_records_options = ['conditions' => ['table_id = (?) AND company_id = (?)', $active_pricing_table->id, $active_pricing_table->company_id], "order" => 'id ASC', 'include' => ['pricing_field']];
-        $pricing_records = PricingRecord::all($pricing_records_options);
-        $this->view_data['pricing_records'] = $pricing_records;
+        $company_photos = CompanyPhoto::all(['conditions' => ['company_id = ? AND deleted != 1', $this->client->company_id]]);
+        $this->view_data['company_photos'] = $company_photos;
 
-        $this->content_view = 'pricing/client/tables';
+        $this->content_view = 'portfolio/client/view';
     }
 
-    function view($table_id = false) {
-
-        $pricing_table_options = array('conditions' => 'id = '.$table_id, "order" => 'id DESC');
-        $pricing_table = PricingTable::find($pricing_table_options);
-
-        $pricing_schema_field_options = array('conditions' => 'schema_id = '.$pricing_table->schema_id, "order" => 'id ASC', 'include' => ['pricing_field']);
-        $pricing_schema_field = PricingSchemaField:: all($pricing_schema_field_options);
-
-        $arr_field_ids = [];
-
-        foreach ($pricing_schema_field as $row) {
-            array_push($arr_field_ids, $row->field_id);
-        }
-
-        $this->view_data['pricing_schema_field'] = $pricing_schema_field;
-
-        $pricing_field_options = ['conditions' => ['id IN (?)', $arr_field_ids], "order" => 'power_bottom ASC'];
-        $pricing_fields = PricingField::all($pricing_field_options);
-
-        $this->view_data['pricing_fields'] = $pricing_fields;
-
-        $pricing_records_options = ['conditions' => ['field_id IN (?) AND table_id = (?) AND company_id = (?)', $arr_field_ids, $table_id, $pricing_table->company_id], "order" => 'id ASC'];
-        $pricing_records = PricingRecord::all($pricing_records_options);
-
-        $this->view_data['pricing_table'] = PricingTable::find($table_id);
-        $this->view_data['pricing_records'] = $pricing_records;
-
-//        $this->view_data['var_dump'] = $pricing_records;
-        $this->content_view = 'pricing/client/records';
-
-        $this->view_data['pricing_table_complete'] = 2*count($pricing_fields) === count($pricing_records) ? true : false;
-    }
 
     public function update($pricing_record_id = false)
     {
@@ -194,60 +159,58 @@ class cPricing extends MY_Controller
         }
     }
 
-    public function update_table($pricing_table_id = false) {
 
-        $pricing_table = PricingTable::find($pricing_table_id);
+    function download_photo($photo_id) {
 
-        if ($_POST) {
+        $company_photo = CompanyPhoto::find($photo_id);
 
-            $pricing_table->update_attributes($_POST);
-            if (!$pricing_table) {
-                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_updated_pricing_table_error'));
-            } else {
-                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_updated_pricing_table_success'));
-            }
-            redirect('cpricing/view/'.$pricing_table_id);
-        } else {
-            $pricing_table = PricingTable::find($pricing_table_id);
-            $this->view_data['pricing_table'] = $pricing_table;
-            $this->theme_view = 'modal';
-            $this->view_data['title'] = $this->lang->line('application_edit_pricing_table');
-            $this->view_data['form_action'] = 'cpricing/update_table/'.$pricing_table_id;
-            $this->content_view = 'pricing/client/_table';
+        $this->load->helper('download');
+        $this->load->helper('file');
+
+        if($company_photo){
+            $file = './files/media/img/'.$company_photo->filename;
         }
+
+        $mime = get_mime_by_extension($file);
+        if(file_exists($file)) {
+            header('Content-Description: File Transfer');
+            header('Content-Type: '.$mime);
+            header('Content-Disposition: attachment; filename='.basename($company_photo->filename));
+            header('Content-Transfer-Encoding: binary');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            readfile($file);
+            @ob_clean();
+            @flush();
+            exit;
+        }
+
     }
 
-    public function create_table() {
+    function preview_photo($photo_id) {
 
-        $company = Company::find($this->client->company_id);
+        $company_photo = CompanyPhoto::find($photo_id);
 
-        if ($_POST) {
+        $this->theme_view = 'modal';
+        $this->view_data['company_photo'] = $company_photo;
+        $this->content_view = 'portfolio/client/_preview';
+        $this->view_data['title'] = $this->lang->line('application_preview_photo_media');
+    }
 
-//            $_POST['schema_id'] = 1; //force pricing_schema to be 1 if needed
+    public function delete_photo($photo_id = false) {
 
-            $_POST['company_id'] = $company->id;
-            $_POST['active'] = 0;
+        $company_photo = CompanyPhoto::find($photo_id);
+        $company_photo->deleted = 1;
+        $company_photo->save();
 
-            $pricing_table = PricingTable::create($_POST);
-
-            if (!$pricing_table) {
-                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_create_pricing_table_error'));
-            } else {
-                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_create_pricing_table_success'));
-            }
-            redirect('cpricing');
+        if (!$company_photo) {
+            $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_upload_photo_error'));
         } else {
-
-            $plan_schemas = IntegratorPlan::first(['conditions' => ['id = ?', $company->plan_id], 'select'=>'pricing_schemas']);
-
-            $pricing_schemas = PricingSchema::find('all', ['conditions' => ['id IN (?)', explode(',',$plan_schemas->pricing_schemas)]]);
-            $this->view_data['pricing_schemas'] = $pricing_schemas;
-
-            $this->theme_view = 'modal';
-            $this->view_data['title'] = $this->lang->line('application_create_pricing_table');
-            $this->view_data['form_action'] = 'cpricing/create_table/';
-            $this->content_view = 'pricing/client/_table';
+            $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_upload_photo_success'));
         }
+        redirect('cportfolio');
     }
 
 }

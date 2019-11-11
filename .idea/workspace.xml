@@ -2,14 +2,163 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="170fca79-325f-4ab2-a9c8-467af301e9fb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/application/controllers/cportfolio.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/models/CompanyPhoto.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/models/CompanyProfile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/blueline/portfolio/client/_company.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/blueline/portfolio/client/_preview.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/blueline/portfolio/client/_profile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/blueline/portfolio/client/view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/solarbid-saas.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/solarbid-saas.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/controllers/cpricing.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/cpricing.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/language/portuguese/application_lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/language/portuguese/application_lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/PricingField.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/PricingField.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/PricingRecord.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/PricingRecord.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/views/blueline/pricing/client/_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/pricing/client/_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/pricing/client/records.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/pricing/client/records.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/views/blueline/pricing/client/tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/pricing/client/tables.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/blueline/css/important.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/blueline/css/important.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/media/36f9ff1841f8cbd15bf50727c4999a24.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/media/42085dfe93ddafb7f9e6d4d511337671.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/media/bf69914ea84cfc41b2847bee051f89cd.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/media/dcb2e0954739090ab3a998a7f948aa08.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/media/ed0ea4f647699e38191b0afa26e0ad9c.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/.coveralls.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/.github/ISSUE_TEMPLATE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/VERSION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/build.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/data/ca-certificates.crt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/data/test.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/init.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Account.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/AlipayAccount.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/ApiRequestor.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/ApiResource.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/ApiResponse.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/ApplePayDomain.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/ApplicationFee.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/ApplicationFeeRefund.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/AttachedObject.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Balance.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/BalanceTransaction.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/BankAccount.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/BitcoinReceiver.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/BitcoinTransaction.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Card.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Charge.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Collection.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/CountrySpec.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Coupon.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Customer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Dispute.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/EphemeralKey.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Error/Api.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Error/ApiConnection.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Error/Authentication.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Error/Base.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Error/Card.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Error/InvalidRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Error/Permission.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Error/RateLimit.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Error/SignatureVerification.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Event.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/ExternalAccount.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/FileUpload.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/HttpClient/ClientInterface.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/HttpClient/CurlClient.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Invoice.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/InvoiceItem.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/JsonSerializable.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/LoginLink.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Order.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/OrderReturn.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Payout.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Plan.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Product.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Recipient.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/RecipientTransfer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Refund.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/SKU.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/SingletonApiResource.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Source.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Stripe.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/StripeObject.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Subscription.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/SubscriptionItem.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/ThreeDSecure.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Token.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Transfer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/TransferReversal.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Util/AutoPagingIterator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Util/DefaultLogger.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Util/LoggerInterface.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Util/RequestOptions.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Util/Set.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Util/Util.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Webhook.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/lib/WebhookSignature.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/phpunit.no_autoload.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/phpunit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/AccountTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/ApiRequestorTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/ApplePayDomainTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/ApplicationFeeRefundTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/ApplicationFeeTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/AttachedObjectTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/AuthenticationErrorTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/BalanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/BalanceTransactionTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/BankAccountTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/BitcoinReceiverTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/CardErrorTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/ChargeTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/CollectionTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/CountrySpecTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/CouponTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/CurlClientTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/CustomerTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/DiscountTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/DisputeTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/EphemeralKeyTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/ErrorTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/ExternalAccountTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/FileUploadTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/InvalidRequestErrorTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/InvoiceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/PayoutTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/PermissionsErrorTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/PlanTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/ProductTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/RateLimitErrorTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/RecipientTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/RefundTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/RequestOptionsTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/SourceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/StripeObjectTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/SubscriptionItemTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/SubscriptionTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/TestCase.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/ThreeDSecureTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/TokenTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/TransferReversalTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/TransferTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/UtilDefaultLoggerTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/UtilTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/WebhookTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/bootstrap.no_autoload.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/stripe/stripe-php/tests/bootstrap.php" beforeDir="false" />
     </list>
     <ignored path="application/logs/" />
     <ignored path="files/media/a7eabc87bf5cb3afbf154538baf91a63.ofx" />
@@ -45,42 +194,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="764">
-              <caret line="1318" column="49" selection-start-line="1318" selection-start-column="7" selection-end-line="1318" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/cpricing.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/blueline/pricing/client/_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="36" column="33" lean-forward="true" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
+            <state relative-caret-position="809">
+              <caret line="1337" column="56" selection-start-line="1337" selection-start-column="56" selection-end-line="1337" selection-end-column="56" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/views/blueline/pricing/client/tables.php">
+        <entry file="file://$PROJECT_DIR$/application/controllers/cportfolio.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="156" column="68" selection-start-line="156" selection-start-column="68" selection-end-line="156" selection-end-column="68" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#7679#7684#0#PHP" />
-              </folding>
+            <state relative-caret-position="287">
+              <caret line="31" column="38" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/blueline/portfolio/client/_company.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="50" column="19" lean-forward="true" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/blueline/portfolio/client/view.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="534">
+              <caret line="164" column="313" selection-start-line="164" selection-start-column="313" selection-end-line="164" selection-end-column="313" />
             </state>
           </provider>
         </entry>
@@ -89,36 +231,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Tabela de preço</find>
-      <find>tabela de preço</find>
-      <find>_</find>
-      <find>create</find>
-      <find>application_create_pricing_table</find>
-      <find>messages_created_pricing_table_error</find>
-      <find>messages_updated_pricing_table_success</find>
-      <find>messages_create_pricing_table_error</find>
-      <find>$PROJECT_DIR$/application/controllers/cpricing.php</find>
-      <find>application_select_city</find>
-      <find>application_select</find>
-      <find>conditions</find>
-      <find>form_dropdown</find>
-      <find>application_select_pricing_schema</find>
-      <find>cpricing/t</find>
-      <find>cpricing/</find>
-      <find>Utilizar</find>
-      <find>cpricing</find>
-      <find>timezone</find>
-      <find>Expirado</find>
-      <find>active</find>
-      <find>No direct script access allowed</find>
-      <find>Tabela de preço ativa</find>
-      <find>ativa</find>
-      <find>stdpad</find>
-      <find>has_many</find>
-      <find>form-header</find>
-      <find>!important</find>
-      <find>validade</find>
-      <find>application_and</find>
+      <find>Nenhuma foto enviada</find>
+      <find>CodeIgniter</find>
+      <find>ign</find>
+      <find>system/</find>
+      <find>installed</find>
+      <find>$this-&gt;theme_view</find>
+      <find>_push_file</find>
+      <find>hash(</find>
+      <find>this-&gt;load-&gt;helper</find>
+      <find>$this-&gt;load-&gt;helper('download');</find>
+      <find>$this-&gt;load-&gt;helper(</find>
+      <find>load</find>
+      <find>autoload</find>
+      <find>modal</find>
+      <find>$autoload['helper']</find>
+      <find>/helpers/</find>
+      <find>force_download(</find>
+      <find>helper</find>
+      <find>$CI-&gt;load-&gt;helper(</find>
+      <find>$this-&gt;load-&gt;helper('download')</find>
+      <find>force_download</find>
+      <find>client</find>
+      <find>limit_ch</find>
+      <find>application_active_pricing_table</find>
+      <find>application_pricing_table</find>
+      <find>application_price</find>
+      <find>#</find>
+      <find>messages_deactivated_pricing_table_error</find>
+      <find>cportfol</find>
+      <find>CompanyPhoto</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -144,17 +286,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/models/Company.php" />
+        <option value="$PROJECT_DIR$/application/controllers/settings.php" />
+        <option value="$PROJECT_DIR$/application/config/autoload.php" />
         <option value="$PROJECT_DIR$/application/core/MY_Controller.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/pricing/client/records.php" />
-        <option value="$PROJECT_DIR$/sparks/php-activerecord/0.0.3/vendor/php-activerecord/lib/Model.php" />
-        <option value="$PROJECT_DIR$/application/controllers/cpricing.php" />
-        <option value="$PROJECT_DIR$/application/models/PricingField.php" />
-        <option value="$PROJECT_DIR$/application/models/PricingRecord.php" />
-        <option value="$PROJECT_DIR$/assets/blueline/css/important.css" />
-        <option value="$PROJECT_DIR$/application/language/portuguese/application_lang.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/pricing/client/_table.php" />
         <option value="$PROJECT_DIR$/application/views/blueline/pricing/client/tables.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/pricing/client/_table.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/pricing/client/records.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/portfolio/client/_preview.php" />
+        <option value="$PROJECT_DIR$/application/language/portuguese/application_lang.php" />
+        <option value="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/portfolio/client/view.php" />
+        <option value="$PROJECT_DIR$/application/controllers/cportfolio.php" />
       </list>
     </option>
   </component>
@@ -179,7 +321,6 @@
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/paquettg/string-encode" />
       <path value="$PROJECT_DIR$/vendor/paquettg/php-html-parser" />
-      <path value="$PROJECT_DIR$/vendor/stripe/stripe-php" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
@@ -209,13 +350,7 @@
               <item name="solarbid-saas" type="b2602c69:ProjectViewProjectNode" />
               <item name="solarbid-saas" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="solarbid-saas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="solarbid-saas" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="solarbid-saas" type="b2602c69:ProjectViewProjectNode" />
@@ -267,6 +402,23 @@
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="blueline" type="462c0819:PsiDirectoryNode" />
+              <item name="portfolio" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="solarbid-saas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="solarbid-saas" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="blueline" type="462c0819:PsiDirectoryNode" />
+              <item name="portfolio" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="solarbid-saas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="solarbid-saas" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="blueline" type="462c0819:PsiDirectoryNode" />
               <item name="pricing" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -281,7 +433,30 @@
             <path>
               <item name="solarbid-saas" type="b2602c69:ProjectViewProjectNode" />
               <item name="solarbid-saas" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="solarbid-saas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="solarbid-saas" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="blueline" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="solarbid-saas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="solarbid-saas" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="blueline" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="solarbid-saas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="solarbid-saas" type="462c0819:PsiDirectoryNode" />
               <item name="database-model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="solarbid-saas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="solarbid-saas" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -305,11 +480,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/application/views/blueline/portfolio/client" />
       <recent name="$PROJECT_DIR$/application/models" />
+      <recent name="$PROJECT_DIR$/application/controllers" />
+      <recent name="$PROJECT_DIR$/application/views/blueline" />
       <recent name="$PROJECT_DIR$/assets/blueline/fonts" />
-      <recent name="$PROJECT_DIR$/assets/blueline/css" />
-      <recent name="$PROJECT_DIR$/application/views/blueline/pricing/client" />
-      <recent name="$PROJECT_DIR$/application/views/blueline/leads" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -367,8 +542,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1057" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49768162" visible="true" weight="0.3088392" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49768162" visible="true" weight="0.31203407" />
       <window_info id="Structure" order="1" sideWeight="0.5023184" side_tool="true" weight="0.20447284" />
       <window_info id="Gulp" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -381,7 +557,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32953367" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.49946752" visible="true" weight="0.32876712" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49946752" weight="0.32876712" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5005325" side_tool="true" weight="0.32953367" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32953367" />
@@ -481,86 +657,87 @@
     <MESSAGE value="Início de conversão de módulo para Timeline de projeto" />
     <MESSAGE value="Evolução do projeto" />
     <MESSAGE value="Módulo de pricing finalizado" />
-    <option name="LAST_COMMIT_MESSAGE" value="Módulo de pricing finalizado" />
+    <MESSAGE value="Correções visuais módulo de pricing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correções visuais módulo de pricing" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/models/TicketAttachment.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/TicketArticle.php">
+    <entry file="file://$PROJECT_DIR$/application/controllers/settings.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="6" selection-start-line="6" selection-end-line="8" selection-end-column="6" />
+        <state relative-caret-position="287">
+          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sparks/php-activerecord/0.0.3/vendor/php-activerecord/lib/Model.php">
+    <entry file="file://$PROJECT_DIR$/application/core/MY_Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="35" column="22" lean-forward="true" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
+        <state relative-caret-position="287">
+          <caret line="115" column="34" lean-forward="true" selection-start-line="115" selection-start-column="34" selection-end-line="115" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/pricing/client/records.php">
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/pricing/client/_record.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="706">
-          <caret line="196" column="24" lean-forward="true" selection-start-line="196" selection-start-column="24" selection-end-line="196" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/PricingField.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="8" column="51" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/PricingRecord.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/dashboard/client/dashboard.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="169" column="117" selection-start-line="169" selection-start-column="64" selection-end-line="169" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/cpricing.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="764">
-          <caret line="1318" column="49" selection-start-line="1318" selection-start-column="7" selection-end-line="1318" selection-end-column="49" />
+        <state relative-caret-position="568">
+          <caret line="55" column="4" lean-forward="true" selection-start-line="55" selection-start-column="4" selection-end-line="60" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/blueline/pricing/client/_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="36" column="33" lean-forward="true" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
+        <state relative-caret-position="122">
+          <caret line="9" column="10" lean-forward="true" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/blueline/pricing/client/tables.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="156" column="68" selection-start-line="156" selection-start-column="68" selection-end-line="156" selection-end-column="68" />
+        <state relative-caret-position="424">
+          <caret line="126" column="142" lean-forward="true" selection-start-line="126" selection-start-column="88" selection-end-line="126" selection-end-column="142" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/pricing/client/records.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="104" column="110" selection-start-line="104" selection-start-column="110" selection-end-line="104" selection-end-column="110" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#7679#7684#0#PHP" />
+            <element signature="e#5194#5217#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="809">
+          <caret line="1337" column="56" selection-start-line="1337" selection-start-column="56" selection-end-line="1337" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/portfolio/client/_preview.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="11" column="6" lean-forward="true" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/portfolio/client/_company.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="50" column="19" lean-forward="true" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/portfolio/client/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="164" column="313" selection-start-line="164" selection-start-column="313" selection-end-line="164" selection-end-column="313" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/cportfolio.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="31" column="38" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="38" />
         </state>
       </provider>
     </entry>

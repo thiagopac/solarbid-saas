@@ -6,6 +6,7 @@ $lang['application_action'] = 'Ação';
 $lang['application_active'] = 'Ativo';
 $lang['application_add_item'] = 'Adicionar Item';
 $lang['application_add_media'] = 'Adicionar Mídia';
+$lang['application_add_photo'] = 'Adicionar foto';
 $lang['application_add_new_client'] = 'Novo Cliente';
 $lang['application_add_task'] = 'Adicionar tarefa';
 $lang['application_add_to_quick_access'] = 'Adicionar ao Acesso Rápido';
@@ -1311,9 +1312,27 @@ $lang['application_integrator_active_platform'] = 'Integrador ativo';
 $lang['application_integrator_inactive_platform'] = 'Integrador inativo';
 
 $lang['application_select_pricing_schema'] = 'Tipo de tabela';
-$lang['application_active_pricing_table'] = 'Tabela de preço ativa';
+$lang['application_active_pricing_table'] = 'Tabela ativa';
 
 $lang['application_met_fib_cer'] = 'Met, Fib, Cer';
 $lang['application_slab_soil'] = 'Laje, Solo';
 
-$lang['application_select_validity_range_and_type'] = 'Selecione o período de validade e o tipo';
+$lang['application_select_validity_range'] = 'Selecione o período de validade';
+
+$lang['application_portfolio'] = 'Portfólio';
+$lang['application_cportfolio'] = 'Portfólio';
+$lang['application_photos'] = 'Fotos';
+$lang['application_photo'] = 'Foto';
+$lang['application_registration_data'] = 'Cadastro';
+$lang['application_edit_registration_data'] = 'Editar cadastro';
+$lang['application_edit_profile_and_portfolio'] = 'Editar Perfil e portfólio';
+$lang['application_profile_and_portfolio'] = 'Perfil e portfólio';
+$lang['application_company_profile_and_portfolio'] = 'Perfil da empresa e portfólio';
+$lang['application_portolio_and_profile_data_fill_to_show'] = 'Os dados de perfil da sua empresa e portfólio garantem melhor colocação nos resultados. Tenha sempre dados atualizados e fotos de boa qualidade.';
+$lang['application_warranty_lowest'] = 'Garantia até 75<small><small style="text-transform:none">kWp</small></small>';
+$lang['application_warranty_highest'] = 'Garantia acima de 75<small><small style="text-transform:none">kWp</small></small>';
+$lang['application_power_plants_installed'] = 'Quantidade de usinas instaladas';
+$lang['application_power_executed'] = 'Potência executada';
+$lang['application_no_photo_sent'] = 'Nenhuma foto enviada';
+$lang['application_preview_photo'] = 'Visualizar';
+$lang['application_preview_photo_media'] = 'Visualização';

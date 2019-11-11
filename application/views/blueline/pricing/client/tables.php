@@ -48,7 +48,6 @@
             <div class="grid grid--align-content-start">
                 <?php if (1 == 1) { ?>
 
-
                     <?php foreach ($pricing_tables as $pricing_table): ?>
                         <?php $active = $pricing_table->active == 1 ? 'active' : 'inactive'; ?>
 
@@ -59,7 +58,7 @@
                                     <div class="tile-icon hidden-md hidden-xs"><i style="color: #d1d1d1"
                                                                                   class="la la-money"></i></div>
                                     <div class="tile-small-header">
-                                        <?= $this->lang->line('application_price_table') ?> #<?= $pricing_table->id ?>
+                                        <?= $this->lang->line('application_price_table') ?>: #<?= ellipsize($pricing_table->name, 15, .8);  ?>
 
                                         <?php if(strtotime($pricing_table->end) < strtotime(date("Y-m-d"))) : ?>
                                              <small class="badge btn-danger btn-xs" style="font-size: 9px !important; font-weight: 600; margin-top: -2px; margin-left: 2px">
@@ -116,19 +115,16 @@
                     <?php endforeach; ?>
 
                 <?php } ?>
-
-
             </div>
         </div>
 
         <?php if ($active_pricing_table != null) : ?>
         <div class="grid__col-sm-12 grid__col-md-3 grid__col-lg-3 grid__col--bleed">
             <div class="grid grid--align-content-start">
-
                 <div class="grid__col-12 ">
                     <div class="stdpad box-shadow" style="height: auto">
                         <div class="table-head">
-                            <?=$this->lang->line('application_active_pricing_table')?> #<?=$active_pricing_table->id?>
+                            <?=$this->lang->line('application_active_pricing_table')?>: #<?= ellipsize($active_pricing_table->name, 15, .8);?>
                         </div>
                         <div class="row" style="margin-top: 10px">
                             <div class="col-md-12">
@@ -154,19 +150,11 @@
                                             </span>
                                         </li>
                                         <?php if (count($pricing_records) > $i) : ?>
-                                        <hr class="stats-separator" />
+                                            <hr class="stats-separator" />
                                         <?php endif; ?>
                                     <?php endforeach; ?>
                                 </ul>
                             </div>
-
-                            <?php
-                            $last_pricing_field = null;
-                            $repeat = true;
-                            $i = -1;
-
-                            ?>
-
                         </div>
                     </div>
                 </div>
