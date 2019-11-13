@@ -31,6 +31,22 @@ class cPricing extends MY_Controller
         $active_pricing_table = PricingTable::first(['conditions' => ['active = 1 AND company_id = ?', $this->client->company_id]]);
         $this->view_data['active_pricing_table'] = $active_pricing_table;
 
+
+        if ($active_pricing_table != null){
+            $pricing_tables_current_status_desc = $this->lang->line('application_your_pricing_table_is_ok');
+        }else{
+            $pricing_tables_current_status_desc = $this->lang->line('application_at_least_one_pricing_table');
+        }
+
+        if ($active_pricing_table->end != null){
+            if (strtotime($active_pricing_table->start) > strtotime(date("Y-m-d"))  || strtotime($active_pricing_table->end) < strtotime(date("Y-m-d")) ){
+                $this->view_data['integrator_online'] = false;
+                $pricing_tables_current_status_desc = $this->lang->line('application_no_pricing_table_valid_start_end');
+            }
+        }
+
+        $this->view_data['pricing_tables_current_status_desc'] = $pricing_tables_current_status_desc;
+
         $pricing_records_options = ['conditions' => ['table_id = (?) AND company_id = (?)', $active_pricing_table->id, $active_pricing_table->company_id], "order" => 'id ASC', 'include' => ['pricing_field']];
         $pricing_records = PricingRecord::all($pricing_records_options);
         $this->view_data['pricing_records'] = $pricing_records;
@@ -71,18 +87,15 @@ class cPricing extends MY_Controller
         $this->view_data['pricing_table_complete'] = 2*count($pricing_fields) === count($pricing_records) ? true : false;
     }
 
-    public function update($pricing_record_id = false)
-    {
+    public function update($pricing_record_id = false) {
 
         $pricing_record = PricingRecord::find($pricing_record_id);
 
         if ($_POST) {
 
-            if (isset($_POST['access'])) {
-                $_POST['access'] = implode(',', $_POST['access']);
-            } else {
-                unset($_POST['access']);
-            }
+            //values come as 12.345,67 and need back to database type 12345.67
+            $_POST['value'] = str_replace('.', '', $_POST['value']);
+            $_POST['value'] = str_replace(',', '.', $_POST['value']);
 
             $pricing_record->update_attributes($_POST);
             if (!$pricing_record) {
@@ -92,7 +105,8 @@ class cPricing extends MY_Controller
             }
             redirect('cpricing/view/'.$pricing_record->table_id);
         } else {
-            $pricing_record = PricingRecord::find($pricing_record_id);
+
+
             $this->view_data['pricing_record'] = $pricing_record;
             $this->view_data['pricing_field'] = PricingField::find($pricing_record->field_id);
             $this->theme_view = 'modal';
@@ -113,6 +127,10 @@ class cPricing extends MY_Controller
                 unset($_POST['access']);
             }
 
+            //values come as 12.345,67 and need back to database type 12345.67
+            $_POST['value'] = str_replace('.', '', $_POST['value']);
+            $_POST['value'] = str_replace(',', '.', $_POST['value']);
+
             $_POST['company_id'] = $this->client->company_id;
             $_POST['table_id'] = $pricing_table_id;
             $_POST['field_id'] = $pricing_field_id;
@@ -122,8 +140,6 @@ class cPricing extends MY_Controller
             }else{
                 $_POST['structure_type_ids'] = '4,5';
             }
-
-//            var_dump($_POST);
 
             $pricing_record = PricingRecord::create($_POST);
 

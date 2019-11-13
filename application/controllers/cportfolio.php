@@ -29,7 +29,7 @@ class cPortfolio extends MY_Controller {
         $company_profile = CompanyProfile::first(['conditions' => ['company_id = ?', $this->client->company_id]]);
         $this->view_data['company_profile'] = $company_profile;
 
-        $company_photos = CompanyPhoto::all(['conditions' => ['company_id = ? AND deleted != 1', $this->client->company_id]]);
+        $company_photos = CompanyPhoto::all(['conditions' => ['company_id = ? AND deleted != 1', $this->client->company_id], 'order' => 'id DESC']);
         $this->view_data['company_photos'] = $company_photos;
 
         $this->content_view = 'portfolio/client/view';
@@ -211,6 +211,145 @@ class cPortfolio extends MY_Controller {
             $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_upload_photo_success'));
         }
         redirect('cportfolio');
+    }
+
+    public function edit_registration() {
+
+        if ($_POST) {
+            unset($_POST['send']);
+            if (isset($_POST['view'])) {
+                $view = $_POST['view'];
+                unset($_POST['view']);
+            }
+            $company = Company::find_by_id($this->client->company_id);
+
+
+            if ($company->unlocked == true) {
+                $_POST["city"] = substr($_POST["city"], 0, -3);
+            }
+
+            $company->update_attributes($_POST);
+            if (!$company) {
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_save_company_error'));
+            } else {
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_save_company_success'));
+            }
+            redirect('cportfolio');
+        } else {
+            $company = $this->view_data['company'] = Company::find_by_id($this->client->company_id);
+
+            $company_city = $company->city.'/'.$company->state;
+            $company_state = $company->state;
+            $company_country = $company->country;
+
+            if($company->unlocked == true){
+                $this->view_data['cities'] = City::find('all', ['conditions' => ['state = ?', $company->state], 'order' => 'name ASC']);
+                $this->view_data['states'] = State::find('all');
+                $this->view_data['countries'] = Country::find('all', ['conditions' => ['status = ?', 1]]);
+            }else{
+                $this->view_data['cities'] = City::find('all', ['conditions' => ['name = ? AND state = ?', $company->city, $company->state]]);
+                $this->view_data['states'] = State::find('all', ['conditions' => ['letter = ?', $company->state]]);
+                $this->view_data['countries'] = Country::find('all', ['conditions' => ['name = ? AND status = ?', $company->country, 1]]);
+            }
+
+            $this->view_data['company_city'] = $company_city;
+            $this->view_data['company_state'] = $company_state;
+            $this->view_data['company_country'] = $company_country;
+
+            $this->theme_view = 'modal';
+            $this->view_data['title'] = $this->lang->line('application_edit_registration');
+            $this->view_data['form_action'] = 'cportfolio/edit_registration';
+            $this->content_view = 'portfolio/client/_company';
+        }
+
+    }
+
+    public function edit_profile() {
+
+        $company_profile = CompanyProfile::find($this->client->company_id);
+
+        if ($_POST) {
+            $company_profile->update_attributes($_POST);
+            if (!$company_profile) {
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_updated_company_profile_error'));
+            } else {
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_updated_company_profile_success'));
+            }
+            redirect('cportfolio');
+        } else {
+
+            $this->view_data['company_profile'] = $company_profile;
+            $this->theme_view = 'modal';
+            $this->view_data['title'] = $this->lang->line('application_edit_profile_and_portfolio');
+            $this->view_data['form_action'] = 'cportfolio/edit_profile/';
+            $this->content_view = 'portfolio/client/_profile';
+        }
+    }
+
+    public function add_photo() {
+
+        $core_settings = Setting::first();
+
+        if ($_POST) {
+
+            $config['upload_path'] = './files/media/img/';
+            $config['encrypt_name'] = true;
+            $config['allowed_types'] = 'gif|jpg|png';
+
+            $_POST['company_id'] = $this->client->company_id;
+            $_POST['path'] = $core_settings->domain."files/media/img/";
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload()) {
+                $error = $this->upload->display_errors('', ' ');
+                $this->session->set_flashdata('message', 'error:'.$error);
+                redirect('cportfolio/');
+            } else {
+                $data = array('upload_data' => $this->upload->data());
+
+                $_POST['filename'] = $data['upload_data']['file_name'];
+                $_POST['type'] = $data['upload_data']['file_type'];
+
+                //check image processor extension
+                if (extension_loaded('gd2')) {
+                    $lib = 'gd2';
+                } else {
+                    $lib = 'gd';
+                }
+
+                $config['image_library']  = $lib;
+                $config['source_image']   = './files/media/img/'.$_POST['savename'];
+                $config['maintain_ratio'] = true;
+                $config['max_width']          = 2048;
+                $config['max_height']         = 2048;
+                $config['master_dim']     = "height";
+                $config['quality']        = "100%";
+
+                $this->load->library('image_lib');
+                $this->image_lib->initialize($config);
+                $this->image_lib->resize();
+                $this->image_lib->clear();
+            }
+
+            unset($_POST['send']);
+            unset($_POST['userfile']);
+            unset($_POST['files']);
+            $_POST = array_map('htmlspecialchars', $_POST);
+
+            $company_photo = CompanyPhoto::create($_POST);
+            if (!$company_photo) {
+                $this->session->set_flashdata('message', 'error:'.$this->lang->line('messages_save_media_error'));
+            } else {
+                $this->session->set_flashdata('message', 'success:'.$this->lang->line('messages_save_media_success'));
+            }
+            redirect('cportfolio');
+        } else {
+            $this->theme_view = 'modal';
+            $this->view_data['title'] = $this->lang->line('application_add_media');
+            $this->view_data['form_action'] = 'cportfolio/add_photo/';
+            $this->content_view = 'portfolio/client/_photo';
+        }
     }
 
 }

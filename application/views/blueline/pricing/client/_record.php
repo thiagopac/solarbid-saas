@@ -23,8 +23,8 @@
         $label_structure_types = $this->lang->line('application_slab').', '.$this->lang->line('application_soil');
     }
 
-
 ?>
+
 <?php
     $attributes = ['class' => '', 'id' => 'record_form'];
     echo form_open_multipart($form_action, $attributes);
@@ -47,6 +47,7 @@
             </div>
         </div>
     </div>
+
     <div class="form-group read-only">
         <label>
             <?=$this->lang->line('application_structure_types');?>
@@ -57,13 +58,18 @@
         <label for="value">
             <?=$this->lang->line('application_value');?> *
         </label>
-        <input id="value" type="text" name="value" class="required form-control"  value="<?php if(isset($pricing_record)){echo $pricing_record->value;}?>"  required/>
+        <div class="input-group">
+            <div class="input-group-addon">
+                <?=$core_settings->money_symbol?>
+            </div>
+            <input id="value" type="text" name="value" class="required form-control"  value="<?php if(isset($pricing_record)){echo display_money(sprintf('%01.2f',$pricing_record->value));}?>"  required/>
+        </div>
     </div>
     <div class="form-group">
         <label for="delivery_time_days">
             <?=$this->lang->line('application_delivery_time_days');?> *
         </label>
-        <input id="delivery_time_days" type="text" name="delivery_time_days" class="required form-control"  value="<?php if(isset($pricing_record)){echo $pricing_record->delivery_time_days;}?>"  required/>
+        <input id="delivery_time_days" type="text" name="delivery_time_days" onkeypress="return event.keyCode >= 48 && event.keyCode <= 57" class="required form-control"  value="<?php if(isset($pricing_record)){echo $pricing_record->delivery_time_days;}?>"  required/>
     </div>
     <div class="modal-footer">
         <input type="submit" class="btn btn-primary" value="
@@ -73,3 +79,11 @@
         </a>
     </div>
 <?php echo form_close(); ?>
+
+<script>
+    $(document).ready(function(){
+
+        $("#value").maskMoney({allowNegative: false, thousands:'.', decimal:',', affixesStay: false});
+
+    });
+</script>

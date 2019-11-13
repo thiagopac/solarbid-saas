@@ -1,13 +1,10 @@
 <?php
 $attributes = ['class' => '', 'id' => '_company'];
 echo form_open_multipart($form_action, $attributes);
+
+$disabled = $company->unlocked == true ? '' : 'disabled';
 ?>
 
-<?php if (isset($company)) {
-    ?>
-    <input id="id" type="hidden" name="id" value="<?=$company->id; ?>" />
-    <?php
-} ?>
 <?php if (isset($view)) {
     ?>
     <input id="view" type="hidden" name="view" value="true" />
@@ -26,7 +23,7 @@ echo form_open_multipart($form_action, $attributes);
             </div>
             <?php
             } ?>
-            <input id="reference" type="text" name="reference" class="required form-control" value="<?php if (isset($company)) {
+            <input type="text" disabled class="required form-control" value="<?php if (isset($company)) {
                 echo $company->reference;
             } else {
                 echo $core_settings->company_reference;
@@ -62,7 +59,7 @@ echo form_open_multipart($form_action, $attributes);
     <div class="form-group">
         <label for="name">
             <?=$this->lang->line('application_name');?> *</label>
-        <input id="name" type="text" name="name" class="required form-control" value="<?php if (isset($company)) {
+        <input id="name" type="text" name="name" <?=$disabled?> class="required form-control" value="<?php if (isset($company)) {
             echo $company->name;
         } ?>" required/>
     </div>
@@ -70,7 +67,7 @@ echo form_open_multipart($form_action, $attributes);
     <div class="form-group">
         <label for="name">
             <?=$this->lang->line('application_corporate_name');?> *</label>
-        <input id="corporate_name" type="text" name="corporate_name" class="required form-control" value="<?php if (isset($company)) {
+        <input id="corporate_name" type="text" <?=$disabled?> name="corporate_name" class="required form-control" value="<?php if (isset($company)) {
             echo $company->corporate_name;
         } ?>" required/>
     </div>
@@ -79,7 +76,7 @@ echo form_open_multipart($form_action, $attributes);
         <label for="name">
             <?=$this->lang->line('application_registered_number');?> *
         </label>
-        <input id="registered_number" type="text" name="registered_number" class="required form-control" value="<?php if (isset($company)) {
+        <input id="registered_number" type="text" <?=$disabled?> name="registered_number" class="required form-control" value="<?php if (isset($company)) {
             echo $company->registered_number;
         } ?>" required/>
     </div>
@@ -116,38 +113,10 @@ echo form_open_multipart($form_action, $attributes);
             echo $company->zipcode;
         }?>" />
     </div>
-    <!--<div class="form-group">
-        <label for="city"><?/*=$this->lang->line('application_city');*/?></label>
-        <input id="city" type="text" name="city" class="form-control" value="<?php /*if (isset($company)) {
-        echo $company->city;
-    }*/?>" />
-</div>-->
-
-    <div class="form-group">
-        <label for="city">
-            <?=$this->lang->line('application_select_city');?>
-        </label>
-        <?php
-        $options = array();
-        $city = array();
-
-        $options[null] = $this->lang->line('application_select_city');
-
-        foreach ($cities as $value):
-            $options[$value->name."/".$value->state] = $value->name."/".$value->state;
-        endforeach;
-
-        if(isset($company)){}else{$city = "";}
-
-        $label = $this->lang->line('application_select_city');
-
-        echo form_dropdown('city', $options, $company_city, "style='width:100%' class='chosen-select' $disabled data-placeholder='$label'");
-        ?>
-    </div>
 
     <div class="form-group">
         <label for="state">
-            <?=$this->lang->line('application_state');?>
+            <?=$this->lang->line('application_state');?> *
         </label>
         <?php
         $options = array();
@@ -163,11 +132,34 @@ echo form_open_multipart($form_action, $attributes);
 
         $label = $this->lang->line('application_select_state');
 
-        echo form_dropdown('state', $options, $company_state, 'style="width:100%" class="chosen-select"');?>
+        echo form_dropdown('state', $options, $company_state, $disabled.' style="width:100%" class="chosen-select"');?>
     </div>
+
+    <div class="form-group">
+        <label for="city">
+            <?=$this->lang->line('application_city');?> * <?php if($company->unlocked == true) : ?><small><small>(<?=$this->lang->line('application_city_desc')?>)</small></small><?php endif; ?>
+        </label>
+        <?php
+        $options = array();
+        $city = array();
+
+        $options[null] = $this->lang->line('application_select_city');
+
+        foreach ($cities as $value):
+            $options[$value->name."/".$value->state] = $value->name."/".$value->state;
+        endforeach;
+
+        if(isset($company)){}else{$city = "";}
+
+        $label = $this->lang->line('application_select_city');
+
+        echo form_dropdown('city', $options, $company_city, $disabled." style='width:100%' class='chosen-select' data-placeholder='$label'");
+        ?>
+    </div>
+
     <div class="form-group">
         <label for="country">
-            <?=$this->lang->line('application_country');?>
+            <?=$this->lang->line('application_country');?> *
         </label>
         <?php
         $options = array();
@@ -183,29 +175,7 @@ echo form_open_multipart($form_action, $attributes);
 
         $label = $this->lang->line('application_select_country');
 
-        echo form_dropdown('country', $options, $company_country, 'style="width:100%" class="chosen-select"');?>
-    </div>
-    <div class="form-group">
-        <label for="level">
-            <?=$this->lang->line('application_level'); ?> *
-        </label>
-        <?php $options = [
-            '' => $this->lang->line('application_select'),
-            '1' => '1',
-            '2' => '2',
-            '3' => '3',
-            '4' => '4',
-            '5' => '5',
-            '6' => '6',
-            '7' => '7',
-            '8' => '8',
-            '9' => '9',
-            '10' => '10'
-        ]; ?>
-
-        <?php
-
-        echo form_dropdown('level', $options, $company->level, 'style="width:100%" class="chosen-select" '); ?>
+        echo form_dropdown('country', $options, $company_country, $disabled.' style="width:100%" class="chosen-select"');?>
     </div>
 
     <div class="modal-footer">
@@ -217,6 +187,5 @@ echo form_open_multipart($form_action, $attributes);
     $(document).ready(function() {
 
         $('#registered_number').mask('00.000.000/0000-00', {reverse: false})
-
     });
 </script>

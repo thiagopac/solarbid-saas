@@ -280,3 +280,6 @@ $lang['messages_upload_photo_success'] = "Foto enviada com sucesso";
 $lang['messages_upload_photo_error'] = "Erro ao enviar foto";
 $lang['messages_delete_photo_success'] = "Foto apagada com sucesso";
 $lang['messages_delete_photo_error'] = "Erro ao apagar foto";
+
+$lang['messages_updated_company_profile_success'] = "Perfil da empresa atualizado";
+$lang['messages_updated_company_profile_error'] = "Erro ao atualizar o perfil da empresa";

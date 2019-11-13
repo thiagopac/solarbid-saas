@@ -116,16 +116,31 @@ echo form_open_multipart($form_action, $attributes);
             echo $company->zipcode;
         }?>" />
     </div>
-    <!--<div class="form-group">
-        <label for="city"><?/*=$this->lang->line('application_city');*/?></label>
-        <input id="city" type="text" name="city" class="form-control" value="<?php /*if (isset($company)) {
-        echo $company->city;
-    }*/?>" />
-</div>-->
+
+    <div class="form-group">
+        <label for="state">
+            <?=$this->lang->line('application_state');?> *
+        </label>
+        <?php
+        $options = array();
+        $state = array();
+
+        $options[null] = $this->lang->line('application_select_state');
+
+        foreach ($states as $value):
+            $options[$value->letter] = $value->name;
+        endforeach;
+
+        if(isset($company)){}else{$state = "";}
+
+        $label = $this->lang->line('application_select_state');
+
+        echo form_dropdown('state', $options, $company_state, 'style="width:100%" class="chosen-select"');?>
+    </div>
 
     <div class="form-group">
         <label for="city">
-            <?=$this->lang->line('application_select_city');?>
+            <?=$this->lang->line('application_city');?> * <small><small>(<?=$this->lang->line('application_city_desc')?>)</small></small>
         </label>
         <?php
         $options = array();
@@ -145,26 +160,6 @@ echo form_open_multipart($form_action, $attributes);
         ?>
     </div>
 
-    <div class="form-group">
-        <label for="state">
-            <?=$this->lang->line('application_state');?>
-        </label>
-        <?php
-        $options = array();
-        $state = array();
-
-        $options[null] = $this->lang->line('application_select_state');
-
-        foreach ($states as $value):
-            $options[$value->letter] = $value->name;
-        endforeach;
-
-        if(isset($company)){}else{$state = "";}
-
-        $label = $this->lang->line('application_select_state');
-
-        echo form_dropdown('state', $options, $company_state, 'style="width:100%" class="chosen-select"');?>
-    </div>
     <div class="form-group">
         <label for="country">
             <?=$this->lang->line('application_country');?>
@@ -206,6 +201,22 @@ echo form_open_multipart($form_action, $attributes);
         <?php
 
         echo form_dropdown('level', $options, $company->level, 'style="width:100%" class="chosen-select" '); ?>
+    </div>
+
+    <div class="form-group">
+        <label for="inactive"><?=$this->lang->line('application_inactive');?> (<?=$this->lang->line('application_inactive_desc')?>)</label><br />
+        <?php   $options = array();
+        $options['1'] = $this->lang->line('application_yes');
+        $options['0'] = $this->lang->line('application_no');
+        echo form_dropdown('inactive', $options, $company->inactive, 'style="width:100%" class="chosen-select" ');?>
+    </div>
+
+    <div class="form-group">
+        <label for="unlocked"><?=$this->lang->line('application_unlocked');?> (<?=$this->lang->line('application_unlocked_desc')?>)</label><br />
+        <?php   $options = array();
+        $options['1'] = $this->lang->line('application_yes');
+        $options['0'] = $this->lang->line('application_no');
+        echo form_dropdown('unlocked', $options, $company->unlocked, 'style="width:100%" class="chosen-select" ');?>
     </div>
 
     <div class="modal-footer">

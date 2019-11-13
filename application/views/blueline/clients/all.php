@@ -33,6 +33,12 @@
                     <th style="text-align: center" class="hidden-xs">
                         <?=$this->lang->line('application_level');?>
                     </th>
+                    <th style="text-align: center" class="hidden-xs">
+                        <?=$this->lang->line('application_unlocked');?>
+                    </th>
+                    <th style="text-align: center" class="hidden-xs">
+                        <?=$this->lang->line('application_inactive');?>
+                    </th>
                     <th style="text-align: center">
                         <?=$this->lang->line('application_action');?>
                     </th>
@@ -75,6 +81,16 @@
                             <td style="text-align: center" class="hidden-xs">
                                 <?php if (!is_null($value->level)) {
                                     echo $value->level;
+                                }?>
+                            </td>
+                            <td style="text-align: center" class="hidden-xs">
+                                <?php if (!is_null($value->unlocked)) {
+                                    echo $value->unlocked == 1 ? '<span style="color:red">'.$this->lang->line('application_yes').'</span>' : $this->lang->line('application_no');
+                                }?>
+                            </td>
+                            <td style="text-align: center" class="hidden-xs">
+                                <?php if (!is_null($value->inactive)) {
+                                    echo $value->inactive == 1 ? '<span style="color:red">'.$this->lang->line('application_yes').'</span>' : $this->lang->line('application_no');
                                 }?>
                             </td>
                             <td class="option" width="8%">

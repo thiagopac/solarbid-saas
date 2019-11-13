@@ -20,14 +20,14 @@
             </a>
         </div>
         <div class="tile-button">
-            <a href="<?=base_url() ?>cportfolio/edit_registration" data-toggle="mainmodal">
+            <a href="<?=base_url() ?>cportfolio/edit_profile" data-toggle="mainmodal">
                 <div class="col-md-3 col-xs-3 tile">
                     <div class="icon-frame hidden-xs"> <span class="iconify" data-icon="mdi:solar-power" data-inline="true"> </span> </div>
                     <h1> <span> <?=$this->lang->line('application_edit_profile_and_portfolio'); ?> </span> </h1> </div>
             </a>
         </div>
         <div class="tile-button">
-            <a href="<?=base_url() ?>cportfolio/edit_registration" data-toggle="mainmodal">
+            <a href="<?=base_url() ?>cportfolio/add_photo" data-toggle="mainmodal">
                 <div class="col-md-3 col-xs-3 tile">
                     <div class="icon-frame hidden-xs"> <span class="iconify" data-icon="mdi:image-plus" data-inline="true"> </span> </div>
                     <h1> <span> <?=$this->lang->line('application_add_photo'); ?> </span> </h1> </div>
@@ -138,7 +138,7 @@
                     <?=$this->lang->line('application_photos'); ?>
                 </div>
                 <div class="table-div">
-                    <table id="media" class="table data-media" rel="<?=base_url() ?>cportfolio/photo/<?=$this->client->company_id; ?>" cellspacing="0" cellpadding="0">
+                    <table id="photos" class="table data-media noclick" rel="<?=base_url() ?>cportfolio/photo/<?=$this->client->company_id; ?>" cellspacing="0" cellpadding="0">
                         <thead>
                         <tr>
                             <th class="no-sort" style="width:20px">
@@ -152,7 +152,7 @@
                             </th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="div-photos" name="div-photos">
                         <?php foreach ($company_photos as $file): ?>
                             <tr id="<?=$file->id; ?>">
                                 <td>
@@ -179,3 +179,4 @@
     </div>
     <p> </p>
 </div>
+<?php

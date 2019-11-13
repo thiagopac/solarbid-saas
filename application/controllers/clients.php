@@ -39,14 +39,13 @@ class Clients extends MY_Controller
                 foreach ($this->user->companies as $value) {
                     array_push($comp_array, $value->id);
                 }
-                $options = ['conditions' => ['inactive = ? AND id in (?)', 0, $comp_array]];
+                $options = ['conditions' => ['id in (?)', $comp_array]];
                 $this->view_data['companies'] = Company::find('all', $options);
             } else {
                 $this->view_data['companies'] = (object) [];
             }
         } else {
-            $options = ['conditions' => ['inactive=?', '0']];
-            $this->view_data['companies'] = Company::find('all', $options);
+            $this->view_data['companies'] = Company::find('all');
         }
 
         $this->content_view = 'clients/all';
@@ -306,15 +305,19 @@ class Clients extends MY_Controller
             } else {
                 $company = $this->view_data['company'] = Company::find_by_id($id);
 
-                $this->view_data['cities'] = City::find('all');
+
+                $this->view_data['cities'] = City::find('all', ['conditions' => ['state = ?', $company->state], 'order' => 'name ASC']);
+                $this->view_data['states'] = State::find('all');
+                $this->view_data['countries'] = Country::find('all', ['conditions' => ['status = ?', 1]]);
+
                 $company_city = $company->city.'/'.$company->state;
                 $this->view_data['company_city'] = $company_city;
 
-                $this->view_data['states'] = State::find('all');
+
                 $company_state = $company->state;
                 $this->view_data['company_state'] = $company_state;
 
-                $this->view_data['countries'] = Country::find('all', ['conditions' => ['status = ?', 1]]);
+
                 $company_country = $company->country;
                 $this->view_data['company_country'] = $company_country;
 

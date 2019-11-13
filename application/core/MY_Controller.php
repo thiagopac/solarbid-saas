@@ -194,8 +194,6 @@ class My_Controller extends CI_Controller
 
                 $active_pricing_table = PricingTable::find('first', array('conditions' => array('company_id = ? AND active = 1', $this->client->company_id)));
 
-                $integrator_status_desc = '';
-
                 if ($active_pricing_table != null){
                     $this->view_data['integrator_online'] = true;
                     $integrator_status_desc = "Tudo certo! Todas as configurações estão corretas e você está sendo apresentado corretamente na plataforma.";

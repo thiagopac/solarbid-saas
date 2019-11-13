@@ -38,8 +38,7 @@
         <div class="grid__col-md-7 dashboard-header">
             <h1><?= $this->lang->line('application_price_tables') ?></h1>
             <small>
-                <?= $this->lang->line('application_at_least_one_pricing_table'); ?>
-                <?= $this->lang->line('application_your_pricing_table_is_ok'); ?>
+                <?=$pricing_tables_current_status_desc;?>
             </small>
         </div>
 
@@ -58,7 +57,7 @@
                                     <div class="tile-icon hidden-md hidden-xs"><i style="color: #d1d1d1"
                                                                                   class="la la-money"></i></div>
                                     <div class="tile-small-header">
-                                        <?= $this->lang->line('application_price_table') ?>: #<?= ellipsize($pricing_table->name, 15, .8);  ?>
+                                        <?= $this->lang->line('application_table') ?>: #<?= ellipsize($pricing_table->name, 15, .8);  ?>
 
                                         <?php if(strtotime($pricing_table->end) < strtotime(date("Y-m-d"))) : ?>
                                              <small class="badge btn-danger btn-xs" style="font-size: 9px !important; font-weight: 600; margin-top: -2px; margin-left: 2px">

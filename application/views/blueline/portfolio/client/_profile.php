@@ -1,69 +1,41 @@
 <?php
-
-    $label_power = '';
-
-    if ($pricing_field->power_top < 1000) {
-        $label_power = $this->lang->line('application_from')." ".$pricing_field->power_bottom."".$core_settings->rated_power_measurement." ".$this->lang->line('application_until')." ".$pricing_field->power_top."".$core_settings->rated_power_measurement;
-    }else{
-        $label_power = $this->lang->line('application_over_number')." ".$pricing_field->power_bottom."".$core_settings->rated_power_measurement;
-    }
-
-    $label_distance = '';
-
-    if ($pricing_field->distance_top < 1000) {
-        $label_distance = $this->lang->line('application_from')." ".$pricing_field->distance_bottom."km ".$this->lang->line('application_until')." ".$pricing_field->distance_top."km";
-    }else{
-        $label_distance = $this->lang->line('application_over_number')." ".$pricing_field->distance_bottom."km";
-    }
-
-    $label_structure_types = '';
-    if($pricing_record_structure_types === "1,2,3"){
-        $label_structure_types = $this->lang->line('application_metallic').', '.$this->lang->line('application_fiber_cement').', '.$this->lang->line('application_ceramic');
-    }else{
-        $label_structure_types = $this->lang->line('application_slab').', '.$this->lang->line('application_soil');
-    }
-
-
-?>
-<?php
-    $attributes = ['class' => '', 'id' => 'record_form'];
+    $attributes = ['class' => '', 'id' => 'profile_form'];
     echo form_open_multipart($form_action, $attributes);
 ?>
     <div class="row">
         <div class="col-md-6">
-            <div class="form-group read-only">
+            <div class="form-group">
                 <label>
-                    <?=$this->lang->line('application_power_of_plant');?>
+                    <?=$this->lang->line('application_warranty_lowest');?> * (<?=$this->lang->line('application_in_months')?>)
                 </label>
-                <input type="text" value="<?=$label_power;?>" class="form-control" readonly>
+                <input id="warranty_lowest" name="warranty_lowest" type="number" onkeypress="return event.code >= 48 && event.code <= 57" value="<?=$company_profile->warranty_lowest;?>" class="form-control">
             </div>
         </div>
         <div class="col-md-6">
-            <div class="form-group read-only">
+            <div class="form-group">
                 <label>
-                    <?=$this->lang->line('application_distance_installation_location');?>
+                    <?=$this->lang->line('application_warranty_highest');?> * (<?=$this->lang->line('application_in_months')?>)
                 </label>
-                <input type="text" value="<?=$label_distance;?>" class="form-control" readonly>
+                <input id="warranty_highest" name="warranty_highest" type="number" onkeypress="return event.keyCode >= 48 && event.keyCode <= 57" value="<?=$company_profile->warranty_highest;?>" class="form-control">
             </div>
         </div>
     </div>
     <div class="form-group read-only">
         <label>
-            <?=$this->lang->line('application_structure_types');?>
+            <?=$this->lang->line('application_power_plants_installed');?>
         </label>
-        <input type="text" value="<?=$label_structure_types;?>" class="form-control" readonly/>
+        <input type="text" readonly value="<?=$company_profile->power_plants_installed;?>" class="form-control"/>
     </div>
-    <div class="form-group">
+    <div class="form-group read-only">
         <label for="value">
-            <?=$this->lang->line('application_value');?> *
+            <?=$this->lang->line('application_power_executed');?>
         </label>
-        <input id="value" type="text" name="value" class="required form-control"  value="<?php if(isset($pricing_record)){echo $pricing_record->value;}?>"  required/>
-    </div>
-    <div class="form-group">
-        <label for="delivery_time_days">
-            <?=$this->lang->line('application_delivery_time_days');?> *
-        </label>
-        <input id="delivery_time_days" type="text" name="delivery_time_days" class="required form-control"  value="<?php if(isset($pricing_record)){echo $pricing_record->delivery_time_days;}?>"  required/>
+        <div class="input-group">
+            <div class="input-group-addon">
+                <?=$core_settings->rated_power_measurement?>
+            </div>
+            <input type="text" readonly class="required form-control"  value="<?php if(isset($company_profile)){echo $company_profile->power_executed;}?>"  required/>
+        </div>
     </div>
     <div class="modal-footer">
         <input type="submit" class="btn btn-primary" value="
