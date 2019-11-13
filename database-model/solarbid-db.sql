@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 04/11/2019 às 21:06
+-- Tempo de geração: 13/11/2019 às 19:00
 -- Versão do servidor: 5.7.26
 -- Versão do PHP: 7.3.8
 
@@ -5722,7 +5722,7 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`id`, `company_id`, `firstname`, `lastname`, `email`, `phone`, `mobile`, `userpic`, `hashed_password`, `inactive`, `access`, `last_active`, `last_login`, `token`, `language`, `push_active`) VALUES
-(1, 1, 'Usuário 1', 'Cliente 1', 'thiagopac@gmail.com', '(11)1111-1111', '(11)91111-1111', 'no-pic.png', '46396a46355c472c6c703b337b4b703c34777170594f7d387371787755315f388b4b70aac220c8e3d87409cb92cdc221a012ae724a086d96f4c16ad71e5d29c1', 0, '111,112,106', '1572901360', '1572896940', NULL, NULL, '1'),
+(1, 1, 'Usuário 1', 'Cliente 1', 'thiagopac@gmail.com', '(11)1111-1111', '(11)91111-1111', 'no-pic.png', '46396a46355c472c6c703b337b4b703c34777170594f7d387371787755315f388b4b70aac220c8e3d87409cb92cdc221a012ae724a086d96f4c16ad71e5d29c1', 0, '111,112,113,106', '1573671440', '1573646337', NULL, NULL, '1'),
 (2, 1, 'Usuário 2', 'Cliente 1', 'contato2@cliente1.com.br', '(11)1111-1111', '(11)92222-2222', 'no-pic.png', '4b36287b26787a4468756649217c2b5e5c515629404a37486173352d3a545c74c389ff63605d2611d4354351acafd70e4ac7c5755227a306fdacbfa562fdbd07', 0, '110,112,106', '0', '1560425721', NULL, NULL, '1'),
 (3, 8, 'John Doe', 'Smith', 'integrador_um@outlook.com', '', '', 'ed62c6d3e6bfc31be135f87bf832ce25.jpg', '48405f70742c563d2b45525b2f2233575b4d3c276136553d5a6c64266e296330a8ad161db619f89ad6a387de469c232ca98f6cdef39d71fc85cd5d8dfb2f6baa', 0, '111,112,106', '0', '1571396993', NULL, NULL, '1');
 
@@ -5764,24 +5764,26 @@ CREATE TABLE `company` (
   `country` varchar(250) DEFAULT NULL,
   `inactive` tinyint(4) DEFAULT '0',
   `website` varchar(250) DEFAULT NULL,
-  `level` int(2) NOT NULL DEFAULT '2'
+  `level` int(2) NOT NULL DEFAULT '2',
+  `plan_id` int(11) NOT NULL DEFAULT '0',
+  `unlocked` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'coluna que controla a permissão de uma empresa para editar seus dados'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `company`
 --
 
-INSERT INTO `company` (`id`, `reference`, `name`, `corporate_name`, `client_id`, `email`, `registered_number`, `phone`, `mobile`, `address`, `zipcode`, `city`, `state`, `country`, `inactive`, `website`, `level`) VALUES
-(1, 1000, 'Cliente 1', 'Cliente 1 LTDA', '1', 'cliente1@email.com', '11.111.111/0001-11', '(11)1111-1111', '(11)9111-1111', 'Rua Um, número 1, Bairro Um', '11111-111', 'Belo Horizonte', 'MG', 'Brasil', 0, NULL, 5),
-(2, 1001, 'Cliente 2', 'Cliente 2 LTDA', '0', 'cliente2@email.com', '22.222.222/0001-22', '(11)2222-2222', '(11)99222-2222', 'Rua Dois, número 2, Bairro Dois', '22222-222', 'Diamantina', 'MG', 'Brasil', 0, NULL, 2),
-(3, 1002, 'Cliente 3', 'Cliente 3 LTDA', '0', 'cliente3@email.com', '33.333.333/0001-33', '(11)3333-3333', '(11)99333-3333', 'Rua Três, número 3, Bairro Três', '33333-332', 'Belo Horizonte', 'MG', 'Brasil', 0, NULL, 10),
-(4, 1003, 'Cliente 4', 'Cliente 4 LTDA', '0', 'cliente4@email.com', '44.444.444/0001-44', '(11)4444-4444', '(11)99444-4444', 'Rua Quatro, número 4, Bairro Quatro', '44444-444', 'Betim', 'MG', 'Brasil', 0, NULL, 3),
-(5, 1004, 'Cliente 5', 'Cliente 5 LTDA', '0', 'cliente5@email.com', '55.555.555/0001-55', '(11)5555-5555', '(11)99555-5555', 'Rua Cinco, número 5, Bairro Cinco', '55555-555', 'Contagem', 'MG', 'Brasil', 0, NULL, 4),
-(6, 1005, 'Cliente 6', 'Cliente 6 LTDA', '0', 'cliente6@email.com', '66.666.666/0001-66', '(11)6666-6666', '(11)99666-6666', 'Rua Seis, número 6, Bairro Seis', '66666-666', 'Campinas', 'SP', 'Brasil', 0, NULL, 6),
-(7, 1006, 'Cliente 7', 'Cliente 7 LTDA', '0', 'cliente7@email.com', '77.777.777/0001-77', '(11)7777-7777', '(11)99777-7777', 'Rua Sete, número 7, Bairro Sete', '77777-777', 'Manaus', 'AM', 'Brasil', 0, NULL, 8),
-(8, 1007, 'Cliente 8', 'Cliente 8 LTDA', '3', 'cliente8@email.com', '88.888.888/0001-88', '(11)7777-7777', '(11)99888-8888', 'Rua Oito, número 8, Bairro Oito', '88888-888', 'Mucuri', 'BA', 'Brasil', 0, NULL, 10),
-(9, 1008, 'Cliente 9', 'Cliente 9 LTDA', '0', 'cliente9@email.com', '99.999.999/0001-99', '(11)9999-9999', '(11)99999-9999', 'Rua Nove, número 9, Bairro Nove', '99999-999', 'Lagoa Santa', 'MG', 'Brasil', 0, NULL, 3),
-(10, 1009, 'Cliente 10', 'Cliente 10 LTDA', '0', 'cliente10@email.com', '10.101.010/0001-10', '(11)1010-1010', '(11)999101-0101', 'Rua Dez, número 10, Bairro Dez', '10101-010', 'Pompéu', 'MG', 'Brasil', 0, NULL, 4);
+INSERT INTO `company` (`id`, `reference`, `name`, `corporate_name`, `client_id`, `email`, `registered_number`, `phone`, `mobile`, `address`, `zipcode`, `city`, `state`, `country`, `inactive`, `website`, `level`, `plan_id`, `unlocked`) VALUES
+(1, 1000, 'Cliente 1', 'Cliente 1 LTDA', '1', 'cliente1@email.com', '11.111.111/0001-11', '(11)1111-1111', '(11)9111-1111', 'Rua Um, número 1, Bairro Um', '11111-111', 'Belo Horizonte', 'MG', 'Brasil', 0, NULL, 5, 3, 0),
+(2, 1001, 'Cliente 2', 'Cliente 2 LTDA', '0', 'cliente2@email.com', '22.222.222/0001-22', '(11)2222-2222', '(11)99222-2222', 'Rua Dois, número 2, Bairro Dois', '22222-222', 'Diamantina', 'MG', 'Brasil', 0, NULL, 2, 1, 0),
+(3, 1002, 'Cliente 3', 'Cliente 3 LTDA', '0', 'cliente3@email.com', '33.333.333/0001-33', '(11)3333-3333', '(11)99333-3333', 'Rua Três, número 3, Bairro Três', '33333-332', 'Belo Horizonte', 'MG', 'Brasil', 0, NULL, 10, 1, 0),
+(4, 1003, 'Cliente 4', 'Cliente 4 LTDA', '0', 'cliente4@email.com', '44.444.444/0001-44', '(11)4444-4444', '(11)99444-4444', 'Rua Quatro, número 4, Bairro Quatro', '44444-444', 'Betim', 'MG', 'Brasil', 0, NULL, 3, 1, 0),
+(5, 1004, 'Cliente 5', 'Cliente 5 LTDA', '0', 'cliente5@email.com', '55.555.555/0001-55', '(11)5555-5555', '(11)99555-5555', 'Rua Cinco, número 5, Bairro Cinco', '55555-555', 'Contagem', 'MG', 'Brasil', 0, NULL, 4, 1, 0),
+(6, 1005, 'Cliente 6', 'Cliente 6 LTDA', '0', 'cliente6@email.com', '66.666.666/0001-66', '(11)6666-6666', '(11)99666-6666', 'Rua Seis, número 6, Bairro Seis', '66666-666', 'Campinas', 'SP', 'Brasil', 0, NULL, 6, 1, 0),
+(7, 1006, 'Cliente 7', 'Cliente 7 LTDA', '0', 'cliente7@email.com', '77.777.777/0001-77', '(11)7777-7777', '(11)99777-7777', 'Rua Sete, número 7, Bairro Sete', '77777-777', 'Manaus', 'AM', 'Brasil', 0, NULL, 8, 1, 0),
+(8, 1007, 'Cliente 8', 'Cliente 8 LTDA', '3', 'cliente8@email.com', '88.888.888/0001-88', '(11)7777-7777', '(11)99888-8888', 'Rua Oito, número 8, Bairro Oito', '88888-888', 'Mucuri', 'BA', 'Brasil', 0, NULL, 10, 1, 0),
+(9, 1008, 'Cliente 9', 'Cliente 9 LTDA', '0', 'cliente9@email.com', '99.999.999/0001-99', '(11)9999-9999', '(11)99999-9999', 'Rua Nove, número 9, Bairro Nove', '99999-999', 'Lagoa Santa', 'MG', 'Brasil', 0, NULL, 3, 1, 0),
+(10, 1009, 'Cliente 10', 'Cliente 10 LTDA', '0', 'cliente10@email.com', '10.101.010/0001-10', '(11)1010-1010', '(11)999101-0101', 'Rua Dez, número 10, Bairro Dez', '10101-010', 'Pompéu', 'MG', 'Brasil', 0, NULL, 4, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -5822,7 +5824,8 @@ INSERT INTO `company_admin` (`id`, `company_id`, `user_id`, `access`) VALUES
 CREATE TABLE `company_photo` (
   `id` int(11) NOT NULL,
   `company_id` int(11) NOT NULL,
-  `path` varchar(255) NOT NULL DEFAULT 'https://cdn.aiidatapro.net/media/a1/d6/7b/t780x490/',
+  `path` varchar(255) NOT NULL,
+  `type` varchar(80) NOT NULL,
   `filename` varchar(100) NOT NULL,
   `deleted` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -5831,11 +5834,13 @@ CREATE TABLE `company_photo` (
 -- Despejando dados para a tabela `company_photo`
 --
 
-INSERT INTO `company_photo` (`id`, `company_id`, `path`, `filename`, `deleted`) VALUES
-(1, 1, 'https://cdn.aiidatapro.net/media/a1/d6/7b/t780x490/', 'a1d67b1fd8facb4897bd6eb04d99a936.jpg', 0),
-(2, 1, 'https://www.businessgreen.com/w-images/5deeaef4-0275-43ba-81e4-11d4f2f2c880/0/', 'solararraypromensrooftopsitebeccles3-580x358.JPG', 0),
-(3, 1, 'https://www.pv-magazine-australia.com/wp-content/uploads/sites/9/2017/06/', 'SOLTEC-SF-Utility-single-axis-tracker-installation-in-Brazil-1024x708.jpg', 0),
-(4, 2, 'https://www.pv-tech.org/images/made/assets/images/editorial/', 'degrussa_australia_neoen_1gw_solar_for_web_750_500_80_s.jpg', 0);
+INSERT INTO `company_photo` (`id`, `company_id`, `path`, `type`, `filename`, `deleted`) VALUES
+(1, 1, 'http://localhost/solarbid-saas/files/media/img/', '', 'img1.jpg', 0),
+(2, 1, 'http://localhost/solarbid-saas/files/media/img/', '', 'img2.jpg', 0),
+(3, 1, 'http://localhost/solarbid-saas/files/media/img/', '', 'img3.jpg', 0),
+(4, 2, 'http://localhost/solarbid-saas/files/media/img/', '', 'img4.jpg', 0),
+(5, 1, 'http://localhost/solarbid-saas/files/media/img/', 'image/jpeg', '2e016b41445b2dec98f19724de6df9ff.jpg', 0),
+(6, 1, 'http://localhost/solarbid-saas/files/media/img/', 'image/jpeg', '66e297dc8a4d6d20e2f45000d3f8e0c3.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -5849,24 +5854,25 @@ CREATE TABLE `company_profile` (
   `warranty_lowest` int(3) NOT NULL DEFAULT '12' COMMENT 'garantia em meses até 75kWp',
   `warranty_highest` int(3) NOT NULL DEFAULT '24' COMMENT 'garantia em meses acima de 75kWp',
   `power_plants_installed` int(5) DEFAULT NULL,
-  `power_executed` decimal(10,2) DEFAULT NULL
+  `power_executed` decimal(10,2) DEFAULT NULL,
+  `updated_at` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `company_profile`
 --
 
-INSERT INTO `company_profile` (`id`, `company_id`, `warranty_lowest`, `warranty_highest`, `power_plants_installed`, `power_executed`) VALUES
-(1, 1, 12, 36, 23, '312.50'),
-(2, 2, 18, 60, 48, '861.90'),
-(3, 3, 10, 48, 68, '1247.90'),
-(4, 4, 6, 48, 135, '4578.30'),
-(5, 5, 12, 60, 224, '7452.90'),
-(6, 6, 14, 48, 12, '124.20'),
-(7, 7, 20, 36, 55, '954.60'),
-(8, 8, 24, 72, 37, '712.30'),
-(9, 9, 12, 24, 42, '857.70'),
-(10, 10, 6, 24, 9, '97.60');
+INSERT INTO `company_profile` (`id`, `company_id`, `warranty_lowest`, `warranty_highest`, `power_plants_installed`, `power_executed`, `updated_at`) VALUES
+(1, 1, 12, 36, 23, '312.50', '2019-11-13 12:13:40'),
+(2, 2, 18, 60, 48, '861.90', ''),
+(3, 3, 10, 48, 68, '1247.90', ''),
+(4, 4, 6, 48, 135, '4578.30', ''),
+(5, 5, 12, 60, 224, '7452.90', ''),
+(6, 6, 14, 48, 12, '124.20', ''),
+(7, 7, 20, 36, 55, '954.60', ''),
+(8, 8, 24, 72, 37, '712.30', ''),
+(9, 9, 12, 24, 42, '857.70', ''),
+(10, 10, 6, 24, 9, '97.60', '');
 
 -- --------------------------------------------------------
 
@@ -6520,7 +6526,7 @@ CREATE TABLE `faq_customer` (
 --
 
 INSERT INTO `faq_customer` (`id`, `question`, `answer`) VALUES
-(1, 'A solarbid vende equipamentos fotovoltaicos?', 'Não, apenas fazemos a intermediação da venda de um grande distribuidor nacional diretamente para sua empresa ou residência. Também fazemos a intermediação da negociação de integração, que a soma dos serviços de engenharia, homologação na distribuidora, instalação e pós-venda. Assim, você consegue o melhor preço do que se comprasse direto (material + serviço) com um integrador.'),
+(1, 'Qual ambiente está?', 'Ambiente Dev'),
 (2, 'Consigo utilizar energia solar em um apartamento?', 'Sim, existem duas opções. A primeira é possível caso você more em uma cobertura ou em um apartamento no último andar. A segunda opção é apresentar o projeto para todos os moradores do seu condomínio e instalá-lo no telhado do prédio para o uso geral.'),
 (3, 'Se eu me mudar, o que acontece com meus créditos acumulados?', 'Sem problemas. Se você precisar se mudar, o sistema pode ser retirado e reinstalado no novo endereço. Além disso, o saldo de créditos acumulados pode ser reaproveitado em sua nova conta de energia, desde que a nova conta esteja em nome do mesmo titular.');
 
@@ -6615,17 +6621,18 @@ CREATE TABLE `integrator_plan` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `price` decimal(6,2) NOT NULL,
-  `benefits` varchar(200) NOT NULL
+  `benefits` varchar(200) NOT NULL,
+  `pricing_schemas` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `integrator_plan`
 --
 
-INSERT INTO `integrator_plan` (`id`, `name`, `price`, `benefits`) VALUES
-(1, 'Basic', '0.00', '1,2,3'),
-(2, 'Advanced', '0.00', '1,2,3,4,5,6'),
-(3, 'Expert', '0.00', '1,2,3,4,5,6,7,8,9,10');
+INSERT INTO `integrator_plan` (`id`, `name`, `price`, `benefits`, `pricing_schemas`) VALUES
+(1, 'Basic', '0.00', '1,2,3', '1'),
+(2, 'Advanced', '0.00', '1,2,3,4,5,6', '1'),
+(3, 'Expert', '0.00', '1,2,3,4,5,6,7,8,9,10', '1');
 
 -- --------------------------------------------------------
 
@@ -6762,7 +6769,8 @@ INSERT INTO `module` (`id`, `name`, `link`, `type`, `icon`, `sort`) VALUES
 (105, 'Tickets', 'tickets', 'main', 'icon dripicons-ticket', 8),
 (106, 'Tickets', 'ctickets', 'client', 'icon dripicons-ticket', 4),
 (111, 'Dashboard', 'cdashboard', 'client', 'icon dripicons-meter', 1),
-(112, 'Pricing', 'cpricing', 'client', 'icon dripicons-tags', 2);
+(112, 'Pricing', 'cpricing', 'client', 'icon dripicons-tags', 2),
+(113, 'Portfolio', 'cportfolio', 'client', 'icon dripicons-photo', 3);
 
 -- --------------------------------------------------------
 
@@ -6921,7 +6929,25 @@ INSERT INTO `pricing_record` (`id`, `company_id`, `table_id`, `structure_type_id
 (29, 2, 2, '1,2,3', 7, '2.13', 52, '2019-09-23 14:47:57', NULL),
 (30, 2, 2, '4,5', 7, '2.34', 52, '2019-09-23 14:47:57', NULL),
 (31, 2, 2, '1,2,3', 8, '2.21', 52, '2019-09-23 14:47:57', NULL),
-(32, 2, 2, '4,5', 8, '2.41', 52, '2019-09-23 14:47:57', NULL);
+(32, 2, 2, '4,5', 8, '2.41', 52, '2019-09-23 14:47:57', NULL),
+(37, 1, 3, '1,2,3', 1, '3.33', 51, '2019-11-06 23:09:50', '2019-11-13 13:17:41'),
+(38, 1, 3, '4,5', 1, '3.15', 55, '2019-11-06 23:10:02', '2019-11-06 23:10:02'),
+(39, 1, 3, '1,2,3', 2, '3.21', 70, '2019-11-06 23:10:13', '2019-11-12 12:36:49'),
+(40, 1, 3, '4,5', 2, '3.25', 75, '2019-11-06 23:10:30', '2019-11-06 23:10:30'),
+(41, 1, 3, '1,2,3', 3, '2.80', 60, '2019-11-06 23:11:31', '2019-11-06 23:11:31'),
+(42, 1, 3, '4,5', 3, '2.85', 65, '2019-11-06 23:11:45', '2019-11-06 23:11:45'),
+(43, 1, 3, '1,2,3', 4, '2.90', 80, '2019-11-06 23:12:01', '2019-11-06 23:12:01'),
+(44, 1, 3, '4,5', 4, '2.95', 85, '2019-11-06 23:12:11', '2019-11-06 23:12:11'),
+(45, 1, 3, '1,2,3', 5, '2.90', 80, '2019-11-06 23:12:50', '2019-11-06 23:12:50'),
+(46, 1, 3, '4,5', 5, '2.95', 85, '2019-11-06 23:12:58', '2019-11-06 23:12:58'),
+(47, 1, 3, '1,2,3', 6, '3.00', 100, '2019-11-06 23:13:16', '2019-11-06 23:13:16'),
+(48, 1, 3, '4,5', 6, '3.05', 105, '2019-11-06 23:13:25', '2019-11-06 23:13:25'),
+(49, 1, 3, '1,2,3', 7, '2.50', 110, '2019-11-06 23:13:45', '2019-11-06 23:13:45'),
+(50, 1, 3, '4,5', 7, '2.55', 115, '2019-11-06 23:13:55', '2019-11-06 23:13:55'),
+(51, 1, 3, '1,2,3', 8, '2.60', 120, '2019-11-06 23:14:07', '2019-11-06 23:14:07'),
+(52, 1, 3, '4,5', 8, '2.65', 125, '2019-11-06 23:14:16', '2019-11-06 23:14:16'),
+(53, 1, 4, '1,2,3', 1, '4.24', 40, '2019-11-08 18:49:52', '2019-11-08 18:49:52'),
+(54, 1, 4, '4,5', 1, '4.36', 45, '2019-11-08 18:50:10', '2019-11-08 18:50:10');
 
 -- --------------------------------------------------------
 
@@ -6940,9 +6966,9 @@ CREATE TABLE `pricing_schema` (
 --
 
 INSERT INTO `pricing_schema` (`id`, `name`, `descr`) VALUES
-(1, 'Tabela básica', 'Tabela do plano básico'),
-(2, 'Tabela avançada', 'Tabela do plano avançado'),
-(3, 'Tabela premium', 'Tabela do plano premium');
+(1, 'Tabela Basic', 'Tabela do plano basic'),
+(2, 'Tabela Advanced', 'Tabela do plano advanced'),
+(3, 'Tabela Expert', 'Tabela do plano expert');
 
 -- --------------------------------------------------------
 
@@ -6980,6 +7006,7 @@ CREATE TABLE `pricing_table` (
   `id` int(11) NOT NULL,
   `company_id` int(11) NOT NULL,
   `schema_id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `start` date NOT NULL,
   `end` date DEFAULT NULL,
   `active` tinyint(1) NOT NULL,
@@ -6991,9 +7018,11 @@ CREATE TABLE `pricing_table` (
 -- Despejando dados para a tabela `pricing_table`
 --
 
-INSERT INTO `pricing_table` (`id`, `company_id`, `schema_id`, `start`, `end`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '2019-11-05', '2019-12-01', 1, '2019-10-30 02:14:31', '2019-11-05 07:29:43'),
-(2, 2, 1, '2019-09-19', '2019-12-31', 1, '2019-10-31 07:34:31', '');
+INSERT INTO `pricing_table` (`id`, `company_id`, `schema_id`, `name`, `start`, `end`, `active`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'Padrão', '2019-11-04', '2019-11-12', 0, '2019-10-30 02:14:31', '2019-11-06 20:06:29'),
+(2, 2, 1, NULL, '2019-09-19', '2019-12-31', 0, '2019-10-31 07:34:31', ''),
+(3, 1, 1, 'Natal', '2019-11-01', '2019-11-30', 1, '2019-11-06 23:09:07', '2019-11-13 12:41:02'),
+(4, 1, 1, 'Dólar acima de 4 reais', '2019-11-02', '2019-11-06', 0, '2019-11-08 18:49:14', '2019-11-13 12:26:57');
 
 -- --------------------------------------------------------
 
@@ -7480,7 +7509,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `firstname`, `lastname`, `hashed_password`, `email`, `status`, `admin`, `created`, `userpic`, `title`, `access`, `last_active`, `last_login`, `queue`, `token`, `language`, `signature`, `push_active`) VALUES
-(1, 'thiago', 'Thiago', 'Pires', '2f2b704141644e2c77453c3835236c38403623437b49656c666d4a7349343e39111c3fec9b4d8a532a3f005d410e24c6995f7bae0d170985cb46661337b013f9', 'thiago@solarbid.com.br', 'active', '1', '2019-05-13 23:00:00', '6a7db41b635e4c43bfd61f79ef7c78ec.jpeg', 'Diretor de Tecnologia', '1,4,34,105,9,11', '0', '1572896654', 4, '8dacf92301e47aa845f807057cd04abc', 'english', 'Thiago Pires', '1'),
+(1, 'thiago', 'Thiago', 'Pires', '2f2b704141644e2c77453c3835236c38403623437b49656c666d4a7349343e39111c3fec9b4d8a532a3f005d410e24c6995f7bae0d170985cb46661337b013f9', 'thiago@solarbid.com.br', 'active', '1', '2019-05-13 23:00:00', '6a7db41b635e4c43bfd61f79ef7c78ec.jpeg', 'Diretor de Tecnologia', '1,4,34,105,9,11', '1573649293', '1573646342', 4, '8dacf92301e47aa845f807057cd04abc', 'english', 'Thiago Pires', '1'),
 (2, 'patrick', 'Patrick', 'Lüdtke', '237c53674047616c36643f295d413e6a4e70633a597959675e29372937673646f52753b55ef4f5edf9d2ca773736a799f32aaea3568358e059d9da1c75c63cc8', 'patrick1111@solarbid.com.br', 'active', '1', '2019-05-15 19:32:13', '02f428caf9e66a7eb3c33f2e7f2c5315.png', 'Diretor Executivo', '1,4,105,11', '1560794513', NULL, 3, NULL, 'english', 'Patrick Lüdtke', '0');
 
 -- --------------------------------------------------------
@@ -7959,7 +7988,7 @@ ALTER TABLE `company_admin`
 -- AUTO_INCREMENT de tabela `company_photo`
 --
 ALTER TABLE `company_photo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `company_profile`
@@ -8055,7 +8084,7 @@ ALTER TABLE `market_average_price`
 -- AUTO_INCREMENT de tabela `module`
 --
 ALTER TABLE `module`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT de tabela `module_manufacturer`
@@ -8085,7 +8114,7 @@ ALTER TABLE `pricing_field`
 -- AUTO_INCREMENT de tabela `pricing_record`
 --
 ALTER TABLE `pricing_record`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de tabela `pricing_schema`
@@ -8103,7 +8132,7 @@ ALTER TABLE `pricing_schema_field`
 -- AUTO_INCREMENT de tabela `pricing_table`
 --
 ALTER TABLE `pricing_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `pv_kit`
