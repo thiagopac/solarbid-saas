@@ -148,10 +148,10 @@
     line-height: 46px;
     height: 46px;
     padding: 0 15px;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: .6px;
-    text-transform: none !important;
+    text-transform: uppercase !important;
     font-family: Montserrat,Helvetica,Arial,sans-serif !important;
     color: #3e5569 !important;
 }

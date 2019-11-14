@@ -2,7 +2,7 @@
 <head>
 <title>Error</title>
 
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,400i,600,700&amp;subset=latin-ext" rel="stylesheet">
 
 </head>
 <body>

@@ -161,8 +161,9 @@ $message_icon = false;
                     <?php
                 } ?>
 
-                <!-- <i class="ion-ios-search-strong topbar__icon shortcut-menu--trigger"></i> -->
-
+            </div>
+            <div class="topbar__left noselect company_name">
+                <?php echo character_limiter($this->client->company->name, 25);?>
             </div>
             <div class="topbar noselect">
 
@@ -180,7 +181,7 @@ $message_icon = false;
                     </div>
                 </span>
 
-                <span class=" topbar__name hidden-xs">• <?php echo character_limiter($this->client->company->name, 25);?> •</span>
+
                 <?php
                 if ($this->client->userpic){
                     $userimage = $this->client->userpic;

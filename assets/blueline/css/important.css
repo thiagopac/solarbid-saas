@@ -311,3 +311,20 @@ div.dataTables_info {
     font-weight: 600 !important;
     padding: 10px 5px 5px !important;
 }
+
+.topbar__left.noselect.company_name{
+    /*background-color: red;*/
+    width: 78%;
+    display: inline-block;
+    text-align: center;
+    font-family: Exo;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    font-size: 20px;
+
+}
+
+.mainnavbar {
+    display: block !important;
+}
