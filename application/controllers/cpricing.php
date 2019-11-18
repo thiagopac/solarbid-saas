@@ -20,6 +20,35 @@ class cPricing extends MY_Controller
             redirect('login');
         }
 
+        $this->view_data['submenu'] = array(
+            $this->lang->line('application_all') => 'cpricing',
+            $this->lang->line('application_deadline_reacheds') => 'cpricing/filter/deadline_reacheds',
+            $this->lang->line('application_deadline_not_reacheds') => 'cpricing/filter/deadline_not_reacheds',
+            $this->lang->line('application_actives') => 'cpricing/filter/actives',
+            $this->lang->line('application_inactives') => 'cpricing/filter/inactives'
+        );
+
+    }
+
+    function filter($condition)
+    {
+        switch ($condition) {
+            case 'deadline_reacheds':
+                $options = ['conditions' => ['end < NOW() AND company_id = ?', $this->client->company_id]];
+                break;
+            case 'deadline_not_reacheds':
+                $options = ['conditions' => ['end > NOW() AND company_id = ?', $this->client->company_id]];
+                break;
+            case 'actives':
+                $options = ['conditions' => ['active = ? AND company_id = ? ', 1, $this->client->company_id]];
+                break;
+            case 'inactives':
+                $options = ['conditions' => ['active = ? AND company_id = ? ', 0, $this->client->company_id]];
+                break;
+        }
+
+        $this->view_data['pricing_tables'] = PricingTable::all($options);
+        $this->content_view = 'pricing/client/tables';
     }
 
     function index() {

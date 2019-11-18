@@ -11,12 +11,12 @@
     }
 </style>
 
-<div class="col-sm-13  col-md-12 main">
+<div class="col-sm-12  col-md-12 main">
     <div class="row tile-row">
 
         <div class="tile-button">
             <a href="<?= base_url() ?>cpricing/create_table" data-toggle="mainmodal">
-                <div class="col-md-3 col-xs-6 tile">
+                <div class="col-md-3 col-xs-3 tile">
 
                     <div class="icon-frame hidden-xs">
                         <span class="iconify" data-icon="ion:add-circle-outline" data-inline="true"></span>
@@ -27,16 +27,41 @@
                 </span>
                     </h1>
                 </div>
-                <div class="col-md-6 col-xs-12 tile hidden-xs">
-                    <div style="width:97%; margin-top: -4px; margin-bottom: 17px; height: 80px;">
-                    </div>
-                </div>
             </a>
+            <div class="col-md-6 col-xs-12 tile hidden-xs">
+                <div style="width:97%; margin-top: -4px; margin-bottom: 17px; height: 80px;">
+                </div>
+            </div>
         </div>
     </div>
     <div class="grid">
-        <div class="grid__col-md-7 dashboard-header">
-            <h1><?= $this->lang->line('application_price_tables') ?></h1>
+
+        <div class="grid__col-md-12 dashboard-header">
+            <div class="btn-group pull-right pull-right-responsive margin-right-15">
+                <button type="button" class="btn btn-primary dropdown-toggle" style="position: inherit; float: right;" data-toggle="dropdown">
+                    <?php $last_uri = $this->uri->segment($this->uri->total_segments()); if ($last_uri != 'cpricing') {
+                        echo $this->lang->line('application_' . $last_uri);
+                    } else {
+                        echo $this->lang->line('application_all');
+                    } ?> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <?php foreach ($submenu as $name => $value):?>
+                        <li>
+                            <a id="<?php $val_id = explode('/', $value); if (!is_numeric(end($val_id))) {
+                                echo end($val_id);
+                            } else {
+                                $num = count($val_id) - 2;
+                                echo $val_id[$num];
+                            } ?>" href="<?=site_url($value);?>">
+                                <?=$name?>
+                            </a>
+                        </li>
+                    <?php endforeach;?>
+
+                </ul>
+            </div>
+            <h1 style="position: absolute;"><?= $this->lang->line('application_price_tables') ?></h1>
             <small>
                 <?=$pricing_tables_current_status_desc;?>
             </small>

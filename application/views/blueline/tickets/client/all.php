@@ -1,40 +1,66 @@
-<div class="col-sm-13  col-md-12 main">
+<div class="col-sm-12  col-md-12 main">
 
-    <div class="row">
-        <a href="<?=base_url()?>ctickets/create" class="btn btn-primary" data-toggle="mainmodal"><?=$this->lang->line('application_create_new_ticket');?></a>
 
-        <div class="btn-group pull-right-responsive margin-right-3">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                <?php $last_uri = $this->uri->segment($this->uri->total_segments()); if ($last_uri != 'ctickets') {
-                    echo $this->lang->line('application_' . $last_uri);
-                } else {
-                    echo $this->lang->line('application_all');
-                } ?> <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu pull-right" role="menu">
-                <?php foreach ($submenu as $name => $value):?>
-                    <li>
-                        <a id="<?php $val_id = explode('/', $value); if (!is_numeric(end($val_id))) {
-                            echo end($val_id);
-                        } else {
-                            $num = count($val_id) - 2;
-                            echo $val_id[$num];
-                        } ?>" href="<?=site_url($value);?>">
-                            <?=$name?>
-                        </a>
-                    </li>
-                <?php endforeach;?>
+    <div class="row tile-row">
 
-            </ul>
+        <div class="tile-button">
+            <a href="<?=base_url()?>ctickets/create" data-toggle="mainmodal">
+                <div class="col-md-3 col-xs-6 tile">
+
+                    <div class="icon-frame hidden-xs">
+                        <span class="iconify" data-icon="ion:add-circle-outline" data-inline="true"></span>
+                    </div>
+                    <h1>
+                <span>
+                    <?= $this->lang->line('application_create_new_ticket'); ?>
+                </span>
+                    </h1>
+                </div>
+            </a>
+            <div class="col-md-6 col-xs-12 tile hidden-xs">
+                <div style="width:97%; margin-top: -4px; margin-bottom: 17px; height: 80px;">
+                </div>
+            </div>
         </div>
-        <div class="btn-group pull-right-responsive margin-right-3">
-            <ul class="dropdown-menu pull-right bulk-dropdown" role="menu">
-                <li data-action="close"><a id="" href="#"><?=$this->lang->line('application_close');?></a></li>
-            </ul>
-        </div>
+
     </div>
-    <div class="row">
-        <div class="box-shadow">
+
+    <div class="grid">
+
+        <div class="grid__col-md-12 dashboard-header">
+            <div class="btn-group pull-right pull-right-responsive margin-right-15">
+                <button type="button" class="btn btn-primary dropdown-toggle" style="position: inherit; float: right;" data-toggle="dropdown">
+                    <?php $last_uri = $this->uri->segment($this->uri->total_segments()); if ($last_uri != 'ctickets') {
+                        echo $this->lang->line('application_' . $last_uri);
+                    } else {
+                        echo $this->lang->line('application_all');
+                    } ?> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <?php foreach ($submenu as $name => $value):?>
+                        <li>
+                            <a id="<?php $val_id = explode('/', $value); if (!is_numeric(end($val_id))) {
+                                echo end($val_id);
+                            } else {
+                                $num = count($val_id) - 2;
+                                echo $val_id[$num];
+                            } ?>" href="<?=site_url($value);?>">
+                                <?=$name?>
+                            </a>
+                        </li>
+                    <?php endforeach;?>
+
+                </ul>
+            </div>
+            <h1 style="position: absolute;"><?= $this->lang->line('application_tickets') ?></h1>
+            <small>
+                Tickets são para registrar problemas
+            </small>
+
+        </div>
+
+
+        <div class="box-shadow col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="table-head">
                 <?=$this->lang->line('application_tickets');?>
             </div>
