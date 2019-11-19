@@ -14,7 +14,7 @@
               $active_record = TRUE;
 
               $db['default']['hostname'] = 'localhost';
-              $db['default']['username'] = 'solarbid_db_saas_user';
+              $db['default']['username'] = 'solarbid_db_saas';
               $db['default']['password'] = 'tn9deswnd8fjrgP1';
               $db['default']['database'] = 'solarbid_db';
               $db['default']['dbdriver'] = 'mysql';
