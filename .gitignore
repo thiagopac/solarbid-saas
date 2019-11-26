@@ -62,3 +62,6 @@ typings/
 
 # integrators photos
 /files/media/img/
+
+# htaccess
+.htaccess
