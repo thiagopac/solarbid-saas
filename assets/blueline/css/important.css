@@ -313,10 +313,6 @@ div.dataTables_info {
 }
 
 .topbar__left.noselect.company_name{
-    /*background-color: red;*/
-    width: 78%;
-    display: inline-block;
-    text-align: center;
     font-family: Exo;
     font-weight: 200;
     text-transform: uppercase;
