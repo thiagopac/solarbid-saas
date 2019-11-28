@@ -168,7 +168,7 @@ class cPortfolio extends MY_Controller {
         $this->load->helper('file');
 
         if($company_photo){
-            $file = './files/media/img/'.$company_photo->filename;
+            $file = './files/media/portfolio/'.$company_photo->filename;
         }
 
         $mime = get_mime_by_extension($file);
@@ -206,9 +206,9 @@ class cPortfolio extends MY_Controller {
         $company_photo->save();
 
         if (!$company_photo) {
-            $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_upload_photo_error'));
+            $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_deleted_photo_error'));
         } else {
-            $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_upload_photo_success'));
+            $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_deleted_photo_success'));
         }
         redirect('cportfolio');
     }
@@ -292,12 +292,12 @@ class cPortfolio extends MY_Controller {
 
         if ($_POST) {
 
-            $config['upload_path'] = './files/media/img/';
+            $config['upload_path'] = './files/media/portfolio/';
             $config['encrypt_name'] = true;
             $config['allowed_types'] = 'gif|jpg|png';
 
             $_POST['company_id'] = $this->client->company_id;
-            $_POST['path'] = $core_settings->domain."files/media/img/";
+            $_POST['path'] = $core_settings->domain."files/media/portfolio/";
 
             $this->load->library('upload', $config);
 
@@ -319,7 +319,7 @@ class cPortfolio extends MY_Controller {
                 }
 
                 $config['image_library']  = $lib;
-                $config['source_image']   = './files/media/img/'.$_POST['savename'];
+                $config['source_image']   = './files/media/portfolio/'.$_POST['savename'];
                 $config['maintain_ratio'] = true;
                 $config['max_width']          = 2048;
                 $config['max_height']         = 2048;

@@ -82,8 +82,6 @@
 
 <script>
     $(document).ready(function(){
-
         $("#value").maskMoney({allowNegative: false, thousands:'.', decimal:',', affixesStay: false});
-
     });
 </script>

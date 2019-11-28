@@ -1,7 +1,27 @@
 <div class="col-sm-12  col-md-12 main">
-    <div class="row">
-        <a href="<?=base_url()?>clients/company/create" class="btn btn-primary" data-toggle="mainmodal"><?=$this->lang->line('application_add_new_company');?></a>
+    <div class="row tile-row">
+
+        <div class="tile-button">
+            <a href="<?=base_url()?>clients/company/create" data-toggle="mainmodal">
+                <div class="col-md-3 col-xs-3 tile">
+
+                    <div class="icon-frame">
+                        <i class="ion-android-add-circle"></i>
+                    </div>
+                    <h1>
+                <span>
+                    <?= $this->lang->line('application_add_new_company'); ?>
+                </span>
+                    </h1>
+                </div>
+            </a>
+            <div class="col-md-6 col-xs-12 tile hidden-xs">
+                <div style="width:97%; margin-top: -4px; margin-bottom: 17px; height: 80px;">
+                </div>
+            </div>
+        </div>
     </div>
+
     <div class="row">
         <div class="box-shadow">
             <div class="table-head">

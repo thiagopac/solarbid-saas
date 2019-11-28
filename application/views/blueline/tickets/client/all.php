@@ -8,7 +8,7 @@
                 <div class="col-md-3 col-xs-6 tile">
 
                     <div class="icon-frame hidden-xs">
-                        <span class="iconify" data-icon="ion:add-circle-outline" data-inline="true"></span>
+                        <i class="ion-android-add-circle"></i>
                     </div>
                     <h1>
                 <span>

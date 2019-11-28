@@ -1,29 +1,29 @@
-<div class="col-sm-13  col-md-12 main">
+<div class="col-sm-12  col-md-12 main">
 
     <div class="row tile-row">
-        <div class="col-md-3 col-xs-6 tile">
-            <div class="icon-frame hidden-xs"><i class="ion-ios-pricetags"></i> </div>
-            <h1><?php if (isset($tickets_assigned_to_me)) {
-                    echo $tickets_assigned_to_me;
-                } ?> <span><?=$this->lang->line('application_tickets');?></span></h1>
-            <h2><?=$this->lang->line('application_assigned_to_me');?></h2></div>
-        <div class="col-md-3 col-xs-6 tile">
-            <a href="<?=base_url()?>tickets/queues/<?=$this->user->queue;?>">
-                <div class="icon-frame secondary hidden-xs"><i class="ion-ios-albums"></i> </div>
-                <h1><?php if (isset($tickets_in_my_queue)) {
-                        echo $tickets_in_my_queue;
-                    } ?> <span><?=$this->lang->line('application_tickets');?></span></h1>
-                <h2><?=$this->lang->line('application_in_my_queue');?></h2></a>
-        </div>
-        <div class="col-md-6 col-xs-12 tile hidden-xs">
-            <div style="width:97%; margin-top: -4px; margin-bottom: 17px; height: 80px;">
-                <canvas id="tileChart" width="auto" height="80"></canvas>
+
+        <div class="tile-button">
+            <a href="<?= base_url() ?>tickets/create" data-toggle="mainmodal">
+                <div class="col-md-3 col-xs-3 tile">
+
+                    <div class="icon-frame">
+                        <i class="ion-android-add-circle"></i>
+                    </div>
+                    <h1>
+                <span>
+                    <?= $this->lang->line('application_create_new_ticket'); ?>
+                </span>
+                    </h1>
+                </div>
+            </a>
+            <div class="col-md-6 col-xs-12 tile hidden-xs">
+                <div style="width:97%; margin-top: -4px; margin-bottom: 17px; height: 80px;">
+                </div>
             </div>
         </div>
-
     </div>
+
     <div class="row">
-        <a href="<?=base_url()?>tickets/create" class="btn btn-primary" data-toggle="mainmodal"><?=$this->lang->line('application_create_new_ticket');?></a>
         <div class="btn-group pull-right-responsive margin-right-3">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                 <?php if (isset($activeQueue)) {

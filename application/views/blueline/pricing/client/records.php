@@ -4,8 +4,8 @@
         <div class="tile-button">
             <a href="<?= base_url() ?>cpricing/update_table/<?=$pricing_table->id?>" data-toggle="mainmodal">
                 <div class="col-md-3 col-xs-3 tile">
-                    <div class="icon-frame hidden-xs">
-                        <span class="iconify" data-icon="mdi:pencil" data-inline="true"></span>
+                    <div class="icon-frame">
+                        <i class="ion-edit"></i>
                     </div>
                     <h1>
                         <span>
@@ -22,7 +22,7 @@
                     <a href="<?= base_url() ?>cpricing/activate/<?=$pricing_table->id?>" data-toggle="mainmodal">
                         <div class="col-md-4 col-xs-4 tile">
                             <div class="icon-frame btn-success">
-                                <span class="iconify" data-icon="mdi:check-bold" data-inline="true"></span>
+                                <i class="ion-checkmark"></i>
                             </div>
                             <h1>
                                 <span>
@@ -38,7 +38,7 @@
                     <a href="<?= base_url() ?>cpricing/activate/<?=$pricing_table->id?>" data-toggle="mainmodal">
                         <div class="col-md-4 col-xs-4 tile">
                             <div class="icon-frame btn-danger">
-                                <span class="iconify" data-icon="mdi:close" data-inline="true"></span>
+                                <i class="ion-close"></i>
                             </div>
                             <h1>
                                 <span>

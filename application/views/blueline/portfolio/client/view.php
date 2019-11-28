@@ -14,7 +14,7 @@
         <div class="tile-button">
             <a href="<?=base_url() ?>cportfolio/edit_registration" data-toggle="mainmodal">
                 <div class="col-md-3 col-xs-3 tile">
-                    <div class="icon-frame"> <span class="iconify" data-icon="mdi:domain" data-inline="true"> </span> </div>
+                    <div class="icon-frame"> <i class="ion-ios-location"> </i> </div>
                     <h1> <span> <?=$this->lang->line('application_edit_registration_data'); ?> </span> </h1> </div>
 
             </a>
@@ -22,14 +22,14 @@
         <div class="tile-button">
             <a href="<?=base_url() ?>cportfolio/edit_profile" data-toggle="mainmodal">
                 <div class="col-md-3 col-xs-3 tile">
-                    <div class="icon-frame hidden-xs"> <span class="iconify" data-icon="mdi:solar-power" data-inline="true"> </span> </div>
+                    <div class="icon-frame"> <i class="ion-information-circled"> </i> </div>
                     <h1> <span> <?=$this->lang->line('application_edit_profile_and_portfolio'); ?> </span> </h1> </div>
             </a>
         </div>
         <div class="tile-button">
             <a href="<?=base_url() ?>cportfolio/add_photo" data-toggle="mainmodal">
                 <div class="col-md-3 col-xs-3 tile">
-                    <div class="icon-frame hidden-xs"> <span class="iconify" data-icon="mdi:image-plus" data-inline="true"> </span> </div>
+                    <div class="icon-frame"> <i class="ion-images"> </i> </div>
                     <h1> <span> <?=$this->lang->line('application_add_photo'); ?> </span> </h1> </div>
             </a>
         </div>

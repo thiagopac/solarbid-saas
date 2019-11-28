@@ -278,8 +278,15 @@ $lang['messages_updated_pricing_table_error'] = "Erro ao atualizar tabela";
 
 $lang['messages_upload_photo_success'] = "Foto enviada com sucesso";
 $lang['messages_upload_photo_error'] = "Erro ao enviar foto";
-$lang['messages_delete_photo_success'] = "Foto apagada com sucesso";
-$lang['messages_delete_photo_error'] = "Erro ao apagar foto";
+$lang['messages_deleted_photo_success'] = "Foto apagada com sucesso";
+$lang['messages_deleted_photo_error'] = "Erro ao apagar foto";
 
 $lang['messages_updated_company_profile_success'] = "Perfil da empresa atualizado";
 $lang['messages_updated_company_profile_error'] = "Erro ao atualizar o perfil da empresa";
+
+$lang['messages_created_pv_kit_error'] = "Erro ao adicionar Kit";
+$lang['messages_created_pv_kit_success'] = "Kit adicionado com sucesso";
+$lang['messages_updated_pv_kit_error'] = "Erro ao atualizar Kit";
+$lang['messages_updated_pv_kit_success'] = "Kit atualizado com sucesso";
+$lang['messages_deleted_pv_kit_error'] = "Erro ao atualizar Kit";
+$lang['messages_deleted_pv_kit_success'] = "Kit atualizado com sucesso";
