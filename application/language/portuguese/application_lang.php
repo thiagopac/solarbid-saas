@@ -1367,3 +1367,5 @@ $lang['application_inactivate'] = 'Inativar';
 $lang['application_inactivated'] = 'Inativo';
 $lang['application_deleted'] = 'Excluído';
 $lang['application_create_pv_kit'] = 'Adicionar Kit Fotovoltaico';
+$lang['application_use_repeated_image'] = 'Utilizar a mesma imagem de outro kit';
+$lang['application_freight'] = 'Frete';

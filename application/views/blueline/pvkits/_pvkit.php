@@ -118,7 +118,26 @@ if (isset($pv_kit)) { ?>
     </div>
 
     <div class="form-group">
-        <label for="image"><?= $this->lang->line('application_image'); ?> *</label>
+        <label for="value"><?= $this->lang->line('application_use_repeated_image'); ?> *</label>
+        <?php $options = array();
+
+
+        array_push($options, $this->lang->line('application_select'));
+
+        foreach ($all_kits as $kit):
+
+            if ($options[$kit->image] == null){
+                $options[$kit->image] = "[$kit->id] - $kit->kit_provider - $kit->kit_power.$core_settings->rated_power_measurement - Inversor: $kit->pv_inverter - Módulos: $kit->pv_module - $kit->structure_type_id - $core_settings->money_symbol$kit->price";
+            }
+
+            $image = $options[0];
+
+        endforeach;
+        echo form_dropdown('image', $options, $image, 'style="width:100%" class="chosen-select"'); ?>
+    </div>
+
+    <div class="form-group">
+        <label for="image"><?= $this->lang->line('application_image'); ?> * <small>(Só enviar nova imagem se ela não for de nenhum outro kit)</small></label>
         <div>
             <input id="uploadFile" class="form-control uploadFile"
                    placeholder="<?= $this->lang->line('application_choose_file'); ?>" disabled="disabled"/>

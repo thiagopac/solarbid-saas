@@ -131,16 +131,62 @@ class PvKits extends MY_Controller {
 
     public function create() {
 
+        $core_settings = Setting::first();
+
         if ($_POST) {
-
-            unset($_POST['send']);
-
-            $_POST['start_at'] = strtotime($_POST['start_at']);
-            $_POST['stop_at'] = strtotime($_POST['stop_at']);
 
             //price come as 12.345,67 and need back to database type 12345.67
             $_POST['price'] = str_replace('.', '', $_POST['price']);
             $_POST['price'] = str_replace(',', '.', $_POST['price']);
+
+            if ($_POST['userfile'] != null){
+
+                //begin image upload
+                $config['upload_path'] = './files/media/pvkits/';
+                $config['encrypt_name'] = true;
+                $config['allowed_types'] = 'gif|jpg|png';
+
+                $full_path = $core_settings->domain."files/media/pvkits/";
+
+                $this->load->library('upload', $config);
+
+                if (!$this->upload->do_upload()) {
+                    $error = $this->upload->display_errors('', ' ');
+                    $this->session->set_flashdata('message', 'error:'.$error);
+                    redirect('pvkits');
+                } else {
+                    $data = array('upload_data' => $this->upload->data());
+
+                    $_POST['image'] = $full_path.$data['upload_data']['file_name'];
+
+                    //check image processor extension
+                    if (extension_loaded('gd2')) {
+                        $lib = 'gd2';
+                    } else {
+                        $lib = 'gd';
+                    }
+
+                    $config['image_library']  = $lib;
+                    $config['source_image']   = './files/media/portfolio/'.$_POST['savename'];
+                    $config['maintain_ratio'] = true;
+                    $config['max_width']          = 2048;
+                    $config['max_height']         = 2048;
+                    $config['master_dim']     = "height";
+                    $config['quality']        = "100%";
+
+                    $this->load->library('image_lib');
+                    $this->image_lib->initialize($config);
+                    $this->image_lib->resize();
+                    $this->image_lib->clear();
+                }
+
+                $_POST = array_map('htmlspecialchars', $_POST);
+                //end image upload
+            }
+
+            unset($_POST['send']);
+            unset($_POST['userfile']);
+            unset($_POST['files']);
 
             $pv_kit = PvKit::create($_POST);
 
@@ -153,6 +199,7 @@ class PvKits extends MY_Controller {
         } else {
 
             $this->view_data['kit_providers'] = PvProvider::all();
+            $this->view_data['all_kits'] = PvKit::find('all', ['conditions' => ['deleted != 1']]);
             $this->view_data['inverters'] = InverterManufacturer::all();
             $this->view_data['modules'] = ModuleManufacturer::all();
             $this->view_data['structure_types'] = StructureType::all();
@@ -171,6 +218,8 @@ class PvKits extends MY_Controller {
 
         if ($_POST) {
 
+
+
             $pv_kit = PvKit::find($_POST['id']);
 
             //price come as 12.345,67 and need back to database type 12345.67
@@ -178,51 +227,60 @@ class PvKits extends MY_Controller {
             $_POST['price'] = str_replace(',', '.', $_POST['price']);
 
 
-            //begin image upload
-            $config['upload_path'] = './files/media/pvkits/';
-            $config['encrypt_name'] = true;
-            $config['allowed_types'] = 'gif|jpg|png';
+            if ($_POST['userfile'] != null){
 
-            $full_path = $core_settings->domain."files/media/pvkits/";
+                //begin image upload
+                $config['upload_path'] = './files/media/pvkits/';
+                $config['encrypt_name'] = true;
+                $config['allowed_types'] = 'gif|jpg|png';
 
-            $this->load->library('upload', $config);
+                $full_path = $core_settings->domain."files/media/pvkits/";
 
-            if (!$this->upload->do_upload()) {
-                $error = $this->upload->display_errors('', ' ');
-                $this->session->set_flashdata('message', 'error:'.$error);
-                redirect('pvkits');
-            } else {
-                $data = array('upload_data' => $this->upload->data());
+                $this->load->library('upload', $config);
 
-                $_POST['image'] = $full_path.$data['upload_data']['file_name'];
-
-                //check image processor extension
-                if (extension_loaded('gd2')) {
-                    $lib = 'gd2';
+                if (!$this->upload->do_upload()) {
+                    $error = $this->upload->display_errors('', ' ');
+                    $this->session->set_flashdata('message', 'error:'.$error);
+                    redirect('pvkits');
                 } else {
-                    $lib = 'gd';
+                    $data = array('upload_data' => $this->upload->data());
+
+                    $_POST['image'] = $full_path.$data['upload_data']['file_name'];
+
+                    //check image processor extension
+                    if (extension_loaded('gd2')) {
+                        $lib = 'gd2';
+                    } else {
+                        $lib = 'gd';
+                    }
+
+                    $config['image_library']  = $lib;
+                    $config['source_image']   = './files/media/portfolio/'.$_POST['savename'];
+                    $config['maintain_ratio'] = true;
+                    $config['max_width']          = 2048;
+                    $config['max_height']         = 2048;
+                    $config['master_dim']     = "height";
+                    $config['quality']        = "100%";
+
+                    $this->load->library('image_lib');
+                    $this->image_lib->initialize($config);
+                    $this->image_lib->resize();
+                    $this->image_lib->clear();
                 }
 
-                $config['image_library']  = $lib;
-                $config['source_image']   = './files/media/portfolio/'.$_POST['savename'];
-                $config['maintain_ratio'] = true;
-                $config['max_width']          = 2048;
-                $config['max_height']         = 2048;
-                $config['master_dim']     = "height";
-                $config['quality']        = "100%";
+                $_POST = array_map('htmlspecialchars', $_POST);
+                //end image upload
+            }
 
-                $this->load->library('image_lib');
-                $this->image_lib->initialize($config);
-                $this->image_lib->resize();
-                $this->image_lib->clear();
+            if ($_POST['image'] == null || $_POST['image'] == 0){
+                unset($_POST['image']);
+            }else{
+                $_POST['image'] = $_POST['image'];
             }
 
             unset($_POST['send']);
             unset($_POST['userfile']);
             unset($_POST['files']);
-            $_POST = array_map('htmlspecialchars', $_POST);
-
-            //end image upload
 
             $pv_kit->update_attributes($_POST);
 
@@ -234,6 +292,7 @@ class PvKits extends MY_Controller {
             redirect('pvkits');
         } else {
             $pv_kit = PvKit::find($pv_kit_id);
+            $this->view_data['all_kits'] = PvKit::find('all', ['conditions' => ['deleted != 1']]);
             $this->view_data['pv_kit'] = $pv_kit;
             $this->view_data['kit_providers'] = PvProvider::all();
             $this->view_data['inverters'] = InverterManufacturer::all();
@@ -270,6 +329,16 @@ class PvKits extends MY_Controller {
         $this->view_data['kit'] = $pv_kit;
         $this->content_view = 'pvkits/_preview';
         $this->view_data['title'] = $this->lang->line('application_preview_photo_media');
+    }
+
+    function freight($pv_kit_id) {
+
+        $pv_kit = PvKit::find($pv_kit_id);
+
+        $this->theme_view = 'modal';
+        $this->view_data['kit'] = $pv_kit;
+        $this->content_view = 'pvkits/_freight';
+        $this->view_data['title'] = $this->lang->line('application_freight');
     }
 
 

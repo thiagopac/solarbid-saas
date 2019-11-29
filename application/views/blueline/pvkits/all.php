@@ -112,6 +112,9 @@
                         <?=$this->lang->line('application_inactivated');?>
                     </th>
                     <th class="hidden-xs no-sort">
+                        <?=$this->lang->line('application_freight');?>
+                    </th>
+                    <th class="hidden-xs no-sort">
                         <?=$this->lang->line('application_image');?>
                     </th>
                     <th class="hidden-xs no-sort">
@@ -155,7 +158,10 @@
                                 <? if($kit->inactive == 0) : ?> <span class="label label-success"><?=$this->lang->line('application_no')?></span> <?php else: ?> <span class="label label-important"><?=$this->lang->line('application_yes')?> <?endif;?>
                             </td>
                             <td style="text-align: center">
-                                <a href="<?=base_url() ?>pvkits/preview_photo/<?=$kit->id; ?>" title="<?=$this->lang->line('application_preview_photo'); ?>" class="btn-option tt" data-toggle="mainmodal"> <i class="icon dripicons-preview"> </i> </a>
+                                <a href="<?=base_url() ?>pvkits/freight/<?=$kit->id; ?>" title="<?=$this->lang->line('application_freight'); ?>" class="btn-option tt" data-toggle="mainmodal"> <i class="ion-android-bus"> </i> </a>
+                            </td>
+                            <td style="text-align: center">
+                                <?php if($kit->image != null) : ?><a href="<?=base_url() ?>pvkits/preview_photo/<?=$kit->id; ?>" title="<?=$this->lang->line('application_preview_photo'); ?>" class="btn-option tt" data-toggle="mainmodal"> <i class="icon dripicons-preview"> </i> </a><?php endif; ?>
                             </td>
 
                             <td class="option">
