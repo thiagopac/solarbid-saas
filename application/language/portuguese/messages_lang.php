@@ -290,3 +290,6 @@ $lang['messages_updated_pv_kit_error'] = "Erro ao atualizar Kit";
 $lang['messages_updated_pv_kit_success'] = "Kit atualizado com sucesso";
 $lang['messages_deleted_pv_kit_error'] = "Erro ao atualizar Kit";
 $lang['messages_deleted_pv_kit_success'] = "Kit atualizado com sucesso";
+
+$lang['messages_freight_updated_error'] = "Erro ao atualizar frete";
+$lang['messages_freight_updated_success'] = "Frete atualizado com sucesso";

@@ -257,7 +257,7 @@ class My_Controller extends CI_Controller
     }
 
 //    Debug para php + javascript
-    function debug_to_console($data)
+    public function debug_to_console($data)
     {
         $output = $data;
         if (is_array($output))

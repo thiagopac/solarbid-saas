@@ -1369,3 +1369,6 @@ $lang['application_deleted'] = 'Excluído';
 $lang['application_create_pv_kit'] = 'Adicionar Kit Fotovoltaico';
 $lang['application_use_repeated_image'] = 'Utilizar a mesma imagem de outro kit';
 $lang['application_freight'] = 'Frete';
+$lang['application_capital_value'] = 'Valor para capital';
+$lang['application_inland_value'] = 'Valor para interior';
+$lang['application_freight_modal_desc'] = '<h5><strong>Valores de frete</strong></h5> <h6>Informe o valor do frete deste Kit para cada estado que ele será vendido. Se um estado não tiver valor informado para Capital ou Interior, este kit não será apresentado para pessoas do estado.</h6>';

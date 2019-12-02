@@ -272,11 +272,12 @@ class PvKits extends MY_Controller {
                 //end image upload
             }
 
-            if ($_POST['image'] == null || $_POST['image'] == 0){
-                unset($_POST['image']);
-            }else{
+            if ($_POST['image']){
                 $_POST['image'] = $_POST['image'];
+            }else{
+                unset($_POST['image']);
             }
+
 
             unset($_POST['send']);
             unset($_POST['userfile']);
@@ -333,12 +334,78 @@ class PvKits extends MY_Controller {
 
     function freight($pv_kit_id) {
 
-        $pv_kit = PvKit::find($pv_kit_id);
+        if ($_POST) {
 
-        $this->theme_view = 'modal';
-        $this->view_data['kit'] = $pv_kit;
-        $this->content_view = 'pvkits/_freight';
-        $this->view_data['title'] = $this->lang->line('application_freight');
+            // var_dump($_POST);
+
+            unset($_POST['send']);
+
+            $kit_id = $pv_kit_id;
+
+            $this->load->dbforge();
+            $this->db->query('USE `' . $this->db->database . '`;');
+
+            foreach (array_keys($_POST) as $key){
+                if ($_POST[$key] == null){
+                    unset($_POST[$key]);
+                }
+            }
+
+            foreach (array_keys($_POST) as $key){
+
+                $field_id = explode("_", $key);
+                $state_id = $field_id[0];
+                $type_value = $field_id[1]."_value";
+                $value = $_POST[$key];
+
+                //value come as 12.345,67 and need back to database type 12345.67
+                $value = str_replace('.', '', $value);
+                $value = str_replace(',', '.', $value);
+
+                $existing_freight = Freight::find('first', ['conditions' => ['pv_kit_id = ? AND state_id = ?', $pv_kit_id,$state_id]]);
+
+                if ($existing_freight == null){
+                    $new_freight = new Freight();
+                    $new_freight->pv_kit_id = $kit_id;
+                    $new_freight->state_id = $state_id;
+                    $type_value == "capital_value" ? $new_freight->capital_value = $value : $new_freight->inland_value = $value;
+
+                    $new_freight->save();
+
+                }else{
+                    $type_value == "capital_value" ? $existing_freight->capital_value = $value : $existing_freight->inland_value = $value;
+                    $existing_freight->save();
+                }
+
+//                $sql = "REPLACE INTO freight (pv_kit_id, state_id, $type_value)
+//                                     VALUES('$kit_id',
+//                                            '$state_id',
+//                                            '$value')";
+
+//                $this->db->query($sql);
+            }
+
+            if (1 != 1) {
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_freight_updated_error'));
+            } else {
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_freight_updated_success'));
+            }
+
+            redirect('pvkits');
+
+        }else{
+            $pv_kit = PvKit::find($pv_kit_id);
+
+            $this->view_data['states'] = State::find('all');
+            $this->view_data['freights'] = Freight::find('all', ['conditions' => ['pv_kit_id = ?', $pv_kit_id]]);
+
+            $this->theme_view = 'modal';
+            $this->view_data['kit'] = $pv_kit;
+            $this->content_view = 'pvkits/_freight';
+            $this->view_data['title'] = $this->lang->line('application_freight');
+            $this->view_data['form_action'] = 'pvkits/freight/'.$pv_kit_id;
+        }
+
     }
 
 
