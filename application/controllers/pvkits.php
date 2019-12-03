@@ -402,7 +402,7 @@ class PvKits extends MY_Controller {
             $this->theme_view = 'modal';
             $this->view_data['kit'] = $pv_kit;
             $this->content_view = 'pvkits/_freight';
-            $this->view_data['title'] = $this->lang->line('application_freight');
+            $this->view_data['title'] = $this->lang->line('application_freight')." [".$this->lang->line('application_pvkit')." ".$pv_kit_id."]";
             $this->view_data['form_action'] = 'pvkits/freight/'.$pv_kit_id;
         }
 

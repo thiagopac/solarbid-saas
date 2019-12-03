@@ -159,7 +159,6 @@ class cPortfolio extends MY_Controller {
         }
     }
 
-
     function download_photo($photo_id) {
 
         $company_photo = CompanyPhoto::find($photo_id);

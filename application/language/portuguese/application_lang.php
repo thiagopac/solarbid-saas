@@ -1351,6 +1351,7 @@ $lang['application_no_pricing_table_valid_start_end'] = 'Você não possui nenhu
 $lang['application_in_months'] = 'Em meses';
 
 $lang['application_pvkits'] = 'Kits Fotovoltaicos';
+$lang['application_pvkit'] = 'Kit Fotovoltaico';
 $lang['application_valids'] = 'Válidos';
 $lang['application_expireds'] = 'Expirados';
 $lang['application_add_pv_kit'] = 'Adicionar Kit';

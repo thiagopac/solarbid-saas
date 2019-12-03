@@ -96,7 +96,42 @@
             </div>
         </div>
 
+        <p></p>
+
+        <div class="box-shadow">
+            <div class="table-head">
+                <?=$this->lang->line('application_primary_contact');?>
+            </div>
+            <div class="subcont">
+                <ul class="details col-md-12">
+
+                    <li>
+                        <span>
+						    <?=$this->lang->line('application_primary_contact');?>:
+                        </span>
+                        <?php if (is_object($company->client)) {
+                            echo $company->client->firstname . ' ' . $company->client->lastname;
+                        } else {
+                            echo '-';
+                        } ?>
+                    </li>
+                    <li>
+                        <span>
+						    <?=$this->lang->line('application_email');?>:
+                        </span>
+                        <?php if (is_object($company->client) && $company->client->email != '') {
+                            echo $company->client->email;
+                        } else {
+                            echo '-';
+                        } ?>
+                    </li>
+                </ul>
+                <br clear="all">
+            </div>
+        </div>
     </div>
+
+
 
     <div class="col-md-9">
         <?php if (!array_key_exists(0, $company->clients)) {
@@ -218,7 +253,7 @@
 								<a href="<?=base_url()?>clients/assign/<?=$company->id; ?>" class="btn btn-primary" data-toggle="mainmodal">
 									<?=$this->lang->line('application_assign_admin'); ?>
 								</a>
-							</span>
+                        </span>
                         <?php
                     } ?>
                 </div>
@@ -281,177 +316,94 @@
         </div>
     </div>
 
-    <?php if ($project_access == true) {
-        ?>
-        <div class="col-md-9">
-            <div class="data-table-marginbottom">
-                <div class="box-shadow">
-                    <div class="table-head">
-                        <?=$this->lang->line('application_projects'); ?>
-                    </div>
-                    <div class="table-div responsive">
-                        <table id="projects" class="data-no-search table" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
-                            <thead>
-                            <th class="hidden-xs" style="width:70px">
-                                <?=$this->lang->line('application_project_id'); ?>
-                            </th>
-                            <th>
-                                <?=$this->lang->line('application_name'); ?>
-                            </th>
-                            <th>
-                                <?=$this->lang->line('application_progress'); ?>
-                            </th>
-                            </thead>
-                            <?php foreach ($company->projects as $value):?>
+    <div>&nbsp;</div>
 
-                                <tr id="<?=$value->id; ?>">
-                                    <td class="hidden-xs" style="width:70px">
-                                        <?=$core_settings->project_prefix; ?>
-                                        <?=$value->reference; ?>
-                                    </td>
-                                    <td>
-                                        <?=$value->name; ?>
-                                    </td>
-                                    <td class="hidden-xs">
-                                        <div class="progress progress-striped active progress-medium tt <?php if ($value->progress == ' 100 ') {
-                                            ?>progress-success<?php
-                                        } ?>" title="<?=$value->progress; ?>%">
-                                            <div class="bar" style="width:<?=$value->progress; ?>%"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                            <?php endforeach; ?>
-                        </table>
-                        <?php if (!$company->projects) {
-                            ?>
-                            <div class="no-files">
-                                <i class="icon dripicons-lightbulb"></i>
-                                <br>
-
-                                <?=$this->lang->line('application_no_projects_yet'); ?>
-                            </div>
-                            <?php
-                        } ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php
-    } ?>
-    <?php if ($invoice_access == true) {
-        ?>
-        <div class="col-md-9">
-            <div class="data-table-marginbottom">
-                <div class="box-shadow">
-                    <div class="table-head">
-                        <?=$this->lang->line('application_invoices'); ?>
-                    </div>
-                    <div class="table-div responsive">
-                        <table id="invoices" class="data-no-search table" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
-                            <thead>
-                            <th width="70px">
-                                <?=$this->lang->line('application_invoice_id'); ?>
-                            </th>
-                            <th class="hidden-xs">
-                                <?=$this->lang->line('application_issue_date'); ?>
-                            </th>
-                            <th class="hidden-xs">
-                                <?=$this->lang->line('application_due_date'); ?>
-                            </th>
-                            <th>
-                                <?=$this->lang->line('application_status'); ?>
-                            </th>
-                            </thead>
-                            <?php foreach ($invoices as $value):?>
-
-                                <tr id="<?=$value->id; ?>">
-                                    <td>
-                                        <?=$core_settings->invoice_prefix; ?>
-                                        <?=$value->reference; ?>
-                                    </td>
-                                    <td class="hidden-xs">
-                                                <span class="label">
-										<?php $unix = human_to_unix($value->issue_date);
-                                        echo date($core_settings->date_format, $unix); ?>
-									</span>
-                                    </td>
-                                    <td class="hidden-xs">
-                                                <span class="label <?php if ($value->status == ' Paid ') {
-                                                    echo 'label-success';
-                                                }
-                                                if ($value->due_date <= date('Y-m-d') && $value->status != 'Paid ') {
-                                                    echo 'label-important tt" title="' . $this->lang->line('application_overdue');
-                                                } ?>">
-										<?php $unix = human_to_unix($value->due_date);
-                                        echo date($core_settings->date_format, $unix); ?>
-									</span>
-                                    </td>
-                                    <td>
-                                                <span class="label <?php $unix = human_to_unix($value->sent_date);
-                                                if ($value->status == ' Paid ') {
-                                                    echo 'label-success';
-                                                } elseif ($value->status == 'Sent ') {
-                                                    echo 'label-warning tt" title="' . date($core_settings->date_format, $unix);
-                                                } ?>">
-										<?=$this->lang->line('application_' . $value->status); ?>
-									</span>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </table>
-                        <?php if (!$company->invoices) {
-                            ?>
-                            <div class="no-files">
-                                <i class="icon dripicons-document"></i>
-                                <br>
-
-                                <?=$this->lang->line('application_no_invoices_yet'); ?>
-                            </div>
-                            <?php
-                        } ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php
-    } ?>
-</div>
-
-<div class="row">
-    <div class="col-md-3 marginbottom20">
+    <div class="col-md-5">
         <div class="box-shadow">
             <div class="table-head">
-                <?=$this->lang->line('application_primary_contact');?>
+                <?=$this->lang->line('application_profile_and_portfolio'); ?>
+                <span class="pull-right">
+                        <a href="<?=base_url() ?>clients/edit_profile/<?=$company->id?>" class="btn btn-primary" data-toggle="mainmodal">
+                            <?=$this->lang->line('application_edit_profile_and_portfolio'); ?>
+                        </a>
+                </span>
             </div>
-            <div class="subcont">
-                <ul class="details col-md-12">
-
-                    <li>
-                        <span>
-						    <?=$this->lang->line('application_primary_contact');?>:
-                        </span>
-                        <?php if (is_object($company->client)) {
-                            echo $company->client->firstname . ' ' . $company->client->lastname;
-                        } else {
-                            echo '-';
-                        } ?>
+            <div class="table-div responsive">
+                <p></p>
+                <ul class="list-group ">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <label class="stats-label"><i class="dripicons-arrow-right orangered stats-icon"></i> <?=$this->lang->line('application_warranty_lowest')?></label>
+                        <span class="pull-right stats-number"><?=$company_profile->warranty_lowest?> <small>meses</small></span>
                     </li>
-                    <li>
-                        <span>
-						    <?=$this->lang->line('application_email');?>:
-                        </span>
-                        <?php if (is_object($company->client) && $company->client->email != '') {
-                            echo $company->client->email;
-                        } else {
-                            echo '-';
-                        } ?>
+                    <hr class="stats-separator" />
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <label class="stats-label"><i class="dripicons-arrow-up orangered stats-icon"></i> <?=$this->lang->line('application_warranty_highest')?></label>
+                        <span class="pull-right stats-number"><?=$company_profile->warranty_highest?> <small>meses</small></span>
+                    </li>
+                    <hr class="stats-separator" />
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <label class="stats-label"><i class="dripicons-view-thumb orangered stats-icon"></i> <?=$this->lang->line('application_power_plants_installed')?></label>
+                        <span class="pull-right stats-number"><?=$company_profile->power_plants_installed?> <small>usinas</small></span>
+                    </li>
+                    <hr class="stats-separator" />
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <label class="stats-label"><i class="dripicons-pulse orangered stats-icon"></i> <?=$this->lang->line('application_power_executed')?></label>
+                        <span class="pull-right stats-number"><?=$company_profile->power_executed?> <small><?=$core_settings->rated_power_measurement?></small></span>
                     </li>
                 </ul>
-                <br clear="all">
             </div>
         </div>
+    </div>
 
+    <div class="col-md-4">
+        <div class="box-shadow">
+            <div class="table-head">
+                <?=$this->lang->line('application_photos'); ?>
+                <span class="pull-right">
+                        <a href="<?=base_url() ?>clients/add_photo/<?=$company->id?>" class="btn btn-primary" data-toggle="mainmodal">
+                            <?=$this->lang->line('application_add_photo'); ?>
+                        </a>
+                </span>
+            </div>
+            <div class="table-div">
+                <table id="photos" class="table data-media noclick" rel="<?=base_url() ?>clients/photo/<?=$this->client->company_id; ?>" cellspacing="0" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th class="no-sort" style="width:20px">
+                            <?=$this->lang->line('application_filename'); ?>
+                        </th>
+                        <th class="no-sort" style="width:10px;">
+                            <?=$this->lang->line('application_download')?>
+                        </th>
+                        <th class="no-sort"  style="width:20px">
+                            <?=$this->lang->line('application_action'); ?>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody id="div-photos" name="div-photos">
+                    <?php foreach ($company_photos as $file): ?>
+                        <tr id="<?=$file->id; ?>">
+                            <td>
+                                <?=ellipsize($file->filename, 20, .055); ?>
+                            </td>
+                            <td style="text-align: center">
+                                <a href="<?=base_url() ?>clients/download_photo/<?=$file->id?>"><i class="icon dripicons-download"> </i></a>
+                            </td>
+                            <td class="option">
+                                <button type="button" class="btn-option btn-xs po tt" title="<?=$this->lang->line('application_delete'); ?>" data-toggle="popover" data-placement="left" data-content="<a class='btn btn-danger po-delete ajax-silent' href='<?=base_url() ?>clients/delete_photo/<?=$file->id; ?>'><?=$this->lang->line('application_yes_im_sure'); ?></a> <button class='btn po-close'><?=$this->lang->line('application_no'); ?></button> <input type='hidden' name='td-id' class='id' value='<?=$file->id; ?>'>" data-original-title="<b><?=$this->lang->line('application_really_delete'); ?></b>"> <i class="icon dripicons-cross"> </i> </button>
+                                <a href="<?=base_url() ?>clients/preview_photo/<?=$file->id; ?>" title="<?=$this->lang->line('application_preview_photo'); ?>" class="btn-option tt" data-toggle="mainmodal"> <i class="icon dripicons-preview"> </i> </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <?php if (!$company_photos){?>
+                    <div class="no-files"> <i class="icon dripicons-cloud-upload"> </i>
+                        <br><?=$this->lang->line('application_no_photo_sent')?></div>
+                <?php } ?>
+            </div>
+        </div>
     </div>
 
 </div>
+
