@@ -1373,3 +1373,16 @@ $lang['application_freight'] = 'Frete';
 $lang['application_capital_value'] = 'Valor para capital';
 $lang['application_inland_value'] = 'Valor para interior';
 $lang['application_freight_modal_desc'] = '<h5><strong>Valores de frete</strong></h5> <h6>Informe o valor do frete deste Kit para cada estado que ele será vendido. Se um estado não tiver valor informado para Capital ou Interior, este kit não será apresentado para pessoas do estado.</h6>';
+
+$lang['application_flows'] = 'Fluxos';
+$lang['application_simulator_flow'] = 'Fluxo do simulador';
+$lang['application_simulator_flows'] = 'Fluxos do simulador';
+$lang['application_store_flow'] = 'Fluxo da loja';
+$lang['application_store_flows'] = 'Fluxos da loja';
+$lang['application_code'] = 'Código';
+$lang['application_flow_residence'] = 'Residência';
+$lang['application_flow_company'] = 'Empresa';
+$lang['application_energy_dealer'] = 'Concessionária';
+$lang['application_monthly_average'] = 'Média mensal';
+$lang['application_activity'] = 'Atividade';
+$lang['application_find_flow'] = 'Buscar fluxo';

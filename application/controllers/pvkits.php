@@ -88,46 +88,46 @@ class PvKits extends MY_Controller {
         $this->content_view = 'tickets/all';
     }
 
-    public function bulk($action) {
-        $this->load->helper('notification');
-        if ($_POST) {
-            if (empty($_POST['list'])) {
-                redirect('tickets');
-            }
-            $list = explode(',', $_POST['list']);
-
-            switch ($action) {
-                case 'close':
-                    $attr = ['status' => 'closed'];
-                    $email_message = $this->lang->line('messages_bulk_ticket_closed');
-                    $success_message = $this->lang->line('messages_bulk_ticket_closed_success');
-                    break;
-
-                default:
-                    redirect('tickets');
-                    break;
-            }
-
-            foreach ($list as $value) {
-                $ticket = Ticket::find_by_id($value);
-                $ticket->update_attributes($attr);
-                send_ticket_notification($ticket->user->email, '[Ticket#' . $ticket->reference . '] - ' . $ticket->subject, $email_message, $ticket->id);
-                if (!$ticket) {
-                    $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_save_ticket_error'));
-                } else {
-                    $this->session->set_flashdata('message', 'success:' . $success_message);
-                }
-            }
-            redirect('tickets');
-
-        } else {
-            $this->view_data['ticket'] = Ticket::find($id);
-            $this->theme_view = 'modal';
-            $this->view_data['title'] = $this->lang->line('application_close');
-            $this->view_data['form_action'] = 'tickets/close';
-            $this->content_view = 'tickets/_close';
-        }
-    }
+//    public function bulk($action) {
+//
+//        if ($_POST) {
+//            if (empty($_POST['list'])) {
+//                redirect('tickets');
+//            }
+//            $list = explode(',', $_POST['list']);
+//
+//            switch ($action) {
+//                case 'close':
+//                    $attr = ['status' => 'closed'];
+//                    $email_message = $this->lang->line('messages_bulk_ticket_closed');
+//                    $success_message = $this->lang->line('messages_bulk_ticket_closed_success');
+//                    break;
+//
+//                default:
+//                    redirect('tickets');
+//                    break;
+//            }
+//
+//            foreach ($list as $value) {
+//                $ticket = Ticket::find_by_id($value);
+//                $ticket->update_attributes($attr);
+//                send_ticket_notification($ticket->user->email, '[Ticket#' . $ticket->reference . '] - ' . $ticket->subject, $email_message, $ticket->id);
+//                if (!$ticket) {
+//                    $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_save_ticket_error'));
+//                } else {
+//                    $this->session->set_flashdata('message', 'success:' . $success_message);
+//                }
+//            }
+//            redirect('tickets');
+//
+//        } else {
+//            $this->view_data['ticket'] = Ticket::find($id);
+//            $this->theme_view = 'modal';
+//            $this->view_data['title'] = $this->lang->line('application_close');
+//            $this->view_data['form_action'] = 'tickets/close';
+//            $this->content_view = 'tickets/_close';
+//        }
+//    }
 
     public function create() {
 
