@@ -293,3 +293,5 @@ $lang['messages_deleted_pv_kit_success'] = "Kit atualizado com sucesso";
 
 $lang['messages_freight_updated_error'] = "Erro ao atualizar frete";
 $lang['messages_freight_updated_success'] = "Frete atualizado com sucesso";
+
+$lang['messages_find_flow_error'] = "Fluxo não encontrado";

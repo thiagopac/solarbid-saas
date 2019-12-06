@@ -445,23 +445,17 @@ $.ajaxSetup({
         var a = $(this).closest("table").attr("rel") + $(this).closest("table").attr("id");
         $(this).hasClass("option") || (window.location = a + "/view/" + e)
     }
-}), $(document).on("click", "table#media td", function(t) {
+}), $(document).on("click", "table#store_flows td", function(t) {
     var e = $(this).parent().attr("id");
     if (e) {
         var a = $(this).closest("table").attr("rel");
-        $(this).hasClass("option") || (window.location = a + "/view/" + e)
+        $(this).hasClass("option") || (window.location = a + "flows/view_store_flow/" + e)
     }
-}), $(document).on("click", "table#custom_quotations_requests td", function(t) {
+}), $(document).on("click", "table#simulator_flows td", function(t) {
     var e = $(this).parent().attr("id");
     if (e) {
-        $(this).closest("table").attr("rel");
-        $(this).hasClass("option") || (window.location = "quotations/cview/" + e)
-    }
-}), $(document).on("click", "table#quotation_form td", function(t) {
-    var e = $(this).parent().attr("id");
-    if (e) {
-        $(this).closest("table").attr("rel");
-        $(this).hasClass("option") || (window.location = "formbuilder/" + e)
+        var a = $(this).closest("table").attr("rel");
+        $(this).hasClass("option") || (window.location = a + "flows/view_simulator_flow/" + e)
     }
 }), summernote(), $(".summernote-note").summernote({
     height: "360px",
@@ -974,7 +968,7 @@ $(".summernote-big").summernote({
         bLengthChange: !1,
         aoColumns: t,
         aaSorting: [
-            [1, "desc"]
+            [0, "desc"]
         ],
         oLanguage: {
             sSearch: "",

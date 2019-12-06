@@ -62,15 +62,15 @@
                 <?=$this->lang->line('application_store_flows');?>
             </div>
             <div class="table-div" id="div-store-flows" name="store-flows">
-                <table class="data-sorting table" id="store-flows" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
+                <table class="data-sorting table" id="store_flows" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
                     <thead>
                         <th style="width:20px">
                             <?=$this->lang->line('application_id');?>
                         </th>
-                        <th style="width:100px">
+                        <th class="no_sort no-sort">
                             <?=$this->lang->line('application_code');?>
                         </th>
-                        <th style="width:120px">
+                        <th style="width:200px">
                             <?=$this->lang->line('application_city');?>
                         </th>
                         <th style="width:100px">
@@ -88,14 +88,14 @@
                             <td>
                                 <?=$store_flow->code?>
                             </td>
-                            <td class="hidden-xs" style="width:15px">
+                            <td>
                                 <?=City::find($store_flow->city)->name?>
                             </td>
                             <td>
                                 <?=State::find($store_flow->state)->name?>
                             </td>
                             <td>
-                                <?=$store_flow->created_at?>
+                                <?=date($core_settings->date_format . ' ' . $core_settings->date_time_format, strtotime($store_flow->created_at))?>
                             </td>
                         </tr>
 

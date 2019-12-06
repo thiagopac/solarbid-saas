@@ -62,7 +62,7 @@
                 <?=$this->lang->line('application_simulator_flows');?>
             </div>
             <div class="table-div" id="div-simulator-flows" name="simulator-flows">
-                <table class="data-sorting table" id="simulator-flows" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
+                <table class="data-sorting table" id="simulator_flows" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
                     <thead>
                         <th style="width:20px">
                             <?=$this->lang->line('application_id');?>
@@ -82,10 +82,10 @@
                         <th style="width:100px">
                             <?=$this->lang->line('application_energy_dealer');?>
                         </th>
-                        <th class="hidden-xs">
+                        <th>
                             <?=$this->lang->line('application_monthly_average')?> (<?= $core_settings->money_symbol; ?>)
                         </th>
-                        <th class="hidden-xs">
+                        <th>
                             <?=$this->lang->line('application_activity');?>
                         </th>
                         <th style="width:100px">
@@ -122,7 +122,7 @@
                                 <?=Activity::find($simulator_flow->activity)->name?>
                             </td>
                             <td>
-                                <?=$store_flow->created_at?>
+                                <?=date($core_settings->date_format . ' ' . $core_settings->date_time_format, strtotime($simulator_flow->created_at))?>
                             </td>
                         </tr>
 
