@@ -68,7 +68,7 @@ typings/
 .htaccess
 
 # project libraries
-
+/node_modules
 
 # phpstorm settings
 .idea
