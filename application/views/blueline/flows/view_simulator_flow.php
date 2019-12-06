@@ -113,14 +113,14 @@
                                     <?php echo empty($flow->email) ? '-' : $flow->email; ?>
                                 </li>
                                 <li> <span> <?=$this->lang->line('application_simulation_results'); ?>: </span>
-                                    <?php if (empty($flow->pv_kit)) : ?>
+                                    <?php if (empty($simulation_results)) : ?>
                                         -
                                     <?php else : ?>
                                         <small>
                                             <strong><?=$this->lang->line('application_tariff')?>:</strong> <?=$core_settings->money_symbol;?><?=display_money($simulation_results->tariff->value).' ('.$simulation_results->tariff->value.')' ?><br/>
-                                            <strong><?=$this->lang->line('application_pv_power')?></strong>: <?=$simulation_results->min_area ?> <?=$core_settings->area_measurement;?><br/>
+                                            <strong><?=$this->lang->line('application_min_area')?></strong>: <?=$simulation_results->min_area ?> <?=$core_settings->area_measurement;?><br/>
                                             <strong><?=$this->lang->line('application_modules_qty')?></strong>: <?=$simulation_results->modules_qty ?><br/>
-                                            <strong><?=$this->lang->line('application_payback_time')?></strong>: <?=$simulation_results->payback_time ?><br/>
+                                            <strong><?=$this->lang->line('application_payback_time')?></strong>: <?=$simulation_results->payback_time ?> <?=$this->lang->line('application_years')?><br/>
                                             <strong><?=$this->lang->line('application_annual_savings')?></strong>: <?=$core_settings->money_symbol;?><?=display_money($simulation_results->annual_savings) ?><br/>
                                             <strong><?=$this->lang->line('application_plant_peak_power')?></strong>: <?=$simulation_results->plant_peak_power ?> <?=$core_settings->rated_power_measurement;?><br/>
                                             <strong><?=$this->lang->line('application_generator_savings')?></strong>: <?=$simulation_results->generator_savings ?>%<br/>
@@ -204,14 +204,14 @@
                                 <li> <span> <?=$this->lang->line('application_processor_id'); ?>: </span>
                                     <?php echo empty($purchase->processor_id) ? '-' : $purchase->processor_id; ?>
                                 </li>
-                                <li> <span> <?=$this->lang->line('application_transaction_data'); ?>: </span>
-                                    <small><?php echo empty($purchase->data) ? '-' : '<pre>'.$purchase->data.'</pre>'; ?></small>
-                                </li>
                                 <li> <span> <?=$this->lang->line('application_created_at'); ?>: </span>
                                     <?=empty($purchase->created_at) ? '-' : date($core_settings->date_format . ' ' . $core_settings->date_time_format, strtotime($purchase->created_at))?>
                                 </li>
                                 <li> <span> <?=$this->lang->line('application_updated_at'); ?>: </span>
                                     <?=empty($purchase->updated_at) ? '-' : date($core_settings->date_format . ' ' . $core_settings->date_time_format, strtotime($purchase->updated_at))?>
+                                </li>
+                                <li> <span> <?=$this->lang->line('application_transaction_data'); ?>: </span>
+                                    <small><?php echo empty($purchase->data) ? '-' : '<pre id="transaction_data">'.$purchase->data.'</pre>'; ?></small>
                                 </li>
                             </ul>
                             <br clear="all"> </div>
@@ -341,4 +341,12 @@
     </div>
     <p> </p>
 </div>
-<?php
+
+<script>
+    $(document).ready(function(){
+        var tmpData = JSON.parse(<?=json_encode($purchase->data)?>);
+
+        var formattedData = JSON.stringify(tmpData, null, '\t');
+        $('#transaction_data').text(formattedData);
+    });
+</script>
