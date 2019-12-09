@@ -1,40 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="170fca79-325f-4ab2-a9c8-467af301e9fb" name="Default Changelist" comment="Added registration page">
-      <change afterPath="$PROJECT_DIR$/application/views/blueline/templates/email_registered_account.html" afterDir="false" />
+    <list default="true" id="170fca79-325f-4ab2-a9c8-467af301e9fb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/application/config/smtp.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/flows.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/flows.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/language/portuguese/application_lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/language/portuguese/application_lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/auth/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/auth/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/auth/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/auth/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/flows/view_simulator_flow.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/flows/view_simulator_flow.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/flows/view_store_flow.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/flows/view_store_flow.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/portfolio/client/_company.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/portfolio/client/_company.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/settings/registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/settings/registration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/settings/templates.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/settings/templates.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/default/email_create_account.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/default/email_credentials.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/default/email_notification.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/default/email_pw_reset.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/default/email_pw_reset_link.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/default/email_reminder.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/default/email_ticket_notification.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/estimate/bkp_darkblue.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/estimate/blueline.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/estimate/darkblue.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/estimate/default.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/estimate/old.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/estimate/whitelight.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/invoice/blueline.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/invoice/darkblue.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/invoice/default.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/invoice/preview.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/invoice/whitelight.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/theme/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/theme/login.php" afterDir="false" />
     </list>
     <ignored path="application/logs/" />
     <ignored path="files/media/a7eabc87bf5cb3afbf154538baf91a63.ofx" />
@@ -76,11 +45,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/register.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="677">
-              <caret line="98" column="130" selection-start-line="98" selection-start-column="93" selection-end-line="98" selection-end-column="130" />
+            <state relative-caret-position="496">
+              <caret line="117" column="76" lean-forward="true" selection-start-line="117" selection-start-column="76" selection-end-line="117" selection-end-column="76" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/config/smtp.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="32">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -128,7 +106,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>clients_id</find>
       <find>application_registration</find>
       <find>title</find>
       <find>lengt</find>
@@ -151,13 +128,14 @@
       <find>Company name is already taken</find>
       <find>messages_email_already_taken</find>
       <find>application_your_account_has_been_created</find>
-      <find>application_plan</find>
       <find>email_create_account</find>
       <find>create_account</find>
       <find>templates/default</find>
       <find>conta criada</find>
       <find>Conta criada</find>
       <find>messages_create_bill_success</find>
+      <find>messages_registration_error</find>
+      <find>application_plan</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -183,7 +161,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/views/blueline/settings/registration.php" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.php" />
         <option value="$PROJECT_DIR$/application/views/blueline/auth/login.php" />
         <option value="$PROJECT_DIR$/application/views/blueline/portfolio/client/_company.php" />
@@ -194,6 +171,7 @@
         <option value="$PROJECT_DIR$/application/controllers/settings.php" />
         <option value="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" />
         <option value="$PROJECT_DIR$/application/controllers/register.php" />
+        <option value="$PROJECT_DIR$/application/config/smtp.php" />
       </list>
     </option>
   </component>
@@ -241,6 +219,12 @@
               <item name="solarbid-saas" type="b2602c69:ProjectViewProjectNode" />
               <item name="solarbid-saas" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="solarbid-saas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="solarbid-saas" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="solarbid-saas" type="b2602c69:ProjectViewProjectNode" />
@@ -478,8 +462,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1057" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49768162" visible="true" weight="0.17039403" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49768162" visible="true" weight="0.17039403" />
       <window_info id="Structure" order="1" sideWeight="0.5023184" side_tool="true" weight="0.20447284" />
       <window_info id="Gulp" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -588,6 +573,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="arquivos da IDE" />
     <MESSAGE value="Início de conversão de módulo para Timeline de projeto" />
     <MESSAGE value="Evolução do projeto" />
@@ -598,23 +584,10 @@
     <MESSAGE value="Melhorias visuais" />
     <MESSAGE value="Correções e melhorias" />
     <MESSAGE value="Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update" />
+    <MESSAGE value="Added registration page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added registration page" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/theme/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/auth/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="639">
-          <caret line="40" column="227" selection-start-line="40" selection-start-column="227" selection-end-line="40" selection-end-column="227" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="769">
@@ -690,8 +663,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/register.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="677">
-          <caret line="98" column="130" selection-start-line="98" selection-start-column="93" selection-end-line="98" selection-end-column="130" />
+        <state relative-caret-position="496">
+          <caret line="117" column="76" lean-forward="true" selection-start-line="117" selection-start-column="76" selection-end-line="117" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/smileys.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="16" column="48" lean-forward="true" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/smtp.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
