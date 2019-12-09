@@ -32,7 +32,7 @@ class Settings extends MY_Controller
             $this->lang->line('application_agents') => 'settings/users',
 
             // opções de configuração do saas suprimidas / ESCONDIDO
-            // $this->lang->line('application_registration') => 'settings/registration',
+            $this->lang->line('application_registration') => 'settings/registration',
 
             $this->lang->line('application_calendar') => 'settings/calendar',
 
@@ -144,7 +144,7 @@ class Settings extends MY_Controller
         $this->load->helper('file');
         $settings = Setting::first();
         if ($template) {
-            $data = read_file('./application/views/' . $settings->template . '/templates/default/' . $template . '.html');
+            $data = read_file('./application/views/' . $settings->template . '/templates/' . $template . '.html');
             if (write_file('./application/views/' . $settings->template . '/templates/' . $template . '.html', $data)) {
                 $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_reset_mail_body_success'));
                 redirect('settings/templates');
@@ -185,7 +185,7 @@ class Settings extends MY_Controller
         } else {
             $this->view_data['email'] = read_file('./application/views/' . $settings->template . '/templates/email_' . $template . '.html');
             $this->view_data['template'] = $template;
-            $this->view_data['template_files'] = get_filenames('./application/views/' . $settings->template . '/templates/default/');
+            $this->view_data['template_files'] = get_filenames('./application/views/' . $settings->template . '/templates/');
             $this->view_data['template_files'] = str_replace('.html', '', $this->view_data['template_files']);
             $this->view_data['template_files'] = str_replace('email_', '', $this->view_data['template_files']);
 
@@ -385,11 +385,11 @@ class Settings extends MY_Controller
         $this->view_data['breadcrumb_id'] = 'cronjob';
         if ($_POST) {
             unset($_POST['send']);
-            if($type == "notifications"){
+            if ($type == "notifications") {
                 if ($_POST['notifications'] != '1') {
                     $_POST['notifications'] = '0';
                 }
-            }else{
+            } else {
                 if ($_POST['cronjob'] != '1') {
                     $_POST['cronjob'] = '0';
                 }
@@ -897,7 +897,7 @@ class Settings extends MY_Controller
         $this->load->dbutil();
         $settings = Setting::first();
         $version = str_replace('.', '-', $settings->version);
-        $prefs = ['format' => 'zip', 'filename' => 'saas-manual-backup_'. date('d-m-Y_H:i')];
+        $prefs = ['format' => 'zip', 'filename' => 'saas-manual-backup_' . date('d-m-Y_H:i')];
 
         $backup = &$this->dbutil->backup($prefs);
 
@@ -1007,6 +1007,7 @@ class Settings extends MY_Controller
 
         $this->vpxmigration->generate();
     }
+
     public function smtp_settings()
     {
         $this->config->load('email');

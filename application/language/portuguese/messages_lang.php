@@ -295,3 +295,7 @@ $lang['messages_freight_updated_error'] = "Erro ao atualizar frete";
 $lang['messages_freight_updated_success'] = "Frete atualizado com sucesso";
 
 $lang['messages_find_flow_error'] = "Fluxo não encontrado";
+$lang['messages_viewing_flow'] = "Visualizando fluxo";
+
+$lang['messages_request_registration_success'] = "Seu pedido de registro foi feito com sucesso";
+$lang['messages_request_registration_error'] = "Erro ao efetuar pedido de registro";

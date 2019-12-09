@@ -187,5 +187,6 @@ $disabled = $company->unlocked == true ? '' : 'disabled';
     $(document).ready(function() {
 
         $('#registered_number').mask('00.000.000/0000-00', {reverse: false})
+        $('#phone').mask('(00)000000000', {reverse: false});
     });
 </script>

@@ -1,10 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="170fca79-325f-4ab2-a9c8-467af301e9fb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="170fca79-325f-4ab2-a9c8-467af301e9fb" name="Default Changelist" comment="Added registration page">
+      <change afterPath="$PROJECT_DIR$/application/views/blueline/templates/email_registered_account.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/flows.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/flows.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/settings.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/language/portuguese/application_lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/language/portuguese/application_lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/auth/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/auth/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/auth/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/auth/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/flows/view_simulator_flow.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/flows/view_simulator_flow.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/flows/view_store_flow.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/flows/view_store_flow.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/portfolio/client/_company.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/portfolio/client/_company.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/settings/registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/settings/registration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/settings/templates.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/settings/templates.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/default/email_create_account.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/default/email_credentials.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/default/email_notification.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/default/email_pw_reset.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/default/email_pw_reset_link.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/default/email_reminder.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/default/email_ticket_notification.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/estimate/bkp_darkblue.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/estimate/blueline.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/estimate/darkblue.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/estimate/default.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/estimate/old.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/estimate/whitelight.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/invoice/blueline.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/invoice/darkblue.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/invoice/default.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/invoice/preview.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/invoice/whitelight.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/theme/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/theme/login.php" afterDir="false" />
     </list>
     <ignored path="application/logs/" />
     <ignored path="files/media/a7eabc87bf5cb3afbf154538baf91a63.ofx" />
@@ -40,38 +70,56 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="1390" column="50" selection-start-line="1390" selection-start-column="50" selection-end-line="1390" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/blueline/flows/view_simulator_flow.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="226" column="79" selection-start-line="226" selection-start-column="50" selection-end-line="226" selection-end-column="79" />
+            <state relative-caret-position="769">
+              <caret line="1450" column="45" selection-start-line="1450" selection-start-column="7" selection-end-line="1450" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/application/controllers/register.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="503">
-              <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
+            <state relative-caret-position="677">
+              <caret line="98" column="130" selection-start-line="98" selection-start-column="93" selection-end-line="98" selection-end-column="130" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/blueline/flows/view_store_flow.php">
+        <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/templates.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="179" column="37" selection-start-line="179" selection-start-column="37" selection-end-line="179" selection-end-column="37" />
+            <state relative-caret-position="578">
+              <caret line="115" column="47" lean-forward="true" selection-start-line="115" selection-start-column="47" selection-end-line="115" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/blueline/auth/login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="639">
+              <caret line="40" column="227" selection-start-line="40" selection-start-column="227" selection-end-line="40" selection-end-column="227" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/blueline/auth/register.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="729">
+              <caret line="143" column="107" lean-forward="true" selection-start-line="143" selection-start-column="107" selection-end-line="143" selection-end-column="107" />
               <folding>
-                <element signature="e#2496#2541#0#HTML" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#1;n#div#3;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/settings.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="539">
+              <caret line="875" column="50" lean-forward="true" selection-start-line="875" selection-start-column="50" selection-end-line="875" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -80,36 +128,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>application_delivery_time_days</find>
-      <find>application_Status</find>
-      <find>money</find>
-      <find>code</find>
-      <find>include</find>
-      <find>include' =&gt;</find>
-      <find>financing_request</find>
-      <find>application_power_plants_installed</find>
-      <find>payment_form</find>
-      <find>data-sorting</find>
-      <find>no_sort</find>
-      <find>data-sorting</find>
-      <find>order&quot;: [[</find>
-      <find>dataTable</find>
-      <find>datatable(</find>
-      <find>no-sort</find>
-      <find>$financing_request</find>
-      <find>application_account_debit</find>
-      <find>plant_peak_power</find>
-      <find>messages_created_pv_kit_error</find>
-      <find>store</find>
-      <find>monthly_average_production</find>
-      <find>years</find>
-      <find>pagar.me</find>
-      <find>COMPRA</find>
-      <find>application_purchase_pagarme</find>
-      <find>myTextArea</find>
-      <find>application_financing_request</find>
-      <find>transaction_data</find>
-      <find>idea</find>
+      <find>clients_id</find>
+      <find>application_registration</find>
+      <find>title</find>
+      <find>lengt</find>
+      <find>select</find>
+      <find>application_fancy</find>
+      <find>application_name</find>
+      <find>iva</find>
+      <find>countr</find>
+      <find>btn btn-success</find>
+      <find>Digite os detalhes, a fim de criar uma conta.</find>
+      <find>valid</find>
+      <find>Para redefinir sua senha, por favor,</find>
+      <find>velocity.min.js</find>
+      <find>city</find>
+      <find>ci</find>
+      <find>&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js&quot;&gt;&lt;/script&gt;</find>
+      <find>Administradores de clientes podem ver todas as faturas, projetos, estimativas e assinaturas desse cliente.</find>
+      <find>$company_attr</find>
+      <find>push_notifi</find>
+      <find>Company name is already taken</find>
+      <find>messages_email_already_taken</find>
+      <find>application_your_account_has_been_created</find>
+      <find>application_plan</find>
+      <find>email_create_account</find>
+      <find>create_account</find>
+      <find>templates/default</find>
+      <find>conta criada</find>
+      <find>Conta criada</find>
+      <find>messages_create_bill_success</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -135,17 +183,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/models/StoreFlow.php" />
-        <option value="$PROJECT_DIR$/application/models/Purchase.php" />
-        <option value="$PROJECT_DIR$/application/controllers/tickets.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/flows/store_all.php" />
-        <option value="$PROJECT_DIR$/assets/blueline/js/blueline.js" />
-        <option value="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" />
-        <option value="$PROJECT_DIR$/application/controllers/flows.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/flows/view_store_flow.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/flows/view_simulator_flow.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/settings/registration.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/auth/login.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/portfolio/client/_company.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/theme/login.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/auth/register.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/settings/templates.php" />
         <option value="$PROJECT_DIR$/application/language/portuguese/application_lang.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/application/controllers/settings.php" />
+        <option value="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" />
+        <option value="$PROJECT_DIR$/application/controllers/register.php" />
       </list>
     </option>
   </component>
@@ -225,6 +273,14 @@
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="blueline" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="solarbid-saas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="solarbid-saas" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="blueline" type="462c0819:PsiDirectoryNode" />
               <item name="clients" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -283,6 +339,22 @@
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="blueline" type="462c0819:PsiDirectoryNode" />
+              <item name="settings" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="solarbid-saas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="solarbid-saas" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="blueline" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="solarbid-saas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="solarbid-saas" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="blueline" type="462c0819:PsiDirectoryNode" />
               <item name="theme" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -303,13 +375,6 @@
               <item name="blueline" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="solarbid-saas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="solarbid-saas" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="blueline" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -324,6 +389,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
     <property name="js.buildTools.grunt.grunt-cli.package" value="" />
     <property name="js.buildTools.gulp.gulp_package_dir" value="" />
     <property name="nodejs.jest.jest_package" value="" />
@@ -336,11 +402,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/application/views/blueline/templates/default" />
+      <recent name="$PROJECT_DIR$/application/views/blueline/templates" />
       <recent name="$PROJECT_DIR$/application/views/blueline/flows" />
       <recent name="$PROJECT_DIR$/application/models" />
       <recent name="$PROJECT_DIR$/application/controllers" />
-      <recent name="$PROJECT_DIR$/application/views/blueline/clients" />
-      <recent name="$PROJECT_DIR$/application/views/blueline/pvkits" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -412,9 +478,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1057" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49768162" visible="true" weight="0.1687966" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49768162" visible="true" weight="0.17039403" />
       <window_info id="Structure" order="1" sideWeight="0.5023184" side_tool="true" weight="0.20447284" />
       <window_info id="Gulp" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -427,7 +492,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32953367" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.49946752" visible="true" weight="0.32876712" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49946752" weight="0.32876712" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5005325" side_tool="true" weight="0.32953367" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32953367" />
@@ -536,92 +601,97 @@
     <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/flows/store_all.php">
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/theme/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="749">
-          <caret line="107" column="6" selection-start-line="107" selection-start-column="6" selection-end-line="107" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#th#0;n#thead#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#2;n#thead#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#3;n#thead#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#4;n#thead#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="541">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/blueline/js/blueline.js">
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/auth/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4239">
-          <caret line="973" column="22" lean-forward="true" selection-start-line="973" selection-start-column="22" selection-end-line="973" selection-end-column="22" />
-          <folding>
-            <element signature="n#src#0;n#img#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/pvkits.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="193" column="16" selection-start-line="193" selection-start-column="16" selection-end-line="193" selection-end-column="120" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/language/portuguese/messages_lang.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="831">
-          <caret line="296" column="57" selection-start-line="296" selection-start-column="57" selection-end-line="296" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/flows/_find.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="8" column="47" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/flows.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="62" column="48" selection-start-line="62" selection-start-column="48" selection-end-line="62" selection-end-column="48" />
+        <state relative-caret-position="639">
+          <caret line="40" column="227" selection-start-line="40" selection-start-column="227" selection-end-line="40" selection-end-column="227" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="1390" column="50" selection-start-line="1390" selection-start-column="50" selection-end-line="1390" selection-end-column="50" />
+        <state relative-caret-position="769">
+          <caret line="1450" column="45" selection-start-line="1450" selection-start-column="7" selection-end-line="1450" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/pricing/client/_record.php">
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/templates/invoice/blueline.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="751">
-          <caret line="82" selection-start-line="82" selection-end-line="86" selection-end-column="9" />
-        </state>
+        <state relative-caret-position="-2573" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/flows/view_store_flow.php">
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/templates/default/email_registered_account.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="179" column="37" selection-start-line="179" selection-start-column="37" selection-end-line="179" selection-end-column="37" />
+        <state>
           <folding>
-            <element signature="e#2496#2541#0#HTML" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/flows/view_simulator_flow.php">
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/templates/email_registered_account.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="226" column="79" selection-start-line="226" selection-start-column="50" selection-end-line="226" selection-end-column="79" />
+        <state relative-caret-position="800">
+          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/templates/email_create_account.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
+        <state>
+          <folding>
+            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/templates.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="115" column="47" lean-forward="true" selection-start-line="115" selection-start-column="47" selection-end-line="115" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="539">
+          <caret line="875" column="50" lean-forward="true" selection-start-line="875" selection-start-column="50" selection-end-line="875" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/auth/register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="729">
+          <caret line="143" column="107" lean-forward="true" selection-start-line="143" selection-start-column="107" selection-end-line="143" selection-end-column="107" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#3;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="677">
+          <caret line="98" column="130" selection-start-line="98" selection-start-column="93" selection-end-line="98" selection-end-column="130" />
         </state>
       </provider>
     </entry>

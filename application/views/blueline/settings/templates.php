@@ -158,14 +158,24 @@ echo form_open_multipart($form_action, $attributes);
                                         ];
                             break;
                         case 'create_account':
-                                $tags = ['company',
-                                         'logo',
-                                         'invoice_logo',
-                                         'first_name',
-                                         'last_name',
-                                         'company_reference',
-                                         'link'
-                                        ];
+                            $tags = ['company',
+                                'logo',
+                                'invoice_logo',
+                                'first_name',
+                                'last_name',
+                                'company_reference',
+                                'link'
+                            ];
+                            break;
+                        case 'registered_account':
+                            $tags = ['company',
+                                'logo',
+                                'invoice_logo',
+                                'first_name',
+                                'last_name',
+                                'company_reference',
+                                'link'
+                            ];
                             break;
                         case 'credentials':
                                 $tags = ['company',

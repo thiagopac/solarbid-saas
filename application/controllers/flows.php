@@ -58,8 +58,10 @@ class Flows extends MY_Controller {
             $is_store_flow = StoreFlow::find(['conditions' => ['code = ?', $_POST['code']]]);
 
             if ($is_simulator_flow != null){
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_viewing_flow')." ".$is_simulator_flow->code);
                 redirect('flows/view_simulator_flow/'.$is_simulator_flow->id);
             }else if($is_store_flow != null){
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_viewing_flow')." ".$is_store_flow->code);
                 redirect('flows/view_store_flow/'.$is_store_flow->id);
             }else{
                 $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_find_flow_error'));

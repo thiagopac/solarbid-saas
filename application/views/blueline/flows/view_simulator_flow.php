@@ -83,7 +83,7 @@
             <div class="grid grid--align-content-start">
 
                 <div class="col-md-3">
-                    <?php if(empty($flow->pv_kit) || empty($flow->integrator)) : ?>
+                    <?php if(empty($flow->pv_kit)) : ?>
                         <div class="alert alert-warning"><?=$this->lang->line('application_flow_incomplete')?></div>
                     <?php endif; ?>
                     <div class="box-shadow">
@@ -346,7 +346,7 @@
     $(document).ready(function(){
         var tmpData = JSON.parse(<?=json_encode($purchase->data)?>);
 
-        var formattedData = JSON.stringify(tmpData, null, '\t');
+        var formattedData = JSON.stringify(tmpData, null, '   ');
         $('#transaction_data').text(formattedData);
     });
 </script>

@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="<?=base_url()?>assets/blueline/css/plugins/nprogress.css" />
     <link href="<?=base_url()?>assets/blueline/css/blueline.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/blueline/css/user.css" rel="stylesheet" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <?=get_theme_colors($core_settings);?>
     <?php require_once '_partials/fonts.php'; ?>
 
@@ -49,11 +50,12 @@
         <div class="notify <?=$exp[0]?>"><?=$exp[1]?></div>
     <?php
 } ?>
-    <script src="<?=base_url()?>assets/blueline/js/plugins/jquery-2.2.4.min.js"></script>
-
+<!--    <script src="--><?//=base_url()?><!--assets/blueline/js/plugins/jquery-2.2.4.min.js"></script>-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
     <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/plugins/velocity.min.js"></script>
     <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/plugins/velocity.ui.min.js"></script>
     <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/plugins/validator.min.js"></script>
+
     <script type="text/javascript">
             $(document).ready(function(){
               fade = "Left";

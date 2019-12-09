@@ -27,7 +27,7 @@ class Register extends MY_Controller
             $check_company = Company::find_by_name(trim(htmlspecialchars($_POST['name'])));
 
             if (!$client && !$check_company && trim(htmlspecialchars($_POST['name'])) != '' && trim(htmlspecialchars($_POST['email'])) != '' && $_POST['password'] != '' && $_POST['firstname'] != '' && $_POST['lastname'] != '' && $_POST['confirmcaptcha'] != '') {
-                $client_attr = [];
+                $company_attr = [];
                 $company_attr['name'] = trim(htmlspecialchars($_POST['name']));
                 $company_attr['website'] = trim(htmlspecialchars($_POST['website']));
                 $company_attr['phone'] = trim(htmlspecialchars($_POST['phone']));
@@ -37,7 +37,6 @@ class Register extends MY_Controller
                 $company_attr['city'] = trim(htmlspecialchars($_POST['city']));
                 $company_attr['country'] = trim(htmlspecialchars($_POST['country']));
                 $company_attr['state'] = trim(htmlspecialchars($_POST['state']));
-                $company_attr['vat'] = trim(htmlspecialchars($_POST['vat']));
                 $company_attr['reference'] = $core_settings->company_reference;
 
                 $core_settings->company_reference = $core_settings->company_reference + 1;
@@ -46,7 +45,7 @@ class Register extends MY_Controller
                 $company = Company::create($company_attr);
 
                 if (!$company) {
-                    $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_registration_error'));
+                    $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_request_registration_error'));
                     redirect('register');
                 }
 
@@ -57,9 +56,6 @@ class Register extends MY_Controller
                 $client_attr['lastname'] = trim(htmlspecialchars($_POST['lastname']));
                 $client_attr['phone'] = trim(htmlspecialchars($_POST['phone']));
                 $client_attr['mobile'] = trim(htmlspecialchars($_POST['mobile']));
-                $client_attr['address'] = trim(htmlspecialchars($_POST['address']));
-                $client_attr['zipcode'] = trim(htmlspecialchars($_POST['zipcode']));
-                $client_attr['city'] = trim(htmlspecialchars($_POST['city']));
                 $client_attr['access'] = $core_settings->default_client_modules;
 
                 $client_attr['company_id'] = $company->id;
@@ -68,13 +64,13 @@ class Register extends MY_Controller
                 if ($client) {
                     $client->password = $client->set_password($_POST['password']);
                     $client->save();
-                    $company->clients_id = $client->id;
+                    $company->client_id = $client->id;
                     $company->save();
 
                     $this->email->from($core_settings->email, $core_settings->company);
                     $this->email->to($client_attr['email']);
 
-                    $this->email->subject($this->lang->line('application_your_account_has_been_created'));
+                    $this->email->subject($this->lang->line('application_your_account_has_been_registered'));
                     $parse_data = [
                                     'link' => base_url() . 'login/',
                                     'company' => $core_settings->company,
@@ -100,10 +96,10 @@ class Register extends MY_Controller
                         }
                     }
 
-                    $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_registration_success'));
+                    $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_request_registration_success'));
                     redirect('login');
                 } else {
-                    $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_registration_error'));
+                    $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_request_registration_error'));
                     redirect('login');
                 }
             } else {
@@ -111,7 +107,7 @@ class Register extends MY_Controller
                     $this->view_data['error'] = $this->lang->line('messages_email_already_taken');
                 }
                 if ($check_company) {
-                    $this->view_data['error'] = 'Company name is already taken!';
+                    $this->view_data['error'] = $this->lang->line('application_company_name_already_taken');
                 }
                 $this->theme_view = 'login';
                 $this->content_view = 'auth/register';
@@ -125,7 +121,6 @@ class Register extends MY_Controller
                 $_POST['city'] = trim(htmlspecialchars($_POST['city']));
                 $_POST['country'] = trim(htmlspecialchars($_POST['country']));
                 $_POST['state'] = trim(htmlspecialchars($_POST['state']));
-                $_POST['vat'] = trim(htmlspecialchars($_POST['vat']));
                 $_POST['email'] = trim(htmlspecialchars($_POST['email']));
                 $_POST['firstname'] = trim(htmlspecialchars($_POST['firstname']));
                 $_POST['lastname'] = trim(htmlspecialchars($_POST['lastname']));
