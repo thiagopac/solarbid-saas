@@ -41,11 +41,15 @@ class Clients extends MY_Controller
                 }
                 $options = ['conditions' => ['id in (?)', $comp_array]];
                 $this->view_data['companies'] = Company::find('all', $options);
+
+                $this->view_data['screening_companies'] = ScreeningCompany::find('all');
             } else {
                 $this->view_data['companies'] = (object) [];
+                $this->view_data['screening_companies'] = (object) [];
             }
         } else {
             $this->view_data['companies'] = Company::find('all');
+            $this->view_data['screening_companies'] = ScreeningCompany::find('all');
         }
 
         $this->content_view = 'clients/all';
@@ -182,8 +186,7 @@ class Clients extends MY_Controller
         $this->theme_view = 'ajax';
     }
 
-    public function company($condition = false, $id = false)
-    {
+    public function company($condition = false, $id = false) {
         switch ($condition) {
             case 'create':
             if ($_POST) {
@@ -191,8 +194,8 @@ class Clients extends MY_Controller
                 $_POST["city"] = substr($_POST["city"], 0, -3);
 
                 $company = Company::create($_POST);
-                $companyid = Company::last();
-                $attributes = ['company_id' => $companyid->id, 'user_id' => $this->user->id];
+                $last_company = Company::last();
+                $attributes = ['company_id' => $last_company->id, 'user_id' => $this->user->id];
                 $adminExists = CompanyAdmin::exists($attributes);
                 if (!$adminExists) {
                     $addUserAsClientAdmin = CompanyAdmin::create($attributes);
@@ -201,12 +204,23 @@ class Clients extends MY_Controller
                 $new_company_reference = $_POST['reference'] + 1;
                 $company_reference = Setting::first();
                 $company_reference->update_attributes(['company_reference' => $new_company_reference]);
+
+                $rating_categories = RatingCategory::all();
+
+                foreach ($rating_categories as $rating_category){
+                    $company_rating = new CompanyRating();
+                    $company_rating->company_id = $last_company->id;
+                    $company_rating->rating_category_id = $rating_category->id;
+                    $company_rating->value = 2.5;
+                    $company_rating->save();
+                }
+
                 if (!$company) {
                     $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_company_add_error'));
                 } else {
                     $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_company_add_success'));
                 }
-                redirect('clients/view/' . $companyid->id);
+                redirect('clients/view/' . $last_company->id);
             } else {
                 $this->view_data['clients'] = Company::find('all', ['conditions' => ['inactive=?', '0']]);
 
@@ -219,68 +233,6 @@ class Clients extends MY_Controller
                 $this->view_data['title'] = $this->lang->line('application_add_new_company');
                 $this->view_data['form_action'] = 'clients/company/create';
                 $this->content_view = 'clients/_company';
-            }
-            break;
-            case 'createfromlead':
-            if ($_POST) {
-                unset($_POST['send']);
-                $_POST = array_map('htmlspecialchars', $_POST);
-
-                $company_data = [
-                                        'reference' => $_POST['reference'],
-                                        'name' => $_POST['name'],
-                                        'website' => $_POST['website'],
-                                        'phone' => $_POST['phone'],
-                                        'mobile' => $_POST['mobile'],
-                                        'address' => $_POST['address'],
-                                        'zipcode' => $_POST['zipcode'],
-                                        'city' => $_POST['city'],
-                                        'country' => $_POST['country'],
-                                        'state' => $_POST['state'],
-                                     ];
-
-                $company = Company::create($company_data);
-                $companyid = Company::last();
-                $attributes = ['company_id' => $companyid->id, 'user_id' => $this->user->id];
-                $adminExists = CompanyAdmin::exists($attributes);
-                if (!$adminExists) {
-                    $addUserAsClientAdmin = CompanyAdmin::create($attributes);
-                }
-                $client_data = [
-                                        'company_id' => $companyid->id,
-                                        'firstname' => $_POST['firstname'],
-                                        'lastname' => $_POST['lastname'],
-                                        'email' => $_POST['email'],
-                                        'password' => $_POST['password'],
-                                        'phone' => $_POST['phone'],
-                                        'mobile' => $_POST['mobile'],
-                                        'address' => $_POST['address'],
-                                        'zipcode' => $_POST['zipcode'],
-                                        'city' => $_POST['city'],
-                                        'userpic' => 'no-pic.png',
-
-                                     ];
-
-                $client_contact = Client::create($client_data);
-                $companyid->client_id = $client_contact->id;
-                $companyid->save();
-                $new_company_reference = $_POST['reference'] + 1;
-                $company_reference = Setting::first();
-                $company_reference->update_attributes(['company_reference' => $new_company_reference]);
-                if (!$company) {
-                    $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_company_add_error'));
-                } else {
-                    $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_company_add_success'));
-                }
-                redirect('clients/view/' . $companyid->id);
-            } else {
-                $this->view_data['lead'] = Lead::find_by_id($id);
-                $this->view_data['modules'] = Module::find('all', ['order' => 'sort asc', 'conditions' => ['type = ?', 'client']]);
-                $this->view_data['next_reference'] = Company::last();
-                $this->theme_view = 'modal';
-                $this->view_data['title'] = $this->lang->line('application_add_new_company');
-                $this->view_data['form_action'] = 'clients/company/createfromlead';
-                $this->content_view = 'clients/_company_from_lead';
             }
             break;
             case 'update':
@@ -305,7 +257,6 @@ class Clients extends MY_Controller
             } else {
                 $company = $this->view_data['company'] = Company::find_by_id($id);
 
-
                 $this->view_data['cities'] = City::find('all', ['conditions' => ['state = ?', $company->state], 'order' => 'name ASC']);
                 $this->view_data['states'] = State::find('all');
                 $this->view_data['countries'] = Country::find('all', ['conditions' => ['status = ?', 1]]);
@@ -313,10 +264,8 @@ class Clients extends MY_Controller
                 $company_city = $company->city.'/'.$company->state;
                 $this->view_data['company_city'] = $company_city;
 
-
                 $company_state = $company->state;
                 $this->view_data['company_state'] = $company_state;
-
 
                 $company_country = $company->country;
                 $this->view_data['company_country'] = $company_country;
@@ -343,6 +292,69 @@ class Clients extends MY_Controller
                     $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_delete_company_success'));
                 }
                     redirect('clients');
+                break;
+        }
+    }
+
+    public function screening_company($condition = false, $id = false) {
+        switch ($condition) {
+            case 'update':
+                if ($_POST) {
+                    unset($_POST['send']);
+                    $id = $_POST['id'];
+                    if (isset($_POST['view'])) {
+                        $view = $_POST['view'];
+                        unset($_POST['view']);
+                    }
+                    $company = ScreeningCompany::find_by_id($id);
+
+                    $_POST["city"] = substr($_POST["city"], 0, -3);
+
+                    $company->update_attributes($_POST);
+                    if (!$company) {
+                        $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_save_company_error'));
+                    } else {
+                        $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_save_company_success'));
+                    }
+                    redirect('clients/view/' . $id);
+                } else {
+                    $company = $this->view_data['company'] = ScreeningCompany::find_by_id($id);
+
+                    $this->view_data['cities'] = City::find('all', ['conditions' => ['state = ?', $company->state], 'order' => 'name ASC']);
+                    $this->view_data['states'] = State::find('all');
+                    $this->view_data['countries'] = Country::find('all', ['conditions' => ['status = ?', 1]]);
+
+                    $company_city = $company->city.'/'.$company->state;
+                    $this->view_data['company_city'] = $company_city;
+
+                    $company_state = $company->state;
+                    $this->view_data['company_state'] = $company_state;
+
+                    $company_country = $company->country;
+                    $this->view_data['company_country'] = $company_country;
+
+                    $this->theme_view = 'modal';
+                    $this->view_data['title'] = $this->lang->line('application_edit_company');
+                    $this->view_data['form_action'] = 'clients/screening_company/update';
+                    $this->content_view = 'clients/_screening_company';
+                }
+                break;
+            case 'delete':
+                $company = ScreeningCompany::find_by_id($id);
+                $company->inactive = '1';
+                $company->save();
+                foreach ($company->clients as $value) {
+                    $client = Client::find_by_id($value->id);
+                    $client->inactive = '1';
+                    $client->save();
+                }
+                $this->content_view = 'clients/all';
+                if (!$company) {
+                    $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_delete_company_error'));
+                } else {
+                    $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_delete_company_success'));
+                }
+                redirect('clients');
                 break;
         }
     }
@@ -411,8 +423,7 @@ class Clients extends MY_Controller
         redirect('clients');
     }
 
-    public function view($id = false)
-    {
+    public function view($id = false) {
         $this->view_data['submenu'] = [
                         $this->lang->line('application_back') => 'clients',
                         ];
@@ -434,6 +445,16 @@ class Clients extends MY_Controller
         $this->view_data['company_photos'] = $company_photos;
 
         $this->content_view = 'clients/view';
+    }
+
+    public function view_screening($id = false) {
+        $this->view_data['submenu'] = [
+            $this->lang->line('application_back') => 'clients',
+        ];
+        $this->view_data['screening_company'] = ScreeningCompany::find($id);
+
+
+        $this->content_view = 'clients/view_screening';
     }
 
     public function credentials($id = false, $email = false, $newPass = false)

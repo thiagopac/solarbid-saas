@@ -457,6 +457,12 @@ $.ajaxSetup({
         var a = $(this).closest("table").attr("rel");
         $(this).hasClass("option") || (window.location = a + "flows/view_simulator_flow/" + e)
     }
+}), $(document).on("click", "table#screening_companies td", function(t) {
+    var e = $(this).parent().attr("id");
+    if (e) {
+        var a = $(this).closest("table").attr("rel");
+        $(this).hasClass("option") || (window.location = a + "clients/view_screening/" + e)
+    }
 }), summernote(), $(".summernote-note").summernote({
     height: "360px",
     shortcuts: !1,

@@ -9,8 +9,7 @@ class Register extends MY_Controller
         parent::__construct();
     }
 
-    public function index()
-    {
+    public function index() {
         $core_settings = Setting::first();
         if ($core_settings->registration != 1) {
             redirect('login');
@@ -29,27 +28,28 @@ class Register extends MY_Controller
             if (!$client && !$check_company && trim(htmlspecialchars($_POST['name'])) != '' && trim(htmlspecialchars($_POST['email'])) != '' && $_POST['password'] != '' && $_POST['firstname'] != '' && $_POST['lastname'] != '' && $_POST['confirmcaptcha'] != '') {
                 $company_attr = [];
                 $company_attr['name'] = trim(htmlspecialchars($_POST['name']));
-                $company_attr['website'] = trim(htmlspecialchars($_POST['website']));
+                $company_attr['corporate_name'] = trim(htmlspecialchars($_POST['corporate_name']));
+                $company_attr['registered_number'] = $_POST['registered_number'];
+                $company_attr['email'] = $_POST['email'];
                 $company_attr['phone'] = trim(htmlspecialchars($_POST['phone']));
                 $company_attr['mobile'] = trim(htmlspecialchars($_POST['mobile']));
                 $company_attr['address'] = trim(htmlspecialchars($_POST['address']));
                 $company_attr['zipcode'] = trim(htmlspecialchars($_POST['zipcode']));
                 $company_attr['city'] = trim(htmlspecialchars($_POST['city']));
-                $company_attr['country'] = trim(htmlspecialchars($_POST['country']));
+                $company_attr['country'] = trim(htmlspecialchars("Brasil"));
                 $company_attr['state'] = trim(htmlspecialchars($_POST['state']));
                 $company_attr['reference'] = $core_settings->company_reference;
 
                 $core_settings->company_reference = $core_settings->company_reference + 1;
                 $core_settings->save();
 
-                $company = Company::create($company_attr);
+                $company = ScreeningCompany::create($company_attr);
 
                 if (!$company) {
                     $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_request_registration_error'));
                     redirect('register');
                 }
 
-                $lastclient = Client::last();
                 $client_attr = [];
                 $client_attr['email'] = trim(htmlspecialchars($_POST['email']));
                 $client_attr['firstname'] = trim(htmlspecialchars($_POST['firstname']));
@@ -60,7 +60,7 @@ class Register extends MY_Controller
 
                 $client_attr['company_id'] = $company->id;
 
-                $client = Client::create($client_attr);
+                $client = ScreeningClient::create($client_attr);
                 if ($client) {
                     $client->password = $client->set_password($_POST['password']);
                     $client->save();
@@ -81,7 +81,7 @@ class Register extends MY_Controller
                                     'logo' => '<img src="' . base_url() . '' . $core_settings->logo . '" alt="' . $core_settings->company . '"/>',
                                     'invoice_logo' => '<img src="' . base_url() . '' . $core_settings->invoice_logo . '" alt="' . $core_settings->company . '"/>'
                                     ];
-                    $email = read_file('./application/views/' . $core_settings->template . '/templates/email_create_account.html');
+                    $email = read_file('./application/views/' . $core_settings->template . '/templates/email_registered_account.html');
                     $message = $this->parser->parse_string($email, $parse_data);
                     $this->email->message($message);
                     $this->email->send();
@@ -113,7 +113,6 @@ class Register extends MY_Controller
                 $this->content_view = 'auth/register';
                 $this->view_data['form_action'] = 'register';
                 $_POST['name'] = trim(htmlspecialchars($_POST['name']));
-                $_POST['website'] = trim(htmlspecialchars($_POST['website']));
                 $_POST['phone'] = trim(htmlspecialchars($_POST['phone']));
                 $_POST['mobile'] = trim(htmlspecialchars($_POST['mobile']));
                 $_POST['address'] = trim(htmlspecialchars($_POST['address']));
@@ -124,11 +123,6 @@ class Register extends MY_Controller
                 $_POST['email'] = trim(htmlspecialchars($_POST['email']));
                 $_POST['firstname'] = trim(htmlspecialchars($_POST['firstname']));
                 $_POST['lastname'] = trim(htmlspecialchars($_POST['lastname']));
-                $_POST['phone'] = trim(htmlspecialchars($_POST['phone']));
-                $_POST['mobile'] = trim(htmlspecialchars($_POST['mobile']));
-                $_POST['address'] = trim(htmlspecialchars($_POST['address']));
-                $_POST['zipcode'] = trim(htmlspecialchars($_POST['zipcode']));
-                $_POST['city'] = trim(htmlspecialchars($_POST['city']));
                 $this->view_data['registerdata'] = array_map('htmlspecialchars', $_POST);
             }
         } else {
