@@ -108,6 +108,7 @@
 			<input type="submit" name="send" class="btn btn-primary" value="<?=$this->lang->line('application_send_test_email');?>"/>
 		</div>
 
+
 		<?php echo form_close(); ?>
 		</div>
 	</div>

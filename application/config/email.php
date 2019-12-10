@@ -3,8 +3,8 @@
                 $config["protocol"]         = "smtp";
                 $config["mailpath"]         = "/usr/sbin/sendmail";
                 $config["smtp_host"]        = "smtp.gmail.com";
-                $config["smtp_user"]        = "thiago@solarbid.com.br";
-                $config["smtp_pass"]        = "KRisiun11";
+                $config["smtp_user"]        = "solarbid@solarbid.com.br";
+                $config["smtp_pass"]        = "Solarbid!@#";
                 $config["smtp_port"]        = "587";
                 $config["smtp_timeout"]     = "5";
                 $config["smtp_crypto"]      = "tls";
