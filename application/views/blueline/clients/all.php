@@ -15,9 +15,9 @@
                     </h1>
                 </div>
             </a>
-            <div class="col-md-6 col-xs-12 tile hidden-xs">
-                <div style="width:97%; margin-top: -4px; margin-bottom: 17px; height: 80px;">
-                </div>
+        </div>
+        <div class="col-md-6 col-xs-12 tile hidden-xs">
+            <div style="width:97%; margin-top: -4px; margin-bottom: 17px; height: 80px;">
             </div>
         </div>
     </div>
