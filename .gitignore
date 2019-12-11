@@ -60,9 +60,8 @@ typings/
 .next
 
 # integrators photos
-/files/media/portfolio
-/files/media/user
-/files/media/profile
+#/files/media/portfolio
+#/files/media/user
 
 # htaccess
 .htaccess

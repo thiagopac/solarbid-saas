@@ -152,7 +152,7 @@ class Clients extends MY_Controller
             } else {
                 $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_save_client_success'));
             }
-            redirect('clients/view/' . $client->company->id);
+            redirect('clients/view/' . $client->company_id);
         } else {
             $this->view_data['client'] = Client::find($id);
             $this->view_data['modules'] = Module::find('all', ['order' => 'sort asc', 'conditions' => ['type = ?', 'client']]);
@@ -214,7 +214,7 @@ class Clients extends MY_Controller
             } else {
                 $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_save_client_success'));
             }
-            redirect('clients/view_screening/' . $client->company->id);
+            redirect('clients/view_screening/' . $client->company_id);
         } else {
             $this->view_data['client'] = ScreeningClient::find($id);
             $this->view_data['modules'] = Module::find('all', ['order' => 'sort asc', 'conditions' => ['type = ?', 'client']]);
