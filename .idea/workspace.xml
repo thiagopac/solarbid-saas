@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4155379a-ef05-425d-ab57-3fe4d1d0797d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/language/portuguese/application_lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/language/portuguese/application_lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/settings/templates.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/settings/templates.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/settings/settings_all.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/settings/settings_all.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,29 +15,7 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/templates.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="564">
-              <caret line="77" column="48" lean-forward="true" selection-start-line="77" selection-start-column="48" selection-end-line="77" selection-end-column="48" />
-              <folding>
-                <element signature="n#style#0;n#small#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/settings.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="152" column="54" selection-start-line="152" selection-start-column="43" selection-end-line="152" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -95,11 +71,11 @@
         <option value="$PROJECT_DIR$/application/language/english/application_lang.php" />
         <option value="$PROJECT_DIR$/application/language/english/messages_lang.php" />
         <option value="$PROJECT_DIR$/application/language/english/event_lang.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/settings/settings_all.php" />
         <option value="$PROJECT_DIR$/application/views/blueline/settings/registration.php" />
         <option value="$PROJECT_DIR$/application/controllers/settings.php" />
         <option value="$PROJECT_DIR$/application/language/portuguese/application_lang.php" />
         <option value="$PROJECT_DIR$/application/views/blueline/settings/templates.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/settings/settings_all.php" />
       </list>
     </option>
   </component>
@@ -188,14 +164,6 @@
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="blueline" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="saas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="saas" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="blueline" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -254,12 +222,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1057" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="npm" side_tool="true" />
       <window_info id="Gulp" side_tool="true" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973376" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973376" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" weight="0.32982087" />
@@ -286,7 +253,8 @@
     <MESSAGE value="Finishing Screening Company and Client implement" />
     <MESSAGE value="Re-organizing folders and removing unwanted settings" />
     <MESSAGE value="Bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug fixes" />
+    <MESSAGE value="Improvements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improvements" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/bank_transfer.php">
@@ -365,8 +333,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/templates.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="77" column="48" lean-forward="true" selection-start-line="77" selection-start-column="48" selection-end-line="77" selection-end-column="48" />
+        <state relative-caret-position="700">
+          <caret line="127" column="45" selection-start-line="127" selection-start-column="45" selection-end-line="127" selection-end-column="45" />
           <folding>
             <element signature="n#style#0;n#small#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>

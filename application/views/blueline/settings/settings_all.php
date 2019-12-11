@@ -108,7 +108,7 @@ echo form_open_multipart($form_action, $attributes);
 				<label>
 					<?=$this->lang->line('application_solarbid_logo');?> (max 160x200)
 							<button type="button" class="btn-option po " data-toggle="popover" data-placement="right" data-content="<div style='padding:10px'><img src='<?=$core_settings->solarbid_logo;?>'></div>"
-							 data-original-title="<?=$this->lang->line('application_solarbid_logo');?> <?=$this->lang->line('application_logo');?>">
+							 data-original-title="<?=$this->lang->line('application_solarbid_logo');?>">
 								<i class="icon dripicons-preview"></i>
 							</button>
 				</label>
