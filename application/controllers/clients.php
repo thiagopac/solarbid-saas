@@ -51,9 +51,9 @@ class Clients extends MY_Controller
     public function create($company_id = false)
     {
         if ($_POST) {
-            $config['upload_path'] = './files/media/';
+            $config['upload_path'] = './files/media/user/';
             $config['encrypt_name'] = true;
-            $config['allowed_types'] = 'gif|jpg|png';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_width'] = '180';
             $config['max_height'] = '180';
 
@@ -101,7 +101,7 @@ class Clients extends MY_Controller
             $this->theme_view = 'modal';
             $this->view_data['title'] = $this->lang->line('application_add_new_contact');
             $this->view_data['form_action'] = 'clients/create/' . $company_id;
-            $this->content_view = 'clients/_clients';
+            $this->content_view = 'clients/_client';
         }
     }
 
@@ -109,9 +109,9 @@ class Clients extends MY_Controller
         if ($_POST) {
             $id = $_POST['id'];
             $client = Client::find($id);
-            $config['upload_path'] = './files/media/';
+            $config['upload_path'] = './files/media/user/';
             $config['encrypt_name'] = true;
-            $config['allowed_types'] = 'gif|jpg|png';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_width'] = '180';
             $config['max_height'] = '180';
 
@@ -163,7 +163,69 @@ class Clients extends MY_Controller
             $this->theme_view = 'modal';
             $this->view_data['title'] = $this->lang->line('application_edit_client');
             $this->view_data['form_action'] = 'clients/update';
-            $this->content_view = 'clients/_clients';
+            $this->content_view = 'clients/_client';
+        }
+    }
+
+    public function update_screening($id = false, $getview = false) {
+        if ($_POST) {
+            $id = $_POST['id'];
+            $client = ScreeningClient::find($id);
+            $config['upload_path'] = './files/media/user';
+            $config['encrypt_name'] = true;
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['max_width'] = '180';
+            $config['max_height'] = '180';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload()) {
+                $data = ['upload_data' => $this->upload->data()];
+
+                $_POST['userpic'] = $data['upload_data']['file_name'];
+            } else {
+                $error = $this->upload->display_errors('', ' ');
+                if ($error != 'You did not select a file to upload. ') {
+                    $this->session->set_flashdata('message', 'error:' . $error);
+                    redirect('clients');
+                }
+            }
+
+            unset($_POST['send'], $_POST['userfile'], $_POST['file-name']);
+
+            if (empty($_POST['password'])) {
+                unset($_POST['password']);
+            } else {
+                $_POST['password'] = $client->set_password($_POST['password']);
+            }
+            if (!empty($_POST['access'])) {
+                $_POST['access'] = implode(',', $_POST['access']);
+            }
+
+            if (isset($_POST['view'])) {
+                $view = $_POST['view'];
+                unset($_POST['view']);
+            }
+            $_POST = array_map('htmlspecialchars', $_POST);
+
+            $client->update_attributes($_POST);
+            if (!$client) {
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_save_client_error'));
+            } else {
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_save_client_success'));
+            }
+            redirect('clients/view_screening/' . $client->company->id);
+        } else {
+            $this->view_data['client'] = ScreeningClient::find($id);
+            $this->view_data['modules'] = Module::find('all', ['order' => 'sort asc', 'conditions' => ['type = ?', 'client']]);
+            if ($getview == 'view') {
+                $this->view_data['view'] = 'true';
+            }
+
+            $this->theme_view = 'modal';
+            $this->view_data['title'] = $this->lang->line('application_edit_client');
+            $this->view_data['form_action'] = 'clients/update_screening';
+            $this->content_view = 'clients/_screening_client';
         }
     }
 
@@ -660,7 +722,7 @@ class Clients extends MY_Controller
 
             $config['upload_path'] = './files/media/portfolio/';
             $config['encrypt_name'] = true;
-            $config['allowed_types'] = 'gif|jpg|png';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
 
             $_POST['company_id'] = $company_id;
             $_POST['path'] = $core_settings->domain."files/media/portfolio/";

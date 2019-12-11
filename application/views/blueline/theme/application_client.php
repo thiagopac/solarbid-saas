@@ -186,7 +186,7 @@ $message_icon = false;
                 if ($this->client->userpic){
                     $userimage = $this->client->userpic;
                 }else{
-                    $userimage = base_url()."files/media/user-placeholder.png  ";
+                    $userimage = base_url()."files/media/user/user-placeholder.png  ";
                 }
                 ?>
                 <img class="img-circle topbar-userpic" src="<?=$userimage;?>" height="32px">

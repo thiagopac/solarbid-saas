@@ -293,7 +293,7 @@ class cPortfolio extends MY_Controller {
 
             $config['upload_path'] = './files/media/portfolio/';
             $config['encrypt_name'] = true;
-            $config['allowed_types'] = 'gif|jpg|png';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
 
             $_POST['company_id'] = $this->client->company_id;
             $_POST['path'] = $core_settings->domain."files/media/portfolio/";

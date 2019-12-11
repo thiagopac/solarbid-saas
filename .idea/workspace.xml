@@ -2,9 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4155379a-ef05-425d-ab57-3fe4d1d0797d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/application/views/blueline/clients/_screening_client.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/agent.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/agent.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/controllers/clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/clients.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/clients/all_screening_companies.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/clients/all_screening_companies.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/cportfolio.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/cportfolio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/pvkits.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/pvkits.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/settings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/helpers/gravatar_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/helpers/gravatar_helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/clients/_clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/clients/_client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/clients/_company_from_lead.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/portfolio/client/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/portfolio/client/view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/theme/application.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/theme/application.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/theme/application_client.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/theme/application_client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/media/02f428caf9e66a7eb3c33f2e7f2c5315.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/media/6a7db41b635e4c43bfd61f79ef7c78ec.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/media/ed62c6d3e6bfc31be135f87bf832ce25.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/media/no-pic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/media/user-placeholder.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,17 +35,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/controllers/clients.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="509">
-              <caret line="369" lean-forward="true" selection-start-line="369" selection-end-line="369" />
+            <state relative-caret-position="554">
+              <caret line="190" column="17" lean-forward="true" selection-start-line="190" selection-start-column="17" selection-end-line="190" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/all_screening_companies.php">
+        <entry file="file://$PROJECT_DIR$/application/views/blueline/portfolio/client/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="124" column="71" selection-start-line="124" selection-start-column="71" selection-end-line="124" selection-end-column="71" />
+            <state relative-caret-position="512">
+              <caret line="32" column="43" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/_company.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="189" column="24" lean-forward="true" selection-start-line="189" selection-start-column="24" selection-end-line="189" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -39,17 +63,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>invoice_address</find>
-      <find>solarbid_address</find>
-      <find>ref</find>
-      <find>Stripe_CustomerTest</find>
-      <find>refer</find>
-      <find>stripe</find>
-      <find>subscript</find>
-      <find>invoice_tel</find>
-      <find>vat</find>
-      <find>bank</find>
-      <find>bank_transfer</find>
       <find>pc</find>
       <find>invoice_templates</find>
       <find>E-MAIL FATURA</find>
@@ -69,6 +82,17 @@
       <find>body</find>
       <find>solarbid_logo</find>
       <find>$last_company</find>
+      <find>pricing_schemas</find>
+      <find>Company</find>
+      <find>application_select_plan</find>
+      <find>$company_city</find>
+      <find>application_client_has_no_admins</find>
+      <find>$company_country</find>
+      <find>gif|jpg|png</find>
+      <find>_clients</find>
+      <find>update_scr</find>
+      <find>clients/_client</find>
+      <find>files/media</find>
     </findStrings>
     <replaceStrings>
       <replace>solarbid_logo</replace>
@@ -85,17 +109,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/language/english/event_lang.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/settings/registration.php" />
-        <option value="$PROJECT_DIR$/application/controllers/settings.php" />
         <option value="$PROJECT_DIR$/application/language/portuguese/application_lang.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/settings/templates.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/settings/settings_all.php" />
-        <option value="$PROJECT_DIR$/assets/blueline/css/important.css" />
-        <option value="$PROJECT_DIR$/assets/blueline/css/app.css" />
-        <option value="$PROJECT_DIR$/assets/blueline/css/user.css" />
+        <option value="$PROJECT_DIR$/application/views/blueline/clients/_company.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/portfolio/client/view.php" />
+        <option value="$PROJECT_DIR$/application/controllers/pvkits.php" />
+        <option value="$PROJECT_DIR$/application/controllers/cportfolio.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/theme/application.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/theme/application_client.php" />
         <option value="$PROJECT_DIR$/application/controllers/clients.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/clients/all_screening_companies.php" />
+        <option value="$PROJECT_DIR$/application/controllers/settings.php" />
+        <option value="$PROJECT_DIR$/application/controllers/agent.php" />
+        <option value="$PROJECT_DIR$/application/helpers/gravatar_helper.php" />
       </list>
     </option>
   </component>
@@ -173,39 +197,6 @@
             <path>
               <item name="saas" type="b2602c69:ProjectViewProjectNode" />
               <item name="saas" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="blueline" type="462c0819:PsiDirectoryNode" />
-              <item name="flows" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="saas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="saas" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="saas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="saas" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="blueline" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="saas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="saas" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="blueline" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="saas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="saas" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="blueline" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="saas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="saas" type="462c0819:PsiDirectoryNode" />
               <item name="database-model" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -277,55 +268,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Improvements" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/settings_all.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="98" column="75" lean-forward="true" selection-start-line="98" selection-start-column="75" selection-end-line="98" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="133" column="89" lean-forward="true" selection-start-line="133" selection-start-column="89" selection-end-line="133" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/templates_credentials.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="27" column="132" selection-start-line="27" selection-start-column="132" selection-end-line="27" selection-end-column="132" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/templates.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="127" column="45" selection-start-line="127" selection-start-column="45" selection-end-line="127" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="152" column="54" selection-start-line="152" selection-start-column="43" selection-end-line="152" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/blueline/css/important.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="793">
-          <caret line="325" column="1" selection-start-line="325" selection-start-column="1" selection-end-line="325" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/blueline/css/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="815">
-          <caret line="87" column="159294" lean-forward="true" selection-start-line="87" selection-start-column="159294" selection-end-line="87" selection-end-column="159294" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/blueline/css/user.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="793">
@@ -347,10 +289,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/cpricing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/core/MY_Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="213" column="64" selection-start-line="213" selection-start-column="64" selection-end-line="213" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/pricing/client/_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="39" column="28" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/_company.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="189" column="24" lean-forward="true" selection-start-line="189" selection-start-column="24" selection-end-line="189" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/IntegratorPlan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" column="41" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/portfolio/client/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="32" column="43" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/_screening_client.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/clients.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="369" lean-forward="true" selection-start-line="369" selection-end-line="369" />
+        <state relative-caret-position="554">
+          <caret line="190" column="17" lean-forward="true" selection-start-line="190" selection-start-column="17" selection-end-line="190" selection-end-column="17" />
         </state>
       </provider>
     </entry>

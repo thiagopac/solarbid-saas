@@ -144,7 +144,7 @@ class PvKits extends MY_Controller {
                 //begin image upload
                 $config['upload_path'] = './files/media/pvkits/';
                 $config['encrypt_name'] = true;
-                $config['allowed_types'] = 'gif|jpg|png';
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
 
                 $full_path = $core_settings->domain."files/media/pvkits/";
 
@@ -232,7 +232,7 @@ class PvKits extends MY_Controller {
                 //begin image upload
                 $config['upload_path'] = './files/media/pvkits/';
                 $config['encrypt_name'] = true;
-                $config['allowed_types'] = 'gif|jpg|png';
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
 
                 $full_path = $core_settings->domain."files/media/pvkits/";
 

@@ -13,7 +13,7 @@ function get_gravatar($email, $s = 40, $d = 'mm', $r = 'g', $img = false, $atts 
     $url .= "?s=$s&d=$d&r=$r";
 
     if (!$url) {
-        $url = base_url()."files/media/no-pic.png";
+        $url = base_url()."files/media/user/no-pic.png";
     }
 
     return $url;
@@ -21,9 +21,9 @@ function get_gravatar($email, $s = 40, $d = 'mm', $r = 'g', $img = false, $atts 
 function get_user_pic($pic = false, $email = false, $pixel = false)
 {
     if ($pic != 'no-pic.png') {
-        $image = base_url()."files/media/".$pic;
+        $image = base_url()."files/media/user/".$pic;
         if ($pixel) {
-            $pic_in_pixel = base_url()."files/media/".$pixel."_".$pic;
+            $pic_in_pixel = base_url()."files/media/user/".$pixel."_".$pic;
             if (!file_exists($pic_in_pixel)) {
                 return $pic_in_pixel;
             }

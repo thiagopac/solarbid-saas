@@ -95,7 +95,7 @@ class Settings extends MY_Controller
     {
         if ($_POST) {
             $config['upload_path'] = './files/media/';
-            $config['allowed_types'] = 'gif|jpg|png';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size'] = '600';
             $config['max_width'] = '300';
             $config['max_height'] = '300';
@@ -495,7 +495,7 @@ class Settings extends MY_Controller
     public function user_create()
     {
         if ($_POST) {
-            $config['upload_path'] = './files/media/';
+            $config['upload_path'] = './files/media/user/';
             $config['encrypt_name'] = true;
             $config['allowed_types'] = 'gif|jpg|jpeg|png';
             $config['max_width'] = '180';
@@ -546,7 +546,7 @@ class Settings extends MY_Controller
         $user = User::find($user);
 
         if ($_POST) {
-            $config['upload_path'] = './files/media/';
+            $config['upload_path'] = './files/media/user/';
             $config['encrypt_name'] = true;
             $config['allowed_types'] = 'gif|jpg|jpeg|png';
             $config['max_width'] = '180';

@@ -19,7 +19,7 @@ class Agent extends MY_Controller
         if ($this->client) {
             $user = Client::find($this->client->id);
             if ($_POST) {
-                $config['upload_path'] = './files/media/';
+                $config['upload_path'] = './files/media/user/';
                 $config['encrypt_name'] = true;
                 $config['allowed_types'] = 'gif|jpg|jpeg|png';
                 $config['max_width'] = '180';
@@ -61,7 +61,7 @@ class Agent extends MY_Controller
             $user = User::find($this->user->id);
 
             if ($_POST) {
-                $config['upload_path'] = './files/media/';
+                $config['upload_path'] = './files/media/user/';
                 $config['encrypt_name'] = true;
                 $config['allowed_types'] = 'gif|jpg|jpeg|png';
                 $config['max_width'] = '180';

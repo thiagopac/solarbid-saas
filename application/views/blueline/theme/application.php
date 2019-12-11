@@ -295,7 +295,7 @@ $message_icon = false;
                 if ($this->user->userpic){
                     $userimage = $this->user->userpic;
                 }else{
-                    $userimage = base_url()."files/media/user-placeholder.png  ";
+                    $userimage = base_url()."files/media/user/user-placeholder.png  ";
                 }
                 ?>
 
