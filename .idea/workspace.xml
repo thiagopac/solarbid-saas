@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4155379a-ef05-425d-ab57-3fe4d1d0797d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/blueline/css/user.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/blueline/css/user.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/clients.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/clients/all_screening_companies.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/clients/all_screening_companies.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,20 +17,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/blueline/css/important.css">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/controllers/clients.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="793">
-              <caret line="325" column="1" selection-start-line="325" selection-start-column="1" selection-end-line="325" selection-end-column="1" />
+            <state relative-caret-position="509">
+              <caret line="369" lean-forward="true" selection-start-line="369" selection-end-line="369" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/assets/blueline/css/user.css">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/all_screening_companies.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="777">
-              <caret line="207" column="40" selection-start-line="207" selection-start-column="35" selection-end-line="207" selection-end-column="40" />
+            <state relative-caret-position="289">
+              <caret line="124" column="71" selection-start-line="124" selection-start-column="71" selection-end-line="124" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -38,7 +39,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>invoice_mail_subject</find>
       <find>invoice_address</find>
       <find>solarbid_address</find>
       <find>ref</find>
@@ -68,6 +68,7 @@
       <find>$template</find>
       <find>body</find>
       <find>solarbid_logo</find>
+      <find>$last_company</find>
     </findStrings>
     <replaceStrings>
       <replace>solarbid_logo</replace>
@@ -84,8 +85,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/language/english/application_lang.php" />
-        <option value="$PROJECT_DIR$/application/language/english/messages_lang.php" />
         <option value="$PROJECT_DIR$/application/language/english/event_lang.php" />
         <option value="$PROJECT_DIR$/application/views/blueline/settings/registration.php" />
         <option value="$PROJECT_DIR$/application/controllers/settings.php" />
@@ -95,6 +94,8 @@
         <option value="$PROJECT_DIR$/assets/blueline/css/important.css" />
         <option value="$PROJECT_DIR$/assets/blueline/css/app.css" />
         <option value="$PROJECT_DIR$/assets/blueline/css/user.css" />
+        <option value="$PROJECT_DIR$/application/controllers/clients.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/clients/all_screening_companies.php" />
       </list>
     </option>
   </component>
@@ -176,14 +177,6 @@
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="blueline" type="462c0819:PsiDirectoryNode" />
               <item name="flows" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="saas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="saas" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="blueline" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="saas" type="b2602c69:ProjectViewProjectNode" />
@@ -284,28 +277,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Improvements" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="249" column="46" lean-forward="true" selection-start-line="249" selection-start-column="46" selection-end-line="254" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/settings_all.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="496">
           <caret line="98" column="75" lean-forward="true" selection-start-line="98" selection-start-column="75" selection-end-line="98" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/all_screening_companies.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="146" column="235" selection-start-line="146" selection-start-column="235" selection-end-line="146" selection-end-column="235" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -316,17 +291,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/clients.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2383">
-          <caret line="289" column="37" selection-start-line="289" selection-start-column="20" selection-end-line="289" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/templates_credentials.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="383">
           <caret line="27" column="132" selection-start-line="27" selection-start-column="132" selection-end-line="27" selection-end-column="132" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/templates.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="127" column="45" selection-start-line="127" selection-start-column="45" selection-end-line="127" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -337,23 +312,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/templates.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="127" column="45" selection-start-line="127" selection-start-column="45" selection-end-line="127" selection-end-column="45" />
-          <folding>
-            <element signature="n#style#0;n#small#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/blueline/css/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="793">
-          <caret line="87" column="159294" lean-forward="true" selection-start-line="87" selection-start-column="159294" selection-end-line="87" selection-end-column="159294" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/blueline/css/important.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="793">
@@ -361,10 +319,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/assets/blueline/css/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="815">
+          <caret line="87" column="159294" lean-forward="true" selection-start-line="87" selection-start-column="159294" selection-end-line="87" selection-end-column="159294" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/assets/blueline/css/user.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="777">
-          <caret line="207" column="40" selection-start-line="207" selection-start-column="35" selection-end-line="207" selection-end-column="40" />
+        <state relative-caret-position="793">
+          <caret line="208" column="1" lean-forward="true" selection-start-line="208" selection-start-column="1" selection-end-line="208" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/CompanyProfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/all_screening_companies.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="124" column="71" selection-start-line="124" selection-start-column="71" selection-end-line="124" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/clients.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="369" lean-forward="true" selection-start-line="369" selection-end-line="369" />
         </state>
       </provider>
     </entry>

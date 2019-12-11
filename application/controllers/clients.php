@@ -330,47 +330,6 @@ class Clients extends MY_Controller
                     $this->content_view = 'clients/_screening_company';
                 }
                 break;
-            case 'update':
-                if ($_POST) {
-                    unset($_POST['send']);
-                    $id = $_POST['id'];
-                    if (isset($_POST['view'])) {
-                        $view = $_POST['view'];
-                        unset($_POST['view']);
-                    }
-                    $company = ScreeningCompany::find_by_id($id);
-
-                    $_POST["city"] = substr($_POST["city"], 0, -3);
-
-                    $company->update_attributes($_POST);
-                    if (!$company) {
-                        $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_save_company_error'));
-                    } else {
-                        $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_save_company_success'));
-                    }
-                    redirect('clients/view_screening/' . $id);
-                } else {
-                    $company = $this->view_data['company'] = ScreeningCompany::find_by_id($id);
-
-                    $this->view_data['cities'] = City::find('all', ['conditions' => ['state = ?', $company->state], 'order' => 'name ASC']);
-                    $this->view_data['states'] = State::find('all');
-                    $this->view_data['countries'] = Country::find('all', ['conditions' => ['status = ?', 1]]);
-
-                    $company_city = $company->city.'/'.$company->state;
-                    $this->view_data['company_city'] = $company_city;
-
-                    $company_state = $company->state;
-                    $this->view_data['company_state'] = $company_state;
-
-                    $company_country = $company->country;
-                    $this->view_data['company_country'] = $company_country;
-
-                    $this->theme_view = 'modal';
-                    $this->view_data['title'] = $this->lang->line('application_edit_company');
-                    $this->view_data['form_action'] = 'clients/screening_company/update';
-                    $this->content_view = 'clients/_screening_company';
-                }
-                break;
             case 'promote':
                 $screening_company = ScreeningCompany::find_by_id($id);
                 $screening_company->promoted = '1';
@@ -380,11 +339,10 @@ class Clients extends MY_Controller
 
                 $company_attr = (array) $screening_company->attributes();
 
-//                var_dump($company_attr);
-//                exit;
-
                 unset($company_attr['id']); //do not copy screening company id, need new one
-                $company->create($company_attr );
+                $company->create($company_attr);
+
+                $last_company = Company::last();
 
                 foreach ($screening_company->screening_clients as $value) {
                     $screening_client = ScreeningClient::find_by_id($value->id);
@@ -392,8 +350,32 @@ class Clients extends MY_Controller
                     $client = new Client();
                     $client_attr = (array) $screening_client->attributes();
                     unset($client_attr['id']); //do not copy screening client id, need new one
+                    unset($client_attr['company_id']); //do not copy screening client company_id, need created company id
+
+                    $client_attr['company_id'] = $last_company->id;
 
                     $client->create($client_attr);
+                }
+
+
+                //create company full profile
+                {
+                    $company_profile = new CompanyProfile();
+                    $company_profile->company_id = $last_company->id;
+                    $company_profile->warranty_lowest = 0;
+                    $company_profile->warranty_highest = 0;
+                    $company_profile->power_plants_installed = 0;
+                    $company_profile->power_executed = 0;
+                    $company_profile->save();
+
+                    $rating_categories = RatingCategory::all();
+                    foreach ($rating_categories as $rating_category){
+                        $company_rating = new CompanyRating();
+                        $company_rating->company_id = $last_company->id;
+                        $company_rating->rating_category_id = $rating_category->id;
+                        $company_rating->value = 2.5;
+                        $company_rating->save();
+                    }
                 }
 
                 $this->content_view = 'clients/all_screening_companies';
