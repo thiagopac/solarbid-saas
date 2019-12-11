@@ -15,7 +15,7 @@
                 <br>
                 <div class="form-group">
                     <label>
-                        <?= $this->lang->line('application_clients_can_register'); ?>
+                        <?= $this->lang->line('application_clients_register'); ?>
                     </label>
                     <input name="registration" type="checkbox" class="checkbox" style="width:100%;"
                            data-labelauty="<?= $this->lang->line('application_clients_can_register'); ?>"
