@@ -1435,3 +1435,4 @@ $lang['application_promoted_to_client'] = 'Promovido a cliente';
 $lang['application_find_company'] = 'Buscar empresa';
 $lang['application_promote_to_client'] = 'Promover a cliente';
 $lang['application_solarbid_logo'] = 'Logo Solarbid';
+$lang['application_select_plan'] = 'Selecione o plano';

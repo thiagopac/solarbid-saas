@@ -87,16 +87,6 @@
                         </div>
                     </div>
                     <div class="col-md-7">
-                        <?php if (!array_key_exists(0, $company->user)){?>
-                            <div class="alert alert-warning">
-                                <?=$this->lang->line('application_client_has_no_admins'); ?>
-                                <?php if ($this->user->admin==1){?>
-                                    <a href="<?=base_url() ?>clients/assign/<?=$company->id; ?>" data-toggle="mainmodal">
-                                        <?=$this->lang->line('application_assign_admin'); ?>
-                                    </a>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
                         <div class="data-table-marginbottom">
                             <div class="box-shadow">
                                 <div class="table-head">

@@ -194,6 +194,8 @@ class My_Controller extends CI_Controller
 
                 $active_pricing_table = PricingTable::find('first', array('conditions' => array('company_id = ? AND active = 1', $this->client->company_id)));
 
+                $company = Company::first($this->client->company_id);
+
                 if ($active_pricing_table != null){
                     $this->view_data['integrator_online'] = true;
                     $integrator_status_desc = "Tudo certo! Todas as configurações estão corretas e você está sendo apresentado corretamente na plataforma.";
@@ -209,6 +211,10 @@ class My_Controller extends CI_Controller
                     }
                 }
 
+                if ($company->inactive == 1 || $company->deleted == 1){
+                    $this->view_data['integrator_online'] = false;
+                    $integrator_status_desc = "Sua empresa está com o cadastro bloqueado e se encontra inativa na plataforma. Para resolver este problema, entre en contato com a equipe Solarbid através de um Ticket.";
+                }
 
                 $this->view_data['integrator_status_desc'] = $integrator_status_desc;
 

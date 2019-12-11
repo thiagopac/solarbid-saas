@@ -178,7 +178,28 @@ echo form_open_multipart($form_action, $attributes);
 
         $label = $this->lang->line('application_select_country');
 
-        echo form_dropdown('country', $options, $company_country, 'style="width:100%" class="chosen-select"');?>
+        echo form_dropdown('country', $options, $company_country, "style='width:100%' class='chosen-select' $disabled");?>
+    </div>
+
+    <div class="form-group">
+        <label for="country">
+            <?=$this->lang->line('application_plan');?>
+        </label>
+        <?php
+        $options = array();
+        $plan = array();
+
+        $options[null] = $this->lang->line('application_select_plan');
+
+        foreach ($plans as $value):
+            $options[$value->id] = $value->name;
+        endforeach;
+
+        if(isset($company)){}else{$plan = "";}
+
+        $label = $this->lang->line('application_select_plan');
+
+        echo form_dropdown('plan_id', $options, $company_plan, "style='width:100%' class='chosen-select' $disabled");?>
     </div>
 
     <div class="form-group">

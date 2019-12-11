@@ -218,6 +218,7 @@ class Clients extends MY_Controller
                 $this->view_data['cities'] = City::find('all');
                 $this->view_data['states'] = State::find('all');
                 $this->view_data['countries'] = Country::find('all', ['conditions' => ['status = ?', 1]]);
+                $this->view_data['plans'] = IntegratorPlan::find('all');
 
                 $this->view_data['next_reference'] = Company::last();
                 $this->theme_view = 'modal';
@@ -251,6 +252,7 @@ class Clients extends MY_Controller
                 $this->view_data['cities'] = City::find('all', ['conditions' => ['state = ?', $company->state], 'order' => 'name ASC']);
                 $this->view_data['states'] = State::find('all');
                 $this->view_data['countries'] = Country::find('all', ['conditions' => ['status = ?', 1]]);
+                $this->view_data['plans'] = IntegratorPlan::find('all');
 
                 $company_city = $company->city.'/'.$company->state;
                 $this->view_data['company_city'] = $company_city;
@@ -260,6 +262,9 @@ class Clients extends MY_Controller
 
                 $company_country = $company->country;
                 $this->view_data['company_country'] = $company_country;
+
+                $company_plan = $company->plan_id;
+                $this->view_data['company_plan'] = $company_plan;
 
                 $this->theme_view = 'modal';
                 $this->view_data['title'] = $this->lang->line('application_edit_company');

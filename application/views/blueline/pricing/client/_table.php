@@ -37,7 +37,7 @@
             <?=$this->lang->line('application_select_pricing_schema');?>
         </label>
         <?php
-        $options = array();
+        $options = array(); 
 //        $pricing_schemas = array();
 
         //Add label as first item
