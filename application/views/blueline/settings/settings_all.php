@@ -7,7 +7,7 @@
 		<div class="table-head">
 			<?=$this->lang->line('application_settings');?>
 		</div>
-		<?php 
+		<?php
 $attributes = ['class' => '', 'id' => 'settings_form'];
 echo form_open_multipart($form_action, $attributes);
 ?>
@@ -30,7 +30,7 @@ echo form_open_multipart($form_action, $attributes);
 						<label>
 							<?=$this->lang->line('application_contact');?>
 						</label>
-						<input type="text" name="invoice_contact" class="required form-control" value="<?=$settings->invoice_contact;?>" required>
+						<input type="text" name="contact" class="required form-control" value="<?=$settings->contact;?>" required>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -38,7 +38,7 @@ echo form_open_multipart($form_action, $attributes);
 						<label>
 							<?=$this->lang->line('application_address');?>
 						</label>
-						<input type="text" name="invoice_address" class="required form-control" value="<?=$settings->invoice_address;?>" required>
+						<input type="text" name="solarbid_address" class="required form-control" value="<?=$settings->solarbid_address;?>" required>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -46,7 +46,7 @@ echo form_open_multipart($form_action, $attributes);
 						<label>
 							<?=$this->lang->line('application_city');?>
 						</label>
-						<input type="text" name="invoice_city" class="required form-control" value="<?=$settings->invoice_city;?>" required>
+						<input type="text" name="city" class="required form-control" value="<?=$settings->city;?>" required>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -54,7 +54,7 @@ echo form_open_multipart($form_action, $attributes);
 						<label>
 							<?=$this->lang->line('application_phone');?>
 						</label>
-						<input type="text" name="invoice_tel" class="required form-control" value="<?=$settings->invoice_tel;?>" required>
+						<input type="text" name="tel" class="required form-control" value="<?=$settings->tel;?>" required>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -106,10 +106,9 @@ echo form_open_multipart($form_action, $attributes);
 			</div>
 			<div class="form-group">
 				<label>
-					<?=$this->lang->line('application_invoice');?>
-						<?=$this->lang->line('application_logo');?> (max 160x200)
-							<button type="button" class="btn-option po " data-toggle="popover" data-placement="right" data-content="<div style='padding:10px'><img src='<?=$core_settings->invoice_logo;?>'></div>"
-							 data-original-title="<?=$this->lang->line('application_invoice');?> <?=$this->lang->line('application_logo');?>">
+					<?=$this->lang->line('application_solarbid_logo');?> (max 160x200)
+							<button type="button" class="btn-option po " data-toggle="popover" data-placement="right" data-content="<div style='padding:10px'><img src='<?=$core_settings->solarbid_logo;?>'></div>"
+							 data-original-title="<?=$this->lang->line('application_solarbid_logo');?> <?=$this->lang->line('application_logo');?>">
 								<i class="icon dripicons-preview"></i>
 							</button>
 				</label>
@@ -128,7 +127,6 @@ echo form_open_multipart($form_action, $attributes);
 				</div>
 
 			</div>
-            <!--      MENU DE TEMPLATES NAS CONFIGURAÇÕES / ESCONDIDO      -->
 
 			<div class="form-header">
 				<?=$this->lang->line('application_reference_prefix');?>
@@ -150,56 +148,6 @@ echo form_open_multipart($form_action, $attributes);
 
 					</div>
 				</div>
-
-                <!-- PREFIXO DE REFERÊNCIA DE FATURA / ESCONDIDO -->
-				<!--<div class="col-md-2">
-					<div class="form-group">
-						<label>
-							<?/*=$this->lang->line('application_invoice');*/?>
-						</label>
-
-
-						<div class="input-group">
-
-							<input type="text" name="invoice_prefix" value="<?/*=$settings->invoice_prefix;*/?>" class="form-control">
-
-						</div>
-
-					</div>
-				</div>-->
-
-                <!-- PREFIXO DE REFERÊNCIA DE FATURA / ESCONDIDO -->
-				<!--<div class="col-md-2">
-					<div class="form-group">
-						<label>
-							<?/*=$this->lang->line('application_subscription');*/?>
-						</label>
-
-
-						<div class="input-group">
-
-							<input type="text" name="subscription_prefix" value="<?/*=$settings->subscription_prefix;*/?>" class="form-control">
-
-						</div>
-
-					</div>
-				</div>-->
-
-				<!--<div class="col-md-2">
-					<div class="form-group">
-						<label>
-							<?/*=$this->lang->line('application_project');*/?>
-						</label>
-
-
-						<div class="input-group">
-
-							<input type="text" name="project_prefix" value="<?/*=$settings->project_prefix;*/?>" class="form-control">
-
-						</div>
-
-					</div>
-				</div>-->
 
                 <div class="col-md-2">
                     <div class="form-group">
@@ -249,23 +197,6 @@ echo form_open_multipart($form_action, $attributes);
                     </div>
                 </div>
 
-                <!-- PREFIXO DE REFERÊNCIA DE COTAÇÃO / ESCONDIDO -->
-				<!--<div class="col-md-2">
-					<div class="form-group">
-						<label>
-							<?/*=$this->lang->line('application_quotation');*/?>
-						</label>
-
-
-						<div class="input-group">
-
-							<input type="text" name="quotation_prefix" value="<?/*=$settings->quotation_prefix;*/?>" class="form-control">
-
-						</div>
-
-					</div>
-				</div>-->
-
 				<div class="col-md-2">
 					<div class="form-group">
 						<label>
@@ -295,40 +226,6 @@ echo form_open_multipart($form_action, $attributes);
 				<?/*=$this->lang->line('application_tax_settings');*/?>
 			</div>
 			<div class="row">
-				<div class="col-md-6">
-					<div class="form-group">
-						<label>
-							<?=$this->lang->line('application_tax');?>
-						</label>
-						<div class="input-group">
-							<span class="input-group-addon">%</span>
-							<input type="text" name="tax" value="<?=$settings->tax;?>" class="form-control" placeholder="">
-						</div>
-
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label>
-							<?=$this->lang->line('application_second_tax');?>
-						</label>
-						<div class="input-group">
-							<span class="input-group-addon">%</span>
-							<input type="text" name="second_tax" value="<?=$settings->second_tax;?>" class="form-control" placeholder="">
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label>
-							<?=$this->lang->line('application_vat');?>
-						</label>
-						<div class="input-group col-md-12">
-							<input type="text" name="vat" value="<?=$settings->vat;?>" class="form-control" placeholder="">
-						</div>
-
-					</div>
-				</div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>
@@ -423,7 +320,7 @@ echo form_open_multipart($form_action, $attributes);
 						<label>
 							<?=$this->lang->line('application_timezone');?>
 						</label>
-						<?php 
+						<?php
                         $options = [];
                         foreach (timezone_abbreviations_list() as $abbr => $timezone) {
                             foreach ($timezone as $val) {
@@ -469,7 +366,7 @@ echo form_open_multipart($form_action, $attributes);
 				<!--<div class="col-md-12">
 					<div class="form-group">
 						<label>
-							<?/*=$this->lang->line('application_default_language');*/?>
+							<?/*=$this->lang->line('application_default_languag');*/?>
 						</label>
 						<?php /*$options = [];
                         if ($handle = opendir('application/language/')) {
@@ -521,28 +418,6 @@ echo form_open_multipart($form_action, $attributes);
                 </div>
             </div>
 
-            <!-- CAMPO DE TEXTO PADRÃO DE FATURA / ESCONDIDO -->
-			<!--<div class="form-header">
-				<?/*=$this->lang->line('application_invoice_defaults');*/?>
-			</div>
-			<div class="form-group">
-				<label>
-					<?/*=$this->lang->line('application_default_terms');*/?>
-				</label>
-				<textarea class="textarea summernote" name="invoice_terms" rows="5"><?/*=$settings->invoice_terms;*/?></textarea>
-			</div>-->
-
-            <!-- CAMPO DE TEXTO PADRÃO DE ORÇAMENTO / ESCONDIDO -->
-			<!--<div class="form-header">
-				<?/*=$this->lang->line('application_estimate');*/?>
-					<?/*=$this->lang->line('application_default_terms');*/?>
-			</div>
-			<div class="form-group">
-				<label>
-					<?/*=$this->lang->line('application_default_terms');*/?>
-				</label>
-				<textarea class="textarea summernote" name="estimate_terms" rows="5"><?/*=$settings->estimate_terms;*/?></textarea>
-			</div>-->
 			<div class="form-group no-border">
 				<input type="submit" name="send" class="btn btn-primary" value="<?=$this->lang->line('application_save');?>" />
 

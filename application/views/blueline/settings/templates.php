@@ -58,50 +58,10 @@ echo form_open_multipart($form_action, $attributes);
 				<small style="padding-left:10px">
 					<br/>
 					<?php switch ($template) {
-                        case 'reminder':
-                                $tags = ['company',
-                                         'logo',
-                                         'invoice_logo',
-                                         'first_name',
-                                         'last_name',
-                                         'title',
-                                         'message',
-                                         'datetime',
-                                         'icon',
-                                         'button_text'
-                                        ];
-                            break;
-                         case 'invoice':
-                                $tags = ['company',
-                                         'logo',
-                                         'invoice_logo',
-                                         'client_contact',
-                                         'client_company',
-                                         'due_date',
-                                         'invoice_id',
-                                         'balance',
-                                         'client_link',
-                                         'invoice_link'
-                                        ];
-                            break;
-                        case 'subscription':
-                                $tags = ['company',
-                                         'logo',
-                                         'invoice_logo',
-                                         'client_contact',
-                                         'client_company',
-                                         'first_name',
-                                         'last_name',
-                                         'issue_date',
-                                         'subscription_id',
-                                         'client_link',
-                                         'subscription_link'
-                                        ];
-                            break;
                         case 'pw_reset_link':
                                 $tags = ['company',
                                          'logo',
-                                         'invoice_logo',
+                                         'solarbid_logo',
                                          'first_name',
                                          'last_name',
                                          'link'
@@ -110,48 +70,16 @@ echo form_open_multipart($form_action, $attributes);
                         case 'pw_reset':
                                 $tags = ['company',
                                          'logo',
-                                         'invoice_logo',
+                                         'solarbid_logo',
                                          'first_name',
                                          'last_name',
                                          'link'
                                         ];
                             break;
-                        case 'receipt':
-                                $tags = ['company',
-                                         'logo',
-                                         'invoice_logo',
-                                         'first_name',
-                                         'last_name',
-                                         'link',
-                                         'invoice_id',
-                                         'payment_reference',
-                                         'payment_date',
-                                         'payment_method',
-                                         'invoice_id',
-                                         'payment_amount',
-                                         'client_contact'
-                                        ];
-                            break;
-                        case 'receipt':
-                                $tags = ['company',
-                                         'logo',
-                                         'invoice_logo',
-                                         'first_name',
-                                         'last_name',
-                                         'link',
-                                         'invoice_id',
-                                         'payment_reference',
-                                         'payment_date',
-                                         'payment_method',
-                                         'invoice_id',
-                                         'payment_amount',
-                                         'client_contact'
-                                        ];
-                            break;
                         case 'notification':
                                 $tags = ['company',
                                          'logo',
-                                         'invoice_logo',
+                                         'solarbid_logo',
                                          'first_name',
                                          'last_name',
                                          'link'
@@ -160,7 +88,7 @@ echo form_open_multipart($form_action, $attributes);
                         case 'create_account':
                             $tags = ['company',
                                 'logo',
-                                'invoice_logo',
+                                'solarbid_logo',
                                 'first_name',
                                 'last_name',
                                 'company_reference',
@@ -170,7 +98,7 @@ echo form_open_multipart($form_action, $attributes);
                         case 'registered_account':
                             $tags = ['company',
                                 'logo',
-                                'invoice_logo',
+                                'solarbid_logo',
                                 'first_name',
                                 'last_name',
                                 'company_reference',
@@ -180,7 +108,7 @@ echo form_open_multipart($form_action, $attributes);
                         case 'credentials':
                                 $tags = ['company',
                                          'logo',
-                                         'invoice_logo',
+                                         'solarbid_logo',
                                          'first_name',
                                          'last_name',
                                          'username',
@@ -188,25 +116,10 @@ echo form_open_multipart($form_action, $attributes);
                                          'link'
                                         ];
                             break;
-                        case 'estimate':
-                                $tags = ['company',
-                                         'logo',
-                                         'invoice_logo',
-                                         'first_name',
-                                         'last_name',
-                                         'username',
-                                         'client_company',
-                                         'client_contact',
-                                         'due_date',
-                                         'estimate_id',
-                                         'estimate_link',
-                                         'project'
-                                        ];
-                            break;
                         case 'ticket_notification':
                                 $tags = ['company',
                                          'logo',
-                                         'invoice_logo',
+                                         'solarbid_logo',
                                          'ticket_number',
                                          'ticket_created_date',
                                          'ticket_status',
@@ -219,7 +132,7 @@ echo form_open_multipart($form_action, $attributes);
                         default:
                                 $tags = ['company',
                                          'logo',
-                                         'invoice_logo',
+                                         'solarbid_logo',
                                          'client_link',
                                          'client_contact',
                                          'client_company',

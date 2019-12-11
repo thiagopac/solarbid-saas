@@ -61,6 +61,14 @@ class Register extends MY_Controller
                 $client_attr['company_id'] = $company->id;
 
                 $client = ScreeningClient::create($client_attr);
+
+                $last_inserted_company = ScreeningCompany::last();
+                $last_inserted_client = ScreeningClient::last();
+
+                //
+                $last_inserted_company->client_id = $last_inserted_client->id;
+                $last_inserted_company->save();
+
                 if ($client) {
                     $client->password = $client->set_password($_POST['password']);
                     $client->save();
@@ -79,7 +87,7 @@ class Register extends MY_Controller
                                     'last_name' => $client->lastname,
                                     'company_reference' => $company->reference,
                                     'logo' => '<img src="' . base_url() . '' . $core_settings->logo . '" alt="' . $core_settings->company . '"/>',
-                                    'invoice_logo' => '<img src="' . base_url() . '' . $core_settings->invoice_logo . '" alt="' . $core_settings->company . '"/>'
+                                    'solarbid_logo' => '<img src="' . base_url() . '' . $core_settings->logo . '" alt="' . $core_settings->company . '"/>'
                                     ];
                     $email = read_file('./application/views/' . $core_settings->template . '/templates/email_registered_account.html');
                     $message = $this->parser->parse_string($email, $parse_data);

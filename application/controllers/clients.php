@@ -105,8 +105,7 @@ class Clients extends MY_Controller
         }
     }
 
-    public function update($id = false, $getview = false)
-    {
+    public function update($id = false, $getview = false) {
         if ($_POST) {
             $id = $_POST['id'];
             $client = Client::find($id);
@@ -168,8 +167,7 @@ class Clients extends MY_Controller
         }
     }
 
-    public function notes($id = false)
-    {
+    public function notes($id = false) {
         if ($_POST) {
             unset($_POST['send']);
             $_POST = array_map('htmlspecialchars', $_POST);
@@ -551,7 +549,7 @@ class Clients extends MY_Controller
                                 'password' => $newPass,
                                 'link' => base_url() . 'forgotpass/token/' . $token,
                                 'logo' => '<img src="' . base_url() . '' . $setting->logo . '" alt="' . $setting->company . '"/>',
-                                'invoice_logo' => '<img src="' . base_url() . '' . $setting->invoice_logo . '" alt="' . $setting->company . '"/>'
+                                'solarbid_logo' => '<img src="' . base_url() . '' . $setting->solarbid_logo . '" alt="' . $setting->company . '"/>'
                                 ];
 
             $message = read_file('./application/views/' . $setting->template . '/templates/email_credentials.html');
