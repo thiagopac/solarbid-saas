@@ -3,116 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4155379a-ef05-425d-ab57-3fe4d1d0797d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/clients.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/cronjob.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/cronjob.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/forgotpass.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/forgotpass.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/register.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/controllers/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/2checkout/Twocheckout.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/2checkout/Twocheckout/Api/TwocheckoutAccount.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/2checkout/Twocheckout/Api/TwocheckoutApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/2checkout/Twocheckout/Api/TwocheckoutCoupon.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/2checkout/Twocheckout/Api/TwocheckoutError.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/2checkout/Twocheckout/Api/TwocheckoutOption.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/2checkout/Twocheckout/Api/TwocheckoutPayment.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/2checkout/Twocheckout/Api/TwocheckoutProduct.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/2checkout/Twocheckout/Api/TwocheckoutSale.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/2checkout/Twocheckout/Api/TwocheckoutUtil.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/2checkout/Twocheckout/TwocheckoutCharge.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/2checkout/Twocheckout/TwocheckoutMessage.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/2checkout/Twocheckout/TwocheckoutNotification.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/2checkout/Twocheckout/TwocheckoutReturn.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/notification_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/helpers/notification_helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/README.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/VERSION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/composer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/Account.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/ApiConnectionError.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/ApiError.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/ApiRequestor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/ApiResource.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/ApplicationFee.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/ApplicationFeeRefund.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/AttachedObject.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/AuthenticationError.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/Balance.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/BalanceTransaction.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/Card.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/CardError.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/Charge.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/Coupon.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/Customer.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/Error.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/Event.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/InvalidRequestError.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/Invoice.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/InvoiceItem.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/List.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/Object.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/Plan.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/RateLimitError.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/Recipient.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/Refund.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/SingletonApiResource.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/Stripe.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/Subscription.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/Token.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/Transfer.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/Util.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/Stripe/Util/Set.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/lib/data/ca-certificates.crt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/AccountTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/ApiRequestorTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/ApplicationFeeRefundTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/ApplicationFeeTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/AuthenticationErrorTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/BalanceTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/BalanceTransactionTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/CardErrorTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/ChargeTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/CouponTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/CustomerTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/DiscountTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/Error.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/InvalidRequestErrorTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/InvoiceTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/ObjectTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/PlanTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/RecipientTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/RefundTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/SubscriptionTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/TestCase.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/Token.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/TransferTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/UtilTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/language/english/application_lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/language/english/application_lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/language/english/event_lang.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/language/english/messages_lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/language/english/messages_lang.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/language/portuguese/application_lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/language/portuguese/application_lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/auth/forgotpass.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/auth/forgotpass.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/auth/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/auth/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/auth/reset_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/auth/reset_password.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/settings/bank_transfer.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/settings/invoice_templates.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/settings/paypal.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/settings/settings_all.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/settings/settings_all.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/settings/stripe.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/application/views/blueline/settings/templates.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/settings/templates.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/settings/templates_credentials.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/settings/templates_credentials.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/email_create_account.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/templates/email_create_account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/email_credentials.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/templates/email_credentials.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/email_notification.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/templates/email_notification.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/email_pw_reset.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/templates/email_pw_reset.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/email_pw_reset_link.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/templates/email_pw_reset_link.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/email_registered_account.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/templates/email_registered_account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/email_reminder.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/templates/email_reminder.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/email_ticket_notification.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/templates/email_ticket_notification.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/theme/fullpage.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/theme/fullpage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-model/solarbid-db.sql" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -126,50 +19,22 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
+        <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/templates.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="809">
-              <caret line="1435" column="32" selection-start-line="1435" selection-start-column="7" selection-end-line="1435" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/clients.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2382">
-              <caret line="289" column="37" selection-start-line="289" selection-start-column="20" selection-end-line="289" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/register.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="100" column="61" lean-forward="true" selection-start-line="100" selection-start-column="61" selection-end-line="100" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/settings_all.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="635">
-              <caret line="74" column="41" lean-forward="true" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/all_screening_companies.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="633">
-              <caret line="146" column="235" selection-start-line="146" selection-start-column="235" selection-end-line="146" selection-end-column="235" />
+            <state relative-caret-position="564">
+              <caret line="77" column="48" lean-forward="true" selection-start-line="77" selection-start-column="48" selection-end-line="77" selection-end-column="48" />
               <folding>
-                <element signature="n#div#0;n#div#0;n#!!top" />
-                <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#small#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/settings.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="113">
+              <caret line="152" column="54" selection-start-line="152" selection-start-column="43" selection-end-line="152" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -178,24 +43,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>application_promote_to_client</find>
-      <find>find</find>
-      <find>&lt;?=base_url()?&gt;clients/index</find>
-      <find>messages_promote_company_error</find>
-      <find>company-&gt;level</find>
-      <find>level</find>
-      <find>last_</find>
-      <find>invoice_logo</find>
-      <find>second_tax</find>
-      <find>invoice_reference</find>
-      <find>subscription_reference</find>
       <find>invoice_terms</find>
       <find>invoice_mail_subject</find>
       <find>invoice_address</find>
       <find>solarbid_address</find>
-      <find>invoice</find>
       <find>ref</find>
-      <find>invoice_contact</find>
       <find>Stripe_CustomerTest</find>
       <find>refer</find>
       <find>stripe</find>
@@ -208,14 +60,27 @@
       <find>invoice_templates</find>
       <find>E-MAIL FATURA</find>
       <find>application_invoice</find>
+      <find>application_solarbid_logo</find>
+      <find>ATIVAR PÁGINA DE REGISTRO</find>
+      <find>application_clients_can_register</find>
+      <find>invoice_contact</find>
+      <find>application_invoice_email_template</find>
+      <find>_email</find>
+      <find>invoice</find>
+      <find>pull</find>
+      <find>template_files</find>
+      <find>Corpo email</find>
+      <find>application_reset_default</find>
+      <find>$template</find>
+      <find>body</find>
     </findStrings>
     <replaceStrings>
       <replace>solarbid_logo</replace>
       <replace>$screening_company</replace>
     </replaceStrings>
     <dirStrings>
-      <dir>$PROJECT_DIR$</dir>
       <dir>$PROJECT_DIR$/application/helpers</dir>
+      <dir>$PROJECT_DIR$</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -224,17 +89,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/controllers/register.php" />
         <option value="$PROJECT_DIR$/application/controllers/cronjob.php" />
         <option value="$PROJECT_DIR$/application/helpers/stripe/test/Stripe/CustomerTest.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/settings/templates.php" />
         <option value="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" />
         <option value="$PROJECT_DIR$/application/language/english/application_lang.php" />
         <option value="$PROJECT_DIR$/application/language/english/messages_lang.php" />
         <option value="$PROJECT_DIR$/application/language/english/event_lang.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/settings/settings_all.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/settings/registration.php" />
         <option value="$PROJECT_DIR$/application/controllers/settings.php" />
         <option value="$PROJECT_DIR$/application/language/portuguese/application_lang.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/settings/settings_all.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/settings/templates.php" />
       </list>
     </option>
   </component>
@@ -389,6 +254,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1057" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="npm" side_tool="true" />
       <window_info id="Gulp" side_tool="true" />
@@ -418,50 +284,11 @@
     <MESSAGE value="Bug fixes and project rearranged" />
     <MESSAGE value="Added Screening Company and Client to separate real clients" />
     <MESSAGE value="Finishing Screening Company and Client implement" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finishing Screening Company and Client implement" />
+    <MESSAGE value="Re-organizing folders and removing unwanted settings" />
+    <MESSAGE value="Bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug fixes" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/controllers/cronjob.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="100" column="61" lean-forward="true" selection-start-line="100" selection-start-column="61" selection-end-line="100" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/helpers/stripe/test/Stripe/CouponTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" column="6" lean-forward="true" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/helpers/stripe/test/Stripe/CustomerTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/helpers/curl_helper.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/helpers/2checkout/Twocheckout.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="10" column="55" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/language/english/event_lang.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/bank_transfer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -476,17 +303,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/settings_all.php">
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/registration.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="635">
-          <caret line="74" column="41" lean-forward="true" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
+        <state relative-caret-position="272">
+          <caret line="17" column="66" selection-start-line="17" selection-start-column="66" selection-end-line="17" selection-end-column="66" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="809">
-          <caret line="1435" column="32" selection-start-line="1435" selection-start-column="7" selection-end-line="1435" selection-end-column="32" />
+        <state relative-caret-position="255">
+          <caret line="249" column="46" lean-forward="true" selection-start-line="249" selection-start-column="46" selection-end-line="254" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/settings_all.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="98" column="75" lean-forward="true" selection-start-line="98" selection-start-column="75" selection-end-line="98" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/all_screening_companies.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="633">
+          <caret line="146" column="235" selection-start-line="146" selection-start-column="235" selection-end-line="146" selection-end-column="235" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="605">
+          <caret line="133" column="89" lean-forward="true" selection-start-line="133" selection-start-column="89" selection-end-line="133" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/clients.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2383">
+          <caret line="289" column="37" selection-start-line="289" selection-start-column="20" selection-end-line="289" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/templates_credentials.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="27" column="132" selection-start-line="27" selection-start-column="132" selection-end-line="27" selection-end-column="132" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="152" column="54" selection-start-line="152" selection-start-column="43" selection-end-line="152" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/settings/templates.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="564">
+          <caret line="77" column="48" lean-forward="true" selection-start-line="77" selection-start-column="48" selection-end-line="77" selection-end-column="48" />
+          <folding>
+            <element signature="n#style#0;n#small#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

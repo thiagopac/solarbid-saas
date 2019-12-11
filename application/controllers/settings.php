@@ -150,7 +150,7 @@ class Settings extends MY_Controller
         }
     }
 
-    public function templates($template = 'invoice')
+    public function templates($template = 'credentials')
     {
         $this->load->helper('file');
         $settings = Setting::first();
