@@ -2,22 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4155379a-ef05-425d-ab57-3fe4d1d0797d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/application/models/CompanyRating.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/models/RatingCategory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/models/ScreeningClient.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/models/ScreeningCompany.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/blueline/clients/_screening_company.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/blueline/clients/view_screening.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/blueline/clients/_find.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/blueline/clients/all_companies.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/blueline/clients/options.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/controllers/clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/clients.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/register.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/language/portuguese/application_lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/language/portuguese/application_lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/clients/all.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/clients/all.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/email_credentials.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/templates/email_credentials.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/email_pw_reset_link.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/templates/email_pw_reset_link.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/templates/email_registered_account.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/templates/email_registered_account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/blueline/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/blueline/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/blueline/js/blueline.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/blueline/js/blueline.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/clients/_company.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/clients/_company.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/clients/_screening_company.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/clients/_screening_company.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/clients/all.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/clients/all_screening_companies.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,70 +27,30 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="761">
-              <caret line="1452" column="38" selection-start-line="1452" selection-start-column="7" selection-end-line="1452" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/clients.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="553">
-              <caret line="456" column="55" selection-start-line="456" selection-start-column="55" selection-end-line="456" selection-end-column="55" />
+            <state relative-caret-position="793">
+              <caret line="1457" column="36" selection-start-line="1457" selection-start-column="7" selection-end-line="1457" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/view_screening.php">
+        <entry file="file://$PROJECT_DIR$/application/controllers/clients.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="100" column="8" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="8" />
+            <state relative-caret-position="287">
+              <caret line="45" column="103" selection-start-line="45" selection-start-column="101" selection-end-line="45" selection-end-column="103" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/all_screening_companies.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="633">
+              <caret line="146" column="235" selection-start-line="146" selection-start-column="235" selection-end-line="146" selection-end-column="235" />
               <folding>
-                <element signature="n#style#0;n#th#0;n#thead#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#6;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/_screening_company.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="48" column="28" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/register.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="39" column="29" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/all.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-586">
-              <caret line="134" column="65" selection-start-line="134" selection-start-column="46" selection-end-line="134" selection-end-column="65" />
-              <folding>
-                <element signature="n#div#1;n#div#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/models/ScreeningCompany.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="7" column="65" selection-start-line="7" selection-start-column="65" selection-end-line="7" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -105,16 +59,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get_userpic</find>
-      <find>$companyid</find>
-      <find>last</find>
-      <find>$lastclient</find>
-      <find>messages_email_already_taken</find>
-      <find>application_company_name_already_taken</find>
-      <find>contato@so</find>
-      <find>application_companies</find>
-      <find>application_client</find>
-      <find>application_your_account_has_been_registered</find>
       <find>$comp_array</find>
       <find>$screening_companies</find>
       <find>screening_clients</find>
@@ -124,8 +68,27 @@
       <find>company</find>
       <find>$company</find>
       <find>ScreeningCompany-&gt;cli</find>
-      <find>view</find>
+      <find>application_add_new_company</find>
+      <find>clients/all</find>
       <find>client</find>
+      <find>view</find>
+      <find>messages_find_company_error</find>
+      <find>messages_viewing_company</find>
+      <find>messages_save_media_success</find>
+      <find>index_screening_companies</find>
+      <find>index_companies</find>
+      <find>clients/index</find>
+      <find>messages_delete_company_success</find>
+      <find>Companhia</find>
+      <find>messages_promote_company_success</find>
+      <find>application_promote</find>
+      <find>application_promoted</find>
+      <find>application_promote_to_client</find>
+      <find>find</find>
+      <find>&lt;?=base_url()?&gt;clients/index</find>
+      <find>messages_promote_company_error</find>
+      <find>company-&gt;level</find>
+      <find>level</find>
     </findStrings>
     <replaceStrings>
       <replace>$screening_company</replace>
@@ -137,17 +100,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/language/english/application_lang.php" />
-        <option value="$PROJECT_DIR$/application/language/portuguese/application_lang.php" />
-        <option value="$PROJECT_DIR$/application/models/Company.php" />
-        <option value="$PROJECT_DIR$/application/models/ScreeningCompany.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/clients/_company.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/clients/_screening_company.php" />
-        <option value="$PROJECT_DIR$/application/controllers/register.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/clients/all.php" />
-        <option value="$PROJECT_DIR$/application/controllers/clients.php" />
-        <option value="$PROJECT_DIR$/assets/blueline/js/blueline.js" />
         <option value="$PROJECT_DIR$/application/views/blueline/clients/view_screening.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/clients/all.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/clients/_find.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/clients/options.php" />
+        <option value="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" />
+        <option value="$PROJECT_DIR$/application/language/portuguese/application_lang.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/clients/all_screening_companies.php" />
+        <option value="$PROJECT_DIR$/application/controllers/clients.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/clients/_screening_company.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/clients/_company.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/clients/all_companies.php" />
       </list>
     </option>
   </component>
@@ -192,12 +155,6 @@
               <item name="saas" type="b2602c69:ProjectViewProjectNode" />
               <item name="saas" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="saas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="saas" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -214,6 +171,14 @@
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="blueline" type="462c0819:PsiDirectoryNode" />
               <item name="clients" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="saas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="saas" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="blueline" type="462c0819:PsiDirectoryNode" />
+              <item name="flows" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="saas" type="b2602c69:ProjectViewProjectNode" />
@@ -301,39 +266,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Bug fixes and project rearranged" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug fixes and project rearranged" />
+    <MESSAGE value="Added Screening Company and Client to separate real clients" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Screening Company and Client to separate real clients" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/models/ScreeningCompany.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="65" selection-start-line="7" selection-start-column="65" selection-end-line="7" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/ScreeningClient.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Company.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="14" column="56" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/_company.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="48" column="17" lean-forward="true" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
+        <state relative-caret-position="681">
+          <caret line="226" selection-start-line="226" selection-end-line="232" selection-end-column="9" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/reports.php">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/register.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -342,49 +284,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/_screening_company.php">
+    <entry file="file://$PROJECT_DIR$/application/controllers/flows.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="48" column="28" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
+        <state relative-caret-position="565">
+          <caret line="75" column="5" lean-forward="true" selection-start-line="52" selection-start-column="4" selection-end-line="75" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/_find.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/language/portuguese/messages_lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="777">
+          <caret line="302" column="31" selection-start-line="302" selection-start-column="31" selection-end-line="302" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="793">
+          <caret line="1457" column="36" selection-start-line="1457" selection-start-column="7" selection-end-line="1457" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/all_screening_companies.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="633">
+          <caret line="146" column="235" selection-start-line="146" selection-start-column="235" selection-end-line="146" selection-end-column="235" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/options.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="67" selection-end-column="10" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/all_companies.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="67" column="10" selection-start-line="67" selection-start-column="10" selection-end-line="67" selection-end-column="10" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#6;n#thead#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#7;n#thead#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#6;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#7;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sparks/php-activerecord/0.0.3/vendor/php-activerecord/lib/Model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="762" column="38" lean-forward="true" selection-start-line="762" selection-start-column="38" selection-end-line="763" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/clients.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="456" column="55" selection-start-line="456" selection-start-column="55" selection-end-line="456" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/blueline/js/blueline.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="442" column="40" lean-forward="true" selection-start-line="442" selection-start-column="40" selection-end-line="443" selection-end-column="44" />
-          <folding>
-            <element signature="n#src#0;n#img#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/all.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-586">
-          <caret line="134" column="65" selection-start-line="134" selection-start-column="46" selection-end-line="134" selection-end-column="65" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/view_screening.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="100" column="8" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="8" />
-          <folding>
-            <element signature="n#style#0;n#th#0;n#thead#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#6;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="287">
+          <caret line="45" column="103" selection-start-line="45" selection-start-column="101" selection-end-line="45" selection-end-column="103" />
         </state>
       </provider>
     </entry>

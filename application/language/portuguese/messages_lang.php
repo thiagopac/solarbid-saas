@@ -83,7 +83,7 @@ $lang['messages_send_subscription_success'] = "Inscrição feita cm sucesso";
 $lang['messages_send_subscription_error'] = "Erro ao salvar inscrição";
 $lang['messages_save_customize_success'] = "Alterações salvas";
 $lang['messages_save_customize_error'] = "Erro ao escrever no user.css";
-$lang['messages_delete_company_success'] = "Companhia excluida";
+$lang['messages_delete_company_success'] = "Empresa excluida";
 $lang['messages_delete_company_error'] = "Erro ao excluir empresa";
 $lang['messages_save_company_success'] = "Empresa alterada";
 $lang['messages_save_company_error'] = "Erro ao alterar empresa";
@@ -299,3 +299,8 @@ $lang['messages_viewing_flow'] = "Visualizando fluxo";
 
 $lang['messages_request_registration_success'] = "Seu pedido de registro foi feito com sucesso";
 $lang['messages_request_registration_error'] = "Erro ao efetuar pedido de registro";
+
+$lang['messages_viewing_company'] = "Visualizando empresa";
+$lang['messages_find_company_error'] = "Empresa não encontrada";
+$lang['messages_promote_company_success'] = "Empresa promovida a cliente";
+$lang['messages_promote_company_error'] = "Erro ao promover empresa a cliente";

@@ -159,28 +159,6 @@ echo form_open_multipart($form_action, $attributes);
 
         echo form_dropdown('country', $options, $company_country, 'style="width:100%" class="chosen-select"');?>
     </div>
-    <div class="form-group">
-        <label for="level">
-            <?=$this->lang->line('application_level'); ?> *
-        </label>
-        <?php $options = [
-            '' => $this->lang->line('application_select'),
-            '1' => '1',
-            '2' => '2',
-            '3' => '3',
-            '4' => '4',
-            '5' => '5',
-            '6' => '6',
-            '7' => '7',
-            '8' => '8',
-            '9' => '9',
-            '10' => '10'
-        ]; ?>
-
-        <?php
-
-        echo form_dropdown('level', $options, $company->level, 'style="width:100%" class="chosen-select" '); ?>
-    </div>
 
     <div class="form-group">
         <label for="inactive"><?=$this->lang->line('application_inactive');?> (<?=$this->lang->line('application_inactive_desc')?>)</label><br />

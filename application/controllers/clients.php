@@ -30,29 +30,22 @@ class Clients extends MY_Controller
         }
     }
 
-    public function index()
-    {
-        if ($this->user->admin == 0) {
-            $thisUserHasNoCompanies = (array) $this->user->companies;
-            if (!empty($thisUserHasNoCompanies)) {
-                $comp_array = [];
-                foreach ($this->user->companies as $value) {
-                    array_push($comp_array, $value->id);
-                }
-                $options = ['conditions' => ['id in (?)', $comp_array]];
-                $this->view_data['companies'] = Company::find('all', $options);
+    public function index() {
 
-                $this->view_data['screening_companies'] = ScreeningCompany::find('all');
-            } else {
-                $this->view_data['companies'] = (object) [];
-                $this->view_data['screening_companies'] = (object) [];
-            }
-        } else {
-            $this->view_data['companies'] = Company::find('all');
-            $this->view_data['screening_companies'] = ScreeningCompany::find('all');
-        }
+        $this->content_view = 'clients/options';
+    }
 
-        $this->content_view = 'clients/all';
+    public function companies() {
+
+        $this->view_data['companies'] = Company::find('all', ['conditions' => ['deleted != ?', 1]]);
+        $this->content_view = 'clients/all_companies';
+    }
+
+    public function screening_companies() {
+
+        $this->view_data['screening_companies'] = ScreeningCompany::find('all', ['conditions' => ['deleted != ?', 1]]);
+        $this->content_view = 'clients/all_screening_companies';
+
     }
 
     public function create($company_id = false)
@@ -285,7 +278,7 @@ class Clients extends MY_Controller
                     $client->inactive = '1';
                     $client->save();
                 }
-                $this->content_view = 'clients/all';
+                $this->content_view = 'clients/all_companies';
                 if (!$company) {
                     $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_delete_company_error'));
                 } else {
@@ -316,7 +309,7 @@ class Clients extends MY_Controller
                     } else {
                         $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_save_company_success'));
                     }
-                    redirect('clients/view/' . $id);
+                    redirect('clients/view_screening/' . $id);
                 } else {
                     $company = $this->view_data['company'] = ScreeningCompany::find_by_id($id);
 
@@ -339,22 +332,97 @@ class Clients extends MY_Controller
                     $this->content_view = 'clients/_screening_company';
                 }
                 break;
+            case 'update':
+                if ($_POST) {
+                    unset($_POST['send']);
+                    $id = $_POST['id'];
+                    if (isset($_POST['view'])) {
+                        $view = $_POST['view'];
+                        unset($_POST['view']);
+                    }
+                    $company = ScreeningCompany::find_by_id($id);
+
+                    $_POST["city"] = substr($_POST["city"], 0, -3);
+
+                    $company->update_attributes($_POST);
+                    if (!$company) {
+                        $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_save_company_error'));
+                    } else {
+                        $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_save_company_success'));
+                    }
+                    redirect('clients/view_screening/' . $id);
+                } else {
+                    $company = $this->view_data['company'] = ScreeningCompany::find_by_id($id);
+
+                    $this->view_data['cities'] = City::find('all', ['conditions' => ['state = ?', $company->state], 'order' => 'name ASC']);
+                    $this->view_data['states'] = State::find('all');
+                    $this->view_data['countries'] = Country::find('all', ['conditions' => ['status = ?', 1]]);
+
+                    $company_city = $company->city.'/'.$company->state;
+                    $this->view_data['company_city'] = $company_city;
+
+                    $company_state = $company->state;
+                    $this->view_data['company_state'] = $company_state;
+
+                    $company_country = $company->country;
+                    $this->view_data['company_country'] = $company_country;
+
+                    $this->theme_view = 'modal';
+                    $this->view_data['title'] = $this->lang->line('application_edit_company');
+                    $this->view_data['form_action'] = 'clients/screening_company/update';
+                    $this->content_view = 'clients/_screening_company';
+                }
+                break;
+            case 'promote':
+                $screening_company = ScreeningCompany::find_by_id($id);
+                $screening_company->promoted = '1';
+                $screening_company->save();
+
+                $company = new Company();
+
+                $company_attr = (array) $screening_company->attributes();
+
+//                var_dump($company_attr);
+//                exit;
+
+                unset($company_attr['id']); //do not copy screening company id, need new one
+                $company->create($company_attr );
+
+                foreach ($screening_company->screening_clients as $value) {
+                    $screening_client = ScreeningClient::find_by_id($value->id);
+
+                    $client = new Client();
+                    $client_attr = (array) $screening_client->attributes();
+                    unset($client_attr['id']); //do not copy screening client id, need new one
+
+                    $client->create($client_attr);
+                }
+
+                $this->content_view = 'clients/all_screening_companies';
+                if (!$company) {
+                    $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_promote_company_error'));
+                } else {
+                    $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_promote_company_success'));
+                }
+                redirect('clients/screening_companies');
+                break;
             case 'delete':
                 $company = ScreeningCompany::find_by_id($id);
                 $company->inactive = '1';
+                $company->deleted = '1';
                 $company->save();
-                foreach ($company->clients as $value) {
-                    $client = Client::find_by_id($value->id);
+                foreach ($company->screening_clients as $value) {
+                    $client = ScreeningClient::find_by_id($value->id);
                     $client->inactive = '1';
                     $client->save();
                 }
-                $this->content_view = 'clients/all';
+                $this->content_view = 'clients/all_screening_companies';
                 if (!$company) {
                     $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_delete_company_error'));
                 } else {
                     $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_delete_company_success'));
                 }
-                redirect('clients');
+                redirect('clients/screening_companies');
                 break;
         }
     }
@@ -414,7 +482,7 @@ class Clients extends MY_Controller
         $client = Client::find($id);
         $client->inactive = '1';
         $client->save();
-        $this->content_view = 'clients/all';
+        $this->content_view = 'clients/all_companies';
         if (!$client) {
             $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_delete_client_error'));
         } else {
@@ -665,6 +733,26 @@ class Clients extends MY_Controller
         }
     }
 
+    public function find() {
+
+        if ($_POST) {
+
+            $company = Company::find(['conditions' => ['registered_number = ?', $_POST['registered_number']]]);
+
+            if ($company != null){
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_viewing_company')." ".$company->name);
+                redirect('clients/view/'.$company->id);
+            }else{
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_find_company_error'));
+                redirect('clients');
+            }
+
+        }else{
+            $this->theme_view = 'modal';
+            $this->content_view = 'clients/_find';
+            $this->view_data['title'] = $this->lang->line('application_find_company');
+        }
+    }
 
 
 }
