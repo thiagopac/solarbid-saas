@@ -8,7 +8,7 @@
                 <label>
                     <?=$this->lang->line('application_warranty_lowest');?> * (<?=$this->lang->line('application_in_months')?>)
                 </label>
-                <input id="warranty_lowest" name="warranty_lowest" type="number" onkeypress="return event.code >= 48 && event.code <= 57" value="<?=$company_profile->warranty_lowest;?>" class="form-control">
+                <input id="warranty_lowest" name="warranty_lowest" type="number" onkeypress="return event.keyCode >= 48 && event.keyCode <= 57" value="<?=$company_profile->warranty_lowest;?>" class="form-control">
             </div>
         </div>
         <div class="col-md-6">
