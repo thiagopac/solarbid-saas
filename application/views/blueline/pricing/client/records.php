@@ -156,7 +156,7 @@
                                             <?= $pricing_field->power_top ?><?= $core_settings->rated_power_measurement; ?>
                                         <?php else : ?>
                                             <small>
-                                                <?= $this->lang->line('application_over_number') ?>
+                                                <?= $this->lang->line('application_from_number') ?>
                                             </small>
                                             <?= $pricing_field->power_bottom ?><?= $core_settings->rated_power_measurement; ?>
                                         <?php endif; ?>
@@ -181,7 +181,7 @@
                                         <?= $pricing_field->distance_top ?>km
                                     <?php else: ?>
                                         <small>
-                                            <?= $this->lang->line('application_over_number') ?>
+                                            <?= $this->lang->line('application_from_number') ?>
                                         </small>
                                         <?= $pricing_field->distance_bottom ?>km
                                     <?php endif; ?>

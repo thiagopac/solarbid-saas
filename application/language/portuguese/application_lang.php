@@ -1261,6 +1261,7 @@ $lang['application_undefined'] = 'Não definido';
 $lang['application_define_price'] = 'Defina o preço';
 $lang['application_until'] = 'até';
 $lang['application_over_number'] = 'Acima de';
+$lang['application_from_number'] = 'A partir de';
 $lang['application_power_of_plant'] = 'Potência da usina';
 $lang['application_distance_installation_location'] = 'Distância até local de instalação';
 

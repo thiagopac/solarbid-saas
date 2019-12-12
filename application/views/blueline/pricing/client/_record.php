@@ -5,7 +5,7 @@
     if ($pricing_field->power_top < 1000) {
         $label_power = $this->lang->line('application_from')." ".$pricing_field->power_bottom."".$core_settings->rated_power_measurement." ".$this->lang->line('application_until')." ".$pricing_field->power_top."".$core_settings->rated_power_measurement;
     }else{
-        $label_power = $this->lang->line('application_over_number')." ".$pricing_field->power_bottom."".$core_settings->rated_power_measurement;
+        $label_power = $this->lang->line('application_from_number')." ".$pricing_field->power_bottom."".$core_settings->rated_power_measurement;
     }
 
     $label_distance = '';
@@ -13,7 +13,7 @@
     if ($pricing_field->distance_top < 1000) {
         $label_distance = $this->lang->line('application_from')." ".$pricing_field->distance_bottom."km ".$this->lang->line('application_until')." ".$pricing_field->distance_top."km";
     }else{
-        $label_distance = $this->lang->line('application_over_number')." ".$pricing_field->distance_bottom."km";
+        $label_distance = $this->lang->line('application_from_number')." ".$pricing_field->distance_bottom."km";
     }
 
     $label_structure_types = '';
