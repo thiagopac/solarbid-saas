@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4155379a-ef05-425d-ab57-3fe4d1d0797d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/portfolio/client/_profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/portfolio/client/_profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/theme/_partials/fonts.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/theme/_partials/fonts.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,11 +16,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/blueline/portfolio/client/_profile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="10" column="136" selection-start-line="10" selection-start-column="136" selection-end-line="10" selection-end-column="136" />
+            <state relative-caret-position="704">
+              <caret line="44" column="12" lean-forward="true" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/views/blueline/theme/_partials/fonts.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="6" column="104" selection-start-line="6" selection-start-column="104" selection-end-line="6" selection-end-column="104" />
             </state>
           </provider>
         </entry>
@@ -29,9 +38,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>application_invoice</find>
-      <find>application_solarbid_logo</find>
-      <find>ATIVAR PÁGINA DE REGISTRO</find>
       <find>application_clients_can_register</find>
       <find>invoice_contact</find>
       <find>application_invoice_email_template</find>
@@ -59,6 +65,9 @@
       <find>application_over_number</find>
       <find>$client-&gt;company</find>
       <find>update</find>
+      <find>6xKtdSZaM9iE8KbpRA_hK1QNYuDyPw</find>
+      <find>Exo</find>
+      <find>Montserrat</find>
     </findStrings>
     <replaceStrings>
       <replace>solarbid_logo</replace>
@@ -75,7 +84,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/views/blueline/theme/application.php" />
         <option value="$PROJECT_DIR$/application/views/blueline/theme/application_client.php" />
         <option value="$PROJECT_DIR$/application/controllers/settings.php" />
         <option value="$PROJECT_DIR$/application/controllers/agent.php" />
@@ -86,6 +94,7 @@
         <option value="$PROJECT_DIR$/application/views/blueline/pricing/client/records.php" />
         <option value="$PROJECT_DIR$/application/views/blueline/pricing/client/_record.php" />
         <option value="$PROJECT_DIR$/application/views/blueline/portfolio/client/_profile.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/theme/_partials/fonts.php" />
       </list>
     </option>
   </component>
@@ -180,6 +189,23 @@
             <path>
               <item name="saas" type="b2602c69:ProjectViewProjectNode" />
               <item name="saas" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="blueline" type="462c0819:PsiDirectoryNode" />
+              <item name="theme" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="saas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="saas" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="blueline" type="462c0819:PsiDirectoryNode" />
+              <item name="theme" type="462c0819:PsiDirectoryNode" />
+              <item name="_partials" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="saas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="saas" type="462c0819:PsiDirectoryNode" />
               <item name="database-model" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -215,14 +241,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1057" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="npm" side_tool="true" />
       <window_info id="Gulp" side_tool="true" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973376" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973376" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" />
-      <window_info active="true" anchor="bottom" id="Version Control" visible="true" weight="0.32982087" />
+      <window_info anchor="bottom" id="Version Control" weight="0.32982087" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32982087" />
@@ -276,13 +303,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Improvements" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/clients/all_screening_companies.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="124" column="71" selection-start-line="124" selection-start-column="71" selection-end-line="124" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/cpricing.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -344,8 +364,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/blueline/portfolio/client/_profile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="10" column="136" selection-start-line="10" selection-start-column="136" selection-end-line="10" selection-end-column="136" />
+        <state relative-caret-position="704">
+          <caret line="44" column="12" lean-forward="true" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/theme/_partials/fonts.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="6" column="104" selection-start-line="6" selection-start-column="104" selection-end-line="6" selection-end-column="104" />
         </state>
       </provider>
     </entry>
