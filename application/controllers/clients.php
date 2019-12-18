@@ -268,6 +268,8 @@ class Clients extends MY_Controller
                     $company_rating->save();
                 }
 
+                $company_stats = CompanyStats::create(['company_id' => $last_company->id]);
+
                 if (!$company) {
                     $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_company_add_error'));
                 } else {
@@ -434,6 +436,8 @@ class Clients extends MY_Controller
                     $company_profile->power_plants_installed = 0;
                     $company_profile->power_executed = 0;
                     $company_profile->save();
+
+                    $company_stats = CompanyStats::create(['company_id' => $last_company->id]);
 
                     $rating_categories = RatingCategory::all();
                     foreach ($rating_categories as $rating_category){
