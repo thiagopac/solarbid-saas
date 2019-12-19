@@ -294,3 +294,8 @@ $lang['messages_viewing_company'] = "Visualizando empresa";
 $lang['messages_find_company_error'] = "Empresa não encontrada";
 $lang['messages_promote_company_success'] = "Empresa promovida a cliente";
 $lang['messages_promote_company_error'] = "Erro ao promover empresa a cliente";
+
+$lang['messages_rate_code_used_error'] = "Esta avaliação já foi finalizada";
+$lang['messages_rate_code_inexistent_error'] = "Código para avaliação inválido";
+$lang['messages_rate_saved_success'] = "Avaliação enviada com sucesso";
+$lang['messages_rate_saved_error'] = "Avaliação enviada com sucesso";

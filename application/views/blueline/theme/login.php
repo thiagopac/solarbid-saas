@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="<?=base_url()?>assets/blueline/css/plugins/nprogress.css" />
     <link href="<?=base_url()?>assets/blueline/css/blueline.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/blueline/css/user.css" rel="stylesheet" />
+    <link href="<?=base_url()?>assets/blueline/css/important.css" rel="stylesheet" />
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <?=get_theme_colors($core_settings);?>
     <?php require_once '_partials/fonts.php'; ?>
@@ -55,6 +56,8 @@
     <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/plugins/velocity.min.js"></script>
     <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/plugins/velocity.ui.min.js"></script>
     <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/plugins/validator.min.js"></script>
+    <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/plugins/rater/rater.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <script type="text/javascript">
             $(document).ready(function(){

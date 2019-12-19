@@ -95,9 +95,6 @@ class My_Controller extends CI_Controller
         }
 
         $this->lang->load('application', $language);
-        if (file_exists("./application/language/" . $language . "/custom_lang.php")) {
-            $this->lang->load('custom', $language);
-        }
         $this->lang->load('messages', $language);
         $this->lang->load('event', $language);
         $this->view_data['current_language'] = $language;
