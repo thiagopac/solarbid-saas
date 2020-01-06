@@ -329,3 +329,8 @@ div.dataTables_info {
     background-color:#f2dede;
     border-color:#ebccd1
 }
+
+.dataTables_filter {
+    margin-top: -26px !important;
+    float: right !important;
+}

@@ -2,19 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4155379a-ef05-425d-ab57-3fe4d1d0797d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/application/controllers/rate.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/models/RatingEvaluation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/models/RatingPost.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/blueline/auth/rate.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/blueline/auth/rate_message.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/core/MY_Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/core/MY_Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/language/english/custom_lang.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/language/english/quotation_lang.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/application/language/portuguese/application_lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/language/portuguese/application_lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/theme/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/theme/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/theme/_partials/js_vars.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/theme/_partials/js_vars.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/blueline/css/important.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/blueline/css/important.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/blueline/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/blueline/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/blueline/js/blueline.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/blueline/js/blueline.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,35 +23,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="1428" column="55" lean-forward="true" selection-start-line="1428" selection-start-column="55" selection-end-line="1428" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/rate.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="46" column="51" lean-forward="true" selection-start-line="46" selection-start-column="51" selection-end-line="46" selection-end-column="51" />
+            <state relative-caret-position="287">
+              <caret line="347" column="34" selection-start-line="347" selection-start-column="7" selection-end-line="347" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/views/blueline/auth/rate.php">
+        <entry file="file://$PROJECT_DIR$/assets/blueline/js/blueline.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="736">
-              <caret line="48" column="46" lean-forward="true" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
+            <state relative-caret-position="76">
+              <caret line="978" column="21" selection-start-line="978" selection-start-column="21" selection-end-line="978" selection-end-column="22" />
               <folding>
-                <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h2#0;n#div#0;n#div#3;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#h3#0;n#div#2;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h2#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#textarea#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#3;n#!!top" expanded="true" />
+                <element signature="n#src#0;n#img#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/blueline/css/important.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="841">
+              <caret line="334" column="28" selection-start-line="334" selection-start-column="28" selection-end-line="334" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/blueline/theme/_partials/js_vars.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="13" column="85" selection-start-line="13" selection-start-column="58" selection-end-line="13" selection-end-column="85" />
             </state>
           </provider>
         </entry>
@@ -67,27 +63,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>update</find>
-      <find>6xKtdSZaM9iE8KbpRA_hK1QNYuDyPw</find>
-      <find>Exo</find>
-      <find>Montserrat</find>
-      <find>DefaultTabTable</find>
-      <find>Se você é um</find>
-      <find>RatingCategory::all()</find>
-      <find>id_state</find>
-      <find>forgotpass</find>
-      <find>forgotpass.php</find>
-      <find>quotation_question_1</find>
-      <find>quotation_lang</find>
-      <find>event_lang</find>
-      <find>form-signin</find>
-      <find>application_registration_header_desc</find>
-      <find>forgotpass-success</find>
-      <find>application_welcome_back</find>
-      <find>application_email</find>
-      <find>application_rate_integrator_desc</find>
-      <find>form_action</find>
-      <find>$attributes</find>
       <find>view_data['attributes']</find>
       <find>attributes</find>
       <find>form</find>
@@ -97,6 +72,27 @@
       <find>messages_rate_code_used_error</find>
       <find>alert-danger</find>
       <find>%s</find>
+      <find>DataTable</find>
+      <find>&quot;dom&quot;</find>
+      <find>Get current ordering (sorting) that has been applied to the table</find>
+      <find>Set the ordering for the table</find>
+      <find>.DataTable(</find>
+      <find>DataTable(</find>
+      <find>dom</find>
+      <find>&quot;dom&quot;:</find>
+      <find>dom:</find>
+      <find>bPaginate</find>
+      <find>data-media</find>
+      <find>fptip</find>
+      <find>$lang['application_showing_from_to'] = 'Mostrando de _START_ até _END_ de um total de _TOTAL_ registros';</find>
+      <find>sDom</find>
+      <find>SHOW</find>
+      <find>lengthMenuLang</find>
+      <find>showingFromToLang</find>
+      <find>Show _MENU_ entries</find>
+      <find>application_showing_from_to</find>
+      <find>.dataTables_filter</find>
+      <find>lengthMenu</find>
     </findStrings>
     <replaceStrings>
       <replace>solarbid_logo</replace>
@@ -113,17 +109,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/core/MY_Controller.php" />
-        <option value="$PROJECT_DIR$/application/models/RatingPost.php" />
-        <option value="$PROJECT_DIR$/application/models/RatingEvaluation.php" />
-        <option value="$PROJECT_DIR$/application/language/portuguese/application_lang.php" />
         <option value="$PROJECT_DIR$/application/views/blueline/auth/rate.php" />
         <option value="$PROJECT_DIR$/application/views/blueline/auth/rate_error.php" />
         <option value="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" />
-        <option value="$PROJECT_DIR$/assets/blueline/css/important.css" />
         <option value="$PROJECT_DIR$/application/views/blueline/theme/login.php" />
         <option value="$PROJECT_DIR$/application/controllers/rate.php" />
         <option value="$PROJECT_DIR$/application/views/blueline/auth/rate_message.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/flows/view_store_flow.php" />
+        <option value="$PROJECT_DIR$/application/language/portuguese/application_lang.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/theme/_partials/js_vars.php" />
+        <option value="$PROJECT_DIR$/assets/blueline/css/important.css" />
+        <option value="$PROJECT_DIR$/assets/blueline/js/blueline.js" />
       </list>
     </option>
   </component>
@@ -145,6 +141,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -180,12 +177,6 @@
               <item name="saas" type="b2602c69:ProjectViewProjectNode" />
               <item name="saas" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="saas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="saas" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -209,7 +200,33 @@
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="blueline" type="462c0819:PsiDirectoryNode" />
+              <item name="flows" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="saas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="saas" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="blueline" type="462c0819:PsiDirectoryNode" />
               <item name="theme" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="saas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="saas" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="saas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="saas" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="blueline" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="saas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="saas" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="blueline" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="saas" type="b2602c69:ProjectViewProjectNode" />
@@ -220,7 +237,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -254,7 +270,7 @@
     <frame x="0" y="23" width="1920" height="1057" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25239617" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2550586" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Gulp" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -328,41 +344,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Improvements" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/models/RatingEvaluation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="45" lean-forward="true" selection-start-line="4" selection-start-column="45" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/RatingCategory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="43" lean-forward="true" selection-start-line="4" selection-start-column="43" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-334">
-          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/rate_error.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="1428" column="55" lean-forward="true" selection-start-line="1428" selection-start-column="55" selection-end-line="1428" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/blueline/css/ionicons.min.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -370,20 +351,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="332">
           <caret line="27" column="60" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/blueline/css/important.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="330" selection-start-line="330" selection-end-line="330" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/rate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="46" column="51" lean-forward="true" selection-start-line="46" selection-start-column="51" selection-end-line="46" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -396,16 +363,59 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/blueline/auth/rate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="48" column="46" lean-forward="true" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
+        <state relative-caret-position="448">
+          <caret line="30" column="33" lean-forward="true" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/rate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="46" column="51" selection-start-line="46" selection-start-column="51" selection-end-line="46" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/blueline/js/plugins/datatables.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="9" column="12" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/flows/view_store_flow.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="30" column="14" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/theme/_partials/js_vars.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="13" column="85" selection-start-line="13" selection-start-column="58" selection-end-line="13" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="347" column="34" selection-start-line="347" selection-start-column="7" selection-end-line="347" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/blueline/css/important.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="841">
+          <caret line="334" column="28" selection-start-line="334" selection-start-column="28" selection-end-line="334" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/blueline/js/blueline.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="978" column="21" selection-start-line="978" selection-start-column="21" selection-end-line="978" selection-end-column="22" />
           <folding>
-            <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h2#0;n#div#0;n#div#3;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#h3#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h2#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#src#0;n#img#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

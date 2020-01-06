@@ -920,6 +920,7 @@ $(".summernote-big").summernote({
         ],
         oLanguage: {
             sSearch: "",
+            sLengthMenu: lengthMenuLang,
             sInfo: showingFromToLang,
             sInfoEmpty: showingFromToEmptyLang,
             sEmptyTable: noDataYetLang,
@@ -939,6 +940,7 @@ $(".summernote-big").summernote({
         ],
         oLanguage: {
             sSearch: "",
+            sLengthMenu: lengthMenuLang,
             sInfo: showingFromToLang,
             sInfoEmpty: showingFromToEmptyLang,
             sEmptyTable: " ",
@@ -958,6 +960,7 @@ $(".summernote-big").summernote({
         ],
         oLanguage: {
             sSearch: "",
+            sLengthMenu: lengthMenuLang,
             sInfo: showingFromToLang,
             sInfoEmpty: showingFromToEmptyLang,
             sEmptyTable: " ",
@@ -971,13 +974,16 @@ $(".summernote-big").summernote({
         }
     }), $("table.data-sorting").dataTable({
         iDisplayLength: 25,
-        bLengthChange: !1,
+        bLengthChange: !0,
+        "bPaginate": true,
+        "sDom":'fptipl',
         aoColumns: t,
         aaSorting: [
             [0, "desc"]
         ],
         oLanguage: {
             sSearch: "",
+            sLengthMenu: lengthMenuLang,
             sInfo: showingFromToLang,
             sInfoEmpty: showingFromToEmptyLang,
             sEmptyTable: noDataYetLang,
@@ -994,6 +1000,7 @@ $(".summernote-big").summernote({
         ],
         oLanguage: {
             sSearch: "",
+            sLengthMenu: lengthMenuLang,
             sInfo: showingFromToLang,
             sInfoEmpty: showingFromToEmptyLang,
             sEmptyTable: noDataYetLang,
@@ -1016,6 +1023,7 @@ $(".summernote-big").summernote({
         }],
         oLanguage: {
             sSearch: "",
+            sLengthMenu: lengthMenuLang,
             sInfo: showingFromToLang,
             sInfoEmpty: showingFromToEmptyLang,
             sEmptyTable: noDataYetLang,

@@ -9,6 +9,8 @@ var altDateFormat = '<?=$dateformat?>';
 var actUriSubmenu = '<?=$act_uri_submenu?>';
 var actUri = '<?=$act_uri?>';
 
+var lengthMenuLang = '<?=addslashes($this->lang->line('application_show_n_entries'))?>';
+console.log(lengthMenuLang);
 var showingFromToLang = '<?=addslashes($this->lang->line('application_showing_from_to'))?>';
 var showingFromToEmptyLang = '<?=addslashes($this->lang->line('application_showing_from_to_empty'))?>';
 var noDataYetLang = '<?=addslashes($this->lang->line('application_no_data_yet'))?>';

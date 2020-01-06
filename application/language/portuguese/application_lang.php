@@ -1442,3 +1442,4 @@ $lang['application_rate_attendance'] = 'Atendimento';
 $lang['application_rate_agility'] = 'Agilidade';
 $lang['application_rate_quality'] = 'Qualidade';
 $lang['application_rate_safety'] = 'Segurança';
+$lang['application_show_n_entries'] = 'Mostrar _MENU_ registros';
