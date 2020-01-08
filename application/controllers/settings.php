@@ -49,12 +49,12 @@ class Settings extends MY_Controller
             $this->lang->line('application_ticket') => 'settings/ticket',
             $this->lang->line('application_smtp_settings') => 'settings/smtp_settings',
 
-            'devider5' => 'devider',
+            'devider3' => 'devider',
 
             $this->lang->line('application_custom_css') => 'settings/customize',
             $this->lang->line('application_theme_options') => 'settings/themeoptions',
 
-            'devider6' => 'devider',
+            'devider4' => 'devider',
 
             $this->lang->line('application_logs') => 'settings/logs',
         ];

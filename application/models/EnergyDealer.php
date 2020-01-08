@@ -5,12 +5,12 @@ class EnergyDealer extends ActiveRecord\Model{
     static $table_name = 'energy_dealer';
 
 //    public static $belongs_to = [
-//        ['table', "foreign_key" => 'id'],
+//        ['dealer_activity_tariff', "foreign_key" => 'id'],
 //    ];
 
-//    public static $has_many = [
-//        ['table', 'through' => 'schema_id'],
-//    ];
+    public static $has_many = [
+        ['dealer_activity_tariff', 'foreign_key' => 'id'],
+    ];
 
 
 }

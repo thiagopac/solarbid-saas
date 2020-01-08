@@ -2,10 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4155379a-ef05-425d-ab57-3fe4d1d0797d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/application/models/DealerActivityTariff.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/blueline/parameterization/_tariffform.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/blueline/parameterization/_wildcardform.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/blueline/parameterization/dealers.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/blueline/parameterization/wildcard_listing.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/parameterization.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/parameterization.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/settings.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/language/portuguese/application_lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/language/portuguese/application_lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Activity.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Activity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/EnergyDealer.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/EnergyDealer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/parameterization/_areaform.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/parameterization/_dealerform.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/views/blueline/theme/_partials/js_vars.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/theme/_partials/js_vars.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/blueline/css/important.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/blueline/css/important.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/blueline/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/blueline/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/blueline/js/blueline.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/blueline/js/blueline.js" afterDir="false" />
     </list>
@@ -21,19 +31,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="347" column="34" selection-start-line="347" selection-start-column="7" selection-end-line="347" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/blueline/js/blueline.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="978" column="21" selection-start-line="978" selection-start-column="21" selection-end-line="978" selection-end-column="22" />
+            <state relative-caret-position="623">
+              <caret line="995" column="9" selection-start-line="995" selection-start-column="9" selection-end-line="995" selection-end-column="9" />
               <folding>
                 <element signature="n#src#0;n#img#0;n#!!top" expanded="true" />
               </folding>
@@ -42,19 +43,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/blueline/css/important.css">
+        <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="841">
-              <caret line="334" column="28" selection-start-line="334" selection-start-column="28" selection-end-line="334" selection-end-column="28" />
+            <state relative-caret-position="64">
+              <caret line="4" column="25" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/controllers/parameterization.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="399" column="40" selection-start-line="399" selection-start-column="40" selection-end-line="399" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/blueline/theme/_partials/js_vars.php">
+        <entry file="file://$PROJECT_DIR$/application/views/blueline/parameterization/_tariffform.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="13" column="85" selection-start-line="13" selection-start-column="58" selection-end-line="13" selection-end-column="85" />
+            <state relative-caret-position="432">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
             </state>
           </provider>
         </entry>
@@ -63,36 +73,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>view_data['attributes']</find>
-      <find>attributes</find>
-      <find>form</find>
-      <find>forgotpass-info</find>
-      <find>messages_request_registration_error</find>
-      <find>messages_rate_save_error</find>
-      <find>messages_rate_code_used_error</find>
-      <find>alert-danger</find>
-      <find>%s</find>
-      <find>DataTable</find>
-      <find>&quot;dom&quot;</find>
-      <find>Get current ordering (sorting) that has been applied to the table</find>
-      <find>Set the ordering for the table</find>
-      <find>.DataTable(</find>
-      <find>DataTable(</find>
-      <find>dom</find>
-      <find>&quot;dom&quot;:</find>
-      <find>dom:</find>
-      <find>bPaginate</find>
-      <find>data-media</find>
-      <find>fptip</find>
-      <find>$lang['application_showing_from_to'] = 'Mostrando de _START_ até _END_ de um total de _TOTAL_ registros';</find>
-      <find>sDom</find>
-      <find>SHOW</find>
-      <find>lengthMenuLang</find>
-      <find>showingFromToLang</find>
-      <find>Show _MENU_ entries</find>
       <find>application_showing_from_to</find>
       <find>.dataTables_filter</find>
       <find>lengthMenu</find>
+      <find>application_energy_dealers</find>
+      <find>application_activities</find>
+      <find>ion-</find>
+      <find>application_add_dealer</find>
+      <find>application_add_new</find>
+      <find>application_id</find>
+      <find>id</find>
+      <find>$update_action</find>
+      <find>separator</find>
+      <find>$update_redirect</find>
+      <find>messages_create_success</find>
+      <find>messages_create_error</find>
+      <find>messages_save_success</find>
+      <find>wildcard_delete</find>
+      <find>'conditions'</find>
+      <find>$form_action</find>
+      <find>data-no-search table noclick</find>
+      <find>messages_delete_success</find>
+      <find>application_tariffs</find>
+      <find>application_energy_dealer</find>
+      <find>activity_id</find>
+      <find>application_action</find>
+      <find>console.log(lengthMenuLang);</find>
+      <find>dealer_update</find>
+      <find>no-sea</find>
+      <find>content_view</find>
+      <find>messages_create_exists</find>
     </findStrings>
     <replaceStrings>
       <replace>solarbid_logo</replace>
@@ -109,19 +119,24 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/views/blueline/auth/rate.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/auth/rate_error.php" />
-        <option value="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/theme/login.php" />
-        <option value="$PROJECT_DIR$/application/controllers/rate.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/auth/rate_message.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/flows/view_store_flow.php" />
-        <option value="$PROJECT_DIR$/application/language/portuguese/application_lang.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/parameterization/_wildcardform.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/parameterization/_dealerform.php" />
+        <option value="$PROJECT_DIR$/application/models/Activity.php" />
+        <option value="$PROJECT_DIR$/application/models/EnergyDealer.php" />
+        <option value="$PROJECT_DIR$/application/models/DealerActivityTariff.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/parameterization/wildcard_listing.php" />
         <option value="$PROJECT_DIR$/application/views/blueline/theme/_partials/js_vars.php" />
-        <option value="$PROJECT_DIR$/assets/blueline/css/important.css" />
-        <option value="$PROJECT_DIR$/assets/blueline/js/blueline.js" />
+        <option value="$PROJECT_DIR$/application/views/blueline/parameterization/_tariffform.php.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/parameterization/_tariffform.php" />
+        <option value="$PROJECT_DIR$/application/language/portuguese/messages_lang.php" />
+        <option value="$PROJECT_DIR$/application/controllers/parameterization.php" />
       </list>
     </option>
+  </component>
+  <component name="PhpServers">
+    <servers>
+      <server host="localhost" id="b9f09126-4c32-4e03-8a10-4b660d33fb79" name="localhost" />
+    </servers>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -192,23 +207,7 @@
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="blueline" type="462c0819:PsiDirectoryNode" />
-              <item name="auth" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="saas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="saas" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="blueline" type="462c0819:PsiDirectoryNode" />
-              <item name="flows" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="saas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="saas" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="blueline" type="462c0819:PsiDirectoryNode" />
-              <item name="theme" type="462c0819:PsiDirectoryNode" />
+              <item name="parameterization" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="saas" type="b2602c69:ProjectViewProjectNode" />
@@ -231,6 +230,13 @@
             <path>
               <item name="saas" type="b2602c69:ProjectViewProjectNode" />
               <item name="saas" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="blueline" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="saas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="saas" type="462c0819:PsiDirectoryNode" />
               <item name="database-model" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -240,6 +246,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="Constants" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -248,9 +255,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/application/views/blueline/parameterization" />
+      <recent name="$PROJECT_DIR$/application/models" />
       <recent name="$PROJECT_DIR$/application/views/blueline/auth" />
       <recent name="$PROJECT_DIR$/application/controllers" />
-      <recent name="$PROJECT_DIR$/application/models" />
       <recent name="$PROJECT_DIR$/application/views/blueline/clients" />
     </key>
   </component>
@@ -270,7 +278,7 @@
     <frame x="0" y="23" width="1920" height="1057" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2550586" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25772098" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Gulp" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -278,7 +286,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32982087" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39936775" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -344,79 +352,80 @@
     <option name="LAST_COMMIT_MESSAGE" value="Improvements" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/assets/blueline/css/ionicons.min.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/theme/login.php">
+    <entry file="file://$PROJECT_DIR$/application/controllers/settings.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="27" column="60" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="60" />
+        <state relative-caret-position="-5761">
+          <caret line="56" column="21" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/auth/rate_message.php">
+    <entry file="file://$PROJECT_DIR$/system/helpers/url_helper.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="320">
+          <caret line="532" column="49" lean-forward="true" selection-start-line="532" selection-start-column="49" selection-end-line="532" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/auth/rate.php">
+    <entry file="file://$PROJECT_DIR$/application/models/EnergyDealer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="30" column="33" lean-forward="true" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+        <state relative-caret-position="240">
+          <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/rate.php">
+    <entry file="file://$PROJECT_DIR$/application/models/Activity.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/DealerActivityTariff.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="14" column="6" lean-forward="true" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/parameterization/wildcard_listing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/parameterization/_wildcardform.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
-          <caret line="46" column="51" selection-start-line="46" selection-start-column="51" selection-end-line="46" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/blueline/js/plugins/datatables.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" column="12" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/flows/view_store_flow.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="30" column="14" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/theme/_partials/js_vars.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="13" column="85" selection-start-line="13" selection-start-column="58" selection-end-line="13" selection-end-column="85" />
+          <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="347" column="34" selection-start-line="347" selection-start-column="7" selection-end-line="347" selection-end-column="34" />
+        <state relative-caret-position="64">
+          <caret line="4" column="25" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/blueline/css/important.css">
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/parameterization/_dealerform.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="841">
-          <caret line="334" column="28" selection-start-line="334" selection-start-column="28" selection-end-line="334" selection-end-column="28" />
+        <state relative-caret-position="288">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/blueline/js/blueline.js">
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/parameterization/_tariffform.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="978" column="21" selection-start-line="978" selection-start-column="21" selection-end-line="978" selection-end-column="22" />
-          <folding>
-            <element signature="n#src#0;n#img#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="432">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/parameterization.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="399" column="40" selection-start-line="399" selection-start-column="40" selection-end-line="399" selection-end-column="40" />
         </state>
       </provider>
     </entry>

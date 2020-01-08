@@ -950,13 +950,14 @@ $(".summernote-big").summernote({
             }
         }
     }), $("table.data-no-search").dataTable({
-        iDisplayLength: 8,
+        iDisplayLength: 25,
         stateSave: !0,
-        bLengthChange: !1,
-        bFilter: !1,
+        bLengthChange: !0,
+        "bPaginate": true,
+        "sDom":'tipl',
         bInfo: !1,
         aaSorting: [
-            [1, "desc"]
+            [0, "desc"]
         ],
         oLanguage: {
             sSearch: "",
@@ -971,6 +972,27 @@ $(".summernote-big").summernote({
         },
         fnDrawCallback: function(t) {
             $(this).parent().toggle(0 < t.fnRecordsDisplay()), t._iDisplayLength > t.fnRecordsDisplay() && $(t.nTableWrapper).find(".dataTables_paginate").hide()
+        }
+    }),$("table.data-no-search-wildcard").dataTable({
+        iDisplayLength: 10,
+        stateSave: !0,
+        bLengthChange: !0,
+        "bPaginate": true,
+        "sDom":'tipl',
+        bInfo: !1,
+        aaSorting: [
+            [0, "desc"]
+        ],
+        oLanguage: {
+            sSearch: "",
+            sLengthMenu: lengthMenuLang,
+            sInfo: showingFromToLang,
+            sInfoEmpty: showingFromToEmptyLang,
+            sEmptyTable: " ",
+            oPaginate: {
+                sNext: showingNextArrow,
+                sPrevious: showingPreviousArrow
+            }
         }
     }), $("table.data-sorting").dataTable({
         iDisplayLength: 25,

@@ -299,3 +299,9 @@ $lang['messages_rate_code_used_error'] = "Esta avaliação já foi finalizada";
 $lang['messages_rate_code_inexistent_error'] = "Código para avaliação inválido";
 $lang['messages_rate_saved_success'] = "Avaliação enviada com sucesso";
 $lang['messages_rate_saved_error'] = "Avaliação enviada com sucesso";
+
+$lang['messages_create_success'] = "Registro adicionado com sucesso";
+$lang['messages_create_error'] = "Erro ao adicionar registro";
+$lang['messages_create_exists'] = "Um registro com estas propriedades já existe";
+$lang['messages_delete_success'] = "Registro removido com sucesso";
+$lang['messages_delete_error'] = "Erro ao remover registro";
