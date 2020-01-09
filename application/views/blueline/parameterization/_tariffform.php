@@ -12,7 +12,7 @@ echo form_open_multipart($form_action, $attributes);
             $dealers[$dealer->id] = $dealer->name;
         endforeach;
 
-        if(isset($object)){$dealer_selected = $dealer->id;}
+        if(isset($object)){$dealer_selected = $object->energy_dealer->id;}
 
         echo form_dropdown('energy_dealer_id', $dealers, $dealer_selected, 'style="width:100%" class="chosen-select"');?>
     </div>
@@ -26,7 +26,7 @@ echo form_open_multipart($form_action, $attributes);
             $activities[$activity->id] = $activity->name;
         endforeach;
 
-        if(isset($object)){$activity_selected = $activity->id;}
+        if(isset($object)){$activity_selected = $object->activity->id;}
         echo form_dropdown('activity_id', $activities, $activity_selected, 'style="width:100%" class="chosen-select"');?>
     </div>
 

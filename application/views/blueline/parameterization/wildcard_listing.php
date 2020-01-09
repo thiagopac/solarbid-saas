@@ -7,9 +7,11 @@
 		<div class="table-head">
 			<?=$table_title;?>
 				<span class="pull-right">
-					<a href="<?=base_url()?><?=$create_method;?>" class="btn btn-primary" data-toggle="mainmodal">
-						<?=$add_button_title;?>
-					</a>
+                    <?php if ($show_add_button == true) : ?>
+                        <a href="<?=base_url()?><?=$create_method;?>" class="btn btn-primary" data-toggle="mainmodal">
+                            <?=$add_button_title;?>
+                        </a>
+                    <?php endif; ?>
 				</span>
 		</div>
 
@@ -43,13 +45,17 @@
                         <?php endforeach;?>
 
                         <td class="option" width="8%">
-                            <button type="button" class="btn-option delete po" data-toggle="popover" data-placement="left" data-content="<a class='btn btn-danger po-delete ajax-silent' href='<?=base_url()?><?=$delete_method;?>/<?=$object->id;?>'><?=$this->lang->line('application_yes_im_sure');?></a> <button class='btn po-close'><?=$this->lang->line('application_no');?></button> <input type='hidden' name='td-id' class='id' value='<?=$object->id;?>'>"
-                             data-original-title="<b><?=$this->lang->line('application_really_delete');?></b>">
-                                <i class="icon dripicons-cross"></i>
-                            </button>
-                            <a href="<?=base_url()?><?=$update_method?>/<?=$object->id;?>" class="btn-option" data-toggle="mainmodal">
-                                <i class="icon dripicons-gear"></i>
-                            </a>
+                            <?php if ($show_delete_button == true) : ?>
+                                <button type="button" class="btn-option delete po" data-toggle="popover" data-placement="left" data-content="<a class='btn btn-danger po-delete ajax-silent' href='<?=base_url()?><?=$delete_method;?>/<?=$object->id;?>'><?=$this->lang->line('application_yes_im_sure');?></a> <button class='btn po-close'><?=$this->lang->line('application_no');?></button> <input type='hidden' name='td-id' class='id' value='<?=$object->id;?>'>"
+                                 data-original-title="<b><?=$this->lang->line('application_really_delete');?></b>">
+                                    <i class="icon dripicons-cross"></i>
+                            <?php endif; ?>
+                            <?php if ($show_edit_button == true) : ?>
+                                </button>
+                                <a href="<?=base_url()?><?=$update_method?>/<?=$object->id;?>" class="btn-option" data-toggle="mainmodal">
+                                    <i class="icon dripicons-gear"></i>
+                                </a>
+                            <?php endif; ?>
                         </td>
                     </tr>
 

@@ -7,12 +7,11 @@
                 echo '<div class="list-group-item-spacer"></div>';
                 continue;
             }
+
             $badge = '';
             $active = '';
-            if ($value == 'settings/updates' && $update_count) {
-                $badge = '<span class="badge badge-success">' . $update_count . '</span>';
-            }
-            if (str_replace('settings/', '', $value) == $breadcrumb_id) {
+
+            if (str_replace('parameterization/', '', $value) == $breadcrumb_id) {
                 $active = 'active';
             }
             ?>
