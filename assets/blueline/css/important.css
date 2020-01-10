@@ -334,3 +334,10 @@ div.dataTables_info {
     margin-top: -26px !important;
     float: right !important;
 }
+
+.dataTables_length select{
+    width:auto !important;
+    border: 0px !important;
+    color: #9ea4a8 !important;
+    font-weight: bold !important;
+}

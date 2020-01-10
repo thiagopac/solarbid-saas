@@ -2,19 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4155379a-ef05-425d-ab57-3fe4d1d0797d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/application/models/FaqCustomer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/models/FaqIntegrator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/models/IntegratorBenefit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/controllers/parameterization.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/parameterization.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/language/portuguese/application_lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/language/portuguese/application_lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/parameterization/_inverterform.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/parameterization/_faqcustomerform.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/parameterization/_moduleform.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/parameterization/_tariffform.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/parameterization/_tariffform.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/parameterization/dealers.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/parameterization/dealers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/parameterization/parameterization_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/parameterization/parameterization_menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/parameterization/_faqcustomerform.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/parameterization/_faqform.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/blueline/parameterization/_wildcardform.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/parameterization/_wildcardform.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/views/blueline/parameterization/wildcard_listing.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/parameterization/wildcard_listing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/theme/modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/theme/modal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/blueline/theme/modal_nojs.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/blueline/theme/modal_nojs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/blueline/css/important.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/blueline/css/important.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +25,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="793">
-              <caret line="1455" column="27" selection-start-line="1455" selection-start-column="7" selection-end-line="1455" selection-end-column="27" />
+            <state relative-caret-position="765">
+              <caret line="1466" column="54" lean-forward="true" selection-start-line="1466" selection-start-column="54" selection-end-line="1466" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -39,8 +34,35 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/controllers/parameterization.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="418" column="86" selection-start-line="418" selection-start-column="86" selection-end-line="418" selection-end-column="86" />
+            <state relative-caret-position="419">
+              <caret line="636" column="37" selection-start-line="636" selection-start-column="37" selection-end-line="636" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/blueline/parameterization/_wildcardform.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="20" column="69" selection-start-line="20" selection-start-column="69" selection-end-line="20" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/PricingField.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sparks/php-activerecord/0.0.3/vendor/php-activerecord/lib/Model.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="415">
+              <caret line="80" column="19" lean-forward="true" selection-start-line="80" selection-start-column="19" selection-end-line="80" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -49,21 +71,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>'conditions'</find>
-      <find>$form_action</find>
-      <find>data-no-search table noclick</find>
-      <find>messages_delete_success</find>
-      <find>application_tariffs</find>
-      <find>application_energy_dealer</find>
-      <find>activity_id</find>
-      <find>application_action</find>
-      <find>console.log(lengthMenuLang);</find>
-      <find>dealer_update</find>
-      <find>messages_create_exists</find>
-      <find>admin</find>
-      <find>no-sea</find>
-      <find>content_view</find>
-      <find>$options</find>
       <find>$title</find>
       <find>nojs</find>
       <find>modal_nojs</find>
@@ -79,10 +86,28 @@
       <find>faq_customer</find>
       <find>add_button_title</find>
       <find>application_faq_customer</find>
+      <find>faq_customers</find>
+      <find>;;</find>
+      <find>object_properies_draw</find>
+      <find>application_benefits</find>
+      <find>integrator_plans</find>
+      <find>application_integrator_plans</find>
+      <find>application_pricing_fields</find>
+      <find>application_power_bottom</find>
+      <find>application_power_top</find>
+      <find>application_faq_customers</find>
+      <find>price</find>
+      <find>_wildcardform</find>
+      <find>wildcard modal behavior elements</find>
+      <find>behavior elements</find>
+      <find>$content_view</find>
     </findStrings>
     <replaceStrings>
       <replace>solarbid_logo</replace>
       <replace>$screening_company</replace>
+      <replace>object_properties_draw</replace>
+      <replace>wildcard modal behavior elements</replace>
+      <replace>$modal_content_view</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/application/helpers</dir>
@@ -95,16 +120,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/views/blueline/parameterization/_tariffform.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/parameterization/wildcard_listing.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/parameterization/dealers.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/theme/modal.php" />
-        <option value="$PROJECT_DIR$/application/views/blueline/theme/modal_nojs.php" />
         <option value="$PROJECT_DIR$/application/views/blueline/parameterization/parameterization_menu.php" />
         <option value="$PROJECT_DIR$/application/models/FaqCustomer.php" />
         <option value="$PROJECT_DIR$/application/models/FaqIntegrator.php" />
-        <option value="$PROJECT_DIR$/application/language/portuguese/application_lang.php" />
         <option value="$PROJECT_DIR$/application/views/blueline/parameterization/_faqcustomerform.php" />
+        <option value="$PROJECT_DIR$/assets/blueline/css/important.css" />
+        <option value="$PROJECT_DIR$/application/models/IntegratorBenefit.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/parameterization/wildcard_listing.php" />
+        <option value="$PROJECT_DIR$/application/language/portuguese/application_lang.php" />
+        <option value="$PROJECT_DIR$/application/models/PricingField.php" />
+        <option value="$PROJECT_DIR$/application/views/blueline/parameterization/_wildcardform.php" />
         <option value="$PROJECT_DIR$/application/controllers/parameterization.php" />
       </list>
     </option>
@@ -334,62 +359,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="Improvements" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/theme/modal.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="31" column="80" selection-start-line="31" selection-start-column="80" selection-end-line="31" selection-end-column="80" />
-          <folding>
-            <element signature="n#style#0;n#h4#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/parameterization/parameterization_menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="80" lean-forward="true" selection-start-line="17" selection-start-column="80" selection-end-line="17" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Freight.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/IntegratorPlan.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="12" column="8" lean-forward="true" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/FaqCustomer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/FaqIntegrator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="793">
-          <caret line="1455" column="27" selection-start-line="1455" selection-start-column="7" selection-end-line="1455" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/parameterization/_tariffform.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blueline/parameterization/_faqcustomerform.php">
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/parameterization/_faqform.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
           <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
@@ -399,10 +369,66 @@
     <entry file="file://$PROJECT_DIR$/application/views/blueline/parameterization/_departmentform.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/assets/blueline/css/important.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="339" column="27" selection-start-line="339" selection-start-column="27" selection-end-line="339" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/IntegratorPlan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" column="43" lean-forward="true" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/IntegratorBenefit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/language/portuguese/application_lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="1466" column="54" lean-forward="true" selection-start-line="1466" selection-start-column="54" selection-end-line="1466" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/parameterization/wildcard_listing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="38" column="38" lean-forward="true" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sparks/php-activerecord/0.0.3/vendor/php-activerecord/lib/Model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="80" column="19" lean-forward="true" selection-start-line="80" selection-start-column="19" selection-end-line="80" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/PricingField.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/blueline/parameterization/_wildcardform.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="20" column="69" selection-start-line="20" selection-start-column="69" selection-end-line="20" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/parameterization.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="418" column="86" selection-start-line="418" selection-start-column="86" selection-end-line="418" selection-end-column="86" />
+        <state relative-caret-position="419">
+          <caret line="636" column="37" selection-start-line="636" selection-start-column="37" selection-end-line="636" selection-end-column="37" />
         </state>
       </provider>
     </entry>

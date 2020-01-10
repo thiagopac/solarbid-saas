@@ -6,12 +6,37 @@ echo form_open_multipart($form_action, $attributes);
     <input id="class_name" type="hidden" name="class_name"  value="<?=$class_name;?>"/>
     <input id="redirect" type="hidden" name="redirect"  value="<?php echo $redirect;?>"/>
 
-    <div class="form-group">
-        <label for="name">
-            <?=$this->lang->line('application_name');?> *
-        </label>
-        <input id="name" type="text" name="name" class="required form-control"  value="<?php if(isset($object)){echo $object->name;}?>"  required/>
-    </div>
+<?php
+$arr = (array) $object;
+
+$idx = 0;
+
+foreach ($arr as $key => $value) : ?>
+
+    <?php if ($idx == 1) : ?>
+        <?php $arr_field_names = $arr[$key]; ?>
+
+        <?php foreach ($arr_field_names as $field_name => $field_value) : ?>
+
+            <?php if ($field_name != 'id' && $field_name != 'deleted') : ?>
+
+                <div class="form-group">
+                    <label for="name">
+                        <?=$this->lang->line("application_$field_name");?> *
+                    </label>
+                    <input id="<?=$field_name?>" type="text" name="<?=$field_name?>" class="required form-control"  value="<?php if(isset($object)){echo $field_value;}?>"  required/>
+                </div>
+
+            <?php endif; ?>
+
+       <?php endforeach;  ?>
+
+    <?php endif; ?>
+
+    <?php $idx++; ?>
+
+<?php endforeach; ?>
+
     <div class="modal-footer">
         <input type="submit" class="btn btn-primary" value="
 			<?=$this->lang->line('application_save');?>"/>

@@ -29,12 +29,12 @@
 
                     <tr id="<?=$object->id;?>">
 
-                        <?php foreach ($object_properies_draw as $index => $property):?>
+                        <?php foreach ($object_properties_draw as $index => $property):?>
                             <td style="<?php echo $index==0 ? 'width:50px' : '';?>">
                                 <?php
 
                                 if ($object_classes_draw[$index] == 'self'){
-                                    if ($object->$property)
+                                    if (isset($object->$property))
                                         echo $object->$property;
                                 }else{
                                     echo $object->{$object_classes_draw[$index]}->$property;

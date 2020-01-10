@@ -35,6 +35,11 @@ class Parameterization extends MY_Controller{
             $this->lang->line('application_structure_types') => 'parameterization/structure_types',
             'devider4' => 'devider',
             $this->lang->line('application_faq_customers') => 'parameterization/faq_customer',
+            $this->lang->line('application_faq_integrators') => 'parameterization/faq_integrator',
+            'devider5' => 'devider',
+            $this->lang->line('application_integrator_benefits') => 'parameterization/integrator_benefits',
+            $this->lang->line('application_integrators_plans') => 'parameterization/integrator_plans',
+            $this->lang->line('application_pricing_fields') => 'parameterization/pricing_fields',
         ];
 
         $this->view_data['iconlist'] = [
@@ -47,6 +52,10 @@ class Parameterization extends MY_Controller{
             'parameterization/tariffs' => 'dripicons-to-do',
             'parameterization/structure_types' => 'dripicons-vibrate',
             'parameterization/faq_customer' => 'dripicons-question',
+            'parameterization/faq_integrator' => 'dripicons-question',
+            'parameterization/integrator_benefits' => 'dripicons-checklist',
+            'parameterization/integrator_plans' => 'dripicons-jewel',
+            'parameterization/pricing_fields' => 'dripicons-list',
         ];
 
         $this->config->load('defaults');
@@ -74,7 +83,7 @@ class Parameterization extends MY_Controller{
         $this->view_data['add_button_title'] = $this->lang->line('application_add_new');
         $this->content_view = 'parameterization/wildcard_listing';
         $this->view_data['show_add_button'] = $this->user->admin == 1;
-        $this->view_data['show_edit_button'] = $this->user->admin == 1;;
+        $this->view_data['show_edit_button'] = $this->user->admin == 1;
         $this->view_data['show_delete_button'] = false;
 
         //table elements
@@ -83,15 +92,15 @@ class Parameterization extends MY_Controller{
         //to print properties of nested objects, specify the model name or use 'self' for current collection object class
         $this->view_data['object_classes_draw'] = ['self','self'];
         //pass the name of properties to draw. Follow the order of the object_classes_draw
-        $this->view_data['object_properies_draw'] = ['id', 'name'];
+        $this->view_data['object_properties_draw'] = ['id', 'name'];
 
-        //behavior elements
+        //wildcard modal behavior elements
         $modal_title = $this->lang->line('application_department');
-        $content_view = '_wildcardform';
+        $modal_content_view = '_wildcardform';
         $redirect = 'departments';
 
-        $this->view_data['update_method'] = 'parameterization/wildcard_update/'.$class_name.'/'.$modal_title.'/'.$content_view.'/'.$redirect;
-        $this->view_data['create_method'] = 'parameterization/wildcard_create/'.$class_name.'/'.$modal_title.'/'.$content_view.'/'.$redirect;
+        $this->view_data['update_method'] = 'parameterization/wildcard_update/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
+        $this->view_data['create_method'] = 'parameterization/wildcard_create/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
         $this->view_data['delete_method'] = 'parameterization/wildcard_delete/'.$class_name;
     }
 
@@ -107,7 +116,7 @@ class Parameterization extends MY_Controller{
         $this->view_data['add_button_title'] = $this->lang->line('application_add_new');
         $this->content_view = 'parameterization/wildcard_listing';
         $this->view_data['show_add_button'] = $this->user->admin == 1;
-        $this->view_data['show_edit_button'] = $this->user->admin == 1;;
+        $this->view_data['show_edit_button'] = $this->user->admin == 1;
         $this->view_data['show_delete_button'] = false;
 
         //table elements
@@ -116,15 +125,15 @@ class Parameterization extends MY_Controller{
         //to print properties of nested objects, specify the model name or use 'self' for current collection object class
         $this->view_data['object_classes_draw'] = ['self','self'];
         //pass the name of properties to draw. Follow the order of the object_classes_draw
-        $this->view_data['object_properies_draw'] = ['id', 'name'];
+        $this->view_data['object_properties_draw'] = ['id', 'name'];
 
-        //behavior elements
+        //wildcard modal behavior elements
         $modal_title = $this->lang->line('application_module');
-        $content_view = '_wildcardform';
+        $modal_content_view = '_wildcardform';
         $redirect = 'modules';
 
-        $this->view_data['update_method'] = 'parameterization/wildcard_update/'.$class_name.'/'.$modal_title.'/'.$content_view.'/'.$redirect;
-        $this->view_data['create_method'] = 'parameterization/wildcard_create/'.$class_name.'/'.$modal_title.'/'.$content_view.'/'.$redirect;
+        $this->view_data['update_method'] = 'parameterization/wildcard_update/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
+        $this->view_data['create_method'] = 'parameterization/wildcard_create/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
         $this->view_data['delete_method'] = 'parameterization/wildcard_delete/'.$class_name;
     }
 
@@ -140,7 +149,7 @@ class Parameterization extends MY_Controller{
         $this->view_data['add_button_title'] = $this->lang->line('application_add_new');
         $this->content_view = 'parameterization/wildcard_listing';
         $this->view_data['show_add_button'] = $this->user->admin == 1;
-        $this->view_data['show_edit_button'] = $this->user->admin == 1;;
+        $this->view_data['show_edit_button'] = $this->user->admin == 1;
         $this->view_data['show_delete_button'] = false;
 
         //table elements
@@ -149,15 +158,15 @@ class Parameterization extends MY_Controller{
         //to print properties of nested objects, specify the model name or use 'self' for current collection object class
         $this->view_data['object_classes_draw'] = ['self','self'];
         //pass the name of properties to draw. Follow the order of the object_classes_draw
-        $this->view_data['object_properies_draw'] = ['id', 'name'];
+        $this->view_data['object_properties_draw'] = ['id', 'name'];
 
-        //behavior elements
+        //wildcard modal behavior elements
         $modal_title = $this->lang->line('application_inverter');
-        $content_view = '_wildcardform';
+        $modal_content_view = '_wildcardform';
         $redirect = 'inverters';
 
-        $this->view_data['update_method'] = 'parameterization/wildcard_update/'.$class_name.'/'.$modal_title.'/'.$content_view.'/'.$redirect;
-        $this->view_data['create_method'] = 'parameterization/wildcard_create/'.$class_name.'/'.$modal_title.'/'.$content_view.'/'.$redirect;
+        $this->view_data['update_method'] = 'parameterization/wildcard_update/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
+        $this->view_data['create_method'] = 'parameterization/wildcard_create/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
         $this->view_data['delete_method'] = 'parameterization/wildcard_delete/'.$class_name;
     }
 
@@ -166,7 +175,7 @@ class Parameterization extends MY_Controller{
         $this->view_data['breadcrumb_id'] = 'dealers';
 
         $this->view_data['show_add_button'] = $this->user->admin == 1;
-        $this->view_data['show_edit_button'] = $this->user->admin == 1;;
+        $this->view_data['show_edit_button'] = $this->user->admin == 1;
         $this->view_data['show_delete_button'] = false;
 
         $dealers = EnergyDealer::find('all');
@@ -239,7 +248,7 @@ class Parameterization extends MY_Controller{
         $this->view_data['add_button_title'] = $this->lang->line('application_add_new');
         $this->content_view = 'parameterization/wildcard_listing';
         $this->view_data['show_add_button'] = $this->user->admin == 1;
-        $this->view_data['show_edit_button'] = $this->user->admin == 1;;
+        $this->view_data['show_edit_button'] = $this->user->admin == 1;
         $this->view_data['show_delete_button'] = false;
 
         //table elements
@@ -248,15 +257,15 @@ class Parameterization extends MY_Controller{
         //to print properties of nested objects, specify the model name or use 'self' for current collection object class
         $this->view_data['object_classes_draw'] = ['self','self'];
         //pass the name of properties to draw. Follow the order of the object_classes_draw
-        $this->view_data['object_properies_draw'] = ['id', 'name'];
+        $this->view_data['object_properties_draw'] = ['id', 'name'];
 
-        //behavior elements
+        //wildcard modal behavior elements
         $modal_title = $this->lang->line('application_activity');
-        $content_view = '_wildcardform';
+        $modal_content_view = '_wildcardform';
         $redirect = 'activities';
 
-        $this->view_data['update_method'] = 'parameterization/wildcard_update/'.$class_name.'/'.$modal_title.'/'.$content_view.'/'.$redirect;
-        $this->view_data['create_method'] = 'parameterization/wildcard_create/'.$class_name.'/'.$modal_title.'/'.$content_view.'/'.$redirect;
+        $this->view_data['update_method'] = 'parameterization/wildcard_update/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
+        $this->view_data['create_method'] = 'parameterization/wildcard_create/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
         $this->view_data['delete_method'] = 'parameterization/wildcard_delete/'.$class_name;
 
     }
@@ -274,7 +283,7 @@ class Parameterization extends MY_Controller{
         $this->view_data['add_button_title'] = $this->lang->line('application_add_new');
         $this->content_view = 'parameterization/wildcard_listing';
         $this->view_data['show_add_button'] = $this->user->admin == 1;
-        $this->view_data['show_edit_button'] = $this->user->admin == 1;;
+        $this->view_data['show_edit_button'] = $this->user->admin == 1;
         $this->view_data['show_delete_button'] = false;
 
         //table elements
@@ -283,9 +292,9 @@ class Parameterization extends MY_Controller{
         //to print properties of nested objects, specify the model name or use 'self' for current collection object class
         $this->view_data['object_classes_draw'] = ['self', 'energy_dealer','activity','self'];
         //pass the name of properties to draw. Follow the order of the object_classes_draw
-        $this->view_data['object_properies_draw'] = ['id', 'name','name','value'];
+        $this->view_data['object_properties_draw'] = ['id', 'name','name','value'];
 
-        //behavior elements
+        //wildcard modal behavior elements
         $this->view_data['update_method'] = 'parameterization/tariff_update';
         $this->view_data['create_method'] = 'parameterization/tariff_create';
         $this->view_data['delete_method'] = 'parameterization/tariff_delete';
@@ -350,7 +359,7 @@ class Parameterization extends MY_Controller{
         $this->view_data['add_button_title'] = $this->lang->line('application_add_new');
         $this->content_view = 'parameterization/wildcard_listing';
         $this->view_data['show_add_button'] = $this->user->admin == 1;
-        $this->view_data['show_edit_button'] = $this->user->admin == 1;;
+        $this->view_data['show_edit_button'] = $this->user->admin == 1;
         $this->view_data['show_delete_button'] = false;
 
         //table elements
@@ -359,15 +368,15 @@ class Parameterization extends MY_Controller{
         //to print properties of nested objects, specify the model name or use 'self' for current collection object class
         $this->view_data['object_classes_draw'] = ['self','self'];
         //pass the name of properties to draw. Follow the order of the object_classes_draw
-        $this->view_data['object_properies_draw'] = ['id', 'name'];
+        $this->view_data['object_properties_draw'] = ['id', 'name'];
 
-        //behavior elements
+        //wildcard modal behavior elements
         $modal_title = $this->lang->line('application_pv_provider');
-        $content_view = '_wildcardform';
+        $modal_content_view = '_wildcardform';
         $redirect = 'pv_providers';
 
-        $this->view_data['update_method'] = 'parameterization/wildcard_update/'.$class_name.'/'.$modal_title.'/'.$content_view.'/'.$redirect;
-        $this->view_data['create_method'] = 'parameterization/wildcard_create/'.$class_name.'/'.$modal_title.'/'.$content_view.'/'.$redirect;
+        $this->view_data['update_method'] = 'parameterization/wildcard_update/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
+        $this->view_data['create_method'] = 'parameterization/wildcard_create/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
         $this->view_data['delete_method'] = 'parameterization/wildcard_delete/'.$class_name;
 
     }
@@ -384,7 +393,7 @@ class Parameterization extends MY_Controller{
         $this->view_data['add_button_title'] = $this->lang->line('application_add_new');
         $this->content_view = 'parameterization/wildcard_listing';
         $this->view_data['show_add_button'] = $this->user->admin == 1;
-        $this->view_data['show_edit_button'] = $this->user->admin == 1;;
+        $this->view_data['show_edit_button'] = $this->user->admin == 1;
         $this->view_data['show_delete_button'] = false;
 
         //table elements
@@ -393,15 +402,15 @@ class Parameterization extends MY_Controller{
         //to print properties of nested objects, specify the model name or use 'self' for current collection object class
         $this->view_data['object_classes_draw'] = ['self','self'];
         //pass the name of properties to draw. Follow the order of the object_classes_draw
-        $this->view_data['object_properies_draw'] = ['id', 'name'];
+        $this->view_data['object_properties_draw'] = ['id', 'name'];
 
-        //behavior elements
+        //wildcard modal behavior elements
         $modal_title = $this->lang->line('application_structure_type');
-        $content_view = '_wildcardform';
+        $modal_content_view = '_wildcardform';
         $redirect = 'structure_types';
 
-        $this->view_data['update_method'] = 'parameterization/wildcard_update/'.$class_name.'/'.$modal_title.'/'.$content_view.'/'.$redirect;
-        $this->view_data['create_method'] = 'parameterization/wildcard_create/'.$class_name.'/'.$modal_title.'/'.$content_view.'/'.$redirect;
+        $this->view_data['update_method'] = 'parameterization/wildcard_update/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
+        $this->view_data['create_method'] = 'parameterization/wildcard_create/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
         $this->view_data['delete_method'] = 'parameterization/wildcard_delete/'.$class_name;
     }
 
@@ -413,12 +422,11 @@ class Parameterization extends MY_Controller{
         $this->view_data['breadcrumb_id'] = 'faq_customer';
 
         $this->view_data['show_add_button'] = $this->user->admin == 1;
-        $this->view_data['show_edit_button'] = $this->user->admin == 1;;
-        $this->view_data['show_delete_button'] = false;
+        $this->view_data['show_edit_button'] = $this->user->admin == 1;
+        $this->view_data['show_delete_button'] = $this->user->admin == 1;
 
         $this->view_data['table_title'] = $this->lang->line('application_faq_customers');
         $this->view_data['add_button_title'] = $this->lang->line('application_add_new');
-        $this->content_view = 'parameterization/wildcard_listing';
 
         //table elements
         $this->view_data['collection_objects'] = $class_name::find('all');
@@ -426,17 +434,13 @@ class Parameterization extends MY_Controller{
         //to print properties of nested objects, specify the model name or use 'self' for current collection object class
         $this->view_data['object_classes_draw'] = ['self','self','self'];
         //pass the name of properties to draw. Follow the order of the object_classes_draw
-        $this->view_data['object_properies_draw'] = ['id', 'question', 'answer'];
+        $this->view_data['object_properties_draw'] = ['id', 'question', 'answer'];
 
-        $modal_title = $this->lang->line('application_question');
-        $content_view = '_faqcustomerform';
-        $redirect = 'faq_customer';
+        $this->view_data['update_method'] = 'parameterization/faq_customer_update/';
+        $this->view_data['create_method'] = 'parameterization/faq_customer_create/';
+        $this->view_data['delete_method'] = 'parameterization/faq_customer_delete/';
 
-        $this->view_data['update_method'] = 'parameterization/wildcard_update/'.$class_name.'/'.$modal_title.'/'.$content_view.'/'.$redirect;
-        $this->view_data['create_method'] = 'parameterization/wildcard_create/'.$class_name.'/'.$modal_title.'/'.$content_view.'/'.$redirect;
-        $this->view_data['delete_method'] = 'parameterization/wildcard_delete/'.$class_name;
-
-        $objects = FaqCustomer::find('all');
+        $objects = $class_name::find('all');
         $this->view_data['objects'] = $objects;
         $this->content_view = 'parameterization/wildcard_listing';
     }
@@ -454,7 +458,7 @@ class Parameterization extends MY_Controller{
 
             $this->view_data['title'] = $this->lang->line('application_question');
             $this->view_data['form_action'] = 'parameterization/faq_customer_update/' . $object->id;
-            $this->content_view = 'parameterization/_faqcustomerform';
+            $this->content_view = 'parameterization/_faqform';
         }
     }
 
@@ -476,30 +480,226 @@ class Parameterization extends MY_Controller{
             $this->theme_view = 'modal';
             $this->view_data['title'] = $this->lang->line('application_question');
             $this->view_data['form_action'] = 'parameterization/faq_customer_create/';
-            $this->content_view = 'parameterization/_faqcustomerform';
+            $this->content_view = 'parameterization/_faqform';
         }
     }
 
-    public function faq_customer_delete($dealer_id = false){
+    public function faq_customer_delete($object_id = false){
 
-        $dealer = EnergyDealer::find($dealer_id);
-        $dealer->delete();
+        //Physical deletion
+        $object = FaqCustomer::find($object_id);
+        $object->delete();
         $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_delete_success'));
 
-        redirect('parameterization/dealers');
+        redirect('parameterization/faq_customer');
+    }
+
+    public function faq_integrator() {
+
+        $class_name = "FaqIntegrator";
+
+        $this->view_data['breadcrumb'] = $this->lang->line('application_faq_integrators');
+        $this->view_data['breadcrumb_id'] = 'faq_integrator';
+
+        $this->view_data['show_add_button'] = $this->user->admin == 1;
+        $this->view_data['show_edit_button'] = $this->user->admin == 1;
+        $this->view_data['show_delete_button'] = $this->user->admin == 1;
+
+        $this->view_data['table_title'] = $this->lang->line('application_faq_integrators');
+        $this->view_data['add_button_title'] = $this->lang->line('application_add_new');
+
+        //table elements
+        $this->view_data['collection_objects'] = $class_name::find('all');
+        $this->view_data['column_titles'] = [$this->lang->line('application_id'),$this->lang->line('application_question'),$this->lang->line('application_answer'),$this->lang->line('application_action')];
+        //to print properties of nested objects, specify the model name or use 'self' for current collection object class
+        $this->view_data['object_classes_draw'] = ['self','self','self'];
+        //pass the name of properties to draw. Follow the order of the object_classes_draw
+        $this->view_data['object_properties_draw'] = ['id', 'question', 'answer'];
+
+        $this->view_data['update_method'] = 'parameterization/faq_integrator_update/';
+        $this->view_data['create_method'] = 'parameterization/faq_integrator_create/';
+        $this->view_data['delete_method'] = 'parameterization/faq_integrator_delete/';
+
+        $objects = $class_name::find('all');
+        $this->view_data['objects'] = $objects;
+        $this->content_view = 'parameterization/wildcard_listing';
+    }
+
+    public function faq_integrator_update($object_id = false){
+        $object = FaqIntegrator::find($object_id);
+
+        if ($_POST) {
+            $object->update_attributes($_POST);
+            $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_save_success'));
+            redirect('parameterization/faq_integrator');
+        } else {
+            $this->view_data['object'] = $object;
+            $this->theme_view = 'modal';
+
+            $this->view_data['title'] = $this->lang->line('application_question');
+            $this->view_data['form_action'] = 'parameterization/faq_integrator_update/' . $object->id;
+            $this->content_view = 'parameterization/_faqform';
+        }
+    }
+
+    public function faq_integrator_create(){
+
+        if ($_POST) {
+            if (1==1) {
+                $object = FaqIntegrator::create($_POST);
+                if (!$object) {
+                    $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_create_error'));
+                } else {
+                    $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_create_success'));
+                }
+            } else {
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_create_exists'));
+            }
+            redirect('parameterization/faq_integrator');
+        } else {
+            $this->theme_view = 'modal';
+            $this->view_data['title'] = $this->lang->line('application_question');
+            $this->view_data['form_action'] = 'parameterization/faq_integrator_create/';
+            $this->content_view = 'parameterization/_faqform';
+        }
+    }
+
+    public function faq_integrator_delete($object_id = false){
+
+        //Physical deletion
+        $object = FaqIntegrator::find($object_id);
+        $object->delete();
+        $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_delete_success'));
+
+        redirect('parameterization/faq_integrator');
+    }
+
+    //wildcard_listing
+    public function integrator_benefits() {
+
+        //master data class
+        $class_name = 'IntegratorBenefit';
+
+        //view elements
+        $this->view_data['breadcrumb'] = $this->lang->line('application_integrator_benefits');
+        $this->view_data['breadcrumb_id'] = 'integrator_benefits';
+        $this->view_data['table_title'] = $this->lang->line('application_integrator_benefits');
+        $this->view_data['add_button_title'] = $this->lang->line('application_add_new');
+        $this->content_view = 'parameterization/wildcard_listing';
+        $this->view_data['show_add_button'] = $this->user->admin == 1;
+        $this->view_data['show_edit_button'] = $this->user->admin == 1;
+        $this->view_data['show_delete_button'] = false;
+
+        //table elements
+        $this->view_data['collection_objects'] = $class_name::find('all');
+        $this->view_data['column_titles'] = [$this->lang->line('application_id'),$this->lang->line('application_name'),$this->lang->line('application_action')];
+        //to print properties of nested objects, specify the model name or use 'self' for current collection object class
+        $this->view_data['object_classes_draw'] = ['self','self'];
+        //pass the name of properties to draw. Follow the order of the object_classes_draw
+        $this->view_data['object_properties_draw'] = ['id', 'name'];
+
+        //wildcard modal behavior elements
+        $modal_title = $this->lang->line('application_integrator_benefit');
+        $modal_content_view = '_wildcardform';
+        $redirect = 'integrator_benefits';
+
+        $this->view_data['update_method'] = 'parameterization/wildcard_update/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
+        $this->view_data['create_method'] = 'parameterization/wildcard_create/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
+        $this->view_data['delete_method'] = 'parameterization/wildcard_delete/'.$class_name;
+    }
+
+    //wildcard_listing
+    public function integrator_plans() {
+
+        $class_name = "IntegratorPlan";
+
+        $this->view_data['breadcrumb'] = $this->lang->line('application_integrators_plans');
+        $this->view_data['breadcrumb_id'] = 'integrator_plans';
+
+        $this->view_data['show_add_button'] = false;
+        $this->view_data['show_edit_button'] = true;
+        $this->view_data['show_delete_button'] = false;
+
+        $this->view_data['table_title'] = $this->lang->line('application_integrators_plans');
+        $this->view_data['add_button_title'] = $this->lang->line('application_add_new');
+
+        //table elements
+        $this->view_data['collection_objects'] = $class_name::find('all');
+        $this->view_data['column_titles'] = [$this->lang->line('application_id'),$this->lang->line('application_name'),$this->lang->line('application_price'),$this->lang->line('application_action')];
+        //to print properties of nested objects, specify the model name or use 'self' for current collection object class
+        $this->view_data['object_classes_draw'] = ['self','self','self'];
+        //pass the name of properties to draw. Follow the order of the object_classes_draw
+        $this->view_data['object_properties_draw'] = ['id', 'name', 'price'];
+
+        //wildcard modal behavior elements
+        $modal_title = $this->lang->line('application_integrators_plan');
+        $modal_content_view = '_wildcardform';
+        $redirect = 'integrator_plans';
+
+        $this->view_data['update_method'] = 'parameterization/wildcard_update/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
+        $this->view_data['create_method'] = 'parameterization/wildcard_create/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
+        $this->view_data['delete_method'] = 'parameterization/wildcard_delete/'.$class_name;
+        //None of these methods are created yet
+
+        $objects = $class_name::find('all');
+        $this->view_data['objects'] = $objects;
+        $this->content_view = 'parameterization/wildcard_listing';
+    }
+
+    //wildcard_listing
+    public function pricing_fields() {
+
+        $class_name = "PricingField";
+
+        $this->view_data['breadcrumb'] = $this->lang->line('application_pricing_fields');
+        $this->view_data['breadcrumb_id'] = 'pricing_fields';
+
+        $this->view_data['show_add_button'] = $this->user->admin == 1;
+        $this->view_data['show_edit_button'] = $this->user->admin == 1;
+        $this->view_data['show_delete_button'] = false;
+
+        $this->view_data['table_title'] = $this->lang->line('application_pricing_fields');
+        $this->view_data['add_button_title'] = $this->lang->line('application_add_new');
+
+        //table elements
+        $this->view_data['collection_objects'] = $class_name::find('all');
+        $this->view_data['column_titles'] = [$this->lang->line('application_id'),$this->lang->line('application_power_bottom'),
+                                             $this->lang->line('application_power_top'),
+                                             $this->lang->line('application_distance_bottom'),
+                                             $this->lang->line('application_distance_top'),
+                                             $this->lang->line('application_action')];
+
+        //to print properties of nested objects, specify the model name or use 'self' for current collection object class
+        $this->view_data['object_classes_draw'] = ['self','self','self','self','self'];
+        //pass the name of properties to draw. Follow the order of the object_classes_draw
+        $this->view_data['object_properties_draw'] = ['id', 'power_bottom', 'power_top', 'distance_bottom', 'distance_top'];
+        
+        $objects = $class_name::find('all');
+        $this->view_data['objects'] = $objects;
+        $this->content_view = 'parameterization/wildcard_listing';
+
+        //wildcard modal behavior elements
+        $modal_title = $this->lang->line('application_pricing_field');
+        $modal_content_view = '_wildcardform';
+        $redirect = 'pricing_fields';
+
+        $this->view_data['update_method'] = 'parameterization/wildcard_update/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
+        $this->view_data['create_method'] = 'parameterization/wildcard_create/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
+        $this->view_data['delete_method'] = 'parameterization/wildcard_delete/'.$class_name;
+
     }
 
     /*
      * WILDCARD CRUDs
      *
      * CRUD for simple master data tables, having only id, name and deleted columns (only logical deletion)
-     * How-to: duplicate wildcard_listing method, set master data class, view, table, behavior elements
+     * How-to: duplicate wildcard_listing method, set master data class, view, table, wildcard modal behavior elements
      * No need to duplicate update, create and delete methods
      *
      */
 
     //wildcard_form used for ONE FIELD "NAME" forms
-    public function wildcard_update($class_name = false, $title = false, $content_view = false, $redirect = false, $object_id = false){
+    public function wildcard_update($class_name = false, $title = false, $modal_content_view = false, $redirect = false, $object_id = false){
 
         if ($_POST) {
 
@@ -533,12 +733,12 @@ class Parameterization extends MY_Controller{
             $this->view_data['title'] = $title;
             $this->view_data['redirect'] = $redirect;
             $this->view_data['form_action'] = 'parameterization/wildcard_update/'.$object->id;
-            $this->content_view = 'parameterization/'.$content_view;
+            $this->content_view = 'parameterization/'.$modal_content_view;
         }
     }
 
     //wildcard_form used for ONE FIELD "NAME" forms
-    public function wildcard_create($class_name = false, $title = false, $content_view = false, $redirect = false){
+    public function wildcard_create($class_name = false, $title = false, $modal_content_view = false, $redirect = false){
 
         if ($_POST) {
 
@@ -575,7 +775,7 @@ class Parameterization extends MY_Controller{
             $this->view_data['class_name'] = $class_name;
             $this->view_data['redirect'] = $redirect;
             $this->view_data['form_action'] = 'parameterization/wildcard_create';
-            $this->content_view = 'parameterization/'.$content_view;
+            $this->content_view = 'parameterization/'.$modal_content_view;
         }
     }
 
