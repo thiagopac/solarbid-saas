@@ -7,7 +7,7 @@ echo form_open_multipart($form_action, $attributes);
     <input id="redirect" type="hidden" name="redirect"  value="<?php echo $redirect;?>"/>
 
 <?php
-$arr = (array) $object;
+$arr = $object != null ? (array) $object : (array) new $class_name();
 
 $idx = 0;
 
@@ -18,13 +18,13 @@ foreach ($arr as $key => $value) : ?>
 
         <?php foreach ($arr_field_names as $field_name => $field_value) : ?>
 
-            <?php if ($field_name != 'id' && $field_name != 'deleted') : ?>
+            <?php if (!in_array($field_name, $object_properties_not_draw)) : ?>
 
                 <div class="form-group">
-                    <label for="name">
-                        <?=$this->lang->line("application_$field_name");?> *
+                    <label>
+                        <?=$this->lang->line("application_$field_name") != null ? $this->lang->line("application_$field_name") : $field_name ?> *
                     </label>
-                    <input id="<?=$field_name?>" type="text" name="<?=$field_name?>" class="required form-control"  value="<?php if(isset($object)){echo $field_value;}?>"  required/>
+                    <input id="<?=$field_name?>" type="text" name="<?=$field_name?>" class="required form-control"  value="<?php if(isset($arr)){echo $field_value;}?>"  required/>
                 </div>
 
             <?php endif; ?>

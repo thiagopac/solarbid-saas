@@ -6,7 +6,8 @@ class PricingSchema extends ActiveRecord\Model{
 
 
     public static $has_many = [
-        ['pricing_table', 'through' => 'id'],
+        ['pricing_table', 'foreign_key' => 'id'],
+        ['pricing_schema_field', 'foreign_key' => 'id'],
     ];
 
 
