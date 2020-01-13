@@ -95,13 +95,13 @@
                                     <?php echo empty($flow->id) ? '-' : $flow->id; ?>
                                 </li>
                                 <li> <span> <?=$this->lang->line('application_city'); ?> / <?=$this->lang->line('application_state'); ?>: </span>
-                                    <?php echo empty($flow->city) ? '-' : City::find($flow->city)->name; ?> / <?php echo empty($flow->state) ? '-' : State::find($flow->state)->name; ?>
+                                    <?php echo empty($flow->city) ? '-' : $flow->city_obj->name; ?> / <?php echo empty($flow->state) ? '-' : $flow->state_obj->name; ?>
                                 </li>
                                 <li> <span> <?=$this->lang->line('application_type'); ?> / <?=$this->lang->line('application_activity'); ?>: </span>
-                                    <?php echo empty($flow->type) ? '-' : $this->lang->line("application_flow_$flow->type") ?> / <?php echo empty($flow->state) ? '-' : Activity::find($flow->activity)->name; ?>
+                                    <?php echo empty($flow->type) ? '-' : $this->lang->line("application_flow_$flow->type") ?> / <?php echo empty($flow->state) ? '-' : $flow->activity_obj->name; ?>
                                 </li>
                                 <li> <span> <?=$this->lang->line('application_energy_dealer'); ?>: </span>
-                                    <?php echo empty($flow->state) ? '-' : EnergyDealer::find($flow->dealer)->name; ?>
+                                    <?php echo empty($flow->state) ? '-' : $flow->energy_dealer->name; ?>
                                 </li>
                                 <li> <span> <?=$this->lang->line('application_monthly_average'); ?>: </span>
                                     <?php echo empty($flow->monthly_average) ? '-' : $core_settings->money_symbol.display_money($flow->monthly_average) ?>

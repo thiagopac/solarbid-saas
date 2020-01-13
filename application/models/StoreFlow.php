@@ -3,13 +3,16 @@
 class StoreFlow extends ActiveRecord\Model {
     static $table_name = 'store_flow';
 
-    static $has_many = array(
-        array('city', 'foreign_key' => 'city'),
-        array('state', 'foreign_key' => 'state'),
-        array('pv_kit', 'foreign_key' => 'pv_kit_id'),
-        array('purchase', 'foreign_key' => 'store_flow_id'),
-        array('financing_request', 'foreign_key' => 'store_flow_id'),
-        array('installation_local', 'foreign_key' => 'store_flow_id')
+    static $belongs_to = array(
+        ['city', 'foreign_key' => 'city'],
+        ['state', 'foreign_key' => 'state'],
+
+        ['purchase', 'foreign_key' => 'code'],
+        ['financing_request', 'foreign_key' => 'code'],
+        ['installation_local', 'foreign_key' => 'code'],
+
+        ['city_obj', 'foreign_key' => 'city', 'class_name' => 'City'],
+        ['state_obj', 'foreign_key' => 'state', 'class_name' => 'State'],
     );
 
 }

@@ -101,16 +101,16 @@
                                 <?=$simulator_flow->code?>
                             </td>
                             <td class="hidden-xs" style="width:15px">
-                                <?=City::find($simulator_flow->city)->name?>
+                                <?=$simulator_flow->city_obj->name?>
                             </td>
                             <td>
-                                <?=State::find($simulator_flow->state)->name?>
+                                <?=$simulator_flow->state_obj->name?>
                             </td>
                             <td>
                                 <?=$this->lang->line("application_flow_$simulator_flow->type");?>
                             </td>
                             <td>
-                                <?=EnergyDealer::find($simulator_flow->dealer)->name?>
+                                <?=$simulator_flow->energy_dealer->name?>
                             </td>
                             <td>
                                 <small>
@@ -119,7 +119,7 @@
                                 <?= display_money($simulator_flow->monthly_average); ?>
                             </td>
                             <td>
-                                <?=Activity::find($simulator_flow->activity)->name?>
+                                <?=$simulator_flow->activity_obj->name?>
                             </td>
                             <td>
                                 <?=date($core_settings->date_format . ' ' . $core_settings->date_time_format, strtotime($simulator_flow->created_at))?>

@@ -89,10 +89,10 @@
                                 <?=$store_flow->code?>
                             </td>
                             <td>
-                                <?=City::find($store_flow->city)->name?>
+                                <?=$store_flow->city_obj->name?>
                             </td>
                             <td>
-                                <?=State::find($store_flow->state)->name?>
+                                <?=$store_flow->state_obj->name?>
                             </td>
                             <td>
                                 <?=date($core_settings->date_format . ' ' . $core_settings->date_time_format, strtotime($store_flow->created_at))?>

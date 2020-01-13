@@ -10,6 +10,7 @@ class EnergyDealer extends ActiveRecord\Model{
 
     public static $has_many = [
         ['dealer_activity_tariff', 'foreign_key' => 'id'],
+        ['simulator_flow', 'foreign_key' => 'id'],
     ];
 
 

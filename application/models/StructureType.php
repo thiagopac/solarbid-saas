@@ -4,7 +4,8 @@ class StructureType extends ActiveRecord\Model {
     static $table_name = 'structure_type';
 
 	static $has_many = array(
-        array("pv_kit")
+        array("pv_kit"),
+        ['simulator_flow', 'foreign_key' => 'id']
     );
 
 }

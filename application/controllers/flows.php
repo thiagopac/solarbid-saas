@@ -39,7 +39,7 @@ class Flows extends MY_Controller {
 
     public function list_simulator() {
 
-        $this->view_data['simulator_flows'] = SimulatorFlow::find('all',['order' => 'id DESC']);
+        $this->view_data['simulator_flows'] = SimulatorFlow::find('all',['order' => 'id DESC', 'include' => ['energy_dealer', 'state', 'city', 'activity', 'structure_type']]);
         $this->content_view = 'flows/simulator_all';
     }
 
@@ -77,7 +77,7 @@ class Flows extends MY_Controller {
 
     public function view_simulator_flow($simulator_flow_id = false) {
 
-        $options = ['conditions' => ['id = ?', $simulator_flow_id]];
+        $options = ['conditions' => ['id = ?', $simulator_flow_id], 'include' => ['installation_local']];
         $flow = SimulatorFlow::find($options);
         $purchase = Purchase::first('first', ['conditions' => ['flow_id = ?', $flow->code]]);
         $financing_request = FinancingRequest::first(['conditions' => ['flow_id = ?', $flow->code]]);
