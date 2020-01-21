@@ -250,7 +250,9 @@ $message_icon = false;
                 <div class="fc-dropdown notification-center">
                     <div class="notification-center__header">
                         <a href="#" class="active"><?=$this->lang->line('application_notifications');?> (<?=$notification_count;?>)</a>
-                        <!-- <a href="#"><?=$this->lang->line('application_announcements');?></a> -->
+                        <?php if ($unread_notifications > 0) : ?>
+                            <span class="pull-right ajax-silent mark_all_read" style="cursor: pointer; color: #2980b9; font-weight: normal;" data-href="<?=base_url()?>notifications/read_all/user"><?=$this->lang->line('application_mark_all_as_read')?></span>
+                        <?php endif; ?>
                     </div>
                     <ul style="overflow-y: scroll; ">
                         <?php
@@ -264,7 +266,7 @@ $message_icon = false;
                                         <?php $data['core_settings'] = Setting::first();echo date($data['core_settings']->date_format . ' ' . $data['core_settings']->date_time_format, strtotime($notification->created_at))?>
                                     </div>
                                     <div>
-                                        <?php if ($notification->status == 'new') : ?><span class="ajax-silent mark_read" data-href="<?=base_url()?>notifications/read/<?=$notification->id;?>/user" style="cursor: pointer; color: #2980b9" id="<?=$notification->id?>">Marcar lido<span><? endif; ?></div>
+                                        <?php if ($notification->status == 'new') : ?><span class="ajax-silent mark_read" data-href="<?=base_url()?>notifications/read/<?=$notification->id;?>/user" style="cursor: pointer; color: #2980b9" id="<?=$notification->id?>"><?=$this->lang->line('application_mark_as_read')?><span><? endif; ?></div>
                                 </div>
 
                             </li>
@@ -372,6 +374,19 @@ $message_icon = false;
                 $('.counter').toggleClass('hidden')
             }
 
+        });
+
+        $('span.mark_all_read').on('click', function(event) {
+
+            $.ajax({
+                url: $(this).data('href')
+            });
+
+            $('.counter').remove('');
+            $(this).toggleClass('hidden');
+
+            $('li').removeClass('new-notification');
+            $('span.mark_read').remove();
         });
 
         <?php if ($core_settings->push_active == 1) { ?>

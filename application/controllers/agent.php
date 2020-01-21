@@ -40,9 +40,11 @@ class Agent extends MY_Controller
                 if (!empty($_POST['userpic'])) {
                     $attr['userpic'] = $_POST['userpic'];
                 }
-                /*if (!empty($_POST['push_active'])) {
-                    $attr['push_active'] = $_POST['push_active'];
-                }*/
+
+                $attr['push_active'] = $_POST['push_active'];
+
+//                var_dump($_POST);
+//                exit;
 
                 if (!empty($attr)){
                     $user->update_attributes($attr);

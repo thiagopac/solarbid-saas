@@ -341,3 +341,18 @@ div.dataTables_info {
     color: #9ea4a8 !important;
     font-weight: bold !important;
 }
+
+.notification-center ul li:last-child{
+    line-height: 20px;
+    padding:7px 15px;
+    border-bottom:0px solid;
+}
+
+.notification-center__header a.active{
+    box-shadow: none !important;
+}
+
+#main .message-list {
+    position: fixed !important;
+    width: 100% !important;
+}

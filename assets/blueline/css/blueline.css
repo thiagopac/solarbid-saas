@@ -4072,6 +4072,11 @@ margin-bottom:5px;
 	padding:7px 15px;
 	border-bottom:1px solid #ececec;
 }
+.notification-center ul li:last-child{
+	line-height: 20px;
+	padding:7px 15px;
+	border-bottom:0px solid;
+}
 .notification-center ul li p{
 	margin:0;
 	padding:0;

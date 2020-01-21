@@ -305,3 +305,5 @@ $lang['messages_create_error'] = "Erro ao adicionar registro";
 $lang['messages_create_exists'] = "Um registro com estas propriedades já existe";
 $lang['messages_delete_success'] = "Registro removido com sucesso";
 $lang['messages_delete_error'] = "Erro ao remover registro";
+
+$lang['messages_routine_success'] = "Rotina executada com sucesso";

@@ -26,23 +26,23 @@ echo form_open_multipart($form_action, $attributes);
             </div>
         </div>
     </div>
-    <!--<div class="form-group">
+    <div class="form-group">
         <label for="push_active">
-            <?/*=$this->lang->line('application_push_notification_receive'); */?>
+            <?=$this->lang->line('application_push_notification_receive'); ?>
         </label>
-        <?php /*$options = [
+        <?php $options = [
             '1' => $this->lang->line('application_yes'),
             '0' => $this->lang->line('application_no')
-        ]; */?>
+        ]; ?>
 
         <?php
-/*        if (isset($user)) {
-            $push_active = $user->push_active;
+        if ($this->client) {
+            $push_active = $this->client->push_active;
         } else {
             $push_active = '0';
         }
-        echo form_dropdown('push_active', $options, $push_active, 'style="width:100%" class="chosen-select"'); */?>
-    </div>-->
+        echo form_dropdown('push_active', $options, $push_active, 'style="width:100%" class="chosen-select"'); ?>
+    </div>
     <div class="modal-footer">
         <input type="submit" name="send" class="btn btn-primary" value="<?=$this->lang->line('application_save');?>" />
         <a class="btn" data-dismiss="modal"><?=$this->lang->line('application_close');?></a>

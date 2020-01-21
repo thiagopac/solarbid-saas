@@ -1,9 +1,7 @@
 * {
   box-sizing: border-box;
 }
-.topbar__left{
-    margin-left: 220px;
-  }
+
 body #main{
   background: #FFF;
   font-weight: 400;
@@ -11,12 +9,7 @@ body #main{
   color: #505458;
   z-index: -999999;
 }
-.mainnavbar {
-position: fixed;
-width: 100%;
-margin-left: -215px;
-z-index: -99999;
-}
+
 
 body::-webkit-scrollbar { width: 0 !important; }
 body { 
@@ -448,13 +441,13 @@ a:hover {
   float: left;
   position: relative;
 }
-#main .message-list li.New-dot .col-1 .dot{
-  border-color: #1bc3e1;
+#main .message-list li.new-dot .col-1 .dot{
+  border-color: #e78075;
 }
-#main .message-list li.Read-dot .col-1 .dot{
+#main .message-list li.read-dot .col-1 .dot{
   border-color: #d5dbe0;
 }
-#main .message-list li.Marked-dot .col-1 .dot {
+#main .message-list li.marked-dot .col-1 .dot {
   border-color: #9ae14f;
 }
 #main .message-list li .col-1 {

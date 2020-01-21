@@ -95,8 +95,7 @@ class Notifications extends MY_Controller
         exit;
     }
 
-    public function read($id = false, $type)
-    {
+    public function read($id = false, $type){
         $options = ['conditions' => ['id = ?', $id]];
 
         if ($type == "user"){
@@ -120,6 +119,28 @@ class Notifications extends MY_Controller
 
         $notification->status = "read";
         $notification->save();
+
+    }
+
+    public function read_all($type){
+
+        if ($type == "user"){
+            Notification::update_all([
+                'set' => [
+                    'status' => 'read'
+                ],
+                'conditions' => ['user_id = ? AND status = ?', $this->user->id, 'new']
+            ]);
+        }else{
+            ClientNotification::update_all([
+                'set' => [
+                    'status' => 'read'
+                ],
+                'conditions' => ['client_id = ? AND status = ?', $this->client->id, 'new']
+            ]);
+        }
+
+
 
     }
 }
