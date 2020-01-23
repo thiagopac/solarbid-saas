@@ -182,7 +182,7 @@ $message_icon = false;
                                 $status = 'away';
                             } ?>
                             <li>
-                                <a href="#">
+                                <a href="<?=base_url()?>settings/users">
                                     <p class="truncate"><img class="img-circle" src="<?=$value->userpic; ?>" width="21px" />
                                         <span class="user_online__indicator user_online__indicator--<?=$status; ?>"></span>
                                         <?php echo $value->firstname . ' ' . $value->lastname; ?>
@@ -204,9 +204,11 @@ $message_icon = false;
                                 } ?>
                                 <li>
                                     <a href="#" class="<?=$status; ?>">
-                                        <p class="truncate"><img class="img-circle" src="<?=$value->userpic; ?>" width="21px">
-                                            <?php echo $value->firstname . ' ' . $value->lastname; ?>
-                                        </p>
+                                        <a href="<?=base_url()?>clients/view/<?=$value->id?>">
+                                            <p title="<?=$value->firstname . ' ' . $value->lastname." [".$value->company->name."]"; ?>" class="truncate"><img class="img-circle" src="<?=$value->userpic; ?>" width="21px">
+                                                <?=$value->firstname . ' ' . $value->lastname." <small><small>[".$value->company->name."]</small></small>"; ?>
+                                            </p>
+                                        </a>
                                     </a>
                                     <!-- <div class="submenu">
                                 <ul>

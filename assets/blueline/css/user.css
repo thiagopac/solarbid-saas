@@ -207,3 +207,58 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active  {
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
+
+.col-3rds{
+    box-sizing: border-box;
+    width:16.66%;
+    float:left;
+}
+.flex{
+    display: flex;
+    flex-direction: row;
+}
+.scrum-board{
+    flex: 1;
+    padding:20px;
+    border-right:1px solid #ddd;
+    border-top:1px solid #ddd;
+    border-bottom:1px solid #ddd;
+}
+.scrum-board:first-child{
+    flex: 1;
+    padding:20px;
+    border-left:1px solid #ddd;
+}
+.input-group{
+    position: relative;
+    display: block;
+    padding: 10px;
+    border: 1px solid #dddddd;
+    border-left: 5px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+}
+.input-group span{
+    color:#333;
+    font-weight: bold;
+}
+.inline{
+    display: inline;
+}
+.float-right{
+    float: right;
+}
+.overflow{
+    overflow: auto;
+}
+.margin-top-10{
+    margin-top: 10px;
+}
+.placeholder {
+    display: block;
+    background-color: #fff;
+    border: 5px dashed #ededed;
+    min-height: 100px;
+    margin-bottom: 10px;
+}
