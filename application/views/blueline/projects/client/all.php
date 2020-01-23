@@ -34,16 +34,16 @@
                 <div class="scrum-board backlog">
                     <h2>Passo 0</h2>
                     <div class="input-group overflow">
-                        <span>Wash dishes</span>
+                        <span>Project 1</span>
                     </div>
                     <div class="input-group overflow">
-                        <span>Make bed</span>
+                        <span>Project 2</span>
                     </div>
                     <div class="input-group overflow">
-                        <span>Cook dinner</span>
+                        <span>Project 3</span>
                     </div>
                     <div class="input-group overflow">
-                        <span>Ask wife permission to go on trip</span>
+                        <span>Project 4</span>
                     </div>
                 </div>
                 <div class="scrum-board">
