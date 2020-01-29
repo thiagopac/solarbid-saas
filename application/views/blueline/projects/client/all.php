@@ -1,108 +1,147 @@
-<div class="col-sm-12 col-md-12 messages">
-    <!--<main id="main">
-        <div class="overlay"></div>
-        <header class="header">
-            <h1 class="page-title">
-                <div class="message-list-header">
-                    <span id="inbox-folder"><i class="icon dripicons-inbox"></i> <?/*=$this->lang->line('application_INBOX');*/?></span>
-                </div>
-            </h1>
-        </header>
-        <div class="action-bar">
-            <ul>
-                <li>
-                    <div class="btn-group">
-                        <a class="btn btn-primary message-list-load inbox-folder" id="message-trigger" style="display: ;" role="button" href="<?/*=base_url()*/?>cinbox/itemslist" title="Inbox"><i class="icon glyphicon glyphicon-refresh"></i> <span class="hidden-xs"><?/*=$this->lang->line('application_refresh');*/?></span></a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div id="main-nano-wrapper" class="nano">
-            <div class="nano-content">
-                <ul id="message-list" class="message-list">
+<link href="<?=base_url()?>assets/blueline/css/plugins/messages.css" rel="stylesheet">
 
-                </ul>
+<div class="col-sm-12 col-md-12 messages">
+
+    <main id="main" class="projects">
+        <div class="overlay"></div>
+        <div>
+            <div class="flex">
+
+                <?php foreach ($steps as $step) : ?>
+                    <div class="scrum-board">
+                        <h2><?=$step->name?></h2>
+
+                        <?php foreach ($items as $item) : ?>
+
+                            <?php if($item->project_step_id == $step->id) : ?>
+                                <div class="project input-group" data-link="<?=base_url()?>cprojects/view/<?=$item->id;?>">
+                                    <span><?=$item->flow_id != null ? $item->flow_id : $item->store_flow_id ;?></span>
+                                </div>
+                            <?php endif; ?>
+
+                        <?php endforeach; ?>
+
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </main>
-    <div id="message">
-    </div>-->
-
-    <div ng-app="ScrumApp">
-        <div>
-            <div class="flex">
-                <div class="scrum-board backlog">
-                    <h2>Passo 0</h2>
-                    <div class="input-group overflow">
-                        <span>Project 1</span>
-                    </div>
-                    <div class="input-group overflow">
-                        <span>Project 2</span>
-                    </div>
-                    <div class="input-group overflow">
-                        <span>Project 3</span>
-                    </div>
-                    <div class="input-group overflow">
-                        <span>Project 4</span>
-                    </div>
-                </div>
-                <div class="scrum-board">
-                    <h2>Passo 1</h2>
-                </div>
-                <div class="scrum-board">
-                    <h2>Passo 2</h2>
-                </div>
-                <div class="scrum-board">
-                    <h2>Passo 3</h2>
-                </div>
-                <div class="scrum-board">
-                    <h2>Passo 4</h2>
-                </div>
-                <div class="scrum-board">
-                    <h2>Passo 5</h2>
-                </div>
-            </div>
-        </div>
-</div>
+    <div id="message"></div>
 </div>
 <script>
     jQuery(document).ready(function($) {
 
-        $(document).on("click", '.message-list-load', function(e) {
-            e.preventDefault();
+        $("#main .project").removeClass("hidden").delay(300).addClass("visible");
+        var cols = {}, messageIsOpen = false;
 
-            messageheader(this);
+        cols.showOverlay = function() {
+            $('body').addClass('show-main-overlay');
+        };
+        cols.hideOverlay = function() {
+            $('body').removeClass('show-main-overlay');
+        };
 
-            $('.message-list-footer').fadeOut('fast');
 
-            var url = $(this).attr('href');
-            if (url.indexOf('#') === 0) {
+        cols.showMessage = function() {
+            $('body').addClass('show-message');
+            messageIsOpen = true;
+        };
+        cols.hideMessage = function() {
+            $('body').removeClass('show-message');
+            $('#main .project').removeClass('active');
+            messageIsOpen = false;
+        };
 
-            } else {
-                $.get(url, function(data) {
-                    $('#message-list').html(data);
+        cols.showSidebar = function() {
+            $('body').addClass('show-sidebar');
+        };
 
-                }).done(function() {});
+        cols.hideSidebar = function() {
+            $('body').removeClass('show-sidebar');
+        };
+
+        // Show sidebar when trigger is clicked
+
+        $('.trigger-toggle-sidebar').on('click', function() {
+            cols.showSidebar();
+            cols.showOverlay();
+        });
+
+
+        $('.trigger-message-close').on('click', function() {
+            cols.hideMessage();
+            cols.hideOverlay();
+        });
+
+
+        // When you click on a message, show it
+
+        $('#main .project').on('click', function(e) {
+            var item = $(this),
+                target = $(e.target);
+            NProgress.start();
+
+            if(target.is('label')) {
+                item.toggleClass('selected');
+            }else{
+                if(messageIsOpen && item.is('.active')) {
+                    cols.hideMessage();
+                    cols.hideOverlay();
+
+                    item.find(".indicator").addClass('dripicons-chevron-down');
+                    item.find(".indicator").removeClass('dripicons-chevron-right');
+
+                    NProgress.done();
+                } else {
+                    if(messageIsOpen) {
+                        cols.hideMessage();
+                        item.addClass('active');
+
+                        item.find(".indicator").addClass('dripicons-chevron-right');
+                        item.find(".indicator").removeClass('dripicons-chevron-down');
+
+                        setTimeout(function() {
+                            var url = item.data('link');
+                            if (url.indexOf('#') === 0) {
+
+                            }else{
+                                $.get(url, function(data) {
+                                    $('#message').html(data);
+                                }).done(function() {
+                                    NProgress.done();
+                                    cols.showMessage();
+                                });
+                            }
+                        }, 300);
+                    } else {
+
+
+                        item.addClass('active');
+
+                        var url = item.data('link');
+                        if (url.indexOf('#') === 0) {
+                        }else{
+                            $.get(url, function(data) {
+                                $('#message').html(data);
+                                // console.log(data);
+                            }).done(function() {
+                                NProgress.done();
+                                cols.showMessage();
+
+                            });
+                        }
+                    }
+                    cols.showOverlay();
+                }
             }
         });
-        $('#message-trigger').click();
 
-        //message list menu
-        function messageheader(active) {
-            var classes = $(active).attr("class").split(/\s/);
-            if (classes[3]) {
-                $('.message-list-header span').hide();
-                $('.message-list-header #' + classes[3]).fadeIn('slow');
-            }
+        // When you click the overlay, close everything
 
-        }
-
-        // Search box responsive stuff
-
-        $('.search-box input').on('focus', function() {
-            if ($(window).width() <= 1360) {
-                cols.hideMessage();
-            }
+        $('#main > .overlay').on('click', function() {
+            cols.hideOverlay();
+            cols.hideMessage();
+            cols.hideSidebar();
         });
 
     });

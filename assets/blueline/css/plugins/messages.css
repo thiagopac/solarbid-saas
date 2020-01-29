@@ -12,8 +12,8 @@ body #main{
 
 
 body::-webkit-scrollbar { width: 0 !important; }
-body { 
--ms-overflow-style: none; 
+body {
+-ms-overflow-style: none;
 overflow: -moz-scrollbars-none;}
 
 #main ul, #message ul{
@@ -415,11 +415,11 @@ a:hover {
   -o-transition: .3s;
   transition: .3s;
 }
-#main .message-list li.hidden{ 
+#main .message-list li.hidden{
  display:none;
 
 }
-#main .message-list li.visible{ 
+#main .message-list li.visible{
  display:block;
 }
 #main .message-list li:hover,
@@ -577,7 +577,7 @@ a:hover {
   width: auto;
 }
 .message-list {
- border-right: 0; 
+ border-right: 0;
 }
 .message-content-menu {
   margin: 21px 15px 4px 1px;
@@ -586,7 +586,7 @@ a:hover {
   padding: 0 40px 0 25px;
 }
 #message .message-container li.item {
-  
+
   background: #FFF;
   margin: 0 0 60px 0;
   position: relative;
@@ -697,9 +697,9 @@ a:hover {
   -ms-transform: none;
   transform: none;
 }
-.show-message #main {
-  margin-right: 40%;
-}
+/*.show-message #main {*/
+  /*margin-right: 40%;*/
+/*}*/
   .sidebar {
     z-index: 0;
   }
@@ -727,7 +727,7 @@ a:hover {
 
 @media only screen and (max-width: 720px) {
   .side {
-    z-index: 9999; 
+    z-index: 9999;
     }
   .mainnavbar {
     margin-left: -15px;
@@ -844,4 +844,16 @@ padding: 15px 23px;
 }
 footer{
 display:none;
+}
+
+.project.active {
+  border-left: 5px solid #61a3c7;
+  filter: brightness(95%);
+}
+
+.projects {
+  top: 84px !important;
+  left: 220px !important;
+  bottom: 20px !important;
+  right: 20px !important;
 }

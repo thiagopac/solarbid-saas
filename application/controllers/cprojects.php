@@ -28,15 +28,14 @@ class cProjects extends MY_Controller {
     }
 
     function index() {
+
+        $steps = ProjectStep::find('all', ['conditions' => ['1 = 1 ORDER BY idx ASC']]);
+        $this->view_data['steps'] = $steps;
+
+        $items = Project::find('all', ['conditions' => ['company_id = ? ORDER BY project_step_id ASC, id DESC', $this->client->company_id]]);
+        $this->view_data['items'] = $items;
+
         $this->content_view = 'projects/client/all';
-    }
-
-    function itemslist(){
-
-        $this->view_data['items'] = Message::get_messages($this->client);
-        $this->theme_view = 'ajax';
-
-        $this->content_view = 'inbox/client/list';
     }
 
     function view($id = false) {
@@ -45,20 +44,19 @@ class cProjects extends MY_Controller {
             $this->lang->line('application_back') => 'cinbox',
         );
 
-        $item = Message::find($id);
-
-        if ($item->status == 'new'){
-            $item->status = 'read';
-            $item->save();
+        $flow = null;
+        $item = Project::find($id);
+        if ($item->flow_id != null){
+            $flow = SimulatorFlow::find('first', ['conditions' => ['code = ?', $item->flow_id]]);
+        }else{
+            $flow = StoreFlow::find('first', ['conditions' => ['code = ?', $item->store_flow_id]]);
         }
 
-
+        $this->view_data["flow"] = $flow;
         $this->view_data["item"] = $item;
         $this->theme_view = 'ajax';
 
-
-
-        $this->content_view = 'inbox/client/view';
+        $this->content_view = 'projects/client/view';
     }
 
 }

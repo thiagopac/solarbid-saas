@@ -27,9 +27,7 @@
             </div>
         </div>
     </main>
-    <div id="message">
-
-    </div>
+    <div id="message"></div>
 </div>
 </div>
 <script>

@@ -47,6 +47,8 @@ class Parameterization extends MY_Controller{
             $this->lang->line('application_states') => 'parameterization/states',
             $this->lang->line('application_regions') => 'parameterization/regions',
             $this->lang->line('application_cities') => 'parameterization/cities',
+            'devider7' => 'devider',
+            $this->lang->line('application_project_steps') => 'parameterization/project_steps',
         ];
 
         $this->view_data['iconlist'] = [
@@ -69,6 +71,7 @@ class Parameterization extends MY_Controller{
             'parameterization/states' => 'dripicons-location',
             'parameterization/regions' => 'dripicons-location',
             'parameterization/cities' => 'dripicons-location',
+            'parameterization/project_steps' => 'dripicons-swap',
         ];
 
         $this->config->load('defaults');
@@ -940,6 +943,46 @@ class Parameterization extends MY_Controller{
 
         //wildcard modal behavior elements
         $modal_title = $this->lang->line('application_pricing_schema_fields');
+        $modal_content_view = '_wildcardform';
+        $redirect = __FUNCTION__;
+
+        $this->view_data['update_method'] = 'parameterization/wildcard_update/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
+        $this->view_data['create_method'] = 'parameterization/wildcard_create/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
+        $this->view_data['delete_method'] = 'parameterization/wildcard_delete/'.$class_name;
+    }
+
+    //wildcard_listing
+    public function project_steps() {
+
+        $class_name = "ProjectStep";
+
+        $this->view_data['breadcrumb'] = $this->lang->line('application_project_steps');
+        $this->view_data['breadcrumb_id'] = __FUNCTION__;
+
+        $this->view_data['show_add_button'] = $this->user->admin == 1;
+        $this->view_data['show_edit_button'] = $this->user->admin == 1;
+        $this->view_data['show_delete_button'] = false;
+
+        $this->view_data['table_title'] = $this->lang->line('application_project_steps');
+        $this->view_data['add_button_title'] = $this->lang->line('application_add_new');
+
+        //table elements
+        $this->view_data['collection_objects'] = $class_name::find('all');
+        $this->view_data['column_titles'] = [$this->lang->line('application_id'),
+            $this->lang->line('application_name'),
+            $this->lang->line('application_action')];
+
+        //to print properties of nested objects, specify the model name or use 'self' for current collection object class
+        $this->view_data['object_classes_draw'] = ['self','self'];
+        //pass the name of properties to draw. Follow the order of the object_classes_draw
+        $this->view_data['object_properties_draw'] = ['id', 'name'];
+
+        $objects = $class_name::find('all');
+        $this->view_data['objects'] = $objects;
+        $this->content_view = 'parameterization/wildcard_listing';
+
+        //wildcard modal behavior elements
+        $modal_title = $this->lang->line('application_project_step');
         $modal_content_view = '_wildcardform';
         $redirect = __FUNCTION__;
 

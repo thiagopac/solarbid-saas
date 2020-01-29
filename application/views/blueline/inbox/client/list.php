@@ -23,14 +23,14 @@ if($items) : ?>
 <?php endif; ?>
 <script>
 jQuery(document).ready(function($) {
-    $
+
     $("#main .message-list li").removeClass("hidden").delay(300).addClass("visible");
     var cols = {},
 
         messageIsOpen = false;
 
         cols.showOverlay = function() {
-            $('body').addClass('show-main-overlay');s
+            $('body').addClass('show-main-overlay');
         };
         cols.hideOverlay = function() {
             $('body').removeClass('show-main-overlay');
@@ -121,6 +121,7 @@ jQuery(document).ready(function($) {
                         }else{
                             $.get(url, function(data) {
                             $('#message').html(data);
+                            console.log(data);
                         }).done(function() {
                         NProgress.done();
                         cols.showMessage();

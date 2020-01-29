@@ -1482,3 +1482,5 @@ $lang['application_company_chosen_notification'] = 'Sua empresa foi escolhida! V
 $lang['application_company_chosen_content'] = 'Parabéns! Sua empresa foi escolhida para executar um projeto Solarbid! Você terá acesso aos dados do seu cliente através do token <strong>#%s</strong><br/><br/>Para acessar os detalhes deste token, basta ir ao módulo de projetos ou então <a href="#">clique aqui</a>';
 $lang['application_mark_as_read'] = 'Marcar lido';
 $lang['application_mark_all_as_read'] = 'Marcar todos como lidos';
+$lang['application_project_steps'] = 'Etapas do projeto';
+$lang['application_project_step'] = 'Etapa do projeto';
