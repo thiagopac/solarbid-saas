@@ -1,8 +1,9 @@
-
-
+<div class="col-sm-12  col-md-12 main">
+    <?php include_once ("header_menu.php")?>
+</div>
 <div class="row">
-
     <div class="col-md-12">
+
         <h2>
             <?=$core_settings->company_prefix."".$company->reference;?> - <?=$company->name;?>
         </h2>

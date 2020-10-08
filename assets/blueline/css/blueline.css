@@ -3682,6 +3682,9 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 		.form-register {
 			max-width: 800px !important;
 		}
+		.form-lgpd {
+			max-width: 800px !important;
+		}
 		.form-signin .small{
 			text-align: center;
 			color:#888;

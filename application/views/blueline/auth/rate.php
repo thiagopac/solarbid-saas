@@ -14,12 +14,14 @@
 
 <div class="rate-container" style="display: grid; justify-content: center">
 
+    <input type="hidden" id="company_id" name="company_id" value="<?= $rating_post->company_id ?>">
+
     <?php foreach ($categories as $category) : ?>
 
         <div class="rate-item">
             <h2 style="text-align: center"><?= $this->lang->line("application_rate_$category->type"); ?>: <span
                         id="grade_<?= $category->type ?>">2.5</span></h2>
-            <div class="rate" id="rate_<?= $category->type ?>" style="color: #f1ab02; font-size: 50px;width: 225px;"
+            <div class="rate" id="rate_<?= $category->type ?>" style="color: #f1c946; font-size: 50px;width: 225px;"
                  data-rate-value=2.5></div>
             <input type="hidden" id="<?= $category->id ?>" name="<?= $category->id ?>">
         </div>
@@ -29,12 +31,14 @@
 
     <h2 style="text-align: center"><?= $this->lang->line('application_comment'); ?>: </h2>
     <textarea id="comment" name="comment" rows="5" style="width: 100%"></textarea>
+<br/>
+    <div style="text-align: center;">
+        <input type="submit" style="width: 100%; height: 40px" class="btn btn-primary"
+               value="<?= $this->lang->line('application_send'); ?>"/>
+    </div>
 </div>
 
-<div style="text-align: center; padding: 20px;">
-    <input type="submit" style="width: 100%; height: 40px" class="btn btn-primary"
-           value="<?= $this->lang->line('application_send'); ?>"/>
-</div>
+
 
 <?= form_close() ?>
 

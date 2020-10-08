@@ -205,15 +205,15 @@
                                 <span><?= $this->lang->line('application_Wp_value'); ?> / <?=$this->lang->line('application_delivery_time')?></span>
                                 <?php if ($price123[0]->value != null) : ?>
                                     <h2>
-                                  <span class="label label-success">
-                                    <?= $this->lang->line('application_metallic') ?>
-                                  </span>
-                                        <span class="label label-success">
-                                    <?= $this->lang->line('application_fiber_cement') ?>
-                                  </span>
-                                        <span class="label label-success">
-                                      <?= $this->lang->line('application_ceramic') ?>
-                                  </span>
+                                      <span class="label label-success">
+                                        <?= $this->lang->line('application_metallic') ?>
+                                      </span>
+                                            <span class="label label-success">
+                                        <?= $this->lang->line('application_fiber_cement') ?>
+                                      </span>
+                                            <span class="label label-success">
+                                          <?= $this->lang->line('application_ceramic') ?>
+                                      </span>
                                         <small>
                                             <?= $core_settings->money_symbol; ?>
                                         </small>

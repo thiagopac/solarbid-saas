@@ -229,7 +229,7 @@ input:-webkit-autofill:active  {
     padding:20px;
     border-left:1px solid #ddd;
 }
-.input-group{
+/*.input-group{
     position: relative;
     display: block;
     padding: 10px;
@@ -238,7 +238,7 @@ input:-webkit-autofill:active  {
     margin-bottom: 10px;
     border-radius: 5px;
     background-color: #f1f1f1;
-}
+}*/
 .input-group span{
     color:#333;
     font-weight: bold;

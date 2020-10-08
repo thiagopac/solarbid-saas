@@ -15,4 +15,10 @@ class StoreFlow extends ActiveRecord\Model {
         ['state_obj', 'foreign_key' => 'state', 'class_name' => 'State'],
     );
 
+    public function getFlowByCode($code){
+
+        $flow = StoreFlow::find('first', ['conditions' => ['code = ?', $code]]);
+        return $flow;
+    }
+
 }

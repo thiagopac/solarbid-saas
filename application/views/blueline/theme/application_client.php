@@ -50,7 +50,8 @@ $message_icon = false;
     <link rel="stylesheet" href="<?=base_url()?>assets/blueline/css/app.css" />
     <link rel="stylesheet" href="<?=base_url()?>assets/blueline/css/user.css" />
     <link rel="stylesheet" href="<?=base_url()?>assets/blueline/css/important.css" />
-    <link rel="stylesheet" href="<?=base_url()?>assets/blueline/css/line-awesome.min.css">
+<!--    <link rel="stylesheet" href="--><?//=base_url()?><!--assets/blueline/css/line-awesome.min.css">-->
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <?=get_theme_colors($core_settings);?>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->

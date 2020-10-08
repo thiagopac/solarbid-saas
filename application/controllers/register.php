@@ -38,9 +38,7 @@ class Register extends MY_Controller
                 $company_attr['city'] = trim(htmlspecialchars($_POST['city']));
                 $company_attr['country'] = trim(htmlspecialchars("Brasil"));
                 $company_attr['state'] = trim(htmlspecialchars($_POST['state']));
-                $company_attr['reference'] = $core_settings->company_reference;
 
-                $core_settings->company_reference = $core_settings->company_reference + 1;
                 $core_settings->save();
 
                 $company = ScreeningCompany::create($company_attr);
@@ -85,7 +83,6 @@ class Register extends MY_Controller
                                     'client_company' => $company->name,
                                     'first_name' => $client->firstname,
                                     'last_name' => $client->lastname,
-                                    'company_reference' => $company->reference,
                                     'logo' => '<img src="' . base_url() . '' . $core_settings->logo . '" alt="' . $core_settings->company . '"/>',
                                     'solarbid_logo' => '<img src="' . base_url() . '' . $core_settings->logo . '" alt="' . $core_settings->company . '"/>'
                                     ];

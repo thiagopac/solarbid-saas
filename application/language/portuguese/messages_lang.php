@@ -170,10 +170,12 @@ $lang['messages_edit_payment_success'] = "Pagamento alterado";
 $lang['messages_edit_payment_error'] = "Erro ao alterar pagamento";
 $lang['messages_delete_payment_success'] = "Pagamento excluído";
 $lang['messages_delete_payment_error'] = "Erro ao excluir pagamento";
-$lang['messages_create_event_success'] = "Evento salvo";
-$lang['messages_create_event_error'] = "Erro ao salvar evento";
-$lang['messages_delete_event_success'] = "Evento excluído";
-$lang['messages_delete_event_error'] = "Erro ao excluir evento";
+$lang['messages_create_event_success'] = "Agendamento salvo";
+$lang['messages_edit_event_success'] = "Agendamento salvo";
+$lang['messages_edit_event_error'] = "Erro ao salvar agendamento";
+$lang['messages_create_event_error'] = "Erro ao salvar agendamento";
+$lang['messages_delete_event_success'] = "Agendamento excluído";
+$lang['messages_delete_event_error'] = "Erro ao excluir agendamento";
 
 $lang['messages_delete_milestone_error'] = "Erro ao excluir Pacote de trabalho";
 $lang['messages_delete_milestone_success'] = "Pacote de trabalho excluído";
@@ -287,6 +289,14 @@ $lang['messages_freight_updated_success'] = "Frete atualizado com sucesso";
 $lang['messages_find_flow_error'] = "Fluxo não encontrado";
 $lang['messages_viewing_flow'] = "Visualizando fluxo";
 
+
+$lang['messages_find_flow_token'] = "Token não encontrado";
+$lang['messages_viewing_token'] = "Visualizando token";
+$lang['messages_find_token_error'] = "Token não encontrado ou não pertence a sua empresa";
+
+$lang['messages_approve_token_success'] = "Projeto aprovado com sucesso";
+$lang['messages_approve_token_error'] = "Erro ao aprovar projeto";
+
 $lang['messages_request_registration_success'] = "Seu pedido de registro foi feito com sucesso";
 $lang['messages_request_registration_error'] = "Erro ao efetuar pedido de registro";
 
@@ -307,3 +317,6 @@ $lang['messages_delete_success'] = "Registro removido com sucesso";
 $lang['messages_delete_error'] = "Erro ao remover registro";
 
 $lang['messages_routine_success'] = "Rotina executada com sucesso";
+
+$lang['messages_updated_token_error'] = "Erro ao atualizar Token";
+$lang['messages_updated_token_success'] = "Token atualizado com sucesso";

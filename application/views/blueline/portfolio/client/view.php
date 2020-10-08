@@ -1,37 +1,27 @@
-<style>
-    @media (max-width: 767px) {
-        .content-area {
-            padding: 0;
-        }
-
-        .row.mainnavbar {
-            margin-bottom: 0px;
-            margin-right: 0px;
-        }
-    }
-</style>
 <div class="col-sm-12 col-md-12 main">
     <div class="row tile-row">
         <div class="tile-button">
             <a href="<?= base_url() ?>cportfolio/edit_registration" data-toggle="mainmodal">
                 <div class="col-md-3 col-xs-3 tile">
                     <div class="icon-frame"><i class="ion-ios-location"> </i></div>
-                    <h1><span> <?= $this->lang->line('application_edit_registration_data'); ?> </span></h1></div>
-
+                    <h1><span> <?= $this->lang->line('application_edit_registration_data'); ?> </span></h1>
+                </div
             </a>
         </div>
         <div class="tile-button">
             <a href="<?= base_url() ?>cportfolio/edit_profile" data-toggle="mainmodal">
                 <div class="col-md-3 col-xs-3 tile">
                     <div class="icon-frame"><i class="ion-information-circled"> </i></div>
-                    <h1><span> <?= $this->lang->line('application_edit_profile_and_portfolio'); ?> </span></h1></div>
+                    <h1><span> <?= $this->lang->line('application_edit_profile_and_portfolio'); ?> </span></h1>
+                </div>
             </a>
         </div>
         <div class="tile-button">
             <a href="<?= base_url() ?>cportfolio/add_photo" data-toggle="mainmodal">
                 <div class="col-md-3 col-xs-3 tile">
                     <div class="icon-frame"><i class="ion-images"> </i></div>
-                    <h1><span> <?= $this->lang->line('application_add_photo'); ?> </span></h1></div>
+                    <h1><span> <?= $this->lang->line('application_add_photo'); ?> </span></h1>
+                </div>
             </a>
         </div>
         <div class="col-md-1 col-xs-1 tile hidden-xs">

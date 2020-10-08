@@ -27,6 +27,11 @@ class Rate extends MY_Controller {
 
         $rating_post = RatingPost::find(['conditions'=>['used_code = ?', $code]]);
 
+        if ($rating_post == null){
+            $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_rate_code_inexistent_error  '));
+            redirect('rate/error');
+        }
+
         if ($rating_post->comment != ''){
             $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_rate_code_used_error'));
             redirect('rate/error');
@@ -48,6 +53,9 @@ class Rate extends MY_Controller {
 
                 $rating_evaluation->save();
             }
+
+//            deve-se alterar o rating da empresa somente quando for aprovado pela gerência
+//            $company_ratings = CompanyRating::find(['conditions'=>['company_id = ?', $_POST['company_id']]]);
 
             if (!$rating_post) {
                 $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_rate_saved_error'));

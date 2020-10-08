@@ -56,8 +56,8 @@ $message_icon = false;
     <link rel="stylesheet" href="<?=base_url()?>assets/blueline/css/user.css" rel="stylesheet" />
     <link rel="stylesheet" href="<?=base_url()?>assets/blueline/css/important.css" />
     <link rel="stylesheet" href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css">
-    <link rel="stylesheet" href="<?=base_url()?>assets/blueline/css/line-awesome.min.css">
-
+<!--    <link rel="stylesheet" href="--><?//=base_url()?><!--assets/blueline/css/line-awesome.min.css">-->
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">-->
 
     <?=get_theme_colors($core_settings);?>

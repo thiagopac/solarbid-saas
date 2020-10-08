@@ -1,68 +1,14 @@
 <div class="col-sm-12  col-md-12 main">
 
-    <div class="row tile-row">
-
-        <div class="tile-button">
-            <a href="<?= base_url() ?>flows/find" data-toggle="mainmodal">
-                <div class="col-md-3 col-xs-3 tile">
-
-                    <div class="icon-frame">
-                        <i class="ion-search"></i>
-                    </div>
-                    <h1>
-                <span>
-                    <?= $this->lang->line('application_find_flow'); ?>
-                </span>
-                    </h1>
-                </div>
-            </a>
-
-        </div>
-        <div class="tile-button">
-            <a href="<?= base_url() ?>flows/list_simulator">
-                <div class="col-md-3 col-xs-3 tile">
-
-                    <div class="icon-frame">
-                        <i class="ion-stats-bars"></i>
-                    </div>
-                    <h1>
-                <span>
-                    <?= $this->lang->line('application_simulator_flows'); ?>
-                </span>
-                    </h1>
-                </div>
-            </a>
-        </div>
-        <div class="tile-button">
-
-            <a href="<?= base_url() ?>flows/list_store">
-                <div class="col-md-3 col-xs-3 tile">
-
-                    <div class="icon-frame">
-                        <i class="ion-android-cart"></i>
-                    </div>
-                    <h1>
-                <span>
-                    <?= $this->lang->line('application_store_flows'); ?>
-                </span>
-                    </h1>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-md-3 col-xs-3 tile hidden-xs">
-            <div style="width:97%; margin-top: -4px; margin-bottom: 17px; height: 80px;">
-            </div>
-        </div>
-    </div>
+    <?php include_once ("header_menu.php")?>
 
     <div class="row">
         <div class="box-shadow">
             <div class="table-head">
-                <?=$this->lang->line('application_simulator_flows');?>
+                <?=$this->lang->line('application_simulator_tokens');?>
             </div>
-            <div class="table-div" id="div-simulator-flows" name="simulator-flows">
-                <table class="data-sorting table" id="simulator_flows" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
+            <div class="table-div" id="div-simulator-tokens" name="simulator-tokens">
+                <table class="data-sorting table" id="simulator_tokens" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
                     <thead>
                         <th style="width:20px">
                             <?=$this->lang->line('application_id');?>
@@ -88,12 +34,18 @@
                         <th>
                             <?=$this->lang->line('application_activity');?>
                         </th>
+                        <th>
+                            <?=$this->lang->line('application_integrator');?>
+                        </th>
+                        <th style="width:100px">
+                            <?=$this->lang->line('application_approved_project');?>
+                        </th>
                         <th style="width:100px">
                             <?=$this->lang->line('application_created_at');?>
                         </th>
                     </thead>
                     <?php foreach ($simulator_flows as $simulator_flow):?>
-                        <tr id="<?=$simulator_flow->id;?>">
+                        <tr id="<?=$simulator_flow->code;?>">
                             <td class="hidden-xs" style="width:70px">
                                 <?=$simulator_flow->id;?>
                             </td>
@@ -120,6 +72,16 @@
                             </td>
                             <td>
                                 <?=$simulator_flow->activity_obj->name?>
+                            </td>
+                            <td>
+                                <?=json_decode($simulator_flow->integrator)->company_name?>
+                            </td>
+                            <td>
+                                <?php if ($simulator_flow->integrator_approved == 1) : ?>
+                                    <label class="label label-success"><?=$this->lang->line('application_yes');?></label>
+                                <?php else : ?>
+                                    <label class="label label-important"><?=$this->lang->line('application_no');?></label>
+                                <?php endif; ?>
                             </td>
                             <td>
                                 <?=date($core_settings->date_format . ' ' . $core_settings->date_time_format, strtotime($simulator_flow->created_at))?>

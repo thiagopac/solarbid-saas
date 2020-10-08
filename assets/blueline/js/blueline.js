@@ -439,23 +439,23 @@ $.ajaxSetup({
     0 == e.indexOf("#") ? $(e).modal("open") : $.get(e, function(t) {
         $('<div class="modal fade" >' + t + "</div>").modal()
     })
-}), $(document).on("click", "table#projects td, table#clients td, table#invoices td, table#cprojects td, table#cinvoices td, table#estimates td, table#cestimates td, table#quotations td, table#messages td, table#cmessages td, table#subscriptions td, table#csubscriptions td, table#tickets td, table#ctickets td", function(t) {
+}), $(document).on("click", "table#projects td, table#clients td, table#messages td, table#cmessages td, table#tickets td, table#ctickets td", function(t) {
     var e = $(this).parent().attr("id");
     if (e && !$(this).hasClass("noclick")) {
         var a = $(this).closest("table").attr("rel") + $(this).closest("table").attr("id");
         $(this).hasClass("option") || (window.location = a + "/view/" + e)
     }
-}), $(document).on("click", "table#store_flows td", function(t) {
+}), $(document).on("click", "table#store_tokens td", function(t) {
     var e = $(this).parent().attr("id");
     if (e) {
         var a = $(this).closest("table").attr("rel");
-        $(this).hasClass("option") || (window.location = a + "flows/view_store_flow/" + e)
+        $(this).hasClass("option") || (window.location = a + "tokens/view_store_token/" + e)
     }
-}), $(document).on("click", "table#simulator_flows td", function(t) {
+}), $(document).on("click", "table#simulator_tokens td", function(t) {
     var e = $(this).parent().attr("id");
     if (e) {
         var a = $(this).closest("table").attr("rel");
-        $(this).hasClass("option") || (window.location = a + "flows/view_simulator_flow/" + e)
+        $(this).hasClass("option") || (window.location = a + "tokens/view_simulator_token/" + e)
     }
 }), $(document).on("click", "table#screening_companies td", function(t) {
     var e = $(this).parent().attr("id");
@@ -463,7 +463,20 @@ $.ajaxSetup({
         var a = $(this).closest("table").attr("rel");
         $(this).hasClass("option") || (window.location = a + "clients/view_screening/" + e)
     }
-}), summernote(), $(".summernote-note").summernote({
+}), $(document).on("click", "table#simulator_tokens_client td", function(t) {
+    var e = $(this).parent().attr("id");
+    if (e) {
+        var a = $(this).closest("table").attr("rel");
+        $(this).hasClass("option") || (window.location = a + "ctokens/view_simulator_token/" + e)
+    }
+}), $(document).on("click", "table#store_tokens_client td", function(t) {
+    var e = $(this).parent().attr("id");
+    if (e) {
+        var a = $(this).closest("table").attr("rel");
+        $(this).hasClass("option") || (window.location = a + "ctokens/view_store_token/" + e)
+    }
+}),
+    summernote(), $(".summernote-note").summernote({
     height: "360px",
     shortcuts: !1,
     disableDragAndDrop: !0,

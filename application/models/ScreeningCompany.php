@@ -9,6 +9,6 @@ class ScreeningCompany extends ActiveRecord\Model {
     );
 
     static $belongs_to = array(
-        array('screening_client', 'conditions' => 'inactive != 1')
+        array('screening_client', 'foreign_key' => 'client_id', 'conditions' => 'inactive != 1')
     );
 }

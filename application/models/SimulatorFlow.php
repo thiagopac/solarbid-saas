@@ -19,4 +19,10 @@ class SimulatorFlow extends ActiveRecord\Model {
         ['activity_obj', 'foreign_key' => 'activity', 'class_name' => 'Activity'],
     ];
 
+    public function getFlowByCode($code){
+
+        $flow = SimulatorFlow::find('first', ['conditions' => ['code = ?', $code]]);
+        return $flow;
+    }
+
 }

@@ -32,7 +32,7 @@ class Clients extends MY_Controller
 
     public function index() {
 
-        $this->content_view = 'clients/options';
+        $this->content_view = 'clients/all';
     }
 
     public function companies() {
@@ -43,9 +43,8 @@ class Clients extends MY_Controller
 
     public function screening_companies() {
 
-        $this->view_data['screening_companies'] = ScreeningCompany::find('all', ['conditions' => ['deleted != ?', 1]]);
+        $this->view_data['screening_companies'] = ScreeningCompany::find('all', ['conditions' => ['deleted != ?', 1], 'include' => ['screening_client']]);
         $this->content_view = 'clients/all_screening_companies';
-
     }
 
     public function create($company_id = false)
@@ -260,15 +259,27 @@ class Clients extends MY_Controller
 
                 $rating_categories = RatingCategory::all();
 
-                foreach ($rating_categories as $rating_category){
-                    $company_rating = new CompanyRating();
-                    $company_rating->company_id = $last_company->id;
-                    $company_rating->rating_category_id = $rating_category->id;
-                    $company_rating->value = 2.5;
-                    $company_rating->save();
-                }
+                //create company full profile
+                {
+                    $company_profile = new CompanyProfile();
+                    $company_profile->company_id = $last_company->id;
+                    $company_profile->warranty_lowest = 0;
+                    $company_profile->warranty_highest = 0;
+                    $company_profile->power_plants_installed = 0;
+                    $company_profile->power_executed = 0;
+                    $company_profile->save();
 
-                $company_stats = CompanyStats::create(['company_id' => $last_company->id]);
+                    $company_stats = CompanyStats::create(['company_id' => $last_company->id]);
+
+                    $rating_categories = RatingCategory::all();
+                    foreach ($rating_categories as $rating_category){
+                        $company_rating = new CompanyRating();
+                        $company_rating->company_id = $last_company->id;
+                        $company_rating->rating_category_id = $rating_category->id;
+                        $company_rating->value = 3;
+                        $company_rating->save();
+                    }
+                }
 
                 if (!$company) {
                     $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_company_add_error'));
@@ -408,6 +419,11 @@ class Clients extends MY_Controller
 
                 $company_attr = (array) $screening_company->attributes();
 
+                $core_settings = Setting::first();
+                $company_attr['reference'] = $core_settings->company_reference;
+                $core_settings->company_reference = $core_settings->company_reference + 1;
+                $core_settings->save();
+
                 unset($company_attr['id']); //do not copy screening company id, need new one
                 $company->create($company_attr);
 
@@ -426,6 +442,11 @@ class Clients extends MY_Controller
                     $client->create($client_attr);
                 }
 
+                $main_contact = Client::first(['conditions' => ['company_id = ?', $last_company->id]]);
+
+                $last_company = Company::find($last_company->id);
+                $last_company->client_id = $main_contact->id;
+                $last_company->save();
 
                 //create company full profile
                 {

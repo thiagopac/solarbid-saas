@@ -1,71 +1,5 @@
 <div class="col-sm-12  col-md-12 main">
-    <div class="row tile-row">
-
-        <div class="tile-button">
-            <a href="<?=base_url()?>clients/find" data-toggle="mainmodal">
-                <div class="col-md-3 col-xs-3 tile">
-
-                    <div class="icon-frame">
-                        <i class="ion-search"></i>
-                    </div>
-                    <h1>
-                <span>
-                    <?= $this->lang->line('application_find_company'); ?>
-                </span>
-                    </h1>
-                </div>
-            </a>
-        </div>
-        <div class="tile-button">
-            <a href="<?=base_url()?>clients/company/create" data-toggle="mainmodal">
-                <div class="col-md-3 col-xs-3 tile">
-
-                    <div class="icon-frame">
-                        <i class="ion-android-add-circle"></i>
-                    </div>
-                    <h1>
-                <span>
-                    <?= $this->lang->line('application_add_new_company'); ?>
-                </span>
-                    </h1>
-                </div>
-            </a>
-        </div>
-        <div class="tile-button">
-            <a href="<?=base_url()?>clients/companies">
-                <div class="col-md-3 col-xs-3 tile">
-
-                    <div class="icon-frame">
-                        <i class="ion-flash"></i>
-                    </div>
-                    <h1>
-                <span>
-                    <?= $this->lang->line('application_companies'); ?>
-                </span>
-                    </h1>
-                </div>
-            </a>
-        </div>
-        <div class="tile-button">
-            <a href="<?=base_url()?>clients/screening_companies">
-                <div class="col-md-3 col-xs-3 tile">
-
-                    <div class="icon-frame">
-                        <i class="ion-flash-off"></i>
-                    </div>
-                    <h1>
-                <span>
-                    <?= $this->lang->line('application_screening_companies'); ?>
-                </span>
-                    </h1>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-0 col-xs-0 tile hidden-xs">
-            <div style="margin-top: -4px; margin-bottom: 17px; height: 80px;">
-            </div>
-        </div>
-    </div>
+    <?php include_once ("header_menu.php")?>
 
     <div class="row">
         <div class="box-shadow">
@@ -105,54 +39,54 @@
                         <?=$this->lang->line('application_action');?>
                     </th>
                     </thead>
-                    <?php foreach ($companies as $value):?>
+                    <?php foreach ($companies as $company):?>
 
-                        <tr id="<?=$value->id;?>">
+                        <tr id="<?=$company->id;?>">
                             <td class="hidden-xs" style="width:70px">
-                                <?=$core_settings->company_prefix;?><?php if (isset($value->reference)) {echo $value->reference;} ?>
+                                <?=$core_settings->company_prefix;?><?php if (isset($company->reference)) {echo $company->reference;} ?>
                             </td>
 
-                            <td><span class="bold"><?php if (is_object($value)) {
-                                        echo $value->name;
+                            <td><span class="bold"><?php if (is_object($company)) {
+                                        echo $company->name;
                                     } else {
                                         echo $this->lang->line('application_no_company_assigned');
                                     }?></span>
                             </td>
                             <td>
-                                <?= $value->registered_number; ?>
+                                <?= $company->registered_number; ?>
                             </td>
                             <td class="hidden-xs">
-                                <?php if (is_object($value->client)) {
-                                    echo $value->client->firstname . ' ' . $value->client->lastname;
+                                <?php if (is_object($company->client)) {
+                                    echo $company->client->firstname . ' ' . $company->client->lastname;
                                 } else {
                                     echo $this->lang->line('application_no_contact_assigned');
                                 } ?>
                             </td>
                             <td class="hidden-xs">
-                                <?php if (is_object($value->client)) {
-                                    echo $value->client->email;
+                                <?php if (is_object($company->client)) {
+                                    echo $company->client->email;
                                 } else {
                                     echo $this->lang->line('application_no_contact_assigned');
                                 }?>
                             </td>
-                            <!-- <td class="hidden-xs"><?php echo $value->website = empty($value->website) ? '-' : '<a target="_blank" href="http://' . $value->website . '">' . $value->website . '</a>' ?></td> -->
+                            <!-- <td class="hidden-xs"><?php echo $company->website = empty($company->website) ? '-' : '<a target="_blank" href="http://' . $company->website . '">' . $company->website . '</a>' ?></td> -->
                             <td class="hidden-xs">
-                                <?php echo $value->city ?>/
-                                <?php echo $value->state ?>
+                                <?php echo $company->city ?>/
+                                <?php echo $company->state ?>
                             </td>
                             <td style="text-align: center" class="hidden-xs">
-                                <?php if (!is_null($value->unlocked)) {
-                                    echo $value->unlocked == 1 ? '<span style="color:red">'.$this->lang->line('application_yes').'</span>' : $this->lang->line('application_no');
+                                <?php if (!is_null($company->unlocked)) {
+                                    echo $company->unlocked == 1 ? '<span style="color:red">'.$this->lang->line('application_yes').'</span>' : $this->lang->line('application_no');
                                 }?>
                             </td>
                             <td style="text-align: center" class="hidden-xs">
-                                <?php if (!is_null($value->inactive)) {
-                                    echo $value->inactive == 1 ? '<span style="color:red">'.$this->lang->line('application_yes').'</span>' : $this->lang->line('application_no');
+                                <?php if (!is_null($company->inactive)) {
+                                    echo $company->inactive == 1 ? '<span style="color:red">'.$this->lang->line('application_yes').'</span>' : $this->lang->line('application_no');
                                 }?>
                             </td>
                             <td class="option" width="8%">
-                                <button type="button" title="<?=$this->lang->line('application_delete'); ?>" class="btn-option delete po tt" data-toggle="popover" data-placement="left" data-content="<a class='btn btn-danger po-delete ajax-silent' href='<?=base_url()?>clients/company/delete/<?=$value->id;?>'><?=$this->lang->line('application_yes_im_sure');?></a> <button class='btn po-close'><?=$this->lang->line('application_no');?></button> <input type='hidden' name='td-id' class='id' value='<?=$value->id;?>'>" data-original-title="<b><?=$this->lang->line('application_really_delete');?></b>"><i class="icon dripicons-cross"></i></button>
-                                <a href="<?=base_url()?>clients/company/update/<?=$value->id;?>" title="<?=$this->lang->line('application_edit_client'); ?>" class="btn-option tt" data-toggle="mainmodal"><i class="icon dripicons-gear"></i></a>
+                                <button type="button" title="<?=$this->lang->line('application_delete'); ?>" class="btn-option delete po tt" data-toggle="popover" data-placement="left" data-content="<a class='btn btn-danger po-delete ajax-silent' href='<?=base_url()?>clients/company/delete/<?=$company->id;?>'><?=$this->lang->line('application_yes_im_sure');?></a> <button class='btn po-close'><?=$this->lang->line('application_no');?></button> <input type='hidden' name='td-id' class='id' value='<?=$company->id;?>'>" data-original-title="<b><?=$this->lang->line('application_really_delete');?></b>"><i class="icon dripicons-cross"></i></button>
+                                <a href="<?=base_url()?>clients/company/update/<?=$company->id;?>" title="<?=$this->lang->line('application_edit_client'); ?>" class="btn-option tt" data-toggle="mainmodal"><i class="icon dripicons-gear"></i></a>
                             </td>
                         </tr>
                     <?php endforeach;?>
@@ -162,3 +96,4 @@
             </div>
         </div>
     </div>
+</div>
