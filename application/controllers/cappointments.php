@@ -32,7 +32,9 @@ class cAppointments extends MY_Controller
             array_push($str_codes, $item->code);
         }
 
-        $appointments = CompanyAppointment::all(['conditions' => ['flow_id in (?) OR store_flow_id in (?)', $str_codes, $str_codes], 'order' => 'id DESC']);
+        if (count($str_codes) > 0){
+            $appointments = CompanyAppointment::all(['conditions' => ['flow_id in (?) OR store_flow_id in (?)', $str_codes, $str_codes], 'order' => 'id DESC']);
+        }
 
         $manha_start = '08:00';
         $manha_end = '12:00';
