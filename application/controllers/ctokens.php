@@ -53,8 +53,10 @@ class cTokens extends MY_Controller {
         }
 
 //        var_dump($authorized_appointments);
+        if (count($flow_ids) > 0){
+            $this->view_data['simulator_flows'] = SimulatorFlow::find('all',['order' => 'id DESC', 'conditions' => ['company_id = ? AND code in (?)', $this->client->company_id, $flow_ids], 'select'=> 'id, code, city, state, type, dealer, monthly_average, activity, structure_type_id, integrator_approved, created_at','include' => ['energy_dealer', 'state', 'city', 'activity', 'structure_type']]);
+        }
 
-        $this->view_data['simulator_flows'] = SimulatorFlow::find('all',['order' => 'id DESC', 'conditions' => ['company_id = ? AND code in (?)', $this->client->company_id, $flow_ids], 'select'=> 'id, code, city, state, type, dealer, monthly_average, activity, structure_type_id, integrator_approved, created_at','include' => ['energy_dealer', 'state', 'city', 'activity', 'structure_type']]);
         $this->content_view = 'tokens/client/simulator_all';
     }
 
@@ -68,8 +70,9 @@ class cTokens extends MY_Controller {
 
         }
 
-
-        $this->view_data['store_flows'] = StoreFlow::find('all',['order' => 'id DESC', 'conditions' => ['company_id = ? AND code in (?)', $this->client->company_id, $store_flow_ids]]);
+        if (count($store_flow_ids) > 0){
+            $this->view_data['store_flows'] = StoreFlow::find('all',['order' => 'id DESC', 'conditions' => ['company_id = ? AND code in (?)', $this->client->company_id, $store_flow_ids]]);
+        }
 
         $this->content_view = 'tokens/client/store_all';
     }
