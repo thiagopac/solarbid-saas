@@ -292,7 +292,7 @@ $lang['messages_viewing_flow'] = "Visualizando fluxo";
 
 $lang['messages_find_flow_token'] = "Token não encontrado";
 $lang['messages_viewing_token'] = "Visualizando token";
-$lang['messages_find_token_error'] = "Token não encontrado ou não pertence a sua empresa";
+$lang['messages_find_token_error'] = "Token não encontrado";
 
 $lang['messages_approve_token_success'] = "Projeto aprovado com sucesso";
 $lang['messages_approve_token_error'] = "Erro ao aprovar projeto";

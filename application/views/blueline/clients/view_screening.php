@@ -5,7 +5,7 @@
 
     <div class="col-md-12">
         <h2>
-            <?=$core_settings->company_prefix."".$screening_company->reference;?> - <?=$screening_company->name;?>
+            <?=$screening_company->name;?>
         </h2>
     </div>
 </div>

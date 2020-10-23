@@ -44,13 +44,32 @@ class cTokens extends MY_Controller {
 
     public function list_simulator() {
 
-        $this->view_data['simulator_flows'] = SimulatorFlow::find('all',['order' => 'id DESC', 'conditions' => ['company_id = ?', $this->client->company_id], 'select'=> 'id, code, city, state, type, dealer, monthly_average, activity, structure_type_id, integrator_approved, created_at','include' => ['energy_dealer', 'state', 'city', 'activity', 'structure_type']]);
+        $authorized_appointments = AppointmentPurchase::find('all', ['conditions' => ['status = ?', 'authorized'], 'select' => 'flow_id']);
+
+        $flow_ids = array();
+        foreach ($authorized_appointments as $authorized_appointment){
+            array_push($flow_ids, $authorized_appointment->flow_id);
+
+        }
+
+//        var_dump($authorized_appointments);
+
+        $this->view_data['simulator_flows'] = SimulatorFlow::find('all',['order' => 'id DESC', 'conditions' => ['company_id = ? AND code in (?)', $this->client->company_id, $flow_ids], 'select'=> 'id, code, city, state, type, dealer, monthly_average, activity, structure_type_id, integrator_approved, created_at','include' => ['energy_dealer', 'state', 'city', 'activity', 'structure_type']]);
         $this->content_view = 'tokens/client/simulator_all';
     }
 
     public function list_store() {
 
-        $this->view_data['store_flows'] = StoreFlow::find('all',['order' => 'id DESC', 'conditions' => ['company_id = ?', $this->client->company_id]]);
+        $authorized_appointments = AppointmentPurchase::find('all', ['conditions' => ['status = ?', 'authorized'], 'select' => 'store_flow_id']);
+
+        $store_flow_ids = array();
+        foreach ($authorized_appointments as $authorized_appointment){
+            array_push($store_flow_ids, $authorized_appointment->store_flow_id);
+
+        }
+
+
+        $this->view_data['store_flows'] = StoreFlow::find('all',['order' => 'id DESC', 'conditions' => ['company_id = ? AND code in (?)', $this->client->company_id, $store_flow_ids]]);
 
         $this->content_view = 'tokens/client/store_all';
     }
@@ -60,15 +79,32 @@ class cTokens extends MY_Controller {
 
         if ($_POST) {
 
-            $is_simulator_flow = SimulatorFlow::find(['conditions' => ['code = ?', $_POST['code']]]);
-            $is_store_flow = StoreFlow::find(['conditions' => ['code = ?', $_POST['code']]]);
+            $is_simulator_flow = SimulatorFlow::find(['conditions' => ['code = ? AND company_id = ?', $_POST['code'], $this->client->company_id]]);
+            $is_store_flow = StoreFlow::find(['conditions' => ['code = ? AND company_id = ?', $_POST['code'], $this->client->company_id]]);
 
             if ($is_simulator_flow != null){
-                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_viewing_token')." ".$is_simulator_flow->code);
-                redirect('ctokens/view_simulator_token/'.$is_simulator_flow->code);
+
+                $authorized_appointment = AppointmentPurchase::find('first', ['conditions' => ['flow_id = ? AND status = ?', $_POST['code'],'authorized']]);
+
+                if ($authorized_appointment != null){
+                    $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_viewing_token')." ".$is_simulator_flow->code);
+                    redirect('ctokens/view_simulator_token/'.$is_simulator_flow->code);
+                }else{
+                    $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_find_token_error'));
+                    redirect('ctokens');
+                }
+
             }else if($is_store_flow != null){
-                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_viewing_token')." ".$is_store_flow->code);
-                redirect('ctokens/view_store_token/'.$is_store_flow->code);
+
+                $authorized_appointment = AppointmentPurchase::find('first', ['conditions' => ['store_flow_id = ? AND status = ?', $_POST['code'],'authorized']]);
+
+                if ($authorized_appointment != null){
+                    $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_viewing_token')." ".$is_store_flow->code);
+                    redirect('ctokens/view_store_token/'.$is_store_flow->code);
+                }else{
+                    $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_find_token_error'));
+                    redirect('ctokens');
+                }
             }else{
                 $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_find_token_error'));
                 redirect('ctokens');
