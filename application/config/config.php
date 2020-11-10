@@ -273,6 +273,7 @@ $config['cookie_domain'] = '';
 $config['cookie_path'] = '/';
 $config['cookie_secure'] = false;
 
+
 /*
 |--------------------------------------------------------------------------
 | Global XSS Filtering
@@ -297,7 +298,7 @@ $config['global_xss_filtering'] = false;
 | 'csrf_expire' = The number in seconds the token should expire.
 */
 if (isset($_SERVER['REQUEST_URI'])) {
-    if (stripos($_SERVER['REQUEST_URI'], '/paypalipn') === false && stripos($_SERVER['REQUEST_URI'], '/login') === false) {
+    if (stripos($_SERVER['REQUEST_URI'], '/mail') === false && stripos($_SERVER['REQUEST_URI'], '/login') === false) {
         $config['csrf_protection'] = true;
     } else {
         $config['csrf_protection'] = false;
