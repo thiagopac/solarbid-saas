@@ -35,7 +35,6 @@ class Mail extends MY_Controller {
             $message = $this->parser->parse_string($email, $parse_data);
             $this->email->message($message);
             $this->email->send();
-            send_notification($core_settings->email, $subject, $message);
         }
 
         $this->theme_view = 'ajax';
