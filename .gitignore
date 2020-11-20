@@ -60,8 +60,8 @@ typings/
 .next
 
 # integrators photos
-#/files/media/portfolio
-#/files/media/user
+/files/media/portfolio
+/files/media/user
 
 # htaccess
 .htaccess
@@ -71,3 +71,6 @@ typings/
 
 # phpstorm settings
 .idea
+
+# BD credentials
+/application/config/database.php
