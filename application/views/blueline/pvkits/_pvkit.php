@@ -196,9 +196,7 @@ if (isset($pv_kit)) { ?>
         <label for="proforma"><?= $this->lang->line('application_proforma'); ?></label>
         <small class="text-muted">(<a href="http://jsoneditoronline.org/#left=cloud.776bb50a537545768538f70b34cf4169">ver padrão</a> JSON)</small>
         <textarea id="proforma" name="proforma"
-               class="form-control" value="<?php if (isset($pv_kit)) {
-            echo $pv_kit->proforma;
-        } ?>"></textarea>
+               class="form-control"><?php if (isset($pv_kit->proforma)) $pv_kit->proforma ?></textarea>
     </div>
 
     <div class="form-group">
