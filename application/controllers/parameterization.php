@@ -1060,7 +1060,7 @@ class Parameterization extends MY_Controller{
             //set all received fields in a filter to prevent duplicate registries
             foreach ($_POST as $key => $value){
                 if ($value != null){
-                    $where.= " AND $key = $value";
+                    $where.= " AND $key = '$value'";
                 }
             }
 
