@@ -1536,3 +1536,4 @@ $lang['application_change_appointment'] = 'Alterar agendamento';
 $lang['application_cannot_change_appointment'] = '<strong>Importante:</strong> Não é possível alterar este agendamento pois o projeto já foi aprovado.';
 $lang['application_lgpd_header_desc'] = 'Você forneceu à Solarbid alguns dados que são necessários para execução dos serviços que prestamos. Os seus dados são mantidos de forma segura e a Solarbid jamais os comercializará. Abaixo estão os dados que a Solarbid mantém sobre seu contato com a nossa plataforma. Por favor, revise-os.';
 $lang['application_lgpd_user_data'] = 'Dados do seu acesso';
+$lang['application_proforma'] = 'Proforma';
