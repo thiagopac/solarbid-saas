@@ -326,6 +326,27 @@ class PvKits extends MY_Controller {
         redirect('pvkits');
     }
 
+    public function duplicate($pv_kit_id = false) {
+
+        $pv_kit = PvKit::find($pv_kit_id);
+
+//        var_dump($pv_kit);exit;
+
+        $clone = new PvKit();
+
+        $pv_kit_attr = (array) $pv_kit->attributes();
+        unset($pv_kit_attr['id']); //do not copy id
+
+        $clone->create($pv_kit_attr);
+
+        if (!$clone) {
+            $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_duplicated_pv_kit_error'));
+        } else {
+            $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_duplicated_pv_kit_success'));
+        }
+        redirect('pvkits');
+    }
+
     function preview_photo($pv_kit_id) {
 
         $pv_kit = PvKit::find($pv_kit_id);

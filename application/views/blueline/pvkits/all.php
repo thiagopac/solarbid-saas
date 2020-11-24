@@ -169,6 +169,10 @@
                                         data-original-title="<b><?=$this->lang->line('application_really_delete');?></b>">
                                     <i class="icon dripicons-cross"></i>
                                 </button>
+                                <button type="button" class="btn-option clone po" data-toggle="popover" data-placement="left" data-content="<a class='btn btn-danger po-clone ajax-silent' href='<?=base_url()?>pvkits/duplicate/<?=$kit->id;?>'><?=$this->lang->line('application_yes_im_sure');?></a> <button class='btn po-close'><?=$this->lang->line('application_no');?></button> <input type='hidden' name='td-id' class='id' value='<?=$kit->id;?>'>"
+                                        data-original-title="<b><?=$this->lang->line('application_really_clone');?></b>">
+                                    <i class="icon dripicons-duplicate"></i>
+                                </button>
                                 <a href="<?=base_url()?>pvkits/update/<?=$kit->id;?>" class="btn-option" data-toggle="mainmodal">
                                     <i class="icon dripicons-gear"></i>
                                 </a>
