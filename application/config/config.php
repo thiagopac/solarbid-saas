@@ -340,7 +340,7 @@ $config['compress_output'] = false;
 | regarding date handling.
 |
 */
-$config['time_reference'] = 'local';
+$config['time_reference'] = 'gmt';
 
 /*
 |--------------------------------------------------------------------------

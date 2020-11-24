@@ -137,7 +137,7 @@ if (isset($pv_kit)) { ?>
     </div>
 
     <div class="form-group">
-        <label for="image"><?= $this->lang->line('application_image'); ?> * <small>(Só enviar nova imagem se ela não for de nenhum outro kit)</small></label>
+        <label for="userfile"><?= $this->lang->line('application_image'); ?> * <small>(Só enviar nova imagem se ela não for de nenhum outro kit)</small></label>
         <div>
             <input id="uploadFile" class="form-control uploadFile"
                    placeholder="<?= $this->lang->line('application_choose_file'); ?>" disabled="disabled"/>
@@ -154,7 +154,7 @@ if (isset($pv_kit)) { ?>
 
             <div class="form-group">
                 <label><?= $this->lang->line('application_start'); ?> </label>
-                <input class="form-control datepicker-time datepicker-time-linked not-required" data-enable-time=true name="start_at" id="start_at" type="text"
+                <input class="form-control datepicker-time not-required" data-enable-time=true name="start_at" id="start_at" type="text"
                        value="<?php if ($pv_kit->start_at != null) {
                            echo $pv_kit->start_at;
                        } ?>" />
@@ -196,7 +196,7 @@ if (isset($pv_kit)) { ?>
         <label for="proforma"><?= $this->lang->line('application_proforma'); ?></label>
         <small class="text-muted">(<a href="http://jsoneditoronline.org/#left=cloud.776bb50a537545768538f70b34cf4169">ver padrão</a> JSON)</small>
         <textarea id="proforma" name="proforma"
-               class="form-control"><?php if (isset($pv_kit->proforma)) $pv_kit->proforma ?></textarea>
+               class="form-control"><?php if (isset($pv_kit->proforma)) { echo json_decode($pv_kit->proforma); }?></textarea>
     </div>
 
     <div class="form-group">
