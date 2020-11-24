@@ -251,13 +251,23 @@ echo form_open_multipart($form_action, $attributes);
 						</label>
 						<?php
                         $options = [];
-                        foreach (timezone_abbreviations_list() as $abbr => $timezone) {
-                            foreach ($timezone as $val) {
-                                if (isset($val['timezone_id'])) {
-                                    $options[$val['timezone_id']] = $val['timezone_id'];
-                                }
+
+//                        var_dump(timezone_abbreviations_list());
+//                        foreach (timezone_abbreviations_list() as $abbr => $timezone) {
+//                            foreach ($timezone as $val) {
+//                                if (isset($val['timezone_id'])) {
+//                                    $options[$val['timezone_id']] = $val['timezone_id'];
+//                                }
+//                            }
+//                        }
+//                        var_dump(timezone_identifiers_list());
+                        foreach (timezone_identifiers_list() as $timezone) {
+                            if (isset($timezone)) {
+                                $options[$timezone] = $timezone;
                             }
+
                         }
+
                         echo form_dropdown('timezone', $options, $settings->timezone, 'style="width:250px" class="chosen-select"'); ?>
 
 					</div>
