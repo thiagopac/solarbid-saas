@@ -94,7 +94,7 @@
 
         </div>
         <div class="col-md-6">
-            <img width="100%" id="image" style="height: fit-content" class="" />
+            <img width="100%" id="image" class="" />
         </div>
     </div>
 

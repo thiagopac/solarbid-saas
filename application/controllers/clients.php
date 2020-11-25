@@ -465,7 +465,7 @@ class Clients extends MY_Controller
                         $company_rating = new CompanyRating();
                         $company_rating->company_id = $last_company->id;
                         $company_rating->rating_category_id = $rating_category->id;
-                        $company_rating->value = 2.5;
+                        $company_rating->value = 3.0;
                         $company_rating->save();
                     }
                 }

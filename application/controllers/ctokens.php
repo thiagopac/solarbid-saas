@@ -44,7 +44,7 @@ class cTokens extends MY_Controller {
 
     public function list_simulator() {
 
-        $authorized_appointments = AppointmentPurchase::find('all', ['conditions' => ['status = ?', 'authorized'], 'select' => 'flow_id']);
+        $authorized_appointments = AppointmentPurchase::find('all', ['conditions' => ['status = ?', '2'], 'select' => 'flow_id']);
 
         $flow_ids = array();
         foreach ($authorized_appointments as $authorized_appointment){
@@ -241,15 +241,14 @@ class cTokens extends MY_Controller {
             $city = City::find($flow->city);
             $pv_kit = PvKit::find($_POST['pvkit_id']);
             unset($_POST['pvkit_id']);
+
             $is_capital = $city->class == 'Capital Estadual' ? true : false;
-            $freight = Freight::find($pv_kit->id);
-            $freight_value = $is_capital == true ? $freight->capital_value : $freight->inland_value;
+
 
             $obj = new stdClass();
             $obj->id = $pv_kit->id;
             $obj->image = $pv_kit->image;
             $obj->price = $pv_kit->price;
-            $obj->freight = $freight_value;
             $obj->insurance = $pv_kit->insurance;
             $obj->kit_power = $pv_kit->kit_power;
             $obj->pv_module = $pv_kit->pv_module;
@@ -258,6 +257,16 @@ class cTokens extends MY_Controller {
             $obj->desc_inverter = $pv_kit->desc_inverter;
             $obj->kit_provider = $pv_kit->kit_provider;
             $obj->structure_type_id = $pv_kit->structure_type_id;
+
+            try {
+                $freight = Freight::find($pv_kit->id);
+                $freight_value = $is_capital == true ? $freight->capital_value : $freight->inland_value;
+                $obj->freight = $freight_value;
+            } catch (Exception $e) {
+                $obj->freight = 0;
+
+                echo 'Exception: ',  $e->getMessage();
+            }
 
             $json_obj = json_encode($obj);
 
