@@ -13,18 +13,18 @@ if (isset($event)) {?>
 
 
 <div class="form-group read-only" style="color: black">
-    <label for="title"><?= $this->lang->line('application_token'); ?></label>
+    <label><?= $this->lang->line('application_token'); ?></label>
     <input type="text" class="form-control" value="<?=$code?>" disabled/>
 </div>
 
 <div class="form-group">
-    <label for="description"><?= $this->lang->line('application_date'); ?> *</label>
+    <label><?= $this->lang->line('application_date'); ?> *</label>
     <input class="form-control datepicker" name="date" id="date" type="text" value="<?php if($event->date != null){echo ($event->date)->format('Y/m/d');} ?>" required <?=$disabled?>/>
 </div>
 
 
 <div class="form-group">
-    <label for="country">
+    <label>
         <?=$this->lang->line('application_appointment_time');?> *
     </label>
     <?php
@@ -41,20 +41,20 @@ if (isset($event)) {?>
     echo form_dropdown('appointment_time_id', $options, $event->appointment_time_id, "style='width:100%' class='chosen-select' required $disabled ");?>
 </div>
 
-<div class="form-group">
-    <label for="country">
-        <?=$this->lang->line('application_concluded_visit');?> *
-    </label>
-    <?php
-    $options = array();
-
-    $options[0] = $this->lang->line('application_no');
-    $options[1] = $this->lang->line('application_yes');
-
-    $label = $this->lang->line('application_select');
-
-    echo form_dropdown('completed', $options, $event->completed, "style='width:100%' class='chosen-select' required $disabled ");?>
-</div>
+<!--<div class="form-group">-->
+<!--    <label>-->
+<!--        --><?//=$this->lang->line('application_concluded_visit');?><!-- *-->
+<!--    </label>-->
+<!--    --><?php
+//    $options = array();
+//
+//    $options[0] = $this->lang->line('application_no');
+//    $options[1] = $this->lang->line('application_yes');
+//
+//    $label = $this->lang->line('application_select');
+//
+//    echo form_dropdown('completed', $options, $event->completed, "style='width:100%' class='chosen-select' required $disabled ");?>
+<!--</div>-->
 
 <?php if ($disabled == true) : ?>
     <div class="row">

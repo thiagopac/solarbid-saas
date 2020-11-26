@@ -62,7 +62,7 @@ class cTokens extends MY_Controller {
 
     public function list_store() {
 
-        $authorized_appointments = AppointmentPurchase::find('all', ['conditions' => ['status = ?', 'authorized'], 'select' => 'store_flow_id']);
+        $authorized_appointments = AppointmentPurchase::find('all', ['conditions' => ['status = ?', '2'], 'select' => 'store_flow_id']);
 
         $store_flow_ids = array();
         foreach ($authorized_appointments as $authorized_appointment){
@@ -87,7 +87,7 @@ class cTokens extends MY_Controller {
 
             if ($is_simulator_flow != null){
 
-                $authorized_appointment = AppointmentPurchase::find('first', ['conditions' => ['flow_id = ? AND status = ?', $_POST['code'],'authorized']]);
+                $authorized_appointment = AppointmentPurchase::find('first', ['conditions' => ['flow_id = ? AND status = ?', $_POST['code'],'2']]);
 
                 if ($authorized_appointment != null){
                     $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_viewing_token')." ".$is_simulator_flow->code);
@@ -99,7 +99,7 @@ class cTokens extends MY_Controller {
 
             }else if($is_store_flow != null){
 
-                $authorized_appointment = AppointmentPurchase::find('first', ['conditions' => ['store_flow_id = ? AND status = ?', $_POST['code'],'authorized']]);
+                $authorized_appointment = AppointmentPurchase::find('first', ['conditions' => ['store_flow_id = ? AND status = ?', $_POST['code'],'2']]);
 
                 if ($authorized_appointment != null){
                     $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_viewing_token')." ".$is_store_flow->code);

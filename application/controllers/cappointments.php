@@ -57,13 +57,28 @@ class cAppointments extends MY_Controller
             }
 
             $shift_end = $value->appointment_time_id == 1 ? $manha_end : $tarde_end;
+
+            //this object opens modal to edit event
+//            $event_list .= "{
+//                          title:'"."Token: #".addslashes($object->code)." \\n"." ".$shift_name." ".$visit_concluded."',
+//                          start: '".date('Y-m-d', strtotime($value->date))." ".$shift_start."',
+//                          end: '".date('Y-m-d', strtotime($value->date))." ".$shift_end."',
+//                          url: '".base_url().'cappointments/edit_event/'.$code."/cappointments',
+//                          className: '".$value->id."',
+//                          modal: 'true',
+//                          description: '".addslashes(preg_replace("/\r|\n/", '', $code))."',
+//                          bgColor: '".$bgColor."'
+//
+//                      },";
+
+            //this object redirect event to token
             $event_list .= "{
                           title:'"."Token: #".addslashes($object->code)." \\n"." ".$shift_name." ".$visit_concluded."',
                           start: '".date('Y-m-d', strtotime($value->date))." ".$shift_start."',
                           end: '".date('Y-m-d', strtotime($value->date))." ".$shift_end."',
-                          url: '".base_url().'cappointments/edit_event/'.$code."/cappointments',
+                          url: '".base_url().'ctokens/go_to_token/'.$code."',
                           className: '".$value->id."',
-                          modal: 'true',
+                          modal: 'false',
                           description: '".addslashes(preg_replace("/\r|\n/", '', $code))."',
                           bgColor: '".$bgColor."'
                           
@@ -136,4 +151,55 @@ class cAppointments extends MY_Controller
             $this->content_view = 'appointments/client/_event';
         }
     }
+
+    public function complete_appointment($token = false) {
+
+        if ($_POST) {
+
+            $is_simulator_flow = SimulatorFlow::find(['conditions' => ['code = ?', $_POST['code']]]);
+            $is_store_flow = StoreFlow::find(['conditions' => ['code = ?', $_POST['code']]]);
+
+            $flow = null;
+
+            if ($is_simulator_flow != null){
+                $company_appointment = CompanyAppointment::find(['conditions' => ['flow_id = ?', $is_simulator_flow->code]]);
+            }else{
+                $company_appointment = CompanyAppointment::find(['conditions' => ['store_flow_id = ?', $is_store_flow->code]]);
+            }
+
+            $company_appointment->completed = 1;
+            $company_appointment->save();
+
+
+            if ($is_simulator_flow != null){
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_complete_appointment_success').": ".$is_simulator_flow->code);
+                redirect('ctokens/view_simulator_token/'.$is_simulator_flow->code);
+            }else if($is_store_flow != null){
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_complete_appointment_success').": ".$is_store_flow->code);
+                redirect('ctokens/view_store_token/'.$is_store_flow->code);
+            }else{
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_complete_appointment_error'));
+                redirect('ctokens');
+            }
+
+        }else{
+
+            $is_simulator_flow = SimulatorFlow::find(['conditions' => ['code = ?', $token]]);
+            $is_store_flow = StoreFlow::find(['conditions' => ['code = ?', $token]]);
+
+            $flow = null;
+
+            if ($is_simulator_flow != null){
+                $flow = $is_simulator_flow;
+            }else{
+                $flow = $is_store_flow;
+            }
+
+            $this->view_data['flow'] = $flow;
+            $this->theme_view = 'modal';
+            $this->content_view = 'appointments/client/_complete';
+            $this->view_data['title'] = $this->lang->line('application_confirm_completed_visit');
+        }
+    }
+
 }

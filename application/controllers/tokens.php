@@ -79,19 +79,26 @@ class Tokens extends MY_Controller {
 
         $options = ['conditions' => ['code = ?', $simulator_flow_code], 'include' => ['installation_local']];
         $flow = SimulatorFlow::find($options);
+        $appointment_purchase = AppointmentPurchase::first('first', ['conditions' => ['flow_id = ?', $flow->code]]);
         $purchase = Purchase::first('first', ['conditions' => ['flow_id = ?', $flow->code]]);
         $financing_request = FinancingRequest::first(['conditions' => ['flow_id = ?', $flow->code]]);
         $installation_local = InstallationLocal::first('first', ['conditions' => ['flow_id = ?', $flow->code]]);
         $company_appointment = CompanyAppointment::find(['conditions' => ['flow_id = ?', $simulator_flow_code], 'include' => ['appointment_time']]);
+        $appointment_webhooks = Webhook::all(['conditions' => ['pedido_id = ?', $appointment_purchase->processor_id]]);
+        $purchase_webhooks  = Webhook::all(['conditions' => ['pedido_id = ?', $purchase->processor_id]]);
+
 
         $this->view_data['flow'] = $flow;
         $this->view_data['company_appointment'] = $company_appointment;
+        $this->view_data['appointment_purchase'] = $appointment_purchase;
         $this->view_data['purchase'] = $purchase;
         $this->view_data['financing_request'] = $financing_request;
         $this->view_data['installation_local'] = $installation_local;
         $this->view_data['pv_kit_revised'] = json_decode($flow->pv_kit_revised);
         $this->view_data['complements_revised'] = json_decode($flow->complements_revised);
         $this->view_data['integrator_revised'] = json_decode($flow->integrator_revised);
+        $this->view_data['appointment_webhooks'] = $appointment_webhooks;
+        $this->view_data['purchase_webhooks'] = $purchase_webhooks;
 
         $this->content_view = 'tokens/view_simulator_token';
     }
@@ -100,19 +107,25 @@ class Tokens extends MY_Controller {
 
         $options = ['conditions' => ['code = ?', $store_flow_code]];
         $flow = StoreFlow::find($options);
+        $appointment_purchase = AppointmentPurchase::first('first', ['conditions' => ['store_flow_id = ?', $flow->code]]);
         $purchase = Purchase::first('first', ['conditions' => ['store_flow_id = ?', $flow->code]]);
         $financing_request = FinancingRequest::first(['conditions' => ['store_flow_id = ?', $flow->code]]);
         $installation_local = InstallationLocal::first('first', ['conditions' => ['store_flow_id = ?', $flow->code]]);
         $company_appointment = CompanyAppointment::find(['conditions' => ['store_flow_id = ?', $store_flow_code], 'include' => ['appointment_time']]);
+        $appointment_webhooks = Webhook::all(['conditions' => ['pedido_id = ?', $appointment_purchase->processor_id]]);
+        $purchase_webhooks  = Webhook::all(['conditions' => ['pedido_id = ?', $purchase->processor_id]]);
 
         $this->view_data['flow'] = $flow;
         $this->view_data['company_appointment'] = $company_appointment;
+        $this->view_data['appointment_purchase'] = $appointment_purchase;
         $this->view_data['purchase'] = $purchase;
         $this->view_data['financing_request'] = $financing_request;
         $this->view_data['installation_local'] = $installation_local;
         $this->view_data['pv_kit_revised'] = json_decode($flow->pv_kit_revised);
         $this->view_data['complements_revised'] = json_decode($flow->complements_revised);
         $this->view_data['integrator_revised'] = json_decode($flow->integrator_revised);
+        $this->view_data['appointment_webhooks'] = $appointment_webhooks;
+        $this->view_data['purchase_webhooks'] = $purchase_webhooks;
 
         $this->content_view = 'tokens/view_store_token';
     }
