@@ -1551,3 +1551,4 @@ $lang['application_appointment_webhooks'] = 'Webhooks de agendamento';
 $lang['application_purchase_webhooks'] = 'Webhooks de pagamento total';
 $lang['application_webhook'] = 'Webhook';
 $lang['application_hook_id'] = 'Hook ID';
+$lang['application_tickets_description'] = 'Tickets são utilizados para relatar diversos tipos de problemas, críticas e sugestões para a plataforma Solarbid.';

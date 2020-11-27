@@ -31,7 +31,6 @@ class Settings extends MY_Controller
             $this->lang->line('application_settings') => 'settings',
             $this->lang->line('application_agents') => 'settings/users',
 
-            // opções de configuração do saas suprimidas / ESCONDIDO
             $this->lang->line('application_registration') => 'settings/registration',
 
             $this->lang->line('application_calendar') => 'settings/calendar',

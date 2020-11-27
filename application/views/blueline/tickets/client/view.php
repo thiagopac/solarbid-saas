@@ -85,8 +85,8 @@
 	 			<a id="fadein" class="btn btn-success" style="margin-top: -2px;"><?=$this->lang->line('application_reply_back');?></a>
 	 		 	<div class="btn-group nav-tabs hidden-xs">
 				
-	                <a class="btn btn-primary flat-invert backlink" id="back" href="<?=base_url()?>ctickets"><?=$this->lang->line('application_back');?></a>
-	                <a class="btn btn-primary flat-invert" id="note" data-toggle="mainmodal" href="<?=base_url()?>ctickets/article/<?=$ticket->id;?>/add"><?=$this->lang->line('application_add_note');?></a>
+	                <a class="btn btn-primary backlink" id="back" href="<?=base_url()?>ctickets"><?=$this->lang->line('application_back');?></a>
+	                <a class="btn btn-primary" id="note" data-toggle="mainmodal" href="<?=base_url()?>ctickets/article/<?=$ticket->id;?>/add"><?=$this->lang->line('application_add_note');?></a>
 	                
 	        </div> 
 	        <div class="btn-group pull-right visible-xs">
@@ -113,7 +113,7 @@
 					    <input type="hidden" name="subject" value="<?=$ticket->subject;?>">
 					    <textarea id="reply" name="message" class="summernote" placeholder="<?=$this->lang->line('application_quick_reply');?>"></textarea>
 					    <div class="textarea-footer">
-					    <button id="send" name="send" class="btn btn-primary flat-invert button-loader"><?=$this->lang->line('application_send');?></button>
+					    <button id="send" name="send" class="btn btn-primary button-loader"><?=$this->lang->line('application_send');?></button>
 					  	</div>
 					    <?php echo form_close(); ?>
 

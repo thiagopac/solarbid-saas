@@ -54,7 +54,7 @@
             </div>
             <h1 style="position: absolute;"><?= $this->lang->line('application_tickets') ?></h1>
             <small>
-                Tickets são para registrar problemas
+                <?= $this->lang->line('application_tickets_description') ?>
             </small>
 
         </div>
