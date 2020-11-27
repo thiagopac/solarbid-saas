@@ -8,7 +8,7 @@
 			<?=$table_title;?>
 				<span class="pull-right">
                     <?php if ($show_add_button == true) : ?>
-                        <a href="<?=base_url()?><?=$create_method;?>" class="btn btn-primary" data-toggle="mainmodal">
+                        <a href="<?=base_url()?><?=$create_method;?>" class="btn btn-primary flat-invert" data-toggle="mainmodal">
                             <?=$add_button_title;?>
                         </a>
                     <?php endif; ?>

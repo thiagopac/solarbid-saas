@@ -206,7 +206,7 @@ $message_icon = false;
                                     <a href="#" class="<?=$status; ?>">
                                         <a href="<?=base_url()?>clients/view/<?=$value->id?>">
                                             <p title="<?=$value->firstname . ' ' . $value->lastname." [".$value->company->name."]"; ?>" class="truncate"><img class="img-circle" src="<?=$value->userpic; ?>" width="21px">
-                                                <?=$value->firstname . ' ' . $value->lastname." <small><small>[".$value->company->name."]</small></small>"; ?>
+                                                <?=$value->company->name?>
                                             </p>
                                         </a>
                                     </a>

@@ -16,7 +16,7 @@ if (!defined('BASEPATH')) {
                 return $R . ',' . $G . ',' . $B;
             }
             if ($settings->primary_color[0] == '#') {
-                $primary_hover_color = 'rgba(' . HEXtoRGB($settings->primary_color) . ',0.8)';
+                $primary_hover_color = 'rgba(' . HEXtoRGB($settings->primary_color) . ',1)';
             } else {
                 $primary_hover_color = $settings->primary_color;
             }
@@ -30,6 +30,13 @@ if (!defined('BASEPATH')) {
                         }";
             $return .= ".btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary{
                         background: $primary_hover_color;
+                        }";
+            $return .= ".flat-invert{
+                         background: white; 
+                         border: 1px solid $settings->primary_color;
+                         color: $settings->primary_color; 
+                         box-shadow: none; 
+                         -webkit-box-shadow: unset;
                         }";
             $return .= '.nav-sidebar > li > a:hover{
                             background: rgba(40, 169, 241, 0.11);

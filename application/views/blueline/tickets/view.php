@@ -92,14 +92,14 @@
 	 			<a id="fadein" class="btn btn-success" style="margin-top: -2px;"><?=$this->lang->line('application_reply_back');?></a>
 	 		 	<div class="btn-group nav-tabs hidden-xs">
 				
-	                <a class="btn btn-primary backlink" id="back" href="<?=base_url()?>tickets"><?=$this->lang->line('application_back');?></a>
-	                <a class="btn btn-primary" id="note" data-toggle="mainmodal" href="<?=base_url()?>tickets/article/<?=$ticket->id;?>/add"><?=$this->lang->line('application_add_note');?></a>
-	                <a class="btn btn-primary" id="queue" data-toggle="mainmodal" href="<?=base_url()?>tickets/queue/<?=$ticket->id;?>"><?=$this->lang->line('application_queue');?></a>
-	                <a class="btn btn-primary" id="type" data-toggle="mainmodal" href="<?=base_url()?>tickets/type/<?=$ticket->id;?>"><?=$this->lang->line('application_type');?></a>
-	                <a class="btn btn-primary" id="client" data-toggle="mainmodal" href="<?=base_url()?>tickets/client/<?=$ticket->id;?>"><?=$this->lang->line('application_client');?></a>
-	                <a class="btn btn-primary" id="assign" data-toggle="mainmodal" href="<?=base_url()?>tickets/assign/<?=$ticket->id;?>"><?=$this->lang->line('application_assign');?></a> 
-  					<a class="btn btn-primary" id="status" data-toggle="mainmodal" href="<?=base_url()?>tickets/status/<?=$ticket->id;?>"><?=$this->lang->line('application_status');?></a>
-  					<a class="btn btn-primary" id="close" data-toggle="mainmodal" href="<?=base_url()?>tickets/close/<?=$ticket->id;?>"><?=$this->lang->line('application_close');?></a>
+	                <a class="btn btn-primary flat-invert backlink" id="back" href="<?=base_url()?>tickets"><?=$this->lang->line('application_back');?></a>
+	                <a class="btn btn-primary flat-invert" id="note" data-toggle="mainmodal" href="<?=base_url()?>tickets/article/<?=$ticket->id;?>/add"><?=$this->lang->line('application_add_note');?></a>
+	                <a class="btn btn-primary flat-invert" id="queue" data-toggle="mainmodal" href="<?=base_url()?>tickets/queue/<?=$ticket->id;?>"><?=$this->lang->line('application_queue');?></a>
+	                <a class="btn btn-primary flat-invert" id="type" data-toggle="mainmodal" href="<?=base_url()?>tickets/type/<?=$ticket->id;?>"><?=$this->lang->line('application_type');?></a>
+	                <a class="btn btn-primary flat-invert" id="client" data-toggle="mainmodal" href="<?=base_url()?>tickets/client/<?=$ticket->id;?>"><?=$this->lang->line('application_client');?></a>
+	                <a class="btn btn-primary flat-invert" id="assign" data-toggle="mainmodal" href="<?=base_url()?>tickets/assign/<?=$ticket->id;?>"><?=$this->lang->line('application_assign');?></a>
+  					<a class="btn btn-primary flat-invert" id="status" data-toggle="mainmodal" href="<?=base_url()?>tickets/status/<?=$ticket->id;?>"><?=$this->lang->line('application_status');?></a>
+  					<a class="btn btn-primary flat-invert" id="close" data-toggle="mainmodal" href="<?=base_url()?>tickets/close/<?=$ticket->id;?>"><?=$this->lang->line('application_close');?></a>
 
 	        </div> 
 	        <div class="btn-group pull-right visible-xs">

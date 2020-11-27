@@ -14,7 +14,7 @@
             <ul>
                 <li>
                     <div class="btn-group">
-                        <a class="btn btn-primary message-list-load inbox-folder" id="message-trigger" style="display: ;" role="button" href="<?=base_url()?>cinbox/itemslist" title="Inbox"><i class="icon glyphicon glyphicon-refresh"></i> <span class="hidden-xs"><?=$this->lang->line('application_refresh');?></span></a>
+                        <a class="btn btn-primary flat-invert message-list-load inbox-folder" id="message-trigger" style="display: ;" role="button" href="<?=base_url()?>cinbox/itemslist" title="Inbox"><i class="icon glyphicon glyphicon-refresh"></i> <span class="hidden-xs"><?=$this->lang->line('application_refresh');?></span></a>
                     </div>
                 </li>
             </ul>

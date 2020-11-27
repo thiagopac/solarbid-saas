@@ -7,7 +7,7 @@
 		<div class="table-head">
 			<?=$this->lang->line('application_database_backups');?>
 				<span class="pull-right">
-					<a href="mysql_restore" class="btn btn-primary " data-toggle="mainmodal">
+					<a href="mysql_restore" class="btn btn-primary flat-invert" data-toggle="mainmodal">
 						<i class="icon dripicons-upload"></i>
 						<?=$this->lang->line('application_restore_database');?>
 					</a>

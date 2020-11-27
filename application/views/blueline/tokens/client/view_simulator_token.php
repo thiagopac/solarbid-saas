@@ -164,7 +164,7 @@
 
                             <?php if ($flow->integrator_approved != 1 && $company_appointment->completed != 1) : ?>
                                 <span class="pull-right">
-                                    <a data-toggle="mainmodal" href="<?= base_url() ?>cappointments/edit_event/<?= $flow->code; ?>/ctokens-simulator" class="btn btn-primary">
+                                    <a data-toggle="mainmodal" href="<?= base_url() ?>cappointments/edit_event/<?= $flow->code; ?>/ctokens-simulator" class="btn btn-primary flat-invert">
                                         <?=$this->lang->line('application_change_appointment');?>
                                     </a>
                                 </span>
@@ -270,7 +270,7 @@
                                             <?php endif; ?>
                                             <?php if ($flow->integrator_approved != 1 && $company_appointment->completed != 0) : ?>
                                             <a data-toggle="mainmodal" href="<?= base_url() ?>ctokens/update_pvkit/<?= $flow->code; ?>"
-                                                    class="pull-right btn btn-primary"><?= $this->lang->line('application_change_pv_kit') ?></a>
+                                                    class="pull-right btn btn-primary flat-invert"><?= $this->lang->line('application_change_pv_kit') ?></a>
                                             <?php endif; ?>
                                         </div>
                                     </div>
@@ -303,7 +303,7 @@
                                         <?php endif; ?>
                                         <?php if ($flow->integrator_approved != 1 && $company_appointment->completed != 0) : ?>
                                         <a data-toggle="mainmodal" href="<?= base_url() ?>ctokens/update_complements/<?= $flow->code; ?>"
-                                                class="pull-right btn btn-primary"><?= $this->lang->line('application_change_complements') ?></a>
+                                                class="pull-right btn btn-primary flat-invert"><?= $this->lang->line('application_change_complements') ?></a>
                                         <?php endif; ?>
                                     </div>
                                 </div>

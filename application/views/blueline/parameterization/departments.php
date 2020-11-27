@@ -7,7 +7,7 @@
 		<div class="table-head">
 			<?=$this->lang->line('application_departments');?>
 				<span class="pull-right">
-					<a href="<?=base_url()?>parameterization/department_create" class="btn btn-primary" data-toggle="mainmodal">
+					<a href="<?=base_url()?>parameterization/department_create" class="btn btn-primary flat-invert" data-toggle="mainmodal">
 						<?=$this->lang->line('application_add_department');?>
 					</a>
 				</span>

@@ -8,7 +8,7 @@
 			<?=$this->lang->line('application_energy_dealers');?>
 				<span class="pull-right">
                     <?php if ($show_add_button == true) : ?>
-                        <a href="<?=base_url()?>parameterization/dealer_create" class="btn btn-primary" data-toggle="mainmodal">
+                        <a href="<?=base_url()?>parameterization/dealer_create" class="btn btn-primary flat-invert" data-toggle="mainmodal">
                             <?=$this->lang->line('application_add_dealer');?>
                         </a>
                     <?php endif; ?>

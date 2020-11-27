@@ -1,26 +1,26 @@
 .btn-danger {
-    background: #f0284a !important;
+    background: #f0284a;
 }
 
 .btn-success {
-    background: #27ae60 !important;
+    background: #27ae60;
 }
 
 .btn-primary {
-    background: #0081ff !important;
+    background: #0081ff;
 }
 
 .btn-secondary {
-    background: #e67e22 !important;
+    background: #e67e22;
 }
 
 .btn-warning {
-    background: #ffa61e !important;
+    background: #ffa61e;
 }
 
 .btn-info {
-    background: #f1f1f1 !important;
-    color: #0081ff !important;
+    background: #f1f1f1;
+    color: #0081ff;
 }
 
 .orangered {

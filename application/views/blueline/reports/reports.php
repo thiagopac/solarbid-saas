@@ -51,7 +51,7 @@
                   </div>
                    <div class="grid__col-md-2 grid--align-self-end">
                         
-                              <input class="btn btn-primary" name="send" type="submit" value="<?=$this->lang->line('application_apply'); ?>" placeholder="" required/>
+                              <input class="btn btn-primary flat-invert" name="send" type="submit" value="<?=$this->lang->line('application_apply'); ?>" placeholder="" required/>
                        
                   </div>
               </div>
@@ -103,7 +103,7 @@
 
      <div class="grid__col-12">
           <div class="tile-base tile-responsive box-shadow" > 
-          <button class="btn btn-primary excel-export"><?=$this->lang->line('application_export_to_xls'); ?></button>
+          <button class="btn btn-primary flat-invert excel-export"><?=$this->lang->line('application_export_to_xls'); ?></button>
           <br><br>
             <div id="table_wrapper">
               <table border="1" class="table table-striped table__excel">

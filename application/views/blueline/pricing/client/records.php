@@ -4,7 +4,7 @@
         <div class="tile-button">
             <a href="<?= base_url() ?>cpricing/update_table/<?=$pricing_table->id?>" data-toggle="mainmodal">
                 <div class="col-md-3 col-xs-3 tile">
-                    <div class="icon-frame">
+                    <div class="icon-frame btn-warning">
                         <i class="ion-edit"></i>
                     </div>
                     <h1>

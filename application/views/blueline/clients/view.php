@@ -15,7 +15,7 @@
             <div class="table-head">
                 <?=$this->lang->line('application_company_details');?>
                 <span class="pull-right">
-					<a href="<?=base_url()?>clients/company/update/<?=$company->id;?>/view" class="btn btn-primary" data-toggle="mainmodal">
+					<a href="<?=base_url()?>clients/company/update/<?=$company->id;?>/view" class="btn btn-primary flat-invert" data-toggle="mainmodal">
 						<i class="icon-edit"></i>
 						<?=$this->lang->line('application_edit');?>
 					</a>
@@ -150,7 +150,7 @@
                 <div class="table-head">
                     <?=$this->lang->line('application_contacts');?>
                     <span class="pull-right">
-								<a href="<?=base_url()?>clients/create/<?=$company->id;?>" class="btn btn-primary" data-toggle="mainmodal">
+								<a href="<?=base_url()?>clients/create/<?=$company->id;?>" class="btn btn-primary flat-invert" data-toggle="mainmodal">
 									<?=$this->lang->line('application_add_new_contact');?>
 								</a>
 							</span>
@@ -251,7 +251,7 @@
                     <?php if ($this->user->admin == 1) {
                         ?>
                         <span class="pull-right">
-								<a href="<?=base_url()?>clients/assign/<?=$company->id; ?>" class="btn btn-primary" data-toggle="mainmodal">
+								<a href="<?=base_url()?>clients/assign/<?=$company->id; ?>" class="btn btn-primary flat-invert" data-toggle="mainmodal">
 									<?=$this->lang->line('application_assign_admin'); ?>
 								</a>
                         </span>
@@ -324,7 +324,7 @@
             <div class="table-head">
                 <?=$this->lang->line('application_profile_and_portfolio'); ?>
                 <span class="pull-right">
-                        <a href="<?=base_url() ?>clients/edit_profile/<?=$company->id?>" class="btn btn-primary" data-toggle="mainmodal">
+                        <a href="<?=base_url() ?>clients/edit_profile/<?=$company->id?>" class="btn btn-primary flat-invert" data-toggle="mainmodal">
                             <?=$this->lang->line('application_edit_profile_and_portfolio'); ?>
                         </a>
                 </span>
@@ -361,7 +361,7 @@
             <div class="table-head">
                 <?=$this->lang->line('application_photos'); ?>
                 <span class="pull-right">
-                        <a href="<?=base_url() ?>clients/add_photo/<?=$company->id?>" class="btn btn-primary" data-toggle="mainmodal">
+                        <a href="<?=base_url() ?>clients/add_photo/<?=$company->id?>" class="btn btn-primary flat-invert" data-toggle="mainmodal">
                             <?=$this->lang->line('application_add_photo'); ?>
                         </a>
                 </span>

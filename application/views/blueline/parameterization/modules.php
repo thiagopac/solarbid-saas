@@ -7,7 +7,7 @@
 		<div class="table-head">
 			<?=$this->lang->line('application_modules');?>
 				<span class="pull-right">
-					<a href="<?=base_url()?>parameterization/module_create" class="btn btn-primary" data-toggle="mainmodal">
+					<a href="<?=base_url()?>parameterization/module_create" class="btn btn-primary flat-invert" data-toggle="mainmodal">
 						<?=$this->lang->line('application_add_module');?>
 					</a>
 				</span>
