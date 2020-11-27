@@ -82,21 +82,31 @@
                                         </small>
                                     <?php endif; ?>
                                 </li>
-                                <li><span> <?= $this->lang->line('application_appointment'); ?>:</span>
-                                    <?php if (empty($flow->integrator)) : ?>
-                                        -
-                                    <?php else : ?>
-                                        <small>
-                                            <strong><?= $this->lang->line('application_date') ?></strong>: <?= date($core_settings->date_format, strtotime($company_appointment->date)) ?>
-                                            <br/>
-                                            <strong><?= $this->lang->line('application_appointment_time') ?></strong>: <?= $company_appointment->appointment_time->name ?>
-                                            <br/>
-                                            <strong><?= $this->lang->line('application_completed_visit') ?></strong>: <span style="vertical-align: middle;" class="label <?=$company_appointment->completed == 1 ? 'label-success' : 'label-important' ?>"><?= $company_appointment->completed == 1 ? $this->lang->line('application_yes') : $this->lang->line('application_no') ?></span>
-                                        </small>
-                                    <?php endif; ?>
-                                </li>
                                 <li> <span> <?=$this->lang->line('application_created_at'); ?>: </span>
                                     <?=empty($flow->created_at) ? '-' : date($core_settings->date_format . ' ' . $core_settings->date_time_format, strtotime($flow->created_at))?>
+                                </li>
+                            </ul>
+                            <br clear="all"> </div>
+                    </div>
+
+                    <p></p>
+
+                    <div class="box-shadow">
+                        <div class="table-head">
+                            <?=$this->lang->line('application_appointment'); ?></div>
+                        <div class="subcont">
+                            <ul class="details col-md-12">
+                                <li> <span> <?=$this->lang->line('application_id'); ?>: </span>
+                                    <?= $company_appointment->id ?>
+                                </li>
+                                <li> <span> <?=$this->lang->line('application_date'); ?>: </span>
+                                    <?= date($core_settings->date_format, strtotime($company_appointment->date)) ?>
+                                </li>
+                                <li> <span> <?=$this->lang->line('application_appointment_time'); ?>: </span>
+                                    <?= $company_appointment->appointment_time->name ?>
+                                </li>
+                                <li> <span> <?=$this->lang->line('application_completed_visit'); ?>: </span>
+                                    <h4 style="vertical-align: middle; <?=$company_appointment->completed == 1 ? 'color: green' : 'color: red' ?>"><?= $company_appointment->completed == 1 ? $this->lang->line('application_yes') : $this->lang->line('application_no') ?></h4>
                                 </li>
                             </ul>
                             <br clear="all"> </div>
@@ -408,7 +418,7 @@
 
                                 <?php foreach ($appointment_webhooks as $appointment_webhook) : ?>
 
-                                    <li> <span> <?=$this->lang->line('application_webhook'); ?> <?= $appointment_webhook->id ?> </span>
+                                    <li> <span> <?=$this->lang->line('application_webhook'); ?> <?=$this->lang->line('application_id'); ?># <?= $appointment_webhook->id ?> </span>
                                         <small>
                                             <strong><?= $this->lang->line('application_type') ?></strong>: <?= $appointment_webhook->type ?>
                                             <br/>
