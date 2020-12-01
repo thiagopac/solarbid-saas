@@ -124,104 +124,62 @@ $message_icon = false;
             <?php
             if (is_array($widgets) || is_object($widgets)) {
                 foreach ($widgets as $key => $val) {
-                    if ($sticky && $val->link == 'quickaccess') {
+
+                    if ($user_online && $val->link == 'useronline') {
                         ?>
-                        <ul class="nav nav-sidebar quick-access menu-sub hidden-sm hidden-xs">
-                            <h4><?=$this->lang->line('application_quick_access'); ?></h4>
 
-                            <?php foreach ($sticky as $value): ?>
-
-                                <li>
-                                    <a href="<?=base_url()?>projects/view/<?=$value->id; ?>">
-                                        <p class="truncate">
-                                            <?=$value->name; ?>
-                                        </p>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?=$value->progress; ?>%;"></div>
-                                        </div>
-                                    </a>
-                                    <div class="submenu">
-                                        <ul>
-                                            <?php if (is_object($value->company)) {
-                                                ?>
-                                                <li class="underline"><a href="<?=base_url()?>clients/view/<?=$value->company_id; ?>"><b><?=$value->company->name?></b></a></li>
-                                                <?php
-                                            } ?>
-                                            <li>
-                                                <a data-toggle="mainmodal" href="<?=base_url()?>projects/update/<?=$value->id; ?>">
-                                                    <?=$this->lang->line('application_edit_project'); ?>
-                                            </li>
-                                            <li>
-                                                <a data-toggle="mainmodal" href="<?=base_url()?>projects/tasks/<?=$value->id; ?>/add">
-                                                    <?=$this->lang->line('application_add_task'); ?>
-                                            </li>
-                                            <li><a href="<?=base_url()?>projects/tracking/<?=$value->id; ?>" id="<?=$value->id; ?>"><?php if (empty($value->tracking)) {
-                                                        echo $this->lang->line('application_start_timer');
-                                                    } else {
-                                                        echo $this->lang->line('application_stop_timer');
-                                                    } ?></a></li>
-                                        </ul>
-
-                                    </div>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                        <?php
-                    }
-                }
-
-                if ($user_online && $val->link == 'useronline') {
-                    ?>
-
-                    <ul class="nav nav-sidebar user-online menu-sub hidden-sm hidden-xs">
-                        <h4><?=$this->lang->line('application_user_online'); ?></h4>
-                        <?php foreach ($user_online as $value):
-                            if ($value->last_active + (15 * 60) > time()) {
-                                $status = 'online';
-                            } else {
-                                $status = 'away';
-                            } ?>
-                            <li>
-                                <a href="<?=base_url()?>settings/users">
-                                    <p class="truncate"><img class="img-circle" src="<?=$value->userpic; ?>" width="21px" />
-                                        <span class="user_online__indicator user_online__indicator--<?=$status; ?>"></span>
-                                        <?php echo $value->firstname . ' ' . $value->lastname; ?>
-                                    </p>
-                                </a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-
-                    <?php if ($client_online) {
-                        ?>
                         <ul class="nav nav-sidebar user-online menu-sub hidden-sm hidden-xs">
-                            <h4><?=$this->lang->line('application_client_online'); ?></h4>
-                            <?php foreach ($client_online as $value):
+                            <h4><?=$this->lang->line('application_user_online'); ?></h4>
+                            <?php foreach ($user_online as $value):
                                 if ($value->last_active + (15 * 60) > time()) {
                                     $status = 'online';
                                 } else {
                                     $status = 'away';
                                 } ?>
                                 <li>
-                                    <a href="#" class="<?=$status; ?>">
-                                        <a href="<?=base_url()?>clients/view/<?=$value->id?>">
-                                            <p title="<?=$value->firstname . ' ' . $value->lastname." [".$value->company->name."]"; ?>" class="truncate"><img class="img-circle" src="<?=$value->userpic; ?>" width="21px">
-                                                <?=$value->company->name?>
-                                            </p>
-                                        </a>
+                                    <a href="<?=base_url()?>settings/users">
+                                        <p class="truncate"><img class="img-circle" src="<?=$value->userpic; ?>" width="21px" />
+                                            <span class="user_online__indicator user_online__indicator--<?=$status; ?>"></span>
+                                            <?php echo $value->firstname . ' ' . $value->lastname; ?>
+                                        </p>
                                     </a>
-                                    <!-- <div class="submenu">
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+
+                        <?php if ($client_online) {
+                            ?>
+                            <ul class="nav nav-sidebar user-online menu-sub hidden-sm hidden-xs">
+                                <h4><?=$this->lang->line('application_client_online'); ?></h4>
+                                <?php foreach ($client_online as $value):
+                                    if ($value->last_active + (15 * 60) > time()) {
+                                        $status = 'online';
+                                    } else {
+                                        $status = 'away';
+                                    } ?>
+                                    <li>
+                                        <a href="#" class="<?=$status; ?>">
+                                            <a href="<?=base_url()?>clients/view/<?=$value->id?>">
+                                                <p title="<?=$value->firstname . ' ' . $value->lastname." [".$value->company->name."]"; ?>" class="truncate"><img class="img-circle" src="<?=$value->userpic; ?>" width="21px">
+                                                    <?=$value->company->name?>
+                                                </p>
+                                            </a>
+                                        </a>
+                                        <!-- <div class="submenu">
                                 <ul>
                                   <li><a href="#"><span class="menu-icon"><i class="icon dripicons-mail-o"></i></span> <?=$this->lang->line('application_write_a_message'); ?></a></li>
                                 </ul>
 
                             </div>-->
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                        <?php
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                            <?php
+                        }
                     }
                 }
+
+
             } ?>
 
         </div>
