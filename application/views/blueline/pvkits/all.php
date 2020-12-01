@@ -1,27 +1,6 @@
 <div class="col-sm-12  col-md-12 main">
 
-    <div class="row tile-row">
-
-        <div class="tile-button">
-            <a href="<?= base_url() ?>pvkits/create" data-toggle="mainmodal">
-                <div class="col-md-3 col-xs-3 tile">
-
-                    <div class="icon-frame">
-                        <i class="ion-android-add-circle"></i>
-                    </div>
-                    <h1>
-                <span>
-                    <?= $this->lang->line('application_add_pv_kit'); ?>
-                </span>
-                    </h1>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-6 col-xs-12 tile hidden-xs">
-            <div style="width:97%; margin-top: -4px; margin-bottom: 17px; height: 80px;">
-            </div>
-        </div>
-    </div>
+    <?php include_once ("header_menu.php")?>
     <div class="row">
 
 <!--        <div class="btn-group pull-right-responsive margin-right-3 hidden-xs">-->
@@ -44,8 +23,8 @@
 
         <div class="btn-group pull-right-responsive margin-right-3">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                <?php if (isset($ticketFilter)) {
-                    echo $ticketFilter;
+                <?php if (isset($all_filter)) {
+                    echo $all_filter;
                 }else{
                     echo $this->lang->line('application_filter');
                 }
@@ -53,17 +32,14 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu pull-right" role="menu">
-                <?php foreach ($submenu as $name => $value):?>
+                <?php foreach ($submenu as $item):?>
+                    <?php foreach ($item as $key => $value):?>
                     <li>
-                        <a id="<?php $val_id = explode('/', $value); if (!is_numeric(end($val_id))) {
-                            echo end($val_id);
-                        } else {
-                            $num = count($val_id) - 2;
-                            echo $val_id[$num];
-                        } ?>" href="<?=site_url($value);?>">
-                            <?=$name?>
+                        <a href="<?=site_url($value);?>">
+                            <?=$key?>
                         </a>
                     </li>
+                    <?php endforeach;?>
                 <?php endforeach;?>
 
             </ul>

@@ -30,10 +30,14 @@ class PvKits extends MY_Controller {
             redirect('login');
         }
 
-        $this->view_data['submenu'] = [
-            $this->lang->line('application_valids') => 'pvkits/filter/valid',
-            $this->lang->line('application_expireds') => 'pvkits/filter/expired'
-        ];
+        $submenu = array();
+        $structure_types = StructureType::all();
+
+        foreach ($structure_types as $structure_type){
+            array_push($submenu, [$structure_type->name => 'pvkits/filter/'.$structure_type->id]);
+        }
+
+        $this->view_data['submenu'] = $submenu;
 
     }
 
@@ -41,51 +45,38 @@ class PvKits extends MY_Controller {
 
         $options = ['conditions' => ['deleted != ?', '1'], 'order' => 'id DESC', 'include' => ['structure_type']];
         $this->view_data['pv_kits'] = PvKit::find('all', $options);
-        $this->view_data['filter'] = $this->lang->line('application_all');
+        $this->view_data['all_filter'] = $this->lang->line('application_all');
 
         $this->content_view = 'pvkits/all';
     }
 
+    public function view_all() {
+
+        $submenu = array();
+        $structure_types = StructureType::all();
+
+        foreach ($structure_types as $structure_type){
+            array_push($submenu, [$structure_type->name => 'pvkits/template_filter/'.$structure_type->id]);
+        }
+
+        $this->view_data['submenu'] = $submenu;
+
+        $options = ['conditions' => ['deleted != ?', '1'], 'order' => 'id DESC', 'include' => ['structure_type']];
+        $this->view_data['pv_kits'] = PvKit::find('all', $options);
+        $this->view_data['template_filter'] = $this->lang->line('application_all');
+
+        $this->content_view = 'pvkits/view_all';
+    }
+
     public function filter($condition) {
 
-        $this->view_data['ticketFilter'] = $this->lang->line('application_all');
-        $this->view_data['queues'] = Queue::find('all', ['conditions' => ['inactive=?', '0']]);
+        $this->view_data['all_filter'] = $this->lang->line('application_all');
 
-        switch ($condition) {
-            case 'open':
-                $option = 'status = "open"';
-                $this->view_data['ticketFilter'] = $this->lang->line('application_opened');
-                break;
-            case 'closed':
-                $option = 'status = "closed"';
-                $this->view_data['ticketFilter'] = $this->lang->line('application_closed');
-                break;
-            case 'reopened':
-                $option = 'status = "reopened"';
-                $this->view_data['ticketFilter'] = $this->lang->line('application_ticket_status_reopened');
-                break;
-            case 'assigned':
-                $option = 'status != "closed" AND user_id = ' . $this->user->id;
-                $this->view_data['ticketFilter'] = $this->lang->line('application_my_tickets');
-                break;
-        }
-        if ($this->user->admin == 0) {
-            $comp_array = [];
-            $thisUserHasNoCompanies = (array) $this->user->companies;
-            if (!empty($thisUserHasNoCompanies)) {
-                foreach ($this->user->companies as $value) {
-                    array_push($comp_array, $value->id);
-                }
-                $options = ['conditions' => [$option . ' AND company_id in (?)', $comp_array]];
-            } else {
-                $options = ['conditions' => [$option . ' AND (user_id = ? OR queue_id = ?)', $this->user->id, $this->user->queue]];
-            }
-        } else {
-            $options = ['conditions' => [$option]];
-        }
+        $structure_type = StructureType::find($condition);
 
-        $this->view_data['ticket'] = Ticket::find('all', $options);
-        $this->content_view = 'tickets/all';
+        $options = ['conditions' => ['deleted != ? AND structure_type_id = ?', 1, $condition], 'order' => 'id DESC', 'include' => ['structure_type']];
+        $this->view_data['pv_kits'] = PvKit::find('all', $options);
+        $this->content_view = 'pvkits/all';
     }
 
 //    public function bulk($action) {
