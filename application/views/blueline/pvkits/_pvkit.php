@@ -193,13 +193,6 @@ if (isset($pv_kit)) { ?>
     </div>
 
     <div class="form-group">
-        <label for="proforma"><?= $this->lang->line('application_proforma'); ?></label>
-        <small class="text-muted">(<a href="http://jsoneditoronline.org/#left=cloud.776bb50a537545768538f70b34cf4169">ver padrão</a> JSON)</small>
-        <textarea id="proforma" name="proforma"
-               class="form-control"><?php if (isset($pv_kit->proforma)) { echo json_decode($pv_kit->proforma); }?></textarea>
-    </div>
-
-    <div class="form-group">
         <label for="inactive"><?= $this->lang->line('application_inactive'); ?> *</label>
         <?php $options = array();
         $options['0'] = $this->lang->line('application_no');

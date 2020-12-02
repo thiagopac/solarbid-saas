@@ -210,11 +210,6 @@ class PvKits extends MY_Controller {
         if ($_POST) {
 
 
-            $_POST['proforma'] = json_encode($_POST['proforma']);
-
-//            var_dump($_POST);
-//            exit;
-
             $pv_kit = PvKit::find($_POST['id']);
 
             //price come as 12.345,67 and need back to database type 12345.67
