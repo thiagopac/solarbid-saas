@@ -1,6 +1,8 @@
 <?php
     $attributes = ['class' => '', 'id' => 'profile_form'];
     echo form_open_multipart($form_action, $attributes);
+
+    $disabled = $company->unlocked == true ? '' : 'disabled';
 ?>
     <div class="row">
         <div class="col-md-6">
@@ -24,7 +26,7 @@
         <label>
             <?=$this->lang->line('application_power_plants_installed');?>
         </label>
-        <input type="text" readonly value="<?=$company_profile->power_plants_installed;?>" class="form-control"/>
+        <input type="text" <?=$disabled?> value="<?=$company_profile->power_plants_installed;?>" class="form-control"/>
     </div>
     <div class="form-group read-only">
         <label for="value">
@@ -34,7 +36,7 @@
             <div class="input-group-addon">
                 <?=$core_settings->rated_power_measurement?>
             </div>
-            <input type="text" readonly class="required form-control"  value="<?php if(isset($company_profile)){echo $company_profile->power_executed;}?>"  required/>
+                <input type="text" <?=$disabled?> class="required form-control"  value="<?php if(isset($company_profile)){echo $company_profile->power_executed;}?>"  required/>
         </div>
     </div>
     <div class="modal-footer">

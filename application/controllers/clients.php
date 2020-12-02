@@ -750,7 +750,7 @@ class Clients extends MY_Controller
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
 
             $_POST['company_id'] = $company_id;
-            $_POST['path'] = $core_settings->domain."files/media/portfolio/";
+            $_POST['path'] = $core_settings->domain."/files/media/portfolio/";
 
             $this->load->library('upload', $config);
 

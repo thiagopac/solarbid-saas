@@ -5,28 +5,28 @@
 
     <div class="row">
 
-        <div class="btn-group pull-right-responsive margin-right-3">
+        <!--<div class="btn-group pull-right-responsive margin-right-3">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                <?php if (isset($template_filter)) {
+                <?php /*if (isset($template_filter)) {
                     echo $template_filter;
                 }else{
                     echo $this->lang->line('application_filter');
                 }
-                ?>
+                */?>
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu pull-right" role="menu">
-                <?php foreach ($submenu as $item):?>
-                    <?php foreach ($item as $key => $value):?>
+                <?php /*foreach ($submenu as $item):*/?>
+                    <?php /*foreach ($item as $key => $value):*/?>
                         <li>
-                            <a href="<?=site_url($value);?>">
-                                <?=$key?>
+                            <a href="<?/*=site_url($value);*/?>">
+                                <?/*=$key*/?>
                             </a>
                         </li>
-                    <?php endforeach;?>
-                <?php endforeach;?>
+                    <?php /*endforeach;*/?>
+                <?php /*endforeach;*/?>
             </ul>
-        </div>
+        </div>-->
 
     </div>
     <div class="row">
