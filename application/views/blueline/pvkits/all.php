@@ -167,3 +167,19 @@
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function(){
+    $('input[name="bulk[]"]').on('change', function () {
+        $(this).closest('tr').toggleClass('active');
+    })
+
+    $('input[name="selectall"]').on('change', function () {
+        if ($(this).prop('checked')) {
+            $('tbody>tr').addClass('active');
+        }else{
+            $('tbody>tr').removeClass('active');
+        }
+
+    })
+});
+</script>
