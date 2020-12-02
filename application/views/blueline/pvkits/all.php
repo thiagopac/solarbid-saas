@@ -8,13 +8,12 @@
                 <?=$this->lang->line('application_bulk_actions');?> <span class="caret"></span>
             </button>
             <ul class="dropdown-menu pull-right bulk-dropdown" role="menu">
-
-                <li data-action="inactivate"><a id="" href="#"><?=$this->lang->line('application_inactivate');?></a></li>
-                <li data-action="activate"><a id="" href="#"><?=$this->lang->line('application_activate');?></a></li>
                 <li data-action="start_at_today"><a id="" href="#"><?=$this->lang->line('application_start_at_today');?></a></li>
                 <li data-action="start_at_blank"><a id="" href="#"><?=$this->lang->line('application_start_at_blank');?></a></li>
                 <li data-action="stop_at_today"><a id="" href="#"><?=$this->lang->line('application_stop_at_today');?></a></li>
                 <li data-action="stop_at_blank"><a id="" href="#"><?=$this->lang->line('application_stop_at_blank');?></a></li>
+                <li data-action="inactivate"><a id="" href="#"><?=$this->lang->line('application_inactivate');?></a></li>
+                <li data-action="activate"><a id="" href="#"><?=$this->lang->line('application_activate');?></a></li>
                 <li data-action="delete"><a id="" href="#"><?=$this->lang->line('application_delete');?></a></li>
 
 
