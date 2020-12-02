@@ -37,6 +37,7 @@
                     <div class="table-head">
                         <div style="text-align: center !important;"><?=$kit->kit_provider?></div>
                     </div>
+                    <div class="pull-left" style="margin-left: 10px; margin-top: 10px"><label><?=$kit->structure_type->name?></label></div>
                     <div class="pull-right" style="margin-right: 10px"><h2><?= $kit->kit_power ?><small><?= $core_settings->rated_power_measurement; ?></small></h2></div>
                     <img width="100%" src="<?=$kit->image?>" class="" />
                     <hr />
