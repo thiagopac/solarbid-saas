@@ -33,6 +33,8 @@ class PvKits extends MY_Controller {
         $submenu = array();
         $structure_types = StructureType::all();
 
+        array_push($submenu, [ $this->lang->line('application_all') => 'pvkits/']);
+
         foreach ($structure_types as $structure_type){
             array_push($submenu, [$structure_type->name => 'pvkits/filter/'.$structure_type->id]);
         }
@@ -70,55 +72,76 @@ class PvKits extends MY_Controller {
 
     public function filter($condition) {
 
-        $this->view_data['all_filter'] = $this->lang->line('application_all');
-
         $structure_type = StructureType::find($condition);
+
+        $this->view_data['all_filter'] = $structure_type->name;
 
         $options = ['conditions' => ['deleted != ? AND structure_type_id = ?', 1, $condition], 'order' => 'id DESC', 'include' => ['structure_type']];
         $this->view_data['pv_kits'] = PvKit::find('all', $options);
         $this->content_view = 'pvkits/all';
     }
 
-//    public function bulk($action) {
-//
-//        if ($_POST) {
-//            if (empty($_POST['list'])) {
-//                redirect('tickets');
-//            }
-//            $list = explode(',', $_POST['list']);
-//
-//            switch ($action) {
-//                case 'close':
-//                    $attr = ['status' => 'closed'];
-//                    $email_message = $this->lang->line('messages_bulk_ticket_closed');
-//                    $success_message = $this->lang->line('messages_bulk_ticket_closed_success');
-//                    break;
-//
-//                default:
-//                    redirect('tickets');
-//                    break;
-//            }
-//
-//            foreach ($list as $value) {
-//                $ticket = Ticket::find_by_id($value);
-//                $ticket->update_attributes($attr);
-//                send_ticket_notification($ticket->user->email, '[Ticket#' . $ticket->reference . '] - ' . $ticket->subject, $email_message, $ticket->id);
-//                if (!$ticket) {
-//                    $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_save_ticket_error'));
-//                } else {
-//                    $this->session->set_flashdata('message', 'success:' . $success_message);
-//                }
-//            }
-//            redirect('tickets');
-//
-//        } else {
-//            $this->view_data['ticket'] = Ticket::find($id);
-//            $this->theme_view = 'modal';
-//            $this->view_data['title'] = $this->lang->line('application_close');
-//            $this->view_data['form_action'] = 'tickets/close';
-//            $this->content_view = 'tickets/_close';
-//        }
-//    }
+    public function bulk($action) {
+
+        if ($_POST) {
+
+
+            if (empty($_POST['list'])) {
+                redirect('pvkits');
+            }
+
+            $list = explode(',', $_POST['list']);
+
+            switch ($action) {
+                case 'inactivate':
+                    $attr = ['inactive' => 1];
+                    break;
+
+                case 'activate':
+                    $attr = ['inactive' => 0];
+                    break;
+
+                case 'start_at_today':
+                    $attr = ['start_at' => date("Y-m-d H:i:s")];
+                    break;
+
+                case 'start_at_blank':
+                    $attr = ['start_at' => ''];
+                    break;
+
+                case 'stop_at_today':
+                    $attr = ['stop_at' => date("Y-m-d H:i:s")];
+                    break;
+
+                case 'stop_at_blank':
+                    $attr = ['stop_at' => ''];
+                    break;
+
+                case 'delete':
+                    $attr = ['deleted' => 1, 'inactive' => 1];
+                    break;
+
+                default:
+                    redirect('pvkits');
+                    break;
+            }
+
+            foreach ($list as $value) {
+                $pvkit = PvKit::find_by_id($value);
+                $pvkit->update_attributes($attr);
+
+                if (!$pvkit) {
+                    $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_bulk_error'));
+                } else {
+                    $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_bulk_success'));
+                }
+            }
+            redirect('pvkits');
+
+        }else{
+            redirect('pvkits');
+        }
+    }
 
     public function create() {
 

@@ -128,6 +128,9 @@ $lang['messages_save_success'] = "Suas alterações foram salvas";
 $lang['messages_status_error'] = "Status não alterado";
 $lang['messages_status_success'] = "Status alterado";
 
+$lang['messages_bulk_success'] = "Todos os registros foram atualizados com sucesso";
+$lang['messages_bulk_error'] = "Erro ao atualizar os registros";
+
 $lang['messages_create_expense_error'] = "Erro ao criar despesa";
 $lang['messages_create_expense_success'] = "Despesa criada";
 $lang['messages_create_estimate_error'] = "Erro ao criar orçamento";

@@ -1554,3 +1554,7 @@ $lang['application_hook_id'] = 'Hook ID';
 $lang['application_tickets_description'] = 'Tickets são utilizados para relatar diversos tipos de problemas, críticas e sugestões para a plataforma Solarbid.';
 $lang['application_view_kits_table'] = 'Ver Kits em tabela';
 $lang['application_view_kits_template'] = 'Ver Kits em template';
+$lang['application_start_at_today'] = 'Data início: AGORA';
+$lang['application_start_at_blank'] = 'Data início: EM BRANCO';
+$lang['application_stop_at_today'] = 'Data fim: AGORA';
+$lang['application_stop_at_blank'] = 'Data fim: EM BRANCO';
