@@ -28,28 +28,31 @@ class Parameterization extends MY_Controller{
             $this->lang->line('application_modules') => 'parameterization/modules',
             $this->lang->line('application_inverters') => 'parameterization/inverters',
             'devider2' => 'devider',
+            $this->lang->line('application_proformas') => 'parameterization/proformas',
+            $this->lang->line('application_proforma_items') => 'parameterization/proforma_items',
+            $this->lang->line('application_pv_item') => 'parameterization/pv_items',
+            'devider3' => 'devider',
             $this->lang->line('application_energy_dealers') => 'parameterization/dealers',
             $this->lang->line('application_activities') => 'parameterization/activities',
             $this->lang->line('application_tariffs') => 'parameterization/tariffs',
-            'devider3' => 'devider',
-            $this->lang->line('application_structure_types') => 'parameterization/structure_types',
             'devider4' => 'devider',
+            $this->lang->line('application_structure_types') => 'parameterization/structure_types',
+            'devider5' => 'devider',
             $this->lang->line('application_faq_customers') => 'parameterization/faq_customer',
             $this->lang->line('application_faq_integrators') => 'parameterization/faq_integrator',
-            'devider5' => 'devider',
+            'devider6' => 'devider',
             $this->lang->line('application_integrator_benefits') => 'parameterization/integrator_benefits',
             $this->lang->line('application_integrators_plans') => 'parameterization/integrator_plans',
             $this->lang->line('application_pricing_schemas') => 'parameterization/pricing_schemas',
             $this->lang->line('application_pricing_fields') => 'parameterization/pricing_fields',
             $this->lang->line('application_pricing_schema_fields') => 'parameterization/pricing_schema_fields',
-            'devider6' => 'devider',
+            'devider7' => 'devider',
             $this->lang->line('application_countries') => 'parameterization/countries',
             $this->lang->line('application_states') => 'parameterization/states',
             $this->lang->line('application_regions') => 'parameterization/regions',
             $this->lang->line('application_cities') => 'parameterization/cities/mg',
-            'devider7' => 'devider',
+            'devider8' => 'devider',
             $this->lang->line('application_card_interest') => 'parameterization/card_interest',
-//            $this->lang->line('application_project_steps') => 'parameterization/project_steps',
         ];
 
         $this->view_data['iconlist'] = [
@@ -57,6 +60,9 @@ class Parameterization extends MY_Controller{
             'parameterization/pv_providers' => 'dripicons-stack',
             'parameterization/modules' => 'dripicons-view-thumb',
             'parameterization/inverters' => 'dripicons-pulse',
+            'parameterization/proformas' => 'dripicons-article',
+            'parameterization/proforma_items' => 'dripicons-article',
+            'parameterization/pv_items' => 'dripicons-article',
             'parameterization/dealers' => 'dripicons-lightbulb',
             'parameterization/activities' => 'dripicons-store',
             'parameterization/tariffs' => 'dripicons-to-do',
@@ -73,22 +79,16 @@ class Parameterization extends MY_Controller{
             'parameterization/regions' => 'dripicons-location',
             'parameterization/cities/mg' => 'dripicons-location',
             'parameterization/card_interest' => 'dripicons-card',
-//            'parameterization/project_steps' => 'dripicons-swap',
         ];
 
         $this->config->load('defaults');
     }
 
     public function index(){
-        $this->view_data['breadcrumb'] = $this->lang->line('application_parameterization');
-        $this->view_data['breadcrumb_id'] = 'departments';
-
-        $this->view_data['departments'] = Department::find('all', array('conditions' => array("status != ? ORDER BY id ASC ", "deleted")));
-        $this->content_view = 'parameterization/departments';
-
-        $this->load->helper('curl');
+        $this->departments();
     }
 
+    //wildcard_listing
     public function departments(){
 
         //master data class
@@ -122,6 +122,7 @@ class Parameterization extends MY_Controller{
         $this->view_data['delete_method'] = 'parameterization/wildcard_delete/'.$class_name;
     }
 
+    //wildcard_listing
     public function modules(){
 
         //master data class
@@ -155,6 +156,7 @@ class Parameterization extends MY_Controller{
         $this->view_data['delete_method'] = 'parameterization/wildcard_delete/'.$class_name;
     }
 
+    //wildcard_listing
     public function inverters() {
 
         //master data class
@@ -251,6 +253,70 @@ class Parameterization extends MY_Controller{
         $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_delete_success'));
 
         redirect('parameterization/dealers');
+    }
+
+    public function proforma_items() {
+        $this->view_data['breadcrumb'] = $this->lang->line('application_proforma_items');
+        $this->view_data['breadcrumb_id'] = __FUNCTION__;
+
+        $this->view_data['show_add_button'] = $this->user->admin == 1;
+        $this->view_data['show_edit_button'] = $this->user->admin == 1;
+        $this->view_data['show_delete_button'] = $this->user->admin == 1;
+
+        $proforma_items = PvProformaItem::find('all');
+        $this->view_data['proforma_items'] = $proforma_items;
+        $this->content_view = 'parameterization/proforma_items';
+    }
+
+    public function proforma_item_update($proforma_item_id = false){
+        $proforma_item = PvProformaItem::find($proforma_item_id);
+
+        if ($_POST) {
+            $proforma_item->update_attributes($_POST);
+            $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_save_success'));
+            redirect('parameterization/proforma_items');
+        } else {
+            $this->view_data['proforma_item'] = $proforma_item;
+            $this->view_data['proformas'] = $proformas = PvProforma::all();
+            $this->view_data['pv_items'] = PvItem::all();
+            $this->theme_view = 'modal';
+
+            $this->view_data['title'] = $this->lang->line('application_proforma_item');
+            $this->view_data['form_action'] = 'parameterization/proforma_item_update/' . $proforma_item->id;
+            $this->content_view = 'parameterization/_proforma_item_form';
+        }
+    }
+
+    public function proforma_item_create(){
+
+        if ($_POST) {
+            $proforma_item = PvProformaItem::create($_POST);
+
+            if (!$proforma_item) {
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_create_error'));
+            } else {
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_create_success'));
+            }
+
+            redirect('parameterization/proforma_items');
+        } else {
+            $this->view_data['proformas'] = $proformas = PvProforma::all();
+            $this->view_data['pv_items'] = PvItem::all();
+            $this->theme_view = 'modal';
+
+            $this->view_data['title'] = $this->lang->line('application_proforma_item');
+            $this->view_data['form_action'] = 'parameterization/proforma_item_create/';
+            $this->content_view = 'parameterization/_proforma_item_form';
+        }
+    }
+
+    public function proforma_item_delete($proforma_item_id = false){
+
+        $proforma_item = PvProformaItem::find($proforma_item_id);
+        $proforma_item->delete();
+        $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_delete_success'));
+
+        redirect('parameterization/proforma_items');
     }
 
     //wildcard_listing
@@ -994,37 +1060,82 @@ class Parameterization extends MY_Controller{
     }
 
     //wildcard_listing
-    public function project_steps() {
+    public function proformas() {
 
-        $class_name = "ProjectStep";
+        $class_name = "PvProforma";
 
-        $this->view_data['breadcrumb'] = $this->lang->line('application_project_steps');
+        $this->view_data['breadcrumb'] = $this->lang->line('application_proformas');
         $this->view_data['breadcrumb_id'] = __FUNCTION__;
 
         $this->view_data['show_add_button'] = $this->user->admin == 1;
         $this->view_data['show_edit_button'] = $this->user->admin == 1;
         $this->view_data['show_delete_button'] = false;
 
-        $this->view_data['table_title'] = $this->lang->line('application_project_steps');
+        $this->view_data['table_title'] = $this->lang->line('application_proformas');
         $this->view_data['add_button_title'] = $this->lang->line('application_add_new');
 
         //table elements
         $this->view_data['collection_objects'] = $class_name::find('all');
         $this->view_data['column_titles'] = [$this->lang->line('application_id'),
                                             $this->lang->line('application_name'),
+                                            $this->lang->line('application_modules_manufacturer'),
+                                            $this->lang->line('application_inverter_manufacturer'),
+                                            $this->lang->line('application_structure_type'),
+                                            $this->lang->line('application_insurance'),
                                             $this->lang->line('application_action')];
 
         //to print properties of nested objects, specify the model name or use 'self' for current collection object class
-        $this->view_data['object_classes_draw'] = ['self','self'];
+        $this->view_data['object_classes_draw'] = ['self','self', 'module_manufacturer', 'inverter_manufacturer', 'structure_type', 'self'];
         //pass the name of properties to draw. Follow the order of the object_classes_draw
-        $this->view_data['object_properties_draw'] = ['id', 'name'];
+        $this->view_data['object_properties_draw'] = ['id', 'name', 'name', 'name', 'name', 'insurance'];
 
         $objects = $class_name::find('all');
         $this->view_data['objects'] = $objects;
         $this->content_view = 'parameterization/wildcard_listing';
 
         //wildcard modal behavior elements
-        $modal_title = $this->lang->line('application_project_step');
+        $modal_title = $this->lang->line('application_proforma');
+        $modal_content_view = '_wildcardform';
+        $redirect = __FUNCTION__;
+
+        $this->view_data['update_method'] = 'parameterization/wildcard_update/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
+        $this->view_data['create_method'] = 'parameterization/wildcard_create/'.$class_name.'/'.$modal_title.'/'.$modal_content_view.'/'.$redirect;
+        $this->view_data['delete_method'] = 'parameterization/wildcard_delete/'.$class_name;
+    }
+
+    //wildcard_listing
+    public function pv_items() {
+
+        $class_name = "PvItem";
+
+        $this->view_data['breadcrumb'] = $this->lang->line('application_items');
+        $this->view_data['breadcrumb_id'] = __FUNCTION__;
+
+        $this->view_data['show_add_button'] = $this->user->admin == 1;
+        $this->view_data['show_edit_button'] = $this->user->admin == 1;
+        $this->view_data['show_delete_button'] = false;
+
+        $this->view_data['table_title'] = $this->lang->line('application_items');
+        $this->view_data['add_button_title'] = $this->lang->line('application_add_new');
+
+        //table elements
+        $this->view_data['collection_objects'] = $class_name::find('all');
+        $this->view_data['column_titles'] = [$this->lang->line('application_id'),
+            $this->lang->line('application_name'),
+            $this->lang->line('application_description'),
+            $this->lang->line('application_action')];
+
+        //to print properties of nested objects, specify the model name or use 'self' for current collection object class
+        $this->view_data['object_classes_draw'] = ['self','self','self'];
+        //pass the name of properties to draw. Follow the order of the object_classes_draw
+        $this->view_data['object_properties_draw'] = ['id', 'name', 'description'];
+
+        $objects = $class_name::find('all');
+        $this->view_data['objects'] = $objects;
+        $this->content_view = 'parameterization/wildcard_listing';
+
+        //wildcard modal behavior elements
+        $modal_title = $this->lang->line('application_item');
         $modal_content_view = '_wildcardform';
         $redirect = __FUNCTION__;
 

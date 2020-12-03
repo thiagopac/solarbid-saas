@@ -1186,8 +1186,8 @@ $lang['application_edit_inverter'] = 'Editar inversor';
 
 $lang['application_select_modules'] = 'Selecione os módulos';
 $lang['application_select_inverters'] = 'Selecione os inversores';
-$lang['application_module_manufacturers'] = 'Fabricante dos módulos';
-$lang['application_inverter_manufacturers'] = 'Fabricante dos inversores';
+$lang['application_modules_manufacturer'] = 'Fabricante dos módulos';
+$lang['application_inverter_manufacturer'] = 'Fabricante do inversor';
 
 $lang['application_direct_billing'] = 'Faturamento Direto';
 $lang['application_direct_billing_percentage'] = 'Porcentagem de Faturamento Direto';
@@ -1558,3 +1558,9 @@ $lang['application_start_at_today'] = 'Data início: AGORA';
 $lang['application_start_at_blank'] = 'Data início: EM BRANCO';
 $lang['application_stop_at_today'] = 'Data fim: AGORA';
 $lang['application_stop_at_blank'] = 'Data fim: EM BRANCO';
+$lang['application_proformas'] = 'Proformas';
+$lang['application_proforma_items'] = 'Proforma x Itens';
+$lang['application_proforma_item'] = 'Proforma x Item';
+$lang['application_pv_item'] = 'Itens de Kits';
+$lang['application_qty'] = 'Quantidade';
+

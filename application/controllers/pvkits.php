@@ -214,6 +214,7 @@ class PvKits extends MY_Controller {
 
             $this->view_data['kit_providers'] = PvProvider::all();
             $this->view_data['all_kits'] = PvKit::find('all', ['conditions' => ['deleted != 1']]);
+            $this->view_data['proformas'] = PvProforma::all();
             $this->view_data['inverters'] = InverterManufacturer::all();
             $this->view_data['modules'] = ModuleManufacturer::all();
             $this->view_data['structure_types'] = StructureType::all();
@@ -309,6 +310,7 @@ class PvKits extends MY_Controller {
             $this->view_data['all_kits'] = PvKit::find('all', ['conditions' => ['deleted != 1']]);
             $this->view_data['pv_kit'] = $pv_kit;
             $this->view_data['kit_providers'] = PvProvider::all();
+            $this->view_data['proformas'] = PvProforma::all();
             $this->view_data['inverters'] = InverterManufacturer::all();
             $this->view_data['modules'] = ModuleManufacturer::all();
             $this->view_data['structure_types'] = StructureType::all();

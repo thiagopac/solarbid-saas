@@ -33,6 +33,22 @@ if (isset($pv_kit)) { ?>
     </div>
 
     <div class="form-group">
+        <label for="pv_proforma_id"><?= $this->lang->line('application_proforma'); ?> *</label>
+        <?php $options = array();
+
+        array_push($options, $this->lang->line('application_select'));
+
+        foreach ($proformas as $proforma):
+            $options[$proforma->id] = $proforma->name;
+        endforeach;
+
+        if (isset($pv_kit->pv_proforma_id)) {
+            $pv_proforma_id = $pv_kit->pv_proforma_id;
+        }
+        echo form_dropdown('pv_proforma_id', $options, $pv_proforma_id, 'style="width:100%" class="chosen-select"'); ?>
+    </div>
+
+    <div class="form-group">
         <label for="pv_inverter"><?= $this->lang->line('application_inverter'); ?> *</label>
         <?php $options = array();
 
