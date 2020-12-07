@@ -56,21 +56,21 @@ class Mail extends MY_Controller {
             $this->email->message($message);
 
 
-            $this->emailqueueApiCall(
-                "http://localhost/emailqueue/",
-                "e8944908c584976c",
-                [
-                    [
-                        "from" => "$from",
-                        "to" => "$to",
-                        "sender" => "$core_settings->company",
-                        "subject" => "$subject",
-                        "content" => "$message"
-                    ]
-                ]
-            );
+//            $this->emailqueueApiCall(
+//                "http://localhost/emailqueue/",
+//                "e8944908c584976c   ",
+//                [
+//                    [
+//                        "from" => "$from",
+//                        "to" => "$to",
+//                        "sender" => "$core_settings->company",
+//                        "subject" => "$subject",
+//                        "content" => "$message"
+//                    ]
+//                ]
+//            );
 
-//            $this->email->send();
+            $this->email->send();
         }
 
         $this->theme_view = 'ajax';
