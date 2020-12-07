@@ -10,6 +10,9 @@
                 <table class="data table" id="screening_companies" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
                     <thead>
                     <th>
+                        <?=$this->lang->line('application_id');?>
+                    </th>
+                    <th>
                         <?=$this->lang->line('application_company_name');?>
                     </th>
                     <th>
@@ -35,6 +38,9 @@
                     <?php foreach ($screening_companies as $value):?>
 
                         <tr id="<?=$value->id;?>">
+                            <td>
+                                <?= $value->id; ?>
+                            </td>
                             <td><span class="bold"><?php if (is_object($value)) {
                                         echo $value->name;
                                     } else {
