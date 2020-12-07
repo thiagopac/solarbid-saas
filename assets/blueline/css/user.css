@@ -262,3 +262,8 @@ input:-webkit-autofill:active  {
     min-height: 100px;
     margin-bottom: 10px;
 }
+
+label.header_description {
+    padding: 14px 0 0 0;
+    color: #8a8a8a;
+}

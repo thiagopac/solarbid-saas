@@ -63,10 +63,9 @@
             </div>
             <h1 style="position: absolute;"><?= $this->lang->line('application_price_tables') ?></h1>
             <small>
-                <?=$pricing_tables_current_status_desc;?>
+                <label class="header_description"><?=$pricing_tables_current_status_desc;?></label>
             </small>
         </div>
-
 
         <div class="grid__col-sm-12 grid__col-md-9 grid__col-lg-9 grid__col--bleed">
             <div class="grid grid--align-content-start">

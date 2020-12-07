@@ -29,9 +29,11 @@
         </div>
     </div>
     <div class="grid">
-        <div class="grid__col-md-7 dashboard-header">
+        <div class="grid__col-md-12 dashboard-header">
             <h1> <?= $this->lang->line('application_company_profile_and_portfolio') ?> </h1>
-            <small> <?= $this->lang->line('application_portolio_and_profile_data_fill_to_show'); ?> </small>
+            <small>
+                <label class="header_description"><?= $this->lang->line('application_portolio_and_profile_data_fill_to_show'); ?></label>
+            </small>
         </div>
         <div class="grid__col-sm-12 grid__col-md-9 grid__col-lg-9 grid__col--bleed">
             <div class="grid grid--align-content-start">

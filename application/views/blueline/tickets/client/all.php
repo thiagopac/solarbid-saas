@@ -54,7 +54,7 @@
             </div>
             <h1 style="position: absolute;"><?= $this->lang->line('application_tickets') ?></h1>
             <small>
-                <?= $this->lang->line('application_tickets_description') ?>
+                <label class="header_description"><?= $this->lang->line('application_tickets_description') ?></label>
             </small>
 
         </div>

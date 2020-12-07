@@ -101,10 +101,10 @@
             <div style="margin-bottom: 3px;"></div>
         </div>
     </div>
-    <div class="grid__col-md-7 dashboard-header">
+    <div class="grid__col-md-12 dashboard-header">
         <h1><?= $this->lang->line('application_price_table') ?>: <span style="font-size: 15px" class="badge">#<?= ellipsize($pricing_table->name, 35, .8);?></span></h1>
         <small>
-            <?= $this->lang->line('application_at_least_one_pricing_table'); ?>
+            <label class="header_description"><?= $this->lang->line('application_desc_pricing_records'); ?></label>
         </small>
     </div>
     <div class="box-shadow">
