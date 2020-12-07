@@ -16,7 +16,7 @@
                 </div>
             </a>
         </div>
-        <?php if($pricing_table_complete == true) : ?>
+        <?php if($pricing_table_complete == true || $pricing_table_complete_ignore == true) : ?>
             <?php if($pricing_table->active == false) : ?>
                 <div class="tile-button">
                     <a href="<?= base_url() ?>cpricing/activate/<?=$pricing_table->id?>" data-toggle="mainmodal">
@@ -50,7 +50,7 @@
                     </a>
                 </div>
             <?php endif; ?>
-        <?php elseif($pricing_table_complete == false) : ?>
+        <?php elseif($pricing_table_complete == false &&  $pricing_table_complete_ignore == false) : ?>
             <div class="col-md-4 col-xs-4 tile">
 
             </div>

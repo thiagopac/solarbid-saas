@@ -114,6 +114,7 @@ class cPricing extends MY_Controller
         $this->content_view = 'pricing/client/records';
 
         $this->view_data['pricing_table_complete'] = 2*count($pricing_fields) === count($pricing_records) ? true : false;
+        $this->view_data['pricing_table_complete_ignore'] = true;
     }
 
     public function update($pricing_record_id = false) {
