@@ -84,7 +84,7 @@ class Register extends MY_Controller
                                     'first_name' => $client->firstname,
                                     'last_name' => $client->lastname,
                                     'logo' => '<img src="' . base_url() . '' . $core_settings->logo . '" alt="' . $core_settings->company . '"/>',
-                                    'solarbid_logo' => '<img src="' . base_url() . '' . $core_settings->logo . '" alt="' . $core_settings->company . '"/>'
+                                    'solarbid_logo' => '<img src="' . base_url() . '' . $core_settings->colored_logo . '" alt="' . $core_settings->company . '"/>'
                                     ];
                     $email = read_file('./application/views/' . $core_settings->template . '/templates/email_registered_account.html');
                     $message = $this->parser->parse_string($email, $parse_data);

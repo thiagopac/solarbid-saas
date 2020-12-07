@@ -27,7 +27,7 @@ function send_notification($email, $subject, $text, $attachment = false, $link =
     $parse_data = [
                     'company' => $data['core_settings']->company,
                     'link' => base_url(),
-                    'logo' => '<img src="' . base_url() . '' . $data['core_settings']->logo . '" width=200 alt="' . $data['core_settings']->company . '"/>',
+                    'logo' => '<img src="' . base_url() . '' . $data['core_settings']->colored_logo . '" width=200 alt="' . $data['core_settings']->company . '"/>',
                     'solarbid_logo' => '<img src="' . base_url() . '' . $data['core_settings']->solarbid_logo . '" width=200 alt="' . $data['core_settings']->company . '"/>',
                     'message' => $text,
                     'link' => ($link) ? $link : base_url(),
