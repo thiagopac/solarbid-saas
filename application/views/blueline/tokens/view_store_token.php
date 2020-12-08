@@ -260,6 +260,26 @@
 
                     <div class="box-shadow">
                         <div class="table-head">
+                            <?=$this->lang->line('application_referral_program'); ?></div>
+                        <div class="subcont">
+                            <ul class="details col-md-12">
+                                <li> <span> <?=$this->lang->line('application_referral_code_used'); ?>: </span>
+                                    <?php echo empty($flow->referral_code) ? '-' : $flow->referral_code; ?>
+                                </li>
+                                <li> <span> <?=$this->lang->line('application_discount'); ?>: </span>
+                                    <?php echo empty($referral_code->discount) ? '-' : $referral_code->discount.'%'; ?>
+                                </li>
+                                <li> <span> <?=$this->lang->line('application_commission'); ?>: </span>
+                                    <?php echo empty($referral_code->commission) ? '-' : $referral_code->commission.'%'; ?>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p></p>
+
+                    <div class="box-shadow">
+                        <div class="table-head">
                             <?=$this->lang->line('application_appointment_purchase_gateway'); ?></div>
                         <div class="subcont">
                             <ul class="details col-md-12">

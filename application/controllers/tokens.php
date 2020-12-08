@@ -86,7 +86,7 @@ class Tokens extends MY_Controller {
         $company_appointment = CompanyAppointment::find(['conditions' => ['flow_id = ?', $simulator_flow_code], 'include' => ['appointment_time']]);
         $appointment_webhooks = Webhook::all(['conditions' => ['pedido_id = ?', $appointment_purchase->processor_id]]);
         $purchase_webhooks  = Webhook::all(['conditions' => ['pedido_id = ?', $purchase->processor_id]]);
-
+        $referral_code = ReferralCode::first(['conditions' => ['code = ?', $flow->referral_code]]);
 
         $this->view_data['flow'] = $flow;
         $this->view_data['company_appointment'] = $company_appointment;
@@ -99,6 +99,7 @@ class Tokens extends MY_Controller {
         $this->view_data['integrator_revised'] = json_decode($flow->integrator_revised);
         $this->view_data['appointment_webhooks'] = $appointment_webhooks;
         $this->view_data['purchase_webhooks'] = $purchase_webhooks;
+        $this->view_data['referral_code'] = $referral_code;
 
         $this->content_view = 'tokens/view_simulator_token';
     }
@@ -114,6 +115,7 @@ class Tokens extends MY_Controller {
         $company_appointment = CompanyAppointment::find(['conditions' => ['store_flow_id = ?', $store_flow_code], 'include' => ['appointment_time']]);
         $appointment_webhooks = Webhook::all(['conditions' => ['pedido_id = ?', $appointment_purchase->processor_id]]);
         $purchase_webhooks  = Webhook::all(['conditions' => ['pedido_id = ?', $purchase->processor_id]]);
+        $referral_code = ReferralCode::first(['conditions' => ['code = ?', $flow->referral_code]]);
 
         $this->view_data['flow'] = $flow;
         $this->view_data['company_appointment'] = $company_appointment;
@@ -126,6 +128,7 @@ class Tokens extends MY_Controller {
         $this->view_data['integrator_revised'] = json_decode($flow->integrator_revised);
         $this->view_data['appointment_webhooks'] = $appointment_webhooks;
         $this->view_data['purchase_webhooks'] = $purchase_webhooks;
+        $this->view_data['referral_code'] = $referral_code;
 
         $this->content_view = 'tokens/view_store_token';
     }

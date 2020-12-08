@@ -1564,4 +1564,7 @@ $lang['application_proforma_items'] = 'Proforma x Itens';
 $lang['application_proforma_item'] = 'Proforma x Item';
 $lang['application_pv_item'] = 'Itens de Kits';
 $lang['application_qty'] = 'Quantidade';
-
+$lang['application_referral_code'] = 'Código de indicação';
+$lang['application_referral_code_used'] = 'Código de indicação utilizado';
+$lang['application_referral_program'] = 'Programa de indicações';
+$lang['application_commission'] = 'Comissão';

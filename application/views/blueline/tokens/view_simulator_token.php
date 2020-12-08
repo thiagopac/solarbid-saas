@@ -17,7 +17,7 @@
     ?>
 
     <div class="grid">
-        <div class="grid__col-md-7 dashboard-header">
+        <div class="grid__col-md-12 dashboard-header">
             <h1> <?=$this->lang->line('application_simulator_token') ?>: <label class="badge" style="font-size: 15px; text-transform: none">#<?=$flow->code?></label>
                 <?php if ($flow->integrator_approved == 1) : ?>
                     <label class="badge btn-success" style="font-size: 15px; text-transform: none">
@@ -292,6 +292,25 @@
 
                     <span style="text-align: center"><h3><?=$this->lang->line('application_payment_transactions'); ?></h3></span>
 
+                    <div class="box-shadow">
+                        <div class="table-head">
+                            <?=$this->lang->line('application_referral_program'); ?></div>
+                        <div class="subcont">
+                            <ul class="details col-md-12">
+                                <li> <span> <?=$this->lang->line('application_referral_code_used'); ?>: </span>
+                                    <?php echo empty($flow->referral_code) ? '-' : $flow->referral_code; ?>
+                                </li>
+                                <li> <span> <?=$this->lang->line('application_discount'); ?>: </span>
+                                    <?php echo empty($referral_code->discount) ? '-' : $referral_code->discount.'%'; ?>
+                                </li>
+                                <li> <span> <?=$this->lang->line('application_commission'); ?>: </span>
+                                    <?php echo empty($referral_code->commission) ? '-' : $referral_code->commission.'%'; ?>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p></p>
 
                     <div class="box-shadow">
                         <div class="table-head">
