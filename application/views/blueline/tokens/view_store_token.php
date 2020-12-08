@@ -264,7 +264,7 @@
                         <div class="subcont">
                             <ul class="details col-md-12">
                                 <li> <span> <?=$this->lang->line('application_referral_code_used'); ?>: </span>
-                                    <?php echo empty($flow->referral_code) ? '-' : $flow->referral_code; ?>
+                                    <?php echo empty($flow->referral_code || $flow->referral_code == 'undefined') ? '-' : $flow->referral_code; ?>
                                 </li>
                                 <li> <span> <?=$this->lang->line('application_discount'); ?>: </span>
                                     <?php echo empty($referral_code->discount) ? '-' : $referral_code->discount.'%'; ?>
