@@ -49,8 +49,7 @@ function send_notification($email, $subject, $text, $attachment = false, $link =
     return $send;
 }
 
-function send_ticket_notification($email, $subject, $text, $ticket_id, $attachment = false)
-{
+function send_ticket_notification($email, $subject, $text, $ticket_id, $attachment = false) {
     $instance = &get_instance();
     $instance->email->clear();
     $instance->load->helper('file');
@@ -117,100 +116,4 @@ function send_ticket_notification($email, $subject, $text, $ticket_id, $attachme
     $message = $instance->parser->parse_string($email_invoice, $parse_data);
     $instance->email->message($message);
     $instance->email->send();
-}
-
-function receipt_notification($clientId, $subject = false, $paymentId = false)
-{
-    $instance = &get_instance();
-    $instance->email->clear();
-    $instance->load->helper('file');
-    $instance->load->library('parser');
-    $settings = Setting::first();
-    $client = Client::find_by_id($clientId);
-
-    $instance->email->from($settings->email, $settings->company);
-    $instance->email->to($client->email);
-
-    //Set parse values
-    $parse_data = [
-                      'company' => $settings->company,
-                      'link' => base_url(),
-                      'logo' => '<img src="' . base_url() . '' . $settings->logo . '" alt="' . $settings->company . '"/>',
-                      'solarbid_logo' => '<img src="' . base_url() . '' . $settings->solarbid_logo . '" alt="' . $settings->company . '"/>',
-                      'client_firstname' => $client->firstname,
-                      'client_lastname' => $client->lastname,
-                      'client_company' => $client->company->name,
-                      ];
-    $subject = $instance->parser->parse_string($settings->receipt_mail_subject, $parse_data);
-
-    $instance->email->subject($subject);
-
-    $email_invoice = read_file('./application/views/' . $settings->template . '/templates/email_receipt.html');
-    $message = $instance->parser->parse_string($email_invoice, $parse_data);
-    $instance->email->message($message);
-    $instance->email->send();
-}
-
-function reminder_notification($class, $user = false, $module = false, $reminder = false)
-{
-    $instance = &get_instance();
-    $instance->email->clear();
-    $instance->load->helper('file');
-    $instance->load->library('parser');
-    $settings = Setting::first();
-    switch ($class) {
-                    case 'Lead':
-                        $subject = '[' . $instance->lang->line('application_reminder') . '] ' . $reminder->title;
-                        $body = $reminder->body;
-                        $parse_body = [
-                                        'name' => $module->name,
-                                        'address' => $module->address,
-                                        'city' => $module->city,
-                                        'zipcode' => $module->zipcode,
-                                        'owner' => $module->owner,
-                                        'phone' => '<a href="tel:' . $module->phone . '">' . $module->phone . '</a>',
-                                        'mobile' => '<a href="tel:' . $module->phone . '">' . $module->mobile . '</a>',
-                                        'company' => $module->company,
-                                        'description' => $module->description,
-                                      ];
-
-                        $body = $instance->parser->parse_string($body, $parse_body);
-
-                        $parse_data = [
-                                    'first_name' => $user->firstname,
-                                    'last_name' => $user->lastname,
-                                    'title' => $reminder->title,
-                                    'message' => $body,
-                                    'datetime' => $reminder->datetime,
-                                    'logo' => '<img src="' . base_url() . '' . $settings->logo . '" alt="' . $settings->company . '"/>',
-                                    'solarbid_logo' => '<img src="' . base_url() . '' . $settings->solarbid_logo . '" alt="' . $settings->company . '"/>',
-                                    'company' => $settings->company,
-
-                                    'icon' => '<img alt="Lembrete" height="auto" src="' . base_url() . 'assets/blueline/images/bell-circle-red.png" width="70">',
-                                    'button_text' => $instance->lang->line('application_go_to_lead'),
-                                    'button_link' => base_url() . 'leads/'
-                                    ];
-                        break;
-
-                    default:
-                        // code...
-                        break;
-                }
-
-    //email
-    $instance->email->from($settings->email, $settings->company);
-    $instance->email->to($user->email);
-    $instance->email->subject($subject);
-
-    $email_template = read_file('./application/views/' . $settings->template . '/templates/email_reminder.html');
-    $message = $instance->parser->parse_string($email_template, $parse_data);
-    $instance->email->message($message);
-    if (!$instance->email->send()) {
-        log_message('error', '[notification cronjob] ERROR reminder email could not be sent!');
-        log_message('error', $instance->email->print_debugger());
-        return false;
-    } else {
-        log_message('error', "[notification cronjob] Reminder email was sent to $user->firstname successfully!");
-        return true;
-    }
 }

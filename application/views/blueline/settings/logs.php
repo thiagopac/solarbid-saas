@@ -1,4 +1,4 @@
-<div id="row">
+    <div id="row">
 
 	<?php include 'settings_menu.php'; ?>
 
@@ -7,6 +7,9 @@
 			<div class="span12 marginbottom20">
 				<div class="table-head">Logs
 					<span class="pull-right">
+                        <a href="<?=base_url()?>settings/button_tests" class="btn btn-success">
+							<?=$this->lang->line('application_button_tests');?>
+						</a>
 						<a href="<?=base_url()?>settings/logs" class="btn btn-success">
 							<?=$this->lang->line('application_refresh');?>
 						</a>

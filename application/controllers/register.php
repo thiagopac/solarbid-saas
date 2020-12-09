@@ -2,6 +2,8 @@
     exit('No direct script access allowed');
 }
 
+require('mail.php');
+
 class Register extends MY_Controller
 {
     public function __construct()
@@ -73,33 +75,21 @@ class Register extends MY_Controller
                     $company->client_id = $client->id;
                     $company->save();
 
-                    $this->email->from($core_settings->email, $core_settings->company);
-                    $this->email->to($client_attr['email']);
 
-                    $this->email->subject($this->lang->line('application_your_account_has_been_registered'));
-                    $parse_data = [
-                                    'link' => base_url() . 'login/',
-                                    'company' => $core_settings->company,
-                                    'client_company' => $company->name,
-                                    'first_name' => $client->firstname,
-                                    'last_name' => $client->lastname,
-                                    'logo' => '<img src="' . base_url() . '' . $core_settings->logo . '" alt="' . $core_settings->company . '"/>',
-                                    'solarbid_logo' => '<img src="' . base_url() . '' . $core_settings->colored_logo . '" alt="' . $core_settings->company . '"/>'
-                                    ];
-                    $email = read_file('./application/views/' . $core_settings->template . '/templates/email_registered_account.html');
-                    $message = $this->parser->parse_string($email, $parse_data);
-                    $this->email->message($message);
-                    $this->email->send();
-                    send_notification($core_settings->email, $this->lang->line('application_new_client_has_registered'), $this->lang->line('application_new_client_has_registered') . ': <br><strong>' . $company_attr['name'] . '</strong><br>' . $client_attr['firstname'] . ' ' . $client_attr['lastname'] . '<br>' . $client_attr['email']);
+                    $data = array();
+                    $data['name'] =  $client_attr['firstname'];
+                    $data['subject'] =  $this->lang->line('application_your_account_has_been_registered');
+                    $data['to'] =  $client_attr['email'];
 
-                    $tickets = Ticket::find('all', ['conditions' => ['`from` LIKE CONCAT("%", ? ,"%")', $client_attr['email']]]);
-                    if ($tickets) {
-                        foreach ($tickets as $ticket) {
-                            $ticket->client_id = $client->id;
-                            $ticket->company_id = $client_attr['company_id'];
-                            $ticket->save();
-                        }
-                    }
+
+                    $mail = new Mail();
+                    $mail->register_mail($data);
+
+                    send_notification($core_settings->email,
+                                      $this->lang->line('application_new_client_has_registered'),
+                                '<strong>' . $company_attr['name'] . '</strong><br>' . $client_attr['firstname'] . ' ' . $client_attr['lastname'] . '<br>' . $client_attr['email'],
+                                      $this->lang->line('application_new_client_has_registered')
+                                     );
 
                     $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_request_registration_success'));
                     redirect('login');

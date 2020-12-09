@@ -2,6 +2,8 @@
     exit('No direct script access allowed');
 }
 
+require('mail.php');
+
 class Settings extends MY_Controller
 {
     public function __construct()
@@ -852,7 +854,7 @@ class Settings extends MY_Controller
         if (isset($_POST['testemail'])) {
             //send test email
             $this->load->helper('notification');
-            if (send_notification($_POST['testemail'], '[Email Settings] Test Email', 'This is a test email.')) {
+            if (send_notification($_POST['testemail'], 'Teste de e-mail', 'Este é um teste feito pela plataforma AppSolarbid.')) {
                 $this->session->set_flashdata('message', 'success: Test email has been sent. Check your inbox!');
             } else {
                 $this->session->set_flashdata('message', 'error: Email not sent. Check your email settings!');
@@ -901,5 +903,17 @@ class Settings extends MY_Controller
             $this->view_data['form_action'] = 'settings/smtp_settings';
             $this->content_view = 'settings/smtp_settings';
         }
+    }
+
+    public function button_tests(){
+
+        $data = array();
+        $data['name'] =  'Thiago';
+        $data['subject'] =  $this->lang->line('application_your_account_has_been_registered');
+        $data['to'] =  'thiagopac@gmail.com';
+
+
+        $mail = new Mail();
+        $mail->welcome_mail($data);
     }
 }
