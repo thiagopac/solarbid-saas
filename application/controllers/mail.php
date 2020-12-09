@@ -1,6 +1,7 @@
 <?php
 
 define("EMAILQUEUE_DIR", "../emailqueue/"); // Set this to your Emailqueue's installation directory.
+define("SUPPORT_DIR", __DIR__."../files/support/");
 
 
 include_once EMAILQUEUE_DIR."config/application.config.inc.php"; // Include emailqueue configuration.
@@ -168,7 +169,7 @@ class Mail extends MY_Controller {
             $client_company = $data['client_company'];
 
             $platform_address = 'https://appsolarbid.com.br/';
-            $document_address = $core_settings->domain.'/files/support/Precificação-Integradores.xlsx';
+            $document_address = $core_settings->domain.'/files/support/precificacao_integradores.xlsx';
 
             $company_name = $core_settings->company;
 
@@ -191,8 +192,6 @@ class Mail extends MY_Controller {
 
             $emailqueue_inject = new Emailqueue\emailqueue_inject(EMAILQUEUE_DB_HOST, EMAILQUEUE_DB_UID, EMAILQUEUE_DB_PWD, EMAILQUEUE_DB_DATABASE);
 
-//            echo SUPPORT_DIR."/Precificação-Integradores.xlsx";
-//            exit;
 
             try {
                 // Call the emailqueue_inject::inject method to inject an email
@@ -214,6 +213,11 @@ class Mail extends MY_Controller {
                     "content" => "$message", // The email content. Can contain HTML (set is_html parameter to true if so).
                     "content_nonhtml" => false, // The plain text-only content for clients not supporting HTML emails (quite rare nowadays). If set to false, a text-only version of the given content will be automatically generated.
                     "list_unsubscribe_url" => false, // Optional. Specify the URL where users can unsubscribe from your mailing list. Some email clients will show this URL as an option to the user, and it's likely to be considered by many SPAM filters as a good signal, so it's really recommended.
+//                    "attachments" => [ // Optional. An array of hash arrays specifying the files you want to attach to your email. See example.php for an specific description on how to build this array.
+//                        [
+//                            "path" => "/home/wwsola/public_html/saas/files/support/Precificação-Integradores.xlsx"
+//                        ]
+//                    ],
 //                    "is_embed_images" => true, // When set to true, Emailqueue will find all the <img ... /> tags in your provided HTML code on the "content" parameter and convert them into embedded images that are attached to the email itself instead of being referenced by URL. This might cause email clients to show the email straightaway without the user having to accept manually to load the images. Setting this option to true will greatly increase the bandwidth usage of your SMTP server, since each message will contain hard copies of all embedded messages. 10k emails with 300Kbs worth of images each means around 3Gb. of data to be transferred!
                     "custom_headers" => false // Optional. A hash array of additional headers where each key is the header name and each value is its value.
                 ]);
