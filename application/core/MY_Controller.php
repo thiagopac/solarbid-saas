@@ -10,6 +10,13 @@ class My_Controller extends CI_Controller
     protected $content_view = '';
     protected $view_data = array();
 
+    public function remove_bad_tags_from($field){
+        $_POST[$field] = preg_replace('/(&lt;|<)\?php(.*)(\?(&gt;|>))/imx', '[php] $2 [php]', $_POST[$field]);
+        $_POST[$field] = preg_replace('/((&lt;|<)(\s*|\/)script(.*?)(&gt;|>))/imx', ' [script] ', $_POST[$field]);
+        $_POST[$field] = preg_replace('/((&lt;|<)(\s*)link(.*?)\/?(&gt;|>))/imx', '[link $4 ]', $_POST[$field]);
+        $_POST[$field] = preg_replace('/((&lt;|<)(\s*)(\/*)(\s*)style(.*?)(&gt;|>))/imx', ' [style] ', $_POST[$field]);
+    }
+
     public function __construct()
     {
         parent::__construct();
@@ -18,13 +25,6 @@ class My_Controller extends CI_Controller
         if (!empty($_POST)) {
             $fieldList = array("description", "message", "terms", "note", "smtp_pass", "password", "ticket_config_pass", "css-area");
             $ignoreXSS = array("mail_body");
-            function remove_bad_tags_from($field)
-            {
-                $_POST[$field] = preg_replace('/(&lt;|<)\?php(.*)(\?(&gt;|>))/imx', '[php] $2 [php]', $_POST[$field]);
-                $_POST[$field] = preg_replace('/((&lt;|<)(\s*|\/)script(.*?)(&gt;|>))/imx', ' [script] ', $_POST[$field]);
-                $_POST[$field] = preg_replace('/((&lt;|<)(\s*)link(.*?)\/?(&gt;|>))/imx', '[link $4 ]', $_POST[$field]);
-                $_POST[$field] = preg_replace('/((&lt;|<)(\s*)(\/*)(\s*)style(.*?)(&gt;|>))/imx', ' [style] ', $_POST[$field]);
-            }
 
             foreach ($_POST as $key => $value) {
                 if (in_array($key, $fieldList)) {
@@ -34,7 +34,6 @@ class My_Controller extends CI_Controller
                 }
             }
         }
-
 
         $this->view_data['core_settings'] = Setting::first();
 
