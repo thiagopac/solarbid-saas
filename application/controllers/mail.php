@@ -1,7 +1,7 @@
 <?php
 
 define("EMAILQUEUE_DIR", "../emailqueue/"); // Set this to your Emailqueue's installation directory.
-define("SUPPORT_DIR", __DIR__."../files/support/");
+define("SUPPORT_DIR", "files/support/");
 
 
 include_once EMAILQUEUE_DIR."config/application.config.inc.php"; // Include emailqueue configuration.
