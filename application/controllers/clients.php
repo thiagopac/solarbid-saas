@@ -3,6 +3,7 @@
 }
 
 include_once(dirname(__FILE__).'/../third_party/functions.php');
+require('mail.php');
 
 class Clients extends MY_Controller
 {
@@ -469,6 +470,20 @@ class Clients extends MY_Controller
                         $company_rating->save();
                     }
                 }
+
+                $data = array();
+                $data['name'] =  $main_contact->firstname;
+                $data['client_company'] = $last_company->name;
+                $data['to'] =  $main_contact->email;
+
+                $mail = new Mail();
+                $mail->welcome_mail($data);
+
+                send_notification($core_settings->email,
+                    $this->lang->line('application_new_client_has_promoted'),
+                    '<strong>' . $company_attr['name'] . '</strong><br>' . $client_attr['firstname'] . ' ' . $client_attr['lastname'] . '<br>' . $client_attr['email'],
+                    $this->lang->line('application_new_client_has_promoted')
+                );
 
                 $this->content_view = 'clients/all_screening_companies';
                 if (!$company) {

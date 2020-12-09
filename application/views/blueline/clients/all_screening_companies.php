@@ -2,6 +2,12 @@
     <?php include_once ("header_menu.php")?>
 
     <div class="row">
+
+        <small>
+            <label class="header_description"><?=$this->lang->line('application_warning_promote_screeening_companies_mail')?></label>
+            <p></p>
+        </small>
+
         <div class="box-shadow">
             <div class="table-head">
                 <?=$this->lang->line('application_screening_companies');?>
