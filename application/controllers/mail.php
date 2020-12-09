@@ -141,10 +141,13 @@ class Mail extends MY_Controller {
                 echo "Emailqueue error: ".$e->getMessage()."<br>";
             }
 
-            if($result)
-                echo "Message correctly injected.<br>";
-            else
-                echo "Error while queing message.<br>";
+            if($result) {
+                $this->session->set_flashdata('message', 'success:' . 'Seu cadastro foi enviado com sucesso');
+                redirect('login');
+            }else {
+                $this->session->set_flashdata('message', 'error:' . 'Erro ao efetuar seu cadastro, tente novamente mais tarde');
+                redirect('login');
+            }
 
 //            $this->email->message($message);
 //            $this->email->send();
