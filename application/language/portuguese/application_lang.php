@@ -1569,3 +1569,4 @@ $lang['application_referral_code_used'] = 'Código de indicação utilizado';
 $lang['application_referral_program'] = 'Programa de indicações';
 $lang['application_commission'] = 'Comissão';
 $lang['application_button_tests'] = 'Botão de testes';
+$lang['application_your_account_is_ready'] = 'Seu cadastro está pronto!';

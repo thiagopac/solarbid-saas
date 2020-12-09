@@ -909,9 +909,8 @@ class Settings extends MY_Controller
 
         $data = array();
         $data['name'] =  'Thiago';
-        $data['subject'] =  $this->lang->line('application_your_account_has_been_registered');
+        $data['client_company'] = 'Empresa Thiagoide';
         $data['to'] =  'thiagopac@gmail.com';
-
 
         $mail = new Mail();
         $mail->welcome_mail($data);

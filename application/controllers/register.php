@@ -78,7 +78,7 @@ class Register extends MY_Controller
 
                     $data = array();
                     $data['name'] =  $client_attr['firstname'];
-                    $data['subject'] =  $this->lang->line('application_your_account_has_been_registered');
+                    $data['client_company'] = $last_inserted_company->name;
                     $data['to'] =  $client_attr['email'];
 
 
