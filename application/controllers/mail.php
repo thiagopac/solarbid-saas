@@ -192,8 +192,8 @@ class Mail extends MY_Controller {
 
             $emailqueue_inject = new Emailqueue\emailqueue_inject(EMAILQUEUE_DB_HOST, EMAILQUEUE_DB_UID, EMAILQUEUE_DB_PWD, EMAILQUEUE_DB_DATABASE);
 
-            echo SUPPORT_DIR."/Precificação-Integradores.xlsx";
-            exit;
+//            echo SUPPORT_DIR."/Precificação-Integradores.xlsx";
+//            exit;
 
             try {
                 // Call the emailqueue_inject::inject method to inject an email
