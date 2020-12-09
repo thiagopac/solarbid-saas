@@ -909,8 +909,8 @@ class Settings extends MY_Controller
 
         $data = array();
         $data['name'] =  'Thiago';
-        $data['client_company'] = 'Empresa Thiagoide';
-        $data['to'] =  'thiagopac@gmail.com';
+        $data['client_company'] = 'Solarbid';
+        $data['to'] =  'solarbid@solarbid.com.br';
 
         $mail = new Mail();
         $mail->welcome_mail($data);
