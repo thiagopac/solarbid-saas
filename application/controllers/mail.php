@@ -215,7 +215,7 @@ class Mail extends MY_Controller {
                     "list_unsubscribe_url" => false, // Optional. Specify the URL where users can unsubscribe from your mailing list. Some email clients will show this URL as an option to the user, and it's likely to be considered by many SPAM filters as a good signal, so it's really recommended.
                     "attachments" => [ // Optional. An array of hash arrays specifying the files you want to attach to your email. See example.php for an specific description on how to build this array.
                         [
-                            "path" => SUPPORT_DIR."precificacao_integradores.xlsx"
+                            "path" => "/home/wwsola/public_html/saas/files/support/precificacao_integradores.xlsx"
                         ]
                     ],
 //                    "is_embed_images" => true, // When set to true, Emailqueue will find all the <img ... /> tags in your provided HTML code on the "content" parameter and convert them into embedded images that are attached to the email itself instead of being referenced by URL. This might cause email clients to show the email straightaway without the user having to accept manually to load the images. Setting this option to true will greatly increase the bandwidth usage of your SMTP server, since each message will contain hard copies of all embedded messages. 10k emails with 300Kbs worth of images each means around 3Gb. of data to be transferred!
