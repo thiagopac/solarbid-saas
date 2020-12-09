@@ -28,7 +28,7 @@ class My_Controller extends CI_Controller
 
             foreach ($_POST as $key => $value) {
                 if (in_array($key, $fieldList)) {
-                    remove_bad_tags_from($key);
+                    $this->remove_bad_tags_from($key);
                 } elseif (!in_array($key, $ignoreXSS)) {
                     $_POST[$key] = $this->security->xss_clean($_POST[$key]);
                 }
