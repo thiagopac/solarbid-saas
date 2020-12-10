@@ -10,7 +10,7 @@ $act_uri = $this->uri->segment(1, 0);
 $lastsec = $this->uri->total_segments();
 $act_uri_submenu = $this->uri->segment($lastsec);
 if (!$act_uri) {
-    $act_uri = 'cdashboard';
+    $act_uri = 'cpricing';
 }
 if (is_numeric($act_uri_submenu)) {
     $lastsec = $lastsec - 1;

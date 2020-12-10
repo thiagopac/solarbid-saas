@@ -33,7 +33,7 @@ class Auth extends MY_Controller
 				if($this->input->cookie('saas_link') != ""){
 					redirect($this->input->cookie('saas_link'));
 				}else{
-					redirect('cdashboard');
+					redirect('cpricing');
 				}
 			}
 			else {
