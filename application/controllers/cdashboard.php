@@ -14,7 +14,7 @@ class cDashboard extends MY_Controller
             foreach ($this->view_data['menu'] as $key => $value) {
                 if($value->link == "cdashboard"){ $access = TRUE;}
             }
-            if(!$access){redirect('login');}
+            if(!$access){redirect('cpricing');}
         }elseif($this->user){
             redirect('dashboard');
         }else{
