@@ -94,7 +94,7 @@ class Mail extends MY_Controller {
             $this->load->helper('file');
 
             $name = $data['name'];
-            $subject = $data['subject'];
+            $subject = "Pedido de conta registrado com sucesso";
 
             $company_name = $core_settings->company;
 
