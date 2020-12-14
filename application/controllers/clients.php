@@ -599,6 +599,9 @@ class Clients extends MY_Controller
         $company_photos = CompanyPhoto::all(['conditions' => ['company_id = ? AND deleted != 1', $id], 'order' => 'id DESC']);
         $this->view_data['company_photos'] = $company_photos;
 
+        $company_pricing_tables = PricingTable::all(['conditions' => ['company_id = ?', $id]]);
+        $this->view_data['company_pricing_tables'] = $company_pricing_tables;
+
         $this->content_view = 'clients/view';
     }
 

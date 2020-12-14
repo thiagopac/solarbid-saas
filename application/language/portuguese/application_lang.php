@@ -610,6 +610,7 @@ $lang['application_new_update_is_ready'] = 'Update está disponível Clique aqui
 $lang['application_check'] = 'Verificar';
 $lang['application_direct_debit'] = 'Débito Direto';
 $lang['application_registration'] = 'Registro';
+$lang['application_registries'] = 'Registros';
 $lang['application_register'] = 'Register';
 $lang['application_default_client_module_access'] = 'Módulos de acesso do cliente após registro';
 $lang['application_client_has_no_admins'] = 'O cliente não tem administradores! Administradores de clietes tem permissões para configurar dados do perfil da empresa.';

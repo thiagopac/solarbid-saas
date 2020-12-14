@@ -315,6 +315,52 @@
                 </div>
             </div>
         </div>
+
+        <p></p>
+
+        <div class="data-table-marginbottom">
+            <div class="box-shadow">
+                <div class="table-head">
+                    <?=$this->lang->line('application_price_tables');?>
+                </div>
+                <div class="table-div responsive">
+                    <table id="pricingtables" class="data-no-search table noclick" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
+                        <thead>
+                        <th>
+                            <?=$this->lang->line('application_name');?>
+                        </th>
+                        <th class="hidden-xs">
+                            <?=$this->lang->line('application_valid_from');?>
+                        </th>
+                        <th class="hidden-xs">
+                            <?=$this->lang->line('application_valid_to');?>
+                        </th>
+                        <th class="hidden-xs">
+                            <?=$this->lang->line('application_active');?>
+                        </th>
+                        </thead>
+                        <?php foreach ($company_pricing_tables as $value):?>
+
+                            <tr id="<?=$value->id;?>">
+                                <td>
+                                    <?=$value->name;?>
+                                </td>
+                                <td class="hidden-xs">
+                                    <?= date($core_settings->date_format, strtotime($value->start)) ?>
+                                </td>
+                                <td class="hidden-xs">
+                                    <?= date($core_settings->date_format, strtotime($value->end)) ?>
+                                </td>
+                                <td class="hidden-xs">
+                                    <?php echo $active = $value->active == 1 ? 'Sim' : 'Não'; ?>
+                                </td>
+                            </tr>
+
+                        <?php endforeach;?>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div>&nbsp;</div>
