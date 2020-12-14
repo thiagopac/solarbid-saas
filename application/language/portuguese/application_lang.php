@@ -279,6 +279,7 @@ $lang['application_pw_reset_email_template'] = 'Redefinir a senha';
 $lang['application_pw_reset_link_email_template'] = 'Confirmação de redefinição de senha';
 $lang['application_notification_email_template'] = 'Notificações';
 $lang['application_welcome_account_email_template'] = 'Boas-vindas';
+$lang['application_simple_mail_email_template'] = 'Notificações simples';
 $lang['application_recurring'] = 'Fatura Recorrente';
 $lang['application_frequency'] = 'Freqüência';
 $lang['application_weekly'] = 'Semanal';
