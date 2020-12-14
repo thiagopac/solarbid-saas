@@ -351,12 +351,11 @@ $lang['application_showing_from_to_empty'] = 'Mostrando 0 para 0 de 0 registros'
 $lang['application_view'] = 'Visão Geral';
 $lang['application_sent'] = 'Enviados';
 $lang['application_paid'] = 'pago';
-
 $lang['application_notification'] = 'Notificação';
 $lang['application_credentials'] = 'Credenciais';
 $lang['application_pw_reset_link'] = 'Link de redefinição de senha';
 $lang['application_pw_reset'] = 'Redefinição de senha';
-
+$lang['application_welcome_account'] = 'Boas vindas';
 $lang['application_country'] = 'País';
 $lang['application_client_online'] = 'Clientes Online';
 $lang['application_ticket'] = 'Ticket';
