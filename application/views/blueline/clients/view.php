@@ -324,7 +324,7 @@
                     <?=$this->lang->line('application_price_tables');?>
                 </div>
                 <div class="table-div responsive">
-                    <table id="pricingtables" class="data-no-search table noclick" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
+                    <table id="" class="data-no-search table noclick" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
                         <thead>
                         <th>
                             <?=$this->lang->line('application_name');?>
@@ -338,6 +338,13 @@
                         <th class="hidden-xs">
                             <?=$this->lang->line('application_active');?>
                         </th>
+                        <?php if ($this->user->admin == 1) {
+                            ?>
+                            <th>
+                                <?=$this->lang->line('application_action'); ?>
+                            </th>
+                            <?php
+                        } ?>
                         </thead>
                         <?php foreach ($company_pricing_tables as $value):?>
 
@@ -354,6 +361,13 @@
                                 <td class="hidden-xs">
                                     <?php echo $active = $value->active == 1 ? 'Sim' : 'Não'; ?>
                                 </td>
+                                <?php if ($this->user->admin == 1) : ?>
+                                    <td class="option" style="text-align:center; text-wrap:nowrap " width="4%">
+                                        <a href="<?=base_url()?>clients/view_pricing_table/<?=$value->id;?>" title="<?=$this->lang->line('application_view');?>" class="btn-option" data-toggle="mainmodal">
+                                            <i class="icon dripicons-preview"></i>
+                                        </a>
+                                    </td>
+                                <?php endif; ?>
                             </tr>
 
                         <?php endforeach;?>

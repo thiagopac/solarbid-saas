@@ -615,6 +615,18 @@ class Clients extends MY_Controller
         $this->content_view = 'clients/view_screening';
     }
 
+    public function view_pricing_table($id = false) {
+
+        $pricing_table = PricingTable::find($id);
+        $pricing_records = PricingRecord::all(['conditions' => ['table_id = ?', $id]]);
+
+        $this->theme_view = 'modal';
+        $this->view_data['pricing_records'] = $pricing_records;
+        $this->view_data['title'] = $this->lang->line('application_price_table').': '.$pricing_table->name;
+
+        $this->content_view = 'clients/_pricing';
+    }
+
     public function credentials($id = false, $email = false, $newPass = false)
     {
         if ($email) {
