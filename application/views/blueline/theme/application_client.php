@@ -259,7 +259,7 @@ $message_icon = false;
     $(document).ready(function() {
 
         $('a').on('click', function() {
-            $("#dvLoading").show().delay(3000).hide(200);
+            $("#dvLoading").removeClass('hidden').show().delay(3000).hide(200);
         });
 
         $('span.mark_read').on('click', function(event) {
