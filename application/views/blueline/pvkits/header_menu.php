@@ -48,8 +48,24 @@
         </a>
     </div>
 
-    <div class="col-md-3 col-xs-12 tile hidden-xs">
+    <div class="tile-button">
+        <a href="<?= base_url() ?>pvkits/get_edmond_kits">
+            <div class="col-md-3 col-xs-3 tile">
+
+                <div class="icon-frame">
+                    <i class="ion-ios-cloud-download"></i>
+                </div>
+                <h1>
+                <span>
+                    <?= $this->lang->line('application_pv_kits_appsolar'); ?>
+                </span>
+                </h1>
+            </div>
+        </a>
+    </div>
+
+    <!--<div class="col-md-3 col-xs-12 tile hidden-xs">
         <div style="width:97%; margin-top: -4px; margin-bottom: 17px; height: 80px;">
         </div>
-    </div>
+    </div>-->
 </div>

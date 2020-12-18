@@ -1575,3 +1575,4 @@ $lang['application_button_tests'] = 'Botão de testes';
 $lang['application_your_account_is_ready'] = 'Seu cadastro está pronto!';
 $lang['application_new_client_has_promoted'] = 'Triagem - Cliente promovido';
 $lang['application_warning_promote_screeening_companies_mail'] = 'Aviso: Ao promover uma empresa a cliente, o contato principal receberá um e-mail de boas-vindas com os primeiros passos';
+$lang['application_pv_kits_appsolar'] = 'Kits Edmond AppSolar';

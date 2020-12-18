@@ -70,7 +70,10 @@
   <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/locales/flatpickr_<?=$current_language?>.js"></script>
 
 
-      <script type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="utf-8">
+    $(window).load(function(){
+        $('#dvLoading').fadeOut(200);
+    });
 
 //Validation
   $("form").validator();

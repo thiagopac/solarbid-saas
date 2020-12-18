@@ -190,20 +190,6 @@ $message_icon = false;
             <div class="topbar__left noselect">
                 <a href="#" class="menu-trigger"><i class="ion-navicon visible-xs"></i></a>
                 <i class="icon dripicons-menu topbar__icon fc-dropdown--trigger hidden"></i>
-                <div class="fc-dropdown shortcut-menu grid">
-                    <div class="grid__col-6 shortcut--item"><i class="ion-ios-paper-outline shortcut--icon"></i>
-                        <?=$this->lang->line('application_create_invoice');?>
-                    </div>
-                    <div class="grid__col-6 shortcut--item"><i class="ion-ios-lightbulb shortcut--icon"></i>
-                        <?=$this->lang->line('application_create_project');?>
-                    </div>
-                    <div class="grid__col-6 shortcut--item"><i class="ion-ios-pricetags shortcut--icon"></i>
-                        <?=$this->lang->line('application_create_ticket');?>
-                    </div>
-                    <div class="grid__col-6 shortcut--item"><i class="ion-ios-email shortcut--icon"></i>
-                        <?=$this->lang->line('application_write_messages');?>
-                    </div>
-                </div>
                 <i class="icon dripicons-bell topbar__icon fc-dropdown--trigger" data-placement="bottom" title="<?=$this->lang->line('application_alerts');?>"><?php if ($unread_notifications > 0) {
                         ?><span class="badge counter" style="background: #ed5564; display: initial; font-style: normal; font-weight: 300; font-family: monospace;""><?=$unread_notifications?></span><?php
                     } ?></i>
@@ -287,6 +273,8 @@ $message_icon = false;
 
         <?=$yield?>
 
+        <div id="dvLoading"><img/></div>
+
     </div>
     <!-- Notify -->
     <?php if ($this->session->flashdata('message')) {
@@ -318,7 +306,16 @@ $message_icon = false;
 
 </html>
 <script>
+    $(window).ready(function(){
+        $('#dvLoading').hide();
+    });
+
     $(document).ready(function() {
+
+        $('a').on('click', function() {
+            $("#dvLoading").show().delay(3000).hide(200);
+        });
+
 
         $('span.mark_read').on('click', function(event) {
 

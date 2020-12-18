@@ -4,9 +4,26 @@
 
 class PvKits extends MY_Controller {
 
+    public $login_url;
+    public $custom_orders_url;
+    public $custom_orders_list_params;
+    private $login_email;
+    private $login_password;
+
     public function __construct() {
 
         parent::__construct();
+
+
+        { //bot kit config
+            $this->login_url = "https://api-integrator.appsolar.com.br/api/login";
+            $this->custom_orders_url = "https://api-integrator.appsolar.com.br/api/custom-orders";
+            $this->custom_orders_list_params = "?descending=false&page=1&rowsPerPage=0&rowsNumber=23&currentStatus=%7B%22name%22:null%7D&itemsPerPage=0";
+
+            $this->login_email = "thiago@solarbid.com.br";
+            $this->login_password = "Tpac@123!@#";
+        }
+
         $access = false;
         $link = '/' . $this->uri->uri_string();
 
@@ -214,7 +231,6 @@ class PvKits extends MY_Controller {
 
             $this->view_data['kit_providers'] = PvProvider::all();
             $this->view_data['all_kits'] = PvKit::find('all', ['conditions' => ['deleted != 1']]);
-            $this->view_data['proformas'] = PvProforma::all();
             $this->view_data['inverters'] = InverterManufacturer::all();
             $this->view_data['modules'] = ModuleManufacturer::all();
             $this->view_data['structure_types'] = StructureType::all();
@@ -310,7 +326,6 @@ class PvKits extends MY_Controller {
             $this->view_data['all_kits'] = PvKit::find('all', ['conditions' => ['deleted != 1']]);
             $this->view_data['pv_kit'] = $pv_kit;
             $this->view_data['kit_providers'] = PvProvider::all();
-            $this->view_data['proformas'] = PvProforma::all();
             $this->view_data['inverters'] = InverterManufacturer::all();
             $this->view_data['modules'] = ModuleManufacturer::all();
             $this->view_data['structure_types'] = StructureType::all();
@@ -441,6 +456,89 @@ class PvKits extends MY_Controller {
             $this->view_data['title'] = $this->lang->line('application_freight')." [".$this->lang->line('application_pvkit')." ".$pv_kit_id."]";
             $this->view_data['form_action'] = 'pvkits/freight/'.$pv_kit_id;
         }
+
+    }
+
+////////////////////// BOT KIT
+
+    function login() {
+        $url = $this->login_url;
+        $login_email = $this->login_email;
+        $login_password = $this->login_password;
+
+        $ch = curl_init($url);
+        $header = array(
+            "Accept: application/json",
+            'Content-Type:application/json'
+        );
+
+        $payload = array(
+            'email' => $login_email,
+            'password' => $login_password
+        );
+
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+
+        $resp = curl_exec($ch);
+        curl_close($ch);
+
+        if ($resp === FALSE) {
+            throw new Exception("cURL call failed", "403");
+        } else {
+            return $resp;
+        }
+    }
+
+    function get_custom_orders($access_token) {
+
+        $url = $this->custom_orders_url.$this->custom_orders_list_params;
+
+        $ch = curl_init($url);
+        $header = array(
+            "Accept: application/json",
+            'Content-Type:application/json',
+            'x-access-token: Bearer '. $access_token
+        );
+
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_POST, 0);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+
+        $resp = curl_exec($ch);
+        curl_close($ch);
+
+        if ($resp === FALSE) {
+            throw new Exception("cURL call failed", "403");
+        } else {
+            return $resp;
+        }
+    }
+
+    public function get_edmond_kits() {
+
+        $this->content_view = 'pvkits/view_all_edmond';
+
+        $login_response = $this->login();
+        $login_obj = json_decode($login_response);
+
+        $custom_orders_response = $this->get_custom_orders($login_obj->access_token);
+        $custom_orders_obj = json_decode($custom_orders_response);
+
+        $all_kits = array();
+
+        foreach ($custom_orders_obj->data as $obj){
+            array_push($all_kits, $obj);
+        }
+
+        $this->view_data['all_kits'] = $all_kits;
+
 
     }
 

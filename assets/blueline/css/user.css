@@ -267,3 +267,40 @@ label.header_description {
     padding: 14px 0 0 0;
     color: #8a8a8a;
 }
+
+#dvLoading {
+    background-color:#fafafa;
+    height: 100px;
+    width: 100px;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    margin: -25px 0 0 -25px;
+}
+#dvLoading img {
+    content:url(../img/loading-transparent.png);
+    -webkit-animation: rotate-center 1.2s ease-in-out infinite both;
+    animation: rotate-center 1.2s ease-in-out infinite both;
+}
+
+@-webkit-keyframes rotate-center {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes rotate-center {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}

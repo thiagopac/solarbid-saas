@@ -219,6 +219,8 @@ $message_icon = false;
 
         <?=$yield?>
 
+        <div id="dvLoading"><img/></div>
+
     </div>
     <!-- Notify -->
     <?php if ($this->session->flashdata('message')) {
@@ -250,7 +252,15 @@ $message_icon = false;
 
 </html>
 <script>
+    $(window).ready(function(){
+        $('#dvLoading').hide();
+    });
+
     $(document).ready(function() {
+
+        $('a').on('click', function() {
+            $("#dvLoading").show().delay(3000).hide(200);
+        });
 
         $('span.mark_read').on('click', function(event) {
 
