@@ -98,7 +98,7 @@
                     <th class="hidden-xs no-sort">
                         <?=$this->lang->line('application_image');?>
                     </th>
-                    <th class="hidden-xs no-sort">
+                    <th class="hidden-xs no-sort" style="text-align: center">
                         <?=$this->lang->line('application_action');?>
                     </th>
                     </thead>
@@ -145,7 +145,7 @@
                                 <?php if($kit->image != null) : ?><a href="<?=base_url() ?>pvkits/preview_photo/<?=$kit->id; ?>" title="<?=$this->lang->line('application_preview_photo'); ?>" class="btn-option tt" data-toggle="mainmodal"> <i class="icon dripicons-preview"> </i> </a><?php endif; ?>
                             </td>
 
-                            <td class="option">
+                            <td class="option" style="text-align: center">
                                 <button type="button" class="btn-option delete po" data-toggle="popover" data-placement="left" data-content="<a class='btn btn-danger po-delete ajax-silent' href='<?=base_url()?>pvkits/delete/<?=$kit->id;?>'><?=$this->lang->line('application_yes_im_sure');?></a> <button class='btn po-close'><?=$this->lang->line('application_no');?></button> <input type='hidden' name='td-id' class='id' value='<?=$kit->id;?>'>"
                                         data-original-title="<b><?=$this->lang->line('application_really_delete');?></b>">
                                     <i class="icon dripicons-cross"></i>

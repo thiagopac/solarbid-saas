@@ -331,7 +331,7 @@ class PvKits extends MY_Controller {
             $this->view_data['structure_types'] = StructureType::all();
             $this->view_data['countries'] = Country::find('all', ['conditions' => ['status = ?', 1]]);
             $this->theme_view = 'modal';
-            $this->view_data['title'] = $this->lang->line('application_create_pv_kit');
+            $this->view_data['title'] = $this->lang->line('application_update_pv_kit');
             $this->view_data['form_action'] = 'pvkits/update/';
 
             $this->content_view = 'pvkits/_pvkit';
@@ -494,15 +494,46 @@ class PvKits extends MY_Controller {
         }
     }
 
-    function get_custom_orders($access_token) {
+    function get_custom_orders() {
 
         $url = $this->custom_orders_url.$this->custom_orders_list_params;
+
+        $login_obj = json_decode($this->login());
 
         $ch = curl_init($url);
         $header = array(
             "Accept: application/json",
             'Content-Type:application/json',
-            'x-access-token: Bearer '. $access_token
+            'x-access-token: Bearer '. $login_obj->access_token
+        );
+
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_POST, 0);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+
+        $resp = curl_exec($ch);
+        curl_close($ch);
+
+        if ($resp === FALSE) {
+            throw new Exception("cURL call failed", "403");
+        } else {
+            return $resp;
+        }
+    }
+
+    function get_custom_order($external_id) {
+
+        $url = $this->custom_orders_url.'/'.$external_id;
+
+        $login_obj = json_decode($this->login());
+
+        $ch = curl_init($url);
+        $header = array(
+            "Accept: application/json",
+            'Content-Type:application/json',
+            'x-access-token: Bearer '. $login_obj->access_token
         );
 
         curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -523,24 +554,155 @@ class PvKits extends MY_Controller {
 
     public function get_edmond_kits() {
 
-        $this->content_view = 'pvkits/view_all_edmond';
-
-        $login_response = $this->login();
-        $login_obj = json_decode($login_response);
-
-        $custom_orders_response = $this->get_custom_orders($login_obj->access_token);
+        $custom_orders_response = $this->get_custom_orders();
         $custom_orders_obj = json_decode($custom_orders_response);
 
         $all_kits = array();
 
+        $external_ids = PvKit::all(['conditions' => ['external_id IS NOT NULL'], 'select'=> 'external_id']);
+
+        $external_ids_str = array();
+        foreach ($external_ids as $value){
+            array_push($external_ids_str, $value->external_id);
+        }
+
         foreach ($custom_orders_obj->data as $obj){
+            $obj->imported = in_array($obj->_id, $external_ids_str);
             array_push($all_kits, $obj);
+
         }
 
         $this->view_data['all_kits'] = $all_kits;
-
-
+        $this->content_view = 'pvkits/view_all_edmond';
     }
 
+    public function update_edmond_kit($external_id = false) {
+
+        $core_settings = Setting::first();
+
+        if ($_POST) {
+
+            //price come as 12.345,67 and need back to database type 12345.67
+            $_POST['price'] = str_replace('.', '', $_POST['price']);
+            $_POST['price'] = str_replace(',', '.', $_POST['price']);
+
+            if ($_POST['userfile'] != null){
+
+                //begin image upload
+                $config['upload_path'] = './files/media/pvkits/';
+                $config['encrypt_name'] = true;
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+
+                $full_path = $core_settings->domain."files/media/pvkits/";
+
+                $this->load->library('upload', $config);
+
+                if (!$this->upload->do_upload()) {
+                    $error = $this->upload->display_errors('', ' ');
+                    $this->session->set_flashdata('message', 'error:'.$error);
+                    redirect('pvkits');
+                } else {
+                    $data = array('upload_data' => $this->upload->data());
+
+                    $_POST['image'] = $full_path.$data['upload_data']['file_name'];
+
+                    //check image processor extension
+                    if (extension_loaded('gd2')) {
+                        $lib = 'gd2';
+                    } else {
+                        $lib = 'gd';
+                    }
+
+                    $config['image_library']  = $lib;
+                    $config['source_image']   = './files/media/portfolio/'.$_POST['savename'];
+                    $config['maintain_ratio'] = true;
+                    $config['max_width']          = 2048;
+                    $config['max_height']         = 2048;
+                    $config['master_dim']     = "height";
+                    $config['quality']        = "100%";
+
+                    $this->load->library('image_lib');
+                    $this->image_lib->initialize($config);
+                    $this->image_lib->resize();
+                    $this->image_lib->clear();
+                }
+
+                $_POST = array_map('htmlspecialchars', $_POST);
+                //end image upload
+            }
+
+            unset($_POST['send']);
+            unset($_POST['userfile']);
+            unset($_POST['files']);
+
+            $pv_kit = PvKit::create($_POST);
+
+            if (!$pv_kit) {
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_created_pv_kit_error'));
+            } else {
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_created_pv_kit_success'));
+            }
+            redirect('pvkits');
+
+        } else {
+
+            $custom_order_response = $this->get_custom_order($external_id);
+            $custom_order_obj = json_decode($custom_order_response);
+
+//            $custom_order_obj = $custom_order_obj->data[0];
+
+            //building properties to import
+            $pv_kit = new PvKit();
+            $pv_kit->kit_provider = 'EDMOND';
+            $pv_kit->kit_power = $custom_order_obj->totalModulePower;
+
+            $proforma_components = array();
+
+            foreach ($custom_order_obj->kits[0]->components as $item){
+
+                if ($item->vendorComponent->component->family == 'inverter'){
+                    $pv_kit->pv_inverter = $item->vendorComponent->component->maker->name;
+                    $pv_kit->desc_inverter = $item->quantity.' INVERSOR '.strtoupper($item->vendorComponent->component->maker->name).' '.$item->vendorComponent->component->partNumber;
+                }
+
+                if ($item->vendorComponent->component->family == 'module'){
+                    $pv_kit->pv_module = $item->vendorComponent->component->maker->name;
+                    $pv_kit->desc_module = $item->quantity.' MÓDULOS '.strtoupper($item->vendorComponent->component->maker->name).' '.$item->vendorComponent->component->techData->stc->pMax.'W';
+                }
+
+                $component_obj = new stdClass();
+                $component_obj->qty = $item->quantity;
+                $component_obj->name = $item->vendorComponent->component->name;
+                array_push($proforma_components, $component_obj);
+            }
+
+            $pv_kit->structure_type_id = null;
+            $pv_kit->country = 'Brasil';
+
+            $pv_kit->external_id = $external_id;
+
+            $pv_kit->price = $custom_order_obj->finalPrice;
+
+            $pv_kit->insurance = 'Seguro Risco Engenharia. Seguro Responsabilidade. Seguro Total Protect 1 ano.';
+
+            $pv_kit->proforma = json_encode($proforma_components);
+            $pv_kit->inactive = 1;
+
+            $this->view_data['pv_kit'] = $pv_kit;
+
+            $this->view_data['all_kits'] = PvKit::find('all', ['conditions' => ['deleted != 1']]);
+
+            $this->view_data['kit_providers'] = PvProvider::all();
+            $this->view_data['inverters'] = InverterManufacturer::all();
+            $this->view_data['modules'] = ModuleManufacturer::all();
+            $this->view_data['structure_types'] = StructureType::all();
+            $this->view_data['countries'] = Country::find('all', ['conditions' => ['status = ?', 1]]);
+            $this->theme_view = 'modal';
+            $this->view_data['title'] = $this->lang->line('application_import_pv_kit');
+            $this->view_data['form_action'] = 'pvkits/update_edmond_kit/';
+
+            $this->content_view = 'pvkits/_pvkit_edmond';
+        }
+    }
 
 }
