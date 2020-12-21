@@ -1,9 +1,12 @@
 <?php
 $attributes = array('class' => '', 'data-reload' => 'div-pvkits', 'id' => '_pvkit');
 echo form_open_multipart($form_action, $attributes);
+
+//var_dump(json_decode($pv_kit->proforma));exit;
 if (isset($pv_kit)) { ?>
     <input id="id" type="hidden" name="id" value="<?php echo $pv_kit->id; ?>"/>
     <input id="external_id" type="hidden" name="external_id" value="<?php echo $pv_kit->external_id; ?>"/>
+    <input id="proforma" type="hidden" name="proforma" value="<?php echo htmlspecialchars($pv_kit->proforma); ?>"/>
 <?php }?>
 
     <div class="form-group">

@@ -30,11 +30,24 @@ class Auth extends MY_Controller
 			$_POST['username'] = $this->security->xss_clean($_POST['username']);
 			$user = User::validate_login($_POST['username'], $_POST['password']);
 			if($user){
-				if($this->input->cookie('saas_link') != ""){
-					redirect($this->input->cookie('saas_link'));
-				}else{
-					redirect('cpricing');
-				}
+
+			    if ($user instanceof User == true){
+
+                    if($this->input->cookie('saas_link') != ""){
+                        redirect($this->input->cookie('saas_link'));
+                    }else{
+                        redirect('clients');
+                    }
+
+                }else{
+
+                    if($this->input->cookie('saas_link') != ""){
+                        redirect($this->input->cookie('saas_link'));
+                    }else{
+                        redirect('cpricing');
+                    }
+
+                }
 			}
 			else {
 				$this->view_data['error'] = "true";

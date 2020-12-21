@@ -581,7 +581,7 @@ class PvKits extends MY_Controller {
         $core_settings = Setting::first();
 
         if ($_POST) {
-
+            
             //price come as 12.345,67 and need back to database type 12345.67
             $_POST['price'] = str_replace('.', '', $_POST['price']);
             $_POST['price'] = str_replace(',', '.', $_POST['price']);
