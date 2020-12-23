@@ -599,8 +599,8 @@ class PvKits extends MY_Controller {
 
                 if (!$this->upload->do_upload()) {
                     $error = $this->upload->display_errors('', ' ');
-                    $this->session->set_flashdata('message', 'error:'.$error);
-                    redirect('pvkits');
+//                $this->session->set_flashdata('message', 'error:'.$error);
+//                redirect('pvkits');
                 } else {
                     $data = array('upload_data' => $this->upload->data());
 
@@ -627,13 +627,19 @@ class PvKits extends MY_Controller {
                     $this->image_lib->clear();
                 }
 
-                $_POST = array_map('htmlspecialchars', $_POST);
+//            $_POST = array_map('htmlspecialchars', $_POST);
                 //end image upload
-            }
 
-            unset($_POST['send']);
-            unset($_POST['userfile']);
-            unset($_POST['files']);
+                if ($_POST['image']){
+                    $_POST['image'] = $_POST['image'];
+                }else{
+                    unset($_POST['image']);
+                }
+
+
+                unset($_POST['send']);
+                unset($_POST['userfile']);
+                unset($_POST['files']);
 
             $pv_kit = PvKit::create($_POST);
 
