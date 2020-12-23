@@ -666,7 +666,16 @@ class PvKits extends MY_Controller {
 
                 if ($item->vendorComponent->component->family == 'inverter'){
                     $pv_kit->pv_inverter = $item->vendorComponent->component->maker->name;
-                    $pv_kit->desc_inverter = $item->quantity.' INVERSOR '.strtoupper($item->vendorComponent->component->maker->name).' '.$item->vendorComponent->component->partNumber;
+
+                    if (is_numeric($item->vendorComponent->component->partNumber)){
+                        //some inverter models has only numbers instead common name, then we get a string from registered name to suggest
+                        $arr_comp_name = explode(' ', $item->vendorComponent->component->name);
+                        $model = $arr_comp_name[2];
+                        $pv_kit->desc_inverter = $item->quantity.' INVERSOR '.strtoupper($item->vendorComponent->component->maker->name).' '.$model;
+                    }else{
+                        $pv_kit->desc_inverter = $item->quantity.' INVERSOR '.strtoupper($item->vendorComponent->component->maker->name).' '.$item->vendorComponent->component->partNumber;
+                    }
+
                 }
 
                 if ($item->vendorComponent->component->family == 'module'){
