@@ -198,7 +198,7 @@ class PvKits extends MY_Controller {
                     }
 
                     $config['image_library']  = $lib;
-                    $config['source_image']   = './files/media/portfolio/'.$_POST['savename'];
+                    $config['source_image']   = './files/media/pvkits/'.$_POST['savename'];
                     $config['maintain_ratio'] = true;
                     $config['max_width']          = 2048;
                     $config['max_height']         = 2048;
@@ -262,7 +262,7 @@ class PvKits extends MY_Controller {
             $config['encrypt_name'] = true;
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
 
-            $full_path = $core_settings->domain."files/media/pvkits/";
+            $full_path = $core_settings->domain."/files/media/pvkits/";
 
             $this->load->library('upload', $config);
 
@@ -283,7 +283,7 @@ class PvKits extends MY_Controller {
                 }
 
                 $config['image_library']  = $lib;
-                $config['source_image']   = './files/media/portfolio/'.$_POST['savename'];
+                $config['source_image']   = './files/media/pvkits/'.$_POST['savename'];
                 $config['maintain_ratio'] = true;
                 $config['max_width']          = 2048;
                 $config['max_height']         = 2048;
@@ -581,7 +581,7 @@ class PvKits extends MY_Controller {
         $core_settings = Setting::first();
 
         if ($_POST) {
-            
+
             //price come as 12.345,67 and need back to database type 12345.67
             $_POST['price'] = str_replace('.', '', $_POST['price']);
             $_POST['price'] = str_replace(',', '.', $_POST['price']);
@@ -593,7 +593,7 @@ class PvKits extends MY_Controller {
                 $config['encrypt_name'] = true;
                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
 
-                $full_path = $core_settings->domain."files/media/pvkits/";
+                $full_path = $core_settings->domain."/files/media/pvkits/";
 
                 $this->load->library('upload', $config);
 
