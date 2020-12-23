@@ -586,60 +586,58 @@ class PvKits extends MY_Controller {
             $_POST['price'] = str_replace('.', '', $_POST['price']);
             $_POST['price'] = str_replace(',', '.', $_POST['price']);
 
-            if ($_POST['userfile'] != null){
+            //begin image upload
+            $config['upload_path'] = './files/media/pvkits/';
+            $config['encrypt_name'] = true;
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
 
-                //begin image upload
-                $config['upload_path'] = './files/media/pvkits/';
-                $config['encrypt_name'] = true;
-                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $full_path = $core_settings->domain."/files/media/pvkits/";
 
-                $full_path = $core_settings->domain."/files/media/pvkits/";
+            $this->load->library('upload', $config);
 
-                $this->load->library('upload', $config);
-
-                if (!$this->upload->do_upload()) {
-                    $error = $this->upload->display_errors('', ' ');
+            if (!$this->upload->do_upload()) {
+                $error = $this->upload->display_errors('', ' ');
 //                $this->session->set_flashdata('message', 'error:'.$error);
 //                redirect('pvkits');
+            } else {
+                $data = array('upload_data' => $this->upload->data());
+
+                $_POST['image'] = $full_path.$data['upload_data']['file_name'];
+
+                //check image processor extension
+                if (extension_loaded('gd2')) {
+                    $lib = 'gd2';
                 } else {
-                    $data = array('upload_data' => $this->upload->data());
-
-                    $_POST['image'] = $full_path.$data['upload_data']['file_name'];
-
-                    //check image processor extension
-                    if (extension_loaded('gd2')) {
-                        $lib = 'gd2';
-                    } else {
-                        $lib = 'gd';
-                    }
-
-                    $config['image_library']  = $lib;
-                    $config['source_image']   = './files/media/pvkits/'.$_POST['savename'];
-                    $config['maintain_ratio'] = true;
-                    $config['max_width']          = 2048;
-                    $config['max_height']         = 2048;
-                    $config['master_dim']     = "height";
-                    $config['quality']        = "100%";
-
-                    $this->load->library('image_lib');
-                    $this->image_lib->initialize($config);
-                    $this->image_lib->resize();
-                    $this->image_lib->clear();
+                    $lib = 'gd';
                 }
+
+                $config['image_library']  = $lib;
+                $config['source_image']   = './files/media/pvkits/'.$_POST['savename'];
+                $config['maintain_ratio'] = true;
+                $config['max_width']          = 2048;
+                $config['max_height']         = 2048;
+                $config['master_dim']     = "height";
+                $config['quality']        = "100%";
+
+                $this->load->library('image_lib');
+                $this->image_lib->initialize($config);
+                $this->image_lib->resize();
+                $this->image_lib->clear();
+            }
 
 //            $_POST = array_map('htmlspecialchars', $_POST);
-                //end image upload
+            //end image upload
 
-                if ($_POST['image']){
-                    $_POST['image'] = $_POST['image'];
-                }else{
-                    unset($_POST['image']);
-                }
+            if ($_POST['image']){
+                $_POST['image'] = $_POST['image'];
+            }else{
+                unset($_POST['image']);
+            }
 
 
-                unset($_POST['send']);
-                unset($_POST['userfile']);
-                unset($_POST['files']);
+            unset($_POST['send']);
+            unset($_POST['userfile']);
+            unset($_POST['files']);
 
             $pv_kit = PvKit::create($_POST);
 
