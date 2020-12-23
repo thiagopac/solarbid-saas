@@ -614,7 +614,7 @@ class PvKits extends MY_Controller {
                     }
 
                     $config['image_library']  = $lib;
-                    $config['source_image']   = './files/media/portfolio/'.$_POST['savename'];
+                    $config['source_image']   = './files/media/pvkits/'.$_POST['savename'];
                     $config['maintain_ratio'] = true;
                     $config['max_width']          = 2048;
                     $config['max_height']         = 2048;
