@@ -835,7 +835,7 @@ class Model
 			$table = static::table();
 			if ($table->class->name	!= 'Audit' &&
 				$table->last_sql != 'UPDATE `user` SET `last_active`=? WHERE `id`=?' &&
-				$table->last_sql != 'UPDATE `client` SET `last_login`=? WHERE `id`=?')
+				$table->last_sql != 'UPDATE `client` SET `last_active`=? WHERE `id`=?')
 			{
 				$audit = new \Audit();
 				$audit->subject = $table->class->name;
@@ -883,7 +883,7 @@ class Model
 			$table = static::table();
 			if ($table->class->name	!= 'Audit' &&
 				$table->last_sql != 'UPDATE `user` SET `last_active`=? WHERE `id`=?' &&
-				$table->last_sql != 'UPDATE `client` SET `last_login`=? WHERE `id`=?')
+				$table->last_sql != 'UPDATE `client` SET `last_active`=? WHERE `id`=?')
 			{
 				$audit = new \Audit();
 				$audit->subject = $table->class->name;
