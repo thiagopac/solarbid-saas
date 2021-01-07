@@ -831,6 +831,17 @@ class Model
 				$this->attributes[$pk] = static::connection()->insert_id($table->sequence);
 		}
 
+		{ //audit
+			$table = static::table();
+			if ($table->class->name	!= 'Audit' && $table->last_sql != 'UPDATE `user` SET `last_active`=? WHERE `id`=?'){
+				$audit = new \Audit();
+				$audit->subject = $table->class->name;
+				$audit->query = $table->last_sql;
+				$audit->serialization = serialize($this->attributes);
+				$audit->save();
+			}
+		}
+
 		$this->invoke_callback('after_create',false);
 		$this->__new_record = false;
 		return true;
@@ -863,6 +874,17 @@ class Model
 			$dirty = $this->dirty_attributes();
 			static::table()->update($dirty,$pk);
 			$this->invoke_callback('after_update',false);
+		}
+
+		{ //audit
+			$table = static::table();
+			if ($table->class->name	!= 'Audit' && $table->last_sql != 'UPDATE `user` SET `last_active`=? WHERE `id`=?'){
+				$audit = new \Audit();
+				$audit->subject = $table->class->name;
+				$audit->query = $table->last_sql;
+				$audit->serialization = serialize($dirty);
+				$audit->save();
+			}
 		}
 
 		return true;
