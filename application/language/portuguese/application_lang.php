@@ -1580,3 +1580,6 @@ $lang['application_warning_promote_screeening_companies_mail'] = 'Aviso: Ao prom
 $lang['application_pv_kits_appsolar'] = 'Kits Edmond AppSolar';
 $lang['application_imported'] = 'Importado';
 $lang['application_import'] = 'Importar';
+$lang['application_wp_value'] = 'Valor do Wp';
+$lang['application_wp_value_help'] = 'R$/Wp é o valor total (projeto + serviços) dividido pela potência do gerador considerado';
+$lang['application_delivery_time_days_help'] = 'Prazo em dias desde a venda até a troca do relógio bidirecional';

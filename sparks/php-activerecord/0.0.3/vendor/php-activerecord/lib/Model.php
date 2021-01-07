@@ -881,6 +881,7 @@ class Model
 
 		{ //audit
 			$table = static::table();
+
 			if ($table->class->name	!= 'Audit' &&
 				$table->last_sql != 'UPDATE `user` SET `last_active`=? WHERE `id`=?' &&
 				$table->last_sql != 'UPDATE `client` SET `last_active`=? WHERE `id`=?')

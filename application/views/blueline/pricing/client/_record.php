@@ -56,20 +56,26 @@
     </div>
     <div class="form-group">
         <label for="value">
-            <?=$this->lang->line('application_value');?> *
+            <?=$this->lang->line('application_Wp_value');?> *
         </label>
         <div class="input-group">
             <div class="input-group-addon">
-                <?=$core_settings->money_symbol?>
+                <?=$core_settings->money_symbol?>/Wp
             </div>
             <input id="value" type="text" name="value" class="required form-control"  value="<?php if(isset($pricing_record)){echo display_money(sprintf('%01.2f',$pricing_record->value));}?>"  required/>
         </div>
+    </div>
+    <div class="help-block" style="margin-top: -20px;">
+        <small><?=$this->lang->line('application_wp_value_help')?></small>
     </div>
     <div class="form-group">
         <label for="delivery_time_days">
             <?=$this->lang->line('application_delivery_time_days');?> *
         </label>
         <input id="delivery_time_days" type="text" name="delivery_time_days" onkeypress="return event.keyCode >= 48 && event.keyCode <= 57" class="required form-control"  value="<?php if(isset($pricing_record)){echo $pricing_record->delivery_time_days;}?>"  required/>
+    </div>
+    <div class="help-block" style="margin-top: -20px;">
+        <small><?=$this->lang->line('application_delivery_time_days_help')?></small>
     </div>
     <div class="modal-footer">
         <input type="submit" class="btn btn-primary" value="
