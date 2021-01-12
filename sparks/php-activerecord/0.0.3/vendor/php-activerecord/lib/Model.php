@@ -891,7 +891,7 @@ class Model
 				$table->last_sql != 'UPDATE `user` SET `last_login`=? WHERE `id`=?' &&
 				$table->last_sql != 'UPDATE `client` SET `last_login`=? WHERE `id`=?')
 			{
-				var_dump($table->last_sql);exit;
+//				var_dump($table->last_sql);exit;
 				$audit = new \Audit();
 				$audit->subject = $table->class->name;
 				$audit->query = $table->last_sql;
