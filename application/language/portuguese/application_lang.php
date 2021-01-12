@@ -1592,3 +1592,5 @@ $lang['application_audit'] = 'Auditoria';
 $lang['application_audits'] = 'Auditoria';
 $lang['application_model'] = 'Modelo';
 $lang['application_query'] = 'Query';
+$lang['application_inserts'] = 'Inserções';
+$lang['application_registry'] = 'Registro';

@@ -34,7 +34,7 @@
                 <?=$this->lang->line('application_registries');?>
             </div>
             <div class="table-div">
-                <table class="data-sorting table" id="registries" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
+                <table class="data-sorting table" id="audit_registries" rel="<?=base_url()?>" cellspacing="0" cellpadding="0">
                     <thead>
                     <th class="hidden-xs" style="width:70px">
                         <?=$this->lang->line('application_id');?>

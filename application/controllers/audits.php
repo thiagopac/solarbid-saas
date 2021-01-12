@@ -31,8 +31,8 @@ class Audits extends MY_Controller
         }
 
         $this->view_data['submenu'] = [
-                        $this->lang->line('application_my_tickets') => 'audit/filter/insert',
-                        $this->lang->line('application_Opened') => 'audit/filter/update',
+                        $this->lang->line('application_inserts') => 'audit/filter/insert',
+                        $this->lang->line('application_updates') => 'audit/filter/update',
                         ];
     }
 
@@ -81,7 +81,9 @@ class Audits extends MY_Controller
         $this->content_view = 'tickets/all';
     }
 
-    public function view($id = false){
+    public function view_registry($id = false){
+        $this->view_data['registry'] = $registry = Audit::find(['conditions' => ['id = ?', $id]]);
 
+        $this->content_view = 'audits/view';
     }
 }

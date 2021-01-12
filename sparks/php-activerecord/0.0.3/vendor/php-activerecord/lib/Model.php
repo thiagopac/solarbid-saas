@@ -840,9 +840,11 @@ class Model
 				$table->last_sql != 'UPDATE `client` SET `last_login`=? WHERE `id`=?')
 			{
 				$audit = new \Audit();
+				$audit->type = 'INSERT';
 				$audit->subject = $table->class->name;
 				$audit->query = $table->last_sql;
 				$audit->serialization = json_encode($this->attributes);
+				$audit->pk = $this->attributes[$pk];
 				$audit->save();
 			}
 		}
@@ -891,11 +893,12 @@ class Model
 				$table->last_sql != 'UPDATE `user` SET `last_login`=? WHERE `id`=?' &&
 				$table->last_sql != 'UPDATE `client` SET `last_login`=? WHERE `id`=?')
 			{
-//				var_dump($table->last_sql);exit;
 				$audit = new \Audit();
+				$audit->type = 'UPDATE';
 				$audit->subject = $table->class->name;
 				$audit->query = $table->last_sql;
 				$audit->serialization = json_encode($dirty);
+				$audit->pk = $pk['id'];
 				$audit->save();
 			}
 		}

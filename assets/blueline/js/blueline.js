@@ -475,6 +475,12 @@ $.ajaxSetup({
         var a = $(this).closest("table").attr("rel");
         $(this).hasClass("option") || (window.location = a + "ctokens/view_store_token/" + e)
     }
+}),$(document).on("click", "table#audit_registries td", function(t) {
+    var e = $(this).parent().attr("id");
+    if (e) {
+        var a = $(this).closest("table").attr("rel");
+        $(this).hasClass("option") || (window.location = a + "audits/view_registry/" + e)
+    }
 }),
     summernote(), $(".summernote-note").summernote({
     height: "360px",
