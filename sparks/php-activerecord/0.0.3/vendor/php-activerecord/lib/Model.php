@@ -840,7 +840,7 @@ class Model
 				$audit = new \Audit();
 				$audit->subject = $table->class->name;
 				$audit->query = $table->last_sql;
-				$audit->serialization = serialize($this->attributes);
+				$audit->serialization = json_encode($this->attributes);
 				$audit->save();
 			}
 		}
@@ -882,6 +882,7 @@ class Model
 		{ //audit
 			$table = static::table();
 
+
 			if ($table->class->name	!= 'Audit' &&
 				$table->last_sql != 'UPDATE `user` SET `last_active`=? WHERE `id`=?' &&
 				$table->last_sql != 'UPDATE `client` SET `last_active`=? WHERE `id`=?')
@@ -889,7 +890,7 @@ class Model
 				$audit = new \Audit();
 				$audit->subject = $table->class->name;
 				$audit->query = $table->last_sql;
-				$audit->serialization = serialize($dirty);
+				$audit->serialization = json_encode($dirty);
 				$audit->save();
 			}
 		}
