@@ -43,7 +43,10 @@
                         <?=$this->lang->line('application_model');?>
                     </th>
                     <th>
-                        <?=$this->lang->line('application_query');?>
+                        <?=$this->lang->line('application_type');?>
+                    </th>
+                    <th>
+                        <?=$this->lang->line('application_content');?>
                     </th>
                     <th class="hidden-xs">
                         <?=$this->lang->line('application_created_at')?>
@@ -58,7 +61,10 @@
                                 <?=$value->subject;?>
                             </td>
                             <td class="hidden-xs">
-                                <?=$value->query;?>
+                                <?=$value->type;?>
+                            </td>
+                            <td class="hidden-xs">
+                                <?=$value->serialization;?>
                             </td>
                             <td class="hidden-xs">
                                 <?=empty($value->created_at) ? '-' : date($core_settings->date_format . ' ' . $core_settings->date_time_format, strtotime($value->created_at))?>

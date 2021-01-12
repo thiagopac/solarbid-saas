@@ -82,8 +82,20 @@ class Audits extends MY_Controller
     }
 
     public function view_registry($id = false){
-        $this->view_data['registry'] = $registry = Audit::find(['conditions' => ['id = ?', $id]]);
+        $this->view_data['registry'] = $registry = Audit::find($id);
+        $class_name = $registry->subject;
+        $this->view_data['object'] = $object = $class_name::find($registry->pk);
 
         $this->content_view = 'audits/view';
     }
+
+    public function relation_record($model = false, $id = false){
+
+        $this->view_data['object'] = $object = $model::find($id);
+        $this->theme_view = 'modal';
+        $this->view_data['title'] = 'Registro <span style="text-transform: none;">'.$model.'</span>';
+        $this->content_view = 'audits/_related';
+    }
+
+
 }

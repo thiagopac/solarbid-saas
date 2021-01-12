@@ -1594,3 +1594,7 @@ $lang['application_model'] = 'Modelo';
 $lang['application_query'] = 'Query';
 $lang['application_inserts'] = 'Inserções';
 $lang['application_registry'] = 'Registro';
+$lang['application_audit_registry'] = 'Registro de auditoria';
+$lang['application_audit_object_reflected'] = 'Objeto manipulado';
+$lang['application_field'] = 'Campo';
+$lang['application_content'] = 'Conteúdo';
