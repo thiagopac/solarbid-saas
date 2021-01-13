@@ -3,8 +3,8 @@
     <div class="row">
         <div class="btn-group pull-right-responsive margin-right-3">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                <?php if (isset($ticketFilter)) {
-                    echo $ticketFilter;
+                <?php if (isset($auditFilter)) {
+                    echo $auditFilter;
                 }else{
                     echo $this->lang->line('application_filter');
                 }

@@ -31,8 +31,8 @@ class Audits extends MY_Controller
         }
 
         $this->view_data['submenu'] = [
-                        $this->lang->line('application_inserts') => 'audit/filter/insert',
-                        $this->lang->line('application_updates') => 'audit/filter/update',
+                        $this->lang->line('application_inserts') => 'audits/filter/insert',
+                        $this->lang->line('application_updates') => 'audits/filter/update',
                         ];
     }
 
@@ -42,43 +42,21 @@ class Audits extends MY_Controller
     }
 
     public function filter($condition) {
-        $this->view_data['ticketFilter'] = $this->lang->line('application_all');
-        $this->view_data['queues'] = Queue::find('all', ['conditions' => ['inactive=?', '0']]);
+        $this->view_data['auditFilter'] = $this->lang->line('application_all');
         switch ($condition) {
-            case 'open':
-                $option = 'status = "open"';
-                $this->view_data['ticketFilter'] = $this->lang->line('application_opened');
+            case 'insert':
+                $option = 'type = "INSERT"';
+                $this->view_data['auditFilter'] = $this->lang->line('application_inserts');
                 break;
-            case 'closed':
-                $option = 'status = "closed"';
-                $this->view_data['ticketFilter'] = $this->lang->line('application_closed');
-                break;
-            case 'reopened':
-                $option = 'status = "reopened"';
-                $this->view_data['ticketFilter'] = $this->lang->line('application_ticket_status_reopened');
-                break;
-            case 'assigned':
-                $option = 'status != "closed" AND user_id = ' . $this->user->id;
-                $this->view_data['ticketFilter'] = $this->lang->line('application_my_tickets');
+            case 'update':
+                $option = 'type = "UPDATE"';
+                $this->view_data['auditFilter'] = $this->lang->line('application_updates');
                 break;
         }
-        if ($this->user->admin == 0) {
-            $comp_array = [];
-            $thisUserHasNoCompanies = (array) $this->user->companies;
-            if (!empty($thisUserHasNoCompanies)) {
-                foreach ($this->user->companies as $value) {
-                    array_push($comp_array, $value->id);
-                }
-                $options = ['conditions' => [$option . ' AND company_id in (?)', $comp_array]];
-            } else {
-                $options = ['conditions' => [$option . ' AND (user_id = ? OR queue_id = ?)', $this->user->id, $this->user->queue]];
-            }
-        } else {
-            $options = ['conditions' => [$option]];
-        }
+        $options = ['conditions' => [$option]];
 
-        $this->view_data['ticket'] = Ticket::find('all', $options);
-        $this->content_view = 'tickets/all';
+        $this->view_data['registries'] = Audit::find('all', $options);
+        $this->content_view = 'audits/all';
     }
 
     public function view_registry($id = false){

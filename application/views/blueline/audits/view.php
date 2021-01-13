@@ -31,6 +31,12 @@
     ?>
 
     <div class="row">
+        <div class="pull-left">
+            <a href="javascript:history.back()" class="btn btn-primary"><?=$this->lang->line('application_back')?></a>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="box-shadow">
             <div class="table-head">
                 <?=$this->lang->line('application_audit_registry');?>
