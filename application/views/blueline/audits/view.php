@@ -3,10 +3,8 @@
     <?php
 
     $arr_registry = (array) $registry;
-    $idx = 0;
 
     $arr_object = (array) $object;
-    $idx2 = 0;
 
     $arr_object_table = (array) $object::table();
     $idx3 = 0;
@@ -56,7 +54,7 @@
                     </thead>
                     <tbody>
                         <?php foreach ($arr_registry as $key => $value) : ?>
-                            <?php if ($idx == 1) : ?>
+                            <?php if (strcmp(preg_replace('/[^A-Za-z0-9. -]/', '', $key), 'ActiveRecordModelattributes') == 0) : ?>
                                 <?php $arr_field_names = $arr_registry[$key]; ?>
                                 <?php foreach ($arr_field_names as $field_name => $field_value) : ?>
                                     <tr>
@@ -69,7 +67,6 @@
                                     </tr>
                                 <?php endforeach;  ?>
                             <?php endif; ?>
-                            <?php $idx++; ?>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
@@ -97,7 +94,9 @@
                     </thead>
                     <tbody>
                         <?php foreach ($arr_object as $key => $value) : ?>
-                            <?php if ($idx2 == 1) : ?>
+
+                            <?php if (strcmp(preg_replace('/[^A-Za-z0-9. -]/', '', $key), 'ActiveRecordModelattributes') == 0) : ?>
+
                                 <?php $arr_field_names = $arr_object[$key]; ?>
                                 <?php foreach ($arr_field_names as $field_name => $field_value) : ?>
                                     <tr>
@@ -105,7 +104,10 @@
                                             <b><?=$field_name?></b>
                                         </td>
                                         <td style="text-align: left">
-                                            <?=$field_value?>
+
+                                            <?php if (strpos($field_name, 'password') === false) : ?>
+                                                <?=$field_value?>
+                                            <?php endif; ?>
 
                                             <?php foreach ($arr_relations as $relation) : ?>
 
@@ -120,7 +122,6 @@
                                     </tr>
                                 <?php endforeach;  ?>
                             <?php endif; ?>
-                            <?php $idx2++; ?>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
