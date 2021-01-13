@@ -1,6 +1,5 @@
 <?php
 $arr_object = (array) $object;
-$idx = 0;
 ?>
 
 <div class="form-group">
@@ -19,7 +18,7 @@ $idx = 0;
                 </thead>
                 <tbody>
                 <?php foreach ($arr_object as $key => $value) : ?>
-                    <?php if ($idx == 1) : ?>
+                    <?php if (strcmp(preg_replace('/[^A-Za-z0-9. -]/', '', $key), 'ActiveRecordModelattributes') == 0) : ?>
                         <?php $arr_field_names = $arr_object[$key]; ?>
                         <?php foreach ($arr_field_names as $field_name => $field_value) : ?>
                             <tr>
@@ -27,12 +26,13 @@ $idx = 0;
                                     <b><?=$field_name?></b>
                                 </td>
                                 <td style="text-align: left">
-                                    <?=$field_value?>
+                                    <?php if (strpos($field_name, 'password') === false) : ?>
+                                        <?=$field_value?>
+                                    <?php endif; ?>
                                 </td>
                             </tr>
                         <?php endforeach;  ?>
                     <?php endif; ?>
-                    <?php $idx++; ?>
                 <?php endforeach; ?>
                 </tbody>
             </table>

@@ -3,17 +3,14 @@
     <?php
 
     $arr_registry = (array) $registry;
-
     $arr_object = (array) $object;
-
     $arr_object_table = (array) $object::table();
-    $idx3 = 0;
-
     $arr_relations = array();
 
     foreach ($arr_object_table as $key => $value){
 
-        if ($idx3 == 9){
+        if (strcmp(preg_replace('/[^A-Za-z0-9. -]/', '', $key), 'ActiveRecordTablerelationships') == 0){
+
             $arr_relation_names = $arr_object_table[$key];
 
             foreach ($arr_relation_names as $relation_name => $relation_value){
@@ -21,11 +18,8 @@
             }
 
         }
-
-        $idx3++;
     }
 
-//    var_dump($arr_relations);
     ?>
 
     <div class="row">
