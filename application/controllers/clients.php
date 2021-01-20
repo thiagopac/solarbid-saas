@@ -618,7 +618,7 @@ class Clients extends MY_Controller
     public function view_pricing_table($id = false) {
 
         $pricing_table = PricingTable::find($id);
-        $pricing_records = PricingRecord::all(['conditions' => ['table_id = ?', $id]]);
+        $pricing_records = PricingRecord::all(['conditions' => ['table_id = ? ORDER BY field_id ASC', $id]]);
 
         $this->theme_view = 'modal';
         $this->view_data['pricing_records'] = $pricing_records;

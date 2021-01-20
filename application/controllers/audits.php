@@ -2,10 +2,10 @@
     exit('No direct script access allowed');
 }
 
-class Audits extends MY_Controller
-{
-    public function __construct()
-    {
+class Audits extends MY_Controller{
+
+    public function __construct(){
+
         parent::__construct();
         $access = false;
         $link = '/' . $this->uri->uri_string();
@@ -37,7 +37,18 @@ class Audits extends MY_Controller
     }
 
     public function index(){
-        $this->view_data['registries'] = Audit::all(['conditions' => ['1 = ? ORDER BY created_at DESC', 1]]);
+        $this->view_data['registries'] = $registries =  Audit::all(['conditions' => ['1 = ? ORDER BY created_at DESC', 1]]);
+
+        $related_objects = array();
+
+        foreach ($registries as $registry){
+            $model = $registry->subject;
+            $related_object = $model::find($registry->pk);
+            array_push($related_objects, $related_object);
+        }
+
+        $this->view_data['related_objects'] = (array) $related_objects;
+
         $this->content_view = 'audits/all';
     }
 

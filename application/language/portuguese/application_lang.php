@@ -1598,3 +1598,4 @@ $lang['application_audit_registry'] = 'Registro de auditoria';
 $lang['application_audit_object_reflected'] = 'Objeto manipulado';
 $lang['application_field'] = 'Campo';
 $lang['application_content'] = 'Conteúdo';
+$lang['application_related_objects'] = 'Objetos relacionados';
