@@ -114,7 +114,16 @@ $idx = 0;
                                                     <div style="padding: 5px; margin: 0 0 2px 0;  background: #f1f1f1; font-size: 9px">
                                                         <?php
                                                         $field_class = $relation->class_name;
-                                                        $field_object = $field_class::find("$field_name = ?", $field_value);
+
+                                                        if ($field_name == 'flow_id'){
+                                                            $correct_foreign_key = 'flow_id';
+                                                        }else if ($field_name == 'store_flow_id'){
+                                                            $correct_foreign_key = 'store_flow_id';
+                                                        }else{
+                                                            $correct_foreign_key = $field_name;
+                                                        }
+                                                        
+                                                        $field_object = $field_class::find("$correct_foreign_key = ?", $field_value);
 
                                                         echo (string) "<strong>".$field_class."</strong> ";
                                                         $arr_field_object = (array) $field_object;
