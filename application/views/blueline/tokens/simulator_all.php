@@ -82,7 +82,7 @@
                             <td>
                                 <?=json_decode($simulator_flow->integrator)->company_name?>
                             </td>
-                            <td>
+                            <td style="text-align: center">
                                 <?php if ($simulator_flow->integrator_approved == 1) : ?>
                                     <label class="label label-success"><?=$this->lang->line('application_yes');?></label>
                                 <?php else : ?>
