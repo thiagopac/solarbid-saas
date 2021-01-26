@@ -120,9 +120,9 @@ $idx = 0;
                                                         }else if ($field_name == 'store_flow_id'){
                                                             $correct_foreign_key = 'store_flow_id';
                                                         }else{
-                                                            $correct_foreign_key = $field_name;
+                                                            $correct_foreign_key = 'id';
                                                         }
-                                                        
+
                                                         $field_object = $field_class::find("$correct_foreign_key = ?", $field_value);
 
                                                         echo (string) "<strong>".$field_class."</strong> ";
