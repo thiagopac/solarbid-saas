@@ -46,9 +46,17 @@ class Audits extends MY_Controller{
         foreach ($registries as $registry){
 
             if (!in_array($registry->subject, $this->do_not_render)) {
-                $model = $registry->subject;
-                $related_object = $model::find($registry->pk);
-                array_push($related_objects, $related_object);
+
+                try{
+                    $model = $registry->subject;
+                    $related_object = $model::find($registry->pk);
+                    array_push($related_objects, $related_object);
+                }catch(Exception $e){
+                    print_r($e);
+                    array_push($related_objects, $registry);
+                }
+
+
             }else{
                 array_push($related_objects, $registry);
             }
