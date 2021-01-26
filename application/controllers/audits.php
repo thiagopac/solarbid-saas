@@ -4,7 +4,7 @@
 
 class Audits extends MY_Controller{
 
-    public $do_not_render = ['PwReset'];
+    public $do_not_render = ['PwReset', 'Core', 'Settings'];
 
     public function __construct(){
 
