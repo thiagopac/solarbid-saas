@@ -123,7 +123,7 @@ $idx = 0;
                                                             $correct_foreign_key = 'id';
                                                         }
 
-                                                        $field_object = $field_class::find("$correct_foreign_key = ?", $field_value);
+                                                        $field_object = $field_class::first("$correct_foreign_key = ?", $field_value);
 
                                                         echo (string) "<strong>".$field_class."</strong> ";
                                                         $arr_field_object = (array) $field_object;
