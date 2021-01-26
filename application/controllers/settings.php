@@ -737,7 +737,7 @@ class Settings extends MY_Controller
         $this->load->dbutil();
         $settings = Setting::first();
         $version = str_replace('.', '-', $settings->version);
-        $prefs = ['format' => 'zip', 'filename' => 'saas-manual-backup_' . date('d-m-Y_H:i')];
+        $prefs = ['format' => 'zip', 'filename' => 'Manual-full-backup_' . date('d-m-Y_H-i')];
 
         $backup = &$this->dbutil->backup($prefs);
 

@@ -72,7 +72,7 @@ class Mail extends MY_Controller {
             }
 
             if($result)
-                echo "Message correctly injected.<br>";
+                echo "Message correctly injected";
             else
                 echo "Error while queing message.<br>";
 

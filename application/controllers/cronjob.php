@@ -34,7 +34,7 @@ class Cronjob extends MY_Controller
 
             $backup = &$this->dbutil->backup($prefs);
 
-            if (!write_file('./files/backup/Database-auto-full-backup_' . $version . '_' . date('Y-m-d_H-i') . '.zip', $backup)) {
+            if (!write_file('./files/backup/Auto-full-backup_' . date('d-m-Y_H-i') . '.zip', $backup)) {
                 log_message('error', '[cronjob] Error while creating auto database backup!');
             } else {
                 $core_settings->last_autobackup = time();

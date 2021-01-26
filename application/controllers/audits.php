@@ -43,8 +43,13 @@ class Audits extends MY_Controller{
 
         foreach ($registries as $registry){
             $model = $registry->subject;
-            $related_object = $model::find($registry->pk);
-            array_push($related_objects, $related_object);
+            try{
+                $related_object = $model::find($registry->pk);
+                array_push($related_objects, $related_object);
+            }catch (Exception $e){
+                print_r($e);
+            }
+
         }
 
         $this->view_data['related_objects'] = (array) $related_objects;
