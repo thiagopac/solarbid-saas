@@ -735,7 +735,7 @@ class PvKits extends MY_Controller {
         $core_settings = Setting::first();
 
         $kit = PvKit::find($pvkit_id);
-        $kit->image = $core_settings->domain."files/media/pvkits/".$image_name;
+        $kit->image = $core_settings->domain."/files/media/pvkits/".$image_name;
         $kit->save();
     }
 
