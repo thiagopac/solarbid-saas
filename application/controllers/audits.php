@@ -41,15 +41,15 @@ class Audits extends MY_Controller{
 
         $related_objects = array();
 
+        $do_not_render = ['PwReset'];
+
         foreach ($registries as $registry){
-            $model = $registry->subject;
-            try{
+
+            if (!in_array($registry->subject, $do_not_render)) {
+                $model = $registry->subject;
                 $related_object = $model::find($registry->pk);
                 array_push($related_objects, $related_object);
-            }catch (Exception $e){
-                print_r($e);
             }
-
         }
 
         $this->view_data['related_objects'] = (array) $related_objects;
