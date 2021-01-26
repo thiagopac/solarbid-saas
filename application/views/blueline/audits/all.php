@@ -114,7 +114,7 @@ $idx = 0;
                                                     <div style="padding: 5px; margin: 0 0 2px 0;  background: #f1f1f1; font-size: 9px">
                                                         <?php
                                                         $field_class = $relation->class_name;
-                                                        $field_object = $field_class::find($field_value);
+                                                        $field_object = $field_class::find("$field_name = ?", $field_value);
 
                                                         echo (string) "<strong>".$field_class."</strong> ";
                                                         $arr_field_object = (array) $field_object;
