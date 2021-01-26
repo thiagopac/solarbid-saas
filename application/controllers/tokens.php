@@ -39,7 +39,7 @@ class Tokens extends MY_Controller {
 
     public function list_simulator() {
 
-        $this->view_data['simulator_flows'] = SimulatorFlow::find('all',['order' => 'id DESC', 'select'=> 'id, code, city, state, type, dealer, monthly_average, activity, structure_type_id, integrator, integrator_approved, created_at','include' => ['energy_dealer', 'state', 'city', 'activity', 'structure_type']]);
+        $this->view_data['simulator_flows'] = SimulatorFlow::find('all',['order' => 'id DESC', 'select'=> 'id, code, city, state, type, name, dealer, monthly_average, activity, structure_type_id, pv_kit, integrator, integrator_approved, created_at','include' => ['energy_dealer', 'state', 'city', 'activity', 'structure_type']]);
         $this->content_view = 'tokens/simulator_all';
     }
 

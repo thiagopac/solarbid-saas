@@ -32,7 +32,10 @@
                             <?=$this->lang->line('application_monthly_average')?> (<?= $core_settings->money_symbol; ?>)
                         </th>
                         <th>
-                            <?=$this->lang->line('application_activity');?>
+                            <?=$this->lang->line('application_name');?>
+                        </th>
+                        <th>
+                            <?=$this->lang->line('application_pvkit');?>
                         </th>
                         <th>
                             <?=$this->lang->line('application_integrator');?>
@@ -71,7 +74,10 @@
                                 <?= display_money($simulator_flow->monthly_average); ?>
                             </td>
                             <td>
-                                <?=$simulator_flow->activity_obj->name?>
+                                <?=$simulator_flow->name?>
+                            </td>
+                            <td>
+                                <?=$simulator_flow->pv_kit != null ? json_decode($simulator_flow->pv_kit)->kit_power.' '.$core_settings->rated_power_measurement : '' ?>
                             </td>
                             <td>
                                 <?=json_decode($simulator_flow->integrator)->company_name?>
