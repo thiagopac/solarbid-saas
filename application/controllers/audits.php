@@ -49,6 +49,8 @@ class Audits extends MY_Controller{
                 $model = $registry->subject;
                 $related_object = $model::find($registry->pk);
                 array_push($related_objects, $related_object);
+            }else{
+                array_push($related_objects, $registry);
             }
         }
 
@@ -80,10 +82,8 @@ class Audits extends MY_Controller{
 
         $this->view_data['registry'] = $registry = Audit::find($id);
 
-        if (!in_array($registry->subject, $this->do_not_render)) {
-            $class_name = $registry->subject;
-            $this->view_data['object'] = $object = $class_name::find($registry->pk);
-        }
+        $class_name = $registry->subject;
+        $this->view_data['object'] = $object = $class_name::find($registry->pk);
 
         $this->content_view = 'audits/view';
     }
