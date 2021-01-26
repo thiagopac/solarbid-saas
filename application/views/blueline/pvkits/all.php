@@ -171,7 +171,7 @@
 $(document).ready(function(){
     $('input[name="bulk[]"]').on('change', function () {
         $(this).closest('tr').toggleClass('active');
-    })
+    });
 
     $('input[name="selectall"]').on('change', function () {
         if ($(this).prop('checked')) {
@@ -180,6 +180,12 @@ $(document).ready(function(){
             $('tbody>tr').removeClass('active');
         }
 
-    })
+    });
+
+    $(document).on('hidden.bs.modal', function (event) {
+        if ($('.modal:visible').length) {
+            $('body').addClass('modal-open');
+        }
+    });
 });
 </script>

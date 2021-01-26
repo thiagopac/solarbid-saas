@@ -718,4 +718,25 @@ class PvKits extends MY_Controller {
         }
     }
 
+    public function image_server($pvkit_id = false) {
+
+        $path    = './files/media/pvkits';
+        $files = array_diff(scandir($path), array('.', '..'));
+        $this->view_data['files'] = $files;
+
+        $this->view_data['pvkit_id'] = $pvkit_id;
+
+        $this->theme_view = 'modal_large';
+        $this->content_view = 'pvkits/_image_server';
+        $this->view_data['title'] = $this->lang->line('application_images_in_server');
+    }
+
+    public function save_image_server($pvkit_id = false, $image_name = false){
+        $core_settings = Setting::first();
+
+        $kit = PvKit::find($pvkit_id);
+        $kit->image = $core_settings->domain."files/media/pvkits/".$image_name;
+        $kit->save();
+    }
+
 }

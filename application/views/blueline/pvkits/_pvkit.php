@@ -149,6 +149,13 @@ if (isset($pv_kit)) { ?>
         </div>
     </div>
 
+    <div class="form-group">
+        <label for="image"><?= $this->lang->line('application_image_in_server'); ?> *</label>
+        <a style="margin: 10px 6px 0 0;" href="<?=base_url()?>pvkits/image_server/<?=$pv_kit->id ?>" class="btn btn-primary pull-right" data-toggle="mainmodal">
+            <?=$this->lang->line('application_select_image_in_server');?>
+        </a>
+    </div>
+
     <div class="row">
         <div class="col-md-6">
 

@@ -1599,3 +1599,6 @@ $lang['application_audit_object_reflected'] = 'Objeto manipulado';
 $lang['application_field'] = 'Campo';
 $lang['application_content'] = 'Conteúdo';
 $lang['application_related_objects'] = 'Objetos relacionados';
+$lang['application_images_in_server'] = 'Imagens no servidor';
+$lang['application_image_in_server'] = 'Imagem no servidor';
+$lang['application_select_image_in_server'] = 'Selecione uma imagem no servidor';
