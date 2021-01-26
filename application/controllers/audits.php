@@ -53,6 +53,7 @@ class Audits extends MY_Controller{
                     array_push($related_objects, $related_object);
                 }catch(Exception $e){
                     print_r($e);
+                    array_push($related_objects, $registry);
                 }
 
 
