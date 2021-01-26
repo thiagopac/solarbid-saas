@@ -138,7 +138,7 @@
                                     <?=$company_appointment->date != null ? date($core_settings->date_format, strtotime($company_appointment->date)) : '-' ?>
                                 </li>
                                 <li> <span> <?=$this->lang->line('application_appointment_time'); ?>: </span>
-                                    <?= $company_appointment->appointment_time->name ?>
+                                    <?=$company_appointment->appointment_time != null ?  $company_appointment->appointment_time->name : '-' ?>
                                 </li>
                                 <li> <span> <?=$this->lang->line('application_completed_visit'); ?>: </span>
                                     <?php if ($company_appointment != null) : ?>
