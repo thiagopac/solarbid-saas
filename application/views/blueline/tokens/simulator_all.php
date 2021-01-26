@@ -76,7 +76,7 @@
                             <td>
                                 <?=$simulator_flow->name?>
                             </td>
-                            <td>
+                            <td style="text-align: center">
                                 <?=$simulator_flow->pv_kit != null ? json_decode($simulator_flow->pv_kit)->kit_power.' '.$core_settings->rated_power_measurement : '' ?>
                             </td>
                             <td>
