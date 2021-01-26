@@ -127,7 +127,7 @@ if (isset($pv_kit)) { ?>
         foreach ($all_kits as $kit):
 
             if ($options[$kit->image] == null){
-                $options[$kit->image] = "[$kit->id] - $kit->kit_provider - $kit->kit_power.$core_settings->rated_power_measurement - Inversor: $kit->pv_inverter - Módulos: $kit->pv_module - $kit->structure_type_id - $core_settings->money_symbol$kit->price";
+                $options[$kit->image] = "[$kit->id] - $kit->kit_provider - $kit->kit_power.$core_settings->rated_power_measurement - $kit->desc_inverter - $kit->desc_module - ".StructureType::find($kit->structure_type_id)->name;
             }
 
             $image = $options[0];
