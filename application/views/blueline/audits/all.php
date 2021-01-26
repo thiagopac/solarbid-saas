@@ -102,40 +102,31 @@ $idx = 0;
 
                                 ?>
 
-                                <?php foreach ($arr_object as $key => $value) : ?>
-
-                                    <?php if (strcmp(preg_replace('/[^A-Za-z0-9. -]/', '', $key), 'ActiveRecordModelattributes') == 0) : ?>
-
-                                        <?php $arr_field_names = $arr_object[$key]; ?>
-                                        <?php foreach ($arr_field_names as $field_name => $field_value) : ?>
-                                            <?php foreach ($arr_relations as $relation) : ?>
-
-                                                <?php if ($field_name == $relation->foreign_key[0]) : ?>
-                                                    <div style="padding: 5px; margin: 0 0 2px 0;  background: #f1f1f1; font-size: 9px">
-                                                        <?php
-                                                        $field_class = $relation->class_name;
-
-                                                        if ($field_name == 'flow_id'){
-                                                            $correct_foreign_key = 'flow_id';
-                                                        }else if ($field_name == 'store_flow_id'){
-                                                            $correct_foreign_key = 'store_flow_id';
-                                                        }else{
-                                                            $correct_foreign_key = 'id';
-                                                        }
-
-                                                        $field_object = $field_class::first("$correct_foreign_key = ?", $field_value);
-
-                                                        echo (string) "<strong>".$field_class."</strong> ";
-                                                        $arr_field_object = (array) $field_object;
-                                                        echo json_encode($arr_field_object);
-                                                        ?>
-                                                    </div>
-                                                <?php endif; ?>
-
-                                            <?php endforeach; ?>
-                                        <?php endforeach;  ?>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
+<!--                                --><?php //foreach ($arr_object as $key => $value) : ?>
+<!---->
+<!--                                    --><?php //if (strcmp(preg_replace('/[^A-Za-z0-9. -]/', '', $key), 'ActiveRecordModelattributes') == 0) : ?>
+<!---->
+<!--                                        --><?php //$arr_field_names = $arr_object[$key]; ?>
+<!--                                        --><?php //foreach ($arr_field_names as $field_name => $field_value) : ?>
+<!--                                            --><?php //foreach ($arr_relations as $relation) : ?>
+<!---->
+<!--                                                --><?php //if ($field_name == $relation->foreign_key[0]) : ?>
+<!--                                                    <div style="padding: 5px; margin: 0 0 2px 0;  background: #f1f1f1; font-size: 9px">-->
+<!--                                                        --><?php
+//                                                        $field_class = $relation->class_name;
+//                                                        $field_object = $field_class::find($field_value);
+//
+//                                                        echo (string) "<strong>".$field_class."</strong> ";
+//                                                        $arr_field_object = (array) $field_object;
+//                                                        echo json_encode($arr_field_object);
+//                                                        ?>
+<!--                                                    </div>-->
+<!--                                                --><?php //endif; ?>
+<!---->
+<!--                                            --><?php //endforeach; ?>
+<!--                                        --><?php //endforeach;  ?>
+<!--                                    --><?php //endif; ?>
+<!--                                --><?php //endforeach; ?>
 
                             </td>
 <!--                            <td class="hidden-xs">-->
