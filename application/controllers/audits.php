@@ -4,7 +4,7 @@
 
 class Audits extends MY_Controller{
 
-    public $do_not_render = ['PwReset', 'Setting'];
+    public $do_not_render = ['PwReset', 'Setting', 'CompanyAppointment','Purchase'];
 
     public function __construct(){
 
