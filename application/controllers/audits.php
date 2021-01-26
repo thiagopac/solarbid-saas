@@ -53,7 +53,7 @@ class Audits extends MY_Controller{
                     array_push($related_objects, $related_object);
                 }catch(Exception $e){
                     print_r($e);
-                }finally{
+
                     $related_object = $model::find('flow_id',$registry->pk);
                     array_push($related_objects, $related_object);
                 }
