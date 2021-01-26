@@ -43,8 +43,6 @@ class Audits extends MY_Controller{
 
         $related_objects = array();
 
-
-
         foreach ($registries as $registry){
 
             if (!in_array($registry->subject, $this->do_not_render)) {
@@ -54,6 +52,7 @@ class Audits extends MY_Controller{
             }
         }
 
+        $this->view_data['do_not_render'] = $this->do_not_render;
         $this->view_data['related_objects'] = (array) $related_objects;
 
         $this->content_view = 'audits/all';
@@ -78,7 +77,7 @@ class Audits extends MY_Controller{
     }
 
     public function view_registry($id = false){
-        
+
         $this->view_data['registry'] = $registry = Audit::find($id);
 
         if (!in_array($registry->subject, $this->do_not_render)) {
