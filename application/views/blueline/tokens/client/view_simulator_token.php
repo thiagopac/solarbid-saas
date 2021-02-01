@@ -18,12 +18,21 @@
 
     <div class="grid">
         <div class="grid__col-md-12 dashboard-header">
-            <h1> <?= $this->lang->line('application_simulator_token') ?>: <label class="badge"
-                                                                                 style="font-size: 15px; text-transform: none">#<?= $flow->code ?></label>
-                <?php if ($flow->integrator_approved == 1) : ?>
-                <label class="badge btn-success" style="font-size: 15px; text-transform: none">
-                    <?=$this->lang->line('application_approved_project');?>
+            <h1> <?= $this->lang->line('application_simulator_token') ?>:
+                <label class="badge" style="padding:6px; font-size: 15px; text-transform: none; border-radius: 4px">
+                    <?= $flow->code ?>
                 </label>
+                <?php if ($flow->integrator_approved == 1) : ?>
+                    ❯
+                    <label class="badge btn-warning" style="padding:6px; font-size: 15px; text-transform: none; border-radius: 4px">
+                        <?=$this->lang->line('application_submited_project');?>
+                    </label>
+                <?php endif; ?>
+                <?php if ($flow->solarbid_approved == 1) : ?>
+                    ❯
+                    <label class="badge btn-success" style="padding:6px; font-size: 15px; text-transform: none; border-radius: 4px">
+                        <?=$this->lang->line('application_approved_project_solarbid');?>
+                    </label>
                 <?php endif; ?>
             </h1>
         </div>
@@ -176,11 +185,19 @@
                                 <div class="col-md-3">
                                     <ul class="details">
                                         <li>
-                                            <span><?=$this->lang->line('application_date');?></span>
+                                            <span><?=$this->lang->line('application_visit_date_agreed');?></span>
                                             <h2>
                                                 <?= date($core_settings->date_format, strtotime($company_appointment->date)) ?>
                                             </h2>
                                         </li>
+                                        <?php if ($company_appointment->completed_date != null) : ?>
+                                            <li>
+                                                <span><?= $this->lang->line('application_completed_visit_date'); ?></span>
+                                                <h2>
+                                                    <?= date($core_settings->date_format, strtotime($company_appointment->completed_date)) ?>
+                                                </h2>
+                                            </li>
+                                        <?php endif; ?>
                                     </ul>
                                 </div>
 
@@ -399,7 +416,7 @@
                         <div class="pull-right">
                             <?php if ($flow->integrator_approved != 1 && $company_appointment->completed != 0) : ?>
                                 <a data-toggle="mainmodal" href="<?= base_url() ?>ctokens/integrator_approve/<?= $flow->code; ?>"
-                                   class="pull-right btn btn-success"><?= $this->lang->line('application_approve_project') ?></a>
+                                   class="pull-right btn btn-success"><?= $this->lang->line('application_submit_solarbid') ?></a>
                             <?php endif; ?>
                         </div>
                     </div>

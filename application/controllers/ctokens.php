@@ -2,6 +2,8 @@
     exit('No direct script access allowed');
 }
 
+require('mail.php');
+
 class cTokens extends MY_Controller {
 
     public function __construct() {
@@ -327,7 +329,7 @@ class cTokens extends MY_Controller {
 
             $arr_complements = array();
 
-            var_dump($_POST);
+//            var_dump($_POST);
 
             foreach ($_POST as $key => $input){
 
@@ -442,7 +444,15 @@ class cTokens extends MY_Controller {
             $flow->integrator_approved = 1;
             $flow->save();
 
+            $_POST = array();
+            $_POST['name'] =  'Solarbid';
+            $_POST['subject'] = 'Novo projeto submetido';
+            $_POST['title'] = 'Novo projeto submetido';
+            $_POST['to'] =  'solarbid@solarbid.com.br';
+            $_POST['message'] =  'Token: '.$flow->code;
 
+            $mail = new Mail();
+            $mail->simple_mail($_POST);
 
             if ($is_simulator_flow != null){
                 $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_approve_token_success').": ".$is_simulator_flow->code);
@@ -471,7 +481,7 @@ class cTokens extends MY_Controller {
             $this->view_data['flow'] = $flow;
             $this->theme_view = 'modal';
             $this->content_view = 'tokens/client/_approve';
-            $this->view_data['title'] = $this->lang->line('application_approve_project');
+            $this->view_data['title'] = $this->lang->line('application_submit_solarbid');
         }
     }
 }

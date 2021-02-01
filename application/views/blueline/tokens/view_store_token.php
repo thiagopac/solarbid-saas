@@ -17,10 +17,20 @@
 
     <div class="grid">
         <div class="grid__col-md-7 dashboard-header">
-            <h1> <?=$this->lang->line('application_store_token') ?>: <label class="badge" style="font-size: 15px; text-transform: none">#<?=$flow->code?></label>
+            <h1> <?= $this->lang->line('application_store_token') ?>:
+                <label class="badge" style="padding:6px; font-size: 15px; text-transform: none; border-radius: 4px">
+                    <?= $flow->code ?>
+                </label>
                 <?php if ($flow->integrator_approved == 1) : ?>
-                    <label class="badge btn-success" style="font-size: 15px; text-transform: none">
-                        <?=$this->lang->line('application_approved_project');?>
+                    ❯
+                    <label class="badge btn-warning" style="padding:6px; font-size: 15px; text-transform: none; border-radius: 4px">
+                        <?=$this->lang->line('application_submited_project');?>
+                    </label>
+                <?php endif; ?>
+                <?php if ($flow->solarbid_approved == 1) : ?>
+                    ❯
+                    <label class="badge btn-success" style="padding:6px; font-size: 15px; text-transform: none; border-radius: 4px">
+                        <?=$this->lang->line('application_approved_project_solarbid');?>
                     </label>
                 <?php endif; ?>
             </h1>

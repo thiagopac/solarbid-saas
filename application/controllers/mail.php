@@ -24,11 +24,12 @@ class Mail extends MY_Controller {
             $subject = $_POST['subject'];
             $title = $_POST['title'];
             $message = $_POST['message'];
+            $to = trim(htmlspecialchars($_POST['to']));
+
+            $from = $core_settings->email;
 
             $company_name = $core_settings->company;
 
-            $to = trim(htmlspecialchars($_POST['to']));
-            $from = $core_settings->email;
 
             $parse_data = [
                 'company' => $core_settings->company,

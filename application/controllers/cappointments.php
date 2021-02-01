@@ -167,6 +167,8 @@ class cAppointments extends MY_Controller
                 $company_appointment = CompanyAppointment::find(['conditions' => ['store_flow_id = ?', $is_store_flow->code]]);
             }
 
+            $company_appointment->completed_date = $_POST['completed_date'];
+
             $company_appointment->completed = 1;
             $company_appointment->save();
 
