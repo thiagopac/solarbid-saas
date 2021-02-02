@@ -101,7 +101,7 @@
                             <?php if ($flow->integrator_approved != 1 && $company_appointment->completed != 1) : ?>
                                 <span class="pull-right">
 
-                                    <a data-toggle="mainmodal" href="<?= base_url() ?>ctokens/edit_event/<?= $flow->code; ?>/ctokens-store" class="btn btn-primary flat-invert">
+                                    <a data-toggle="mainmodal" href="<?= base_url() ?>cappointments/edit_event/<?= $flow->code; ?>/ctokens-store" class="btn btn-primary flat-invert">
                                         <?=$this->lang->line('application_change_appointment');?>
                                     </a>
                                 </span>
@@ -157,7 +157,7 @@
                                             <?php if ($flow->integrator_approved != 1 && $company_appointment->completed != 1) : ?>
                                                 <span>&nbsp;</span>
                                                 <h2>
-                                                    <a data-toggle="mainmodal" href="<?= base_url() ?>cappointments/complete_appointment/<?= $flow->code; ?>/ctokens-store" class="btn btn-success">
+                                                    <a data-toggle="mainmodal" href="<?= base_url() ?>ctokens/complete_appointment/<?= $flow->code; ?>" class="btn btn-success">
                                                         <?=$this->lang->line('application_confirm_completed_visit');?>
                                                     </a>
                                                 </h2>

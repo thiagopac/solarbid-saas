@@ -229,7 +229,7 @@
                                             <?php if ($flow->integrator_approved != 1 && $company_appointment->completed != 1) : ?>
                                                 <span>&nbsp;</span>
                                                 <h2>
-                                                    <a data-toggle="mainmodal" href="<?= base_url() ?>ctokens/complete_appointment/<?= $flow->code; ?>/ctokens-simulator" class="btn btn-success">
+                                                    <a data-toggle="mainmodal" href="<?= base_url() ?>ctokens/complete_appointment/<?= $flow->code; ?>" class="btn btn-success">
                                                         <?=$this->lang->line('application_confirm_completed_visit');?>
                                                     </a>
                                                 </h2>
