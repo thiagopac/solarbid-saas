@@ -184,7 +184,7 @@
                                         </ul>
                                     </div>
                                 <?php endif; ?>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -366,7 +366,9 @@
                                    class="pull-right btn btn-success"><?= $this->lang->line('application_approve_project') ?></a>
                             <?php endif; ?>
                         </div>
+
                     </div>
+                <p>&nbsp;</p>
         </div>
         </div>
     </div>

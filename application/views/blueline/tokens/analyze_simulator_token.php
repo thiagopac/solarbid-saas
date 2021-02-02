@@ -414,6 +414,7 @@
                             <?php endif; ?>
                         </div>
                     </div>
+                <p>&nbsp;</p>
         </div>
         </div>
     </div>
