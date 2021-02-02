@@ -171,6 +171,20 @@
                                     </div>
                                 <?php endif; ?>
 
+                                <?php if ($company_appointment->comments != null) : ?>
+                                    <div class="col-md-12">
+                                        <ul class="details" style="text-align: left;">
+                                            <li>
+                                                <span><?= $this->lang->line('application_relevant_appointment_comments'); ?></span>
+                                                <p></p>
+                                                <span>
+                                                <?=$company_appointment->comments ?>
+                                            </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                <?php endif; ?>
+                                
                             </div>
                         </div>
                     </div>

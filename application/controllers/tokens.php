@@ -452,7 +452,7 @@ class Tokens extends MY_Controller {
                 $_POST['subject'] = 'Projeto aprovado pela Solarbid';
                 $_POST['title'] = 'Projeto aprovado pela Solarbid';
                 $_POST['to'] =  $client->email;
-                $_POST['message'] =  'Seu projeto foi aprovado pela Solarbid!<p></p><b>Token:</b> '.$flow->code;
+                $_POST['message'] =  'Seu projeto foi aprovado pela Solarbid! Verifique se houveram modificações no token sobre kit e complementos necessários para a instalação.<p></p><b>Token:</b> '.$flow->code;
 
                 $mail = new Mail();
                 $mail->simple_mail($_POST);
