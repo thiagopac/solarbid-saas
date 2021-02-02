@@ -17,10 +17,13 @@
                         <th style="width:200px">
                             <?=$this->lang->line('application_state');?>
                         </th>
-                        <th style="width:200px">
+                        <th style="width:200px; text-align: center">
+                            <?=$this->lang->line('application_submited_project');?>
+                        </th>
+                        <th style="width:100px; text-align: center">
                             <?=$this->lang->line('application_approved_project');?>
                         </th>
-                        <th style="width:200px">
+                        <th style="width:200px; text-align: center">
                             <?=$this->lang->line('application_created_at');?>
                         </th>
                     </thead>
@@ -35,14 +38,21 @@
                             <td>
                                 <?=$store_flow->state_obj->name?>
                             </td>
-                            <td>
+                            <td style="text-align: center">
                                 <?php if ($store_flow->integrator_approved == 1) : ?>
                                     <label class="label label-success"><?=$this->lang->line('application_yes');?></label>
                                 <?php else : ?>
                                     <label class="label label-important"><?=$this->lang->line('application_no');?></label>
                                 <?php endif; ?>
                             </td>
-                            <td>
+                            <td style="text-align: center">
+                                <?php if ($store_flow->solarbid_approved == 1) : ?>
+                                    <label class="label label-success"><?=$this->lang->line('application_yes');?></label>
+                                <?php else : ?>
+                                    <label class="label label-important"><?=$this->lang->line('application_no');?></label>
+                                <?php endif; ?>
+                            </td>
+                            <td style="width:200px; text-align: center">
                                 <?=date($core_settings->date_format . ' ' . $core_settings->date_time_format, strtotime($store_flow->created_at))?>
                             </td>
                         </tr>

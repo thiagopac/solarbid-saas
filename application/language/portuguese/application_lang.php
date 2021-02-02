@@ -1607,3 +1607,5 @@ $lang['application_image_in_server'] = 'Imagem no servidor';
 $lang['application_select_image_in_server'] = 'Selecione uma imagem no servidor';
 $lang['application_completed_visit_date'] = 'Data que ocorreu a visita técnica';
 $lang['application_visit_date_agreed'] = 'Data estipulada para visita técnica';
+$lang['application_appointment_photos'] = 'Fotos da visita técnica';
+$lang['application_relevant_appointment_comments'] = 'Observações relevantes sobre a visita técnica';

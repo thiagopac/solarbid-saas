@@ -101,7 +101,7 @@
                             <?php if ($flow->integrator_approved != 1 && $company_appointment->completed != 1) : ?>
                                 <span class="pull-right">
 
-                                    <a data-toggle="mainmodal" href="<?= base_url() ?>cappointments/edit_event/<?= $flow->code; ?>/ctokens-store" class="btn btn-primary flat-invert">
+                                    <a data-toggle="mainmodal" href="<?= base_url() ?>ctokens/edit_event/<?= $flow->code; ?>/ctokens-store" class="btn btn-primary flat-invert">
                                         <?=$this->lang->line('application_change_appointment');?>
                                     </a>
                                 </span>

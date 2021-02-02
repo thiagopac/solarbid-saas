@@ -56,7 +56,7 @@ class cTokens extends MY_Controller {
 
 //        var_dump($authorized_appointments);
         if (count($flow_ids) > 0){
-            $this->view_data['simulator_flows'] = SimulatorFlow::find('all',['order' => 'id DESC', 'conditions' => ['company_id = ? AND code in (?)', $this->client->company_id, $flow_ids], 'select'=> 'id, code, city, state, type, dealer, monthly_average, activity, structure_type_id, integrator_approved, created_at','include' => ['energy_dealer', 'state', 'city', 'activity', 'structure_type']]);
+            $this->view_data['simulator_flows'] = SimulatorFlow::find('all',['order' => 'id DESC', 'conditions' => ['company_id = ? AND code in (?)', $this->client->company_id, $flow_ids], 'select'=> 'id, code, city, state, type, dealer, monthly_average, activity, structure_type_id, integrator_approved, solarbid_approved, created_at','include' => ['energy_dealer', 'state', 'city', 'activity', 'structure_type']]);
         }
 
         $this->content_view = 'tokens/client/simulator_all';
@@ -417,6 +417,69 @@ class cTokens extends MY_Controller {
         return json_response("success", htmlspecialchars($this->lang->line('messages_registries_retrieved_success')), $data);
     }
 
+    public function complete_appointment($token = false) {
+
+        if ($_POST) {
+
+            $is_simulator_flow = SimulatorFlow::find(['conditions' => ['code = ?', $_POST['code']]]);
+            $is_store_flow = StoreFlow::find(['conditions' => ['code = ?', $_POST['code']]]);
+
+            $flow = null;
+
+            if ($is_simulator_flow != null){
+                $company_appointment = CompanyAppointment::find(['conditions' => ['flow_id = ?', $is_simulator_flow->code]]);
+            }else{
+                $company_appointment = CompanyAppointment::find(['conditions' => ['store_flow_id = ?', $is_store_flow->code]]);
+            }
+
+            $company_appointment->completed_date = $_POST['completed_date'];
+
+            $company_appointment->comments = $_POST['comments'];
+            $company_appointment->completed = 1;
+            $company_appointment->save();
+
+            $_POST = array();
+            $_POST['name'] =  'Solarbid';
+            $_POST['subject'] = 'Visita técnica efetuada';
+            $_POST['title'] = 'Visita técnica efetuada';
+            $_POST['to'] =  'solarbid@solarbid.com.br';
+            $_POST['message'] =  'Token: '.$flow->code;
+
+            $mail = new Mail();
+            $mail->simple_mail($_POST);
+
+
+            if ($is_simulator_flow != null){
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_complete_appointment_success').": ".$is_simulator_flow->code);
+                redirect('ctokens/view_simulator_token/'.$is_simulator_flow->code);
+            }else if($is_store_flow != null){
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_complete_appointment_success').": ".$is_store_flow->code);
+                redirect('ctokens/view_store_token/'.$is_store_flow->code);
+            }else{
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_complete_appointment_error'));
+                redirect('ctokens');
+            }
+
+        }else{
+
+            $is_simulator_flow = SimulatorFlow::find(['conditions' => ['code = ?', $token]]);
+            $is_store_flow = StoreFlow::find(['conditions' => ['code = ?', $token]]);
+
+            $flow = null;
+
+            if ($is_simulator_flow != null){
+                $flow = $is_simulator_flow;
+            }else{
+                $flow = $is_store_flow;
+            }
+
+            $this->view_data['flow'] = $flow;
+            $this->theme_view = 'modal';
+            $this->content_view = 'tokens/client/_complete';
+            $this->view_data['title'] = $this->lang->line('application_confirm_completed_visit');
+        }
+    }
+
     public function integrator_approve($token = false) {
 
         if ($_POST) {
@@ -428,18 +491,13 @@ class cTokens extends MY_Controller {
 
             if ($is_simulator_flow != null){
                 $flow =  $is_simulator_flow;
-                $company_appointment = CompanyAppointment::find(['conditions' => ['flow_id = ?', $is_simulator_flow->code]]);
             }else{
                 $flow = $is_store_flow;
-                $company_appointment = CompanyAppointment::find(['conditions' => ['store_flow_id = ?', $is_store_flow->code]]);
             }
 
             if ($flow->pv_kit_revised == null){
                 $flow->pv_kit_revised = $flow->pv_kit;
             }
-
-            $company_appointment->completed = 1;
-            $company_appointment->save();
 
             $flow->integrator_approved = 1;
             $flow->save();
