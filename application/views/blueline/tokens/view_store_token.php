@@ -32,6 +32,9 @@
                     <label class="badge btn-success" style="padding:6px; font-size: 15px; text-transform: none; border-radius: 4px">
                         <?=$this->lang->line('application_approved_project_solarbid');?>
                     </label>
+                <?php elseif ($flow->integrator_approved == 1 && $flow->solarbid_approved == 0) : ?>
+                    ❯
+                    <a class="btn btn-primary flat-invert" style="vertical-align: top; position: relative; bottom: 1px" href="<?= base_url() ?>tokens/analyze_store_token/<?=$flow->code?>"><?=$this->lang->line('application_analyze_project');?></a>
                 <?php endif; ?>
             </h1>
         </div>

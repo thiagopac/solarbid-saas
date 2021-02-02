@@ -5,11 +5,6 @@
     $pv_kit = json_decode($flow->pv_kit);
     $pv_kit_revised = json_decode($flow->pv_kit_revised);
 
-    $simulation_results = json_decode($flow->simulation_results);
-    $customer_data = json_decode($financing_request->customer_data);
-    $simulate_data = json_decode($financing_request->simulate_data);
-    $santander_simulation = json_decode($financing_request->santander_simulation);
-
     $complements_revised = json_decode($flow->complements_revised);
 
     $integrator = json_decode($flow->integrator);
@@ -18,7 +13,7 @@
 
     <div class="grid">
         <div class="grid__col-md-12 dashboard-header">
-            <h1> <?= $this->lang->line('application_simulator_token') ?>:
+            <h1> <?= $this->lang->line('application_analyze_store_token') ?>:
                 <label class="badge" style="padding:6px; font-size: 15px; text-transform: none; border-radius: 4px">
                     <?= $flow->code ?>
                 </label>
@@ -52,51 +47,6 @@
                                     <span> <?= $this->lang->line('application_city'); ?> / <?= $this->lang->line('application_state'); ?>: </span>
                                     <?php echo empty($flow->city) ? '-' : $flow->city_obj->name; ?>
                                     / <?php echo empty($flow->state) ? '-' : $flow->state_obj->name; ?>
-                                </li>
-                                <li>
-                                    <span> <?= $this->lang->line('application_type'); ?> / <?= $this->lang->line('application_activity'); ?>: </span>
-                                    <?php echo empty($flow->type) ? '-' : $this->lang->line("application_flow_$flow->type") ?>
-                                    / <?php echo empty($flow->state) ? '-' : $flow->activity_obj->name; ?>
-                                </li>
-                                <li><span> <?= $this->lang->line('application_energy_dealer'); ?>: </span>
-                                    <?php echo empty($flow->state) ? '-' : $flow->energy_dealer->name; ?>
-                                </li>
-                                <li><span> <?= $this->lang->line('application_monthly_average'); ?>: </span>
-                                    <?php echo empty($flow->monthly_average) ? '-' : $core_settings->money_symbol . display_money($flow->monthly_average) ?>
-                                </li>
-                                <li><span> <?= $this->lang->line('application_name'); ?>: </span>
-                                    <?php echo empty($flow->name) ? '-' : explode(' ', $flow->name)[0]; ?>
-                                </li>
-                                <li><span> <?= $this->lang->line('application_simulation_results'); ?>: </span>
-                                    <?php if (empty($simulation_results)) : ?>
-                                        -
-                                    <?php else : ?>
-                                        <small>
-                                            <strong><?= $this->lang->line('application_tariff') ?>
-                                                :</strong> <?= $core_settings->money_symbol; ?><?= display_money($simulation_results->tariff->value) . ' (' . $simulation_results->tariff->value . ')' ?>
-                                            <br/>
-                                            <strong><?= $this->lang->line('application_min_area') ?></strong>: <?= $simulation_results->min_area ?> <?= $core_settings->area_measurement; ?>
-                                            <br/>
-                                            <strong><?= $this->lang->line('application_modules_qty') ?></strong>: <?= $simulation_results->modules_qty ?>
-                                            <br/>
-                                            <strong><?= $this->lang->line('application_payback_time') ?></strong>: <?= $simulation_results->payback_time ?> <?= $this->lang->line('application_years') ?>
-                                            <br/>
-                                            <strong><?= $this->lang->line('application_annual_savings') ?></strong>: <?= $core_settings->money_symbol; ?><?= display_money($simulation_results->annual_savings) ?>
-                                            <br/>
-                                            <strong><?= $this->lang->line('application_plant_peak_power') ?></strong>: <?= $simulation_results->plant_peak_power ?> <?= $core_settings->rated_power_measurement; ?>
-                                            <br/>
-                                            <strong><?= $this->lang->line('application_generator_savings') ?></strong>: <?= $simulation_results->generator_savings ?>
-                                            %<br/>
-                                            <strong><?= $this->lang->line('application_solarbid_lowest_price') ?></strong>: <?= $core_settings->money_symbol; ?><?= display_money($simulation_results->solarbid_lowest_price) ?>
-                                            <br/>
-                                            <strong><?= $this->lang->line('application_market_average_price') ?></strong>: <?= $core_settings->money_symbol; ?><?= display_money($simulation_results->market_average_price) ?>
-                                            <br/>
-                                            <strong><?= $this->lang->line('application_anual_production') ?></strong>: <?= $simulation_results->anual_production ?> <?= $core_settings->consumn_power_measurement; ?>
-                                            /<?= $this->lang->line('application_year') ?><br/>
-                                            <strong><?= $this->lang->line('application_monthly_average_production') ?></strong>: <?= $simulation_results->monthly_average_production ?> <?= $core_settings->consumn_power_measurement; ?>
-                                            /<?= $this->lang->line('application_month') ?><br/>
-                                        </small>
-                                    <?php endif; ?>
                                 </li>
                                 <li><span> <?= $this->lang->line('application_pvkit'); ?>: </span>
                                     <?php if (empty($flow->pv_kit)) : ?>
@@ -170,14 +120,6 @@
                     <div class="box-shadow">
                         <div class="table-head">
                             <?= $this->lang->line('application_technical_visit'); ?>
-
-                            <?php if ($flow->integrator_approved != 1 && $company_appointment->completed != 1) : ?>
-                                <span class="pull-right">
-                                    <a data-toggle="mainmodal" href="<?= base_url() ?>cappointments/edit_event/<?= $flow->code; ?>/ctokens-simulator" class="btn btn-primary flat-invert">
-                                        <?=$this->lang->line('application_change_appointment');?>
-                                    </a>
-                                </span>
-                            <?php endif; ?>
                         </div>
                         <div class="subcont">
                             <div class="row">
@@ -190,6 +132,7 @@
                                                 <?= date($core_settings->date_format, strtotime($company_appointment->date)) ?>
                                             </h2>
                                         </li>
+
                                     </ul>
                                 </div>
 
@@ -214,20 +157,6 @@
                                         </li>
                                     </ul>
                                 </div>
-
-                                <?php if ($company_appointment->completed != 1) : ?>
-                                    <div class="col-md-3">
-                                        <ul class="details" style="text-align: right;">
-                                            <li>
-                                                <h2>
-                                                    <a data-toggle="mainmodal" href="<?= base_url() ?>ctokens/complete_appointment/<?= $flow->code; ?>" class="btn btn-success">
-                                                        <?=$this->lang->line('application_confirm_completed_visit');?>
-                                                    </a>
-                                                </h2>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                <?php endif; ?>
 
                                 <?php if ($company_appointment->completed_date != null) : ?>
                                     <div class="col-md-3">
@@ -289,8 +218,8 @@
                                             <?php if ($flow->pv_kit_revised != null) : ?>
                                                 <div class="pull-left"><div class="badge btn-danger"><?=$this->lang->line('application_kit_revised_integrator');?></div></div>
                                             <?php endif; ?>
-                                            <?php if ($flow->integrator_approved != 1 && $company_appointment->completed != 0) : ?>
-                                            <a data-toggle="mainmodal" href="<?= base_url() ?>ctokens/update_pvkit/<?= $flow->code; ?>"
+                                            <?php if ($flow->solarbid_approved != 1) : ?>
+                                            <a data-toggle="mainmodal" href="<?= base_url() ?>tokens/update_pvkit/<?= $flow->code; ?>"
                                                     class="pull-right btn btn-primary flat-invert"><?= $this->lang->line('application_change_pv_kit') ?></a>
                                             <?php endif; ?>
                                         </div>
@@ -322,8 +251,8 @@
                                         <?php if ($flow->complements_revised != null) : ?>
                                             <div class="pull-left"><div class="badge btn-danger"><?=$this->lang->line('application_complements_revised_integrator');?></div></div>
                                         <?php endif; ?>
-                                        <?php if ($flow->integrator_approved != 1 && $company_appointment->completed != 0) : ?>
-                                        <a data-toggle="mainmodal" href="<?= base_url() ?>ctokens/update_complements/<?= $flow->code; ?>"
+                                        <?php if ($flow->solarbid_approved != 1) : ?>
+                                            <a data-toggle="mainmodal" href="<?= base_url() ?>tokens/update_complements/<?= $flow->code; ?>"
                                                 class="pull-right btn btn-primary flat-invert"><?= $this->lang->line('application_change_complements') ?></a>
                                         <?php endif; ?>
                                     </div>
@@ -404,11 +333,11 @@
                             </div>
 
                             <?php if ($pricing_table->active != 1 || $pricing_table == null) : ?>
-                                <a href="<?= base_url() ?>cpricing"><div class="pull-right label label-important"><?= $this->lang->line('application_no_pricing_table_active_found'); ?></div></a>
+                                <a href="<?= base_url() ?>cpricing"><div class="pull-right label label-important"><?= $this->lang->line('application_no_pricing_table_active_found_analyze'); ?></div></a>
                             <?php else : ?>
                                 <div class="pull-right">
                                     <small>
-                                        <?= $this->lang->line('application_based_in_your_pricing_table'); ?>: <a href="<?= base_url() ?>cpricing">#<?=$pricing_table->name?></a>
+                                        <?= $this->lang->line('application_based_in_your_pricing_table_analyze'); ?>: <a data-toggle="mainmodal" href="<?= base_url() ?>tokens/view_pricing_table/<?=$pricing_table->id?>">#<?=$pricing_table->name?></a>
                                     </small>
                                 </div>
                             <?php endif; ?>
@@ -418,9 +347,9 @@
                     <div>
                         <br clear="all"></div>
                         <div class="pull-right">
-                            <?php if ($flow->integrator_approved != 1 && $company_appointment->completed != 0) : ?>
-                                <a data-toggle="mainmodal" href="<?= base_url() ?>ctokens/integrator_approve/<?= $flow->code; ?>"
-                                   class="pull-right btn btn-success"><?= $this->lang->line('application_submit_solarbid') ?></a>
+                            <?php if ($flow->solarbid_approved != 1) : ?>
+                                <a data-toggle="mainmodal" href="<?= base_url() ?>tokens/solarbid_approve/<?= $flow->code; ?>"
+                                   class="pull-right btn btn-success"><?= $this->lang->line('application_approve_project') ?></a>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -430,12 +359,3 @@
 </div>
 <p></p>
 </div>
-
-<script>
-    $(document).ready(function () {
-        var tmpData = JSON.parse(<?=json_encode($purchase->data)?>);
-
-        var formattedData = JSON.stringify(tmpData, null, '   ');
-        $('#transaction_data').text(formattedData);
-    });
-</script>

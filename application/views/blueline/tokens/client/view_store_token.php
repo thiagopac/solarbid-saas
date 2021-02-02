@@ -118,14 +118,6 @@
                                                 <?= date($core_settings->date_format, strtotime($company_appointment->date)) ?>
                                             </h2>
                                         </li>
-                                        <?php if ($company_appointment->completed_date != null) : ?>
-                                            <li>
-                                                <span><?= $this->lang->line('application_completed_visit_date'); ?></span>
-                                                <h2>
-                                                    <?= date($core_settings->date_format, strtotime($company_appointment->completed_date)) ?>
-                                                </h2>
-                                            </li>
-                                        <?php endif; ?>
                                     </ul>
                                 </div>
 
@@ -151,20 +143,32 @@
                                     </ul>
                                 </div>
 
-                                <div class="col-md-3">
-                                    <ul class="details" style="text-align: right;">
-                                        <li>
-                                            <?php if ($flow->integrator_approved != 1 && $company_appointment->completed != 1) : ?>
-                                                <span>&nbsp;</span>
+                                <?php if ($company_appointment->completed != 1) : ?>
+                                    <div class="col-md-3">
+                                        <ul class="details" style="text-align: right;">
+                                            <li>
                                                 <h2>
                                                     <a data-toggle="mainmodal" href="<?= base_url() ?>ctokens/complete_appointment/<?= $flow->code; ?>" class="btn btn-success">
                                                         <?=$this->lang->line('application_confirm_completed_visit');?>
                                                     </a>
                                                 </h2>
-                                            <?php endif; ?>
-                                        </li>
-                                    </ul>
-                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ($company_appointment->completed_date != null) : ?>
+                                    <div class="col-md-3">
+                                        <ul class="details" style="text-align: left;">
+                                            <li>
+                                                <span><?= $this->lang->line('application_completed_visit_date'); ?></span>
+                                                <h2>
+                                                    <?= date($core_settings->date_format, strtotime($company_appointment->completed_date)) ?>
+                                                </h2>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                <?php endif; ?>
 
                             </div>
                         </div>
@@ -336,11 +340,11 @@
                             </div>
 
                             <?php if ($pricing_table->active != 1 || $pricing_table == null) : ?>
-                                <a href="<?= base_url() ?>cpricing"><div class="pull-right label label-important"><?= $this->lang->line('application_no_pricing_table_active_foud'); ?></div></a>
+                                <a href="<?= base_url() ?>cpricing"><div class="pull-right label label-important"><?= $this->lang->line('application_no_pricing_table_active_found'); ?></div></a>
                             <?php else : ?>
                                 <div class="pull-right">
                                     <small>
-                                        <?= $this->lang->line('application_basedo_n_your_pricing_table'); ?>: <a href="<?= base_url() ?>cpricing">#<?=$pricing_table->name?></a>
+                                        <?= $this->lang->line('application_based_in_your_pricing_table'); ?>: <a href="<?= base_url() ?>cpricing">#<?=$pricing_table->name?></a>
                                     </small>
                                 </div>
                             <?php endif; ?>

@@ -302,6 +302,9 @@ $lang['messages_find_token_error'] = "Token não encontrado";
 $lang['messages_approve_token_success'] = "Projeto aprovado com sucesso";
 $lang['messages_approve_token_error'] = "Erro ao aprovar projeto";
 
+$lang['messages_submit_token_success'] = "Projeto submetido com sucesso";
+$lang['messages_submit_token_error'] = "Erro ao submeter projeto";
+
 $lang['messages_complete_appointment_success'] = "Vista técnica efetuada com sucesso";
 $lang['messages_complete_appointment_error'] = "Erro ao marcar a visita técnica como efetuada";
 

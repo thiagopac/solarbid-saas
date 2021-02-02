@@ -513,13 +513,13 @@ class cTokens extends MY_Controller {
             $mail->simple_mail($_POST);
 
             if ($is_simulator_flow != null){
-                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_approve_token_success').": ".$is_simulator_flow->code);
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_submit_token_success').": ".$is_simulator_flow->code);
                 redirect('ctokens/view_simulator_token/'.$is_simulator_flow->code);
             }else if($is_store_flow != null){
-                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_approve_token_success').": ".$is_store_flow->code);
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_submit_token_success').": ".$is_store_flow->code);
                 redirect('ctokens/view_store_token/'.$is_store_flow->code);
             }else{
-                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_approve_token_error'));
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_submit_token_error'));
                 redirect('ctokens');
             }
 
