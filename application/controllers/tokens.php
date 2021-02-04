@@ -56,15 +56,17 @@ class Tokens extends MY_Controller {
 
         if ($_POST) {
 
-            $is_simulator_flow = SimulatorFlow::find(['conditions' => ['code = ?', $_POST['code']]]);
-            $is_store_flow = StoreFlow::find(['conditions' => ['code = ?', $_POST['code']]]);
+//            var_dump($_POST);exit;
+
+            $is_simulator_flow = SimulatorFlow::first(['conditions' => ['code = ?', $_POST['code']]]);
+            $is_store_flow = StoreFlow::first(['conditions' => ['code = ?', $_POST['code']]]);
 
             if ($is_simulator_flow != null){
                 $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_viewing_token')." ".$is_simulator_flow->code);
-                redirect('tokens/view_simulator_token/'.$is_simulator_flow->id);
+                redirect('tokens/view_simulator_token/'.$is_simulator_flow->code);
             }else if($is_store_flow != null){
                 $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_viewing_token')." ".$is_store_flow->code);
-                redirect('tokens/view_store_token/'.$is_store_flow->id);
+                redirect('tokens/view_store_token/'.$is_store_flow->code);
             }else{
                 $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_find_token_error'));
                 redirect('tokens');
