@@ -351,6 +351,7 @@ class Clients extends MY_Controller
                 case 'delete':
                 $company = Company::find_by_id($id);
                 $company->inactive = '1';
+                $company->deleted = '1';
                 $company->save();
                 foreach ($company->clients as $value) {
                     $client = Client::find_by_id($value->id);
