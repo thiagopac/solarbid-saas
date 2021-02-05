@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="<?=base_url()?>assets/blueline/css/plugins/animate.css" />
     <link rel="stylesheet" href="<?=base_url()?>assets/blueline/css/plugins/nprogress.css" />
     <link href="<?=base_url()?>assets/blueline/css/blueline.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?=base_url()?>assets/blueline/css/app.css" />
     <link href="<?=base_url()?>assets/blueline/css/user.css" rel="stylesheet" />
     <link href="<?=base_url()?>assets/blueline/css/important.css" rel="stylesheet" />
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -52,6 +53,7 @@
     <?php
 } ?>
 <!--    <script src="--><?//=base_url()?><!--assets/blueline/js/plugins/jquery-2.2.4.min.js"></script>-->
+    <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/app.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
     <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/plugins/velocity.min.js"></script>
     <script type="text/javascript" src="<?=base_url()?>assets/blueline/js/plugins/velocity.ui.min.js"></script>

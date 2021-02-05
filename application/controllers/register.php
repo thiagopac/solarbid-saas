@@ -18,6 +18,9 @@ class Register extends MY_Controller
         }
 
         if ($_POST) {
+
+            var_dump($_POST);exit;
+
             $this->load->library('parser');
             $this->load->helper('file');
             $this->load->helper('notification');
@@ -124,6 +127,7 @@ class Register extends MY_Controller
             $this->view_data['error'] = 'false';
             $this->theme_view = 'login';
             $this->content_view = 'auth/register';
+            $this->view_data['states'] = State::find('all');
             $this->view_data['form_action'] = 'register';
         }
     }

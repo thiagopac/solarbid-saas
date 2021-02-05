@@ -76,8 +76,24 @@
             </div>
 
             <div class="form-group">
-                <label for="state"><?= $this->lang->line('application_state'); ?> *</label>
-                <input id="state" type="text" name="state" class="form-control required" tabindex="8" required value=""/>
+                <label for="state">
+                    <?=$this->lang->line('application_state');?> *
+                </label>
+                <?php
+                $options = array();
+                $state = array();
+
+                $options[null] = $this->lang->line('application_select_state');
+
+                foreach ($states as $value):
+                    $options[$value->letter] = $value->name;
+                endforeach;
+
+                $state = "";
+
+                $label = $this->lang->line('application_select_state');
+
+                echo form_dropdown('state', $options, $company_state, 'style="width:100%" class="chosen-select"');?>
             </div>
 
         </div>
