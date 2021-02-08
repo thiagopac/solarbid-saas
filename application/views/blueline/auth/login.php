@@ -38,7 +38,7 @@
 
           <div class="sub">
            <?php if ($core_settings->registration == 1) {
-        ?><div class="small"><small><?=$this->lang->line('application_login_header_desc'); ?></small></div><hr/><a href="<?=site_url('register'); ?>" class="btn btn-success"><?=$this->lang->line('application_registration_button'); ?></a> <?php
+        ?><hr/><div class="small" style="margin-bottom: 10px; text-transform: uppercase"><span><?=$this->lang->line('application_login_header_desc'); ?></span></div><a href="<?=site_url('register'); ?>" class="btn btn-success"><?=$this->lang->line('application_registration_button'); ?></a> <?php
     } ?>
           </div>
           <?php if ($this->config->item('recaptcha_web_key') != '') {

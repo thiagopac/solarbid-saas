@@ -3687,8 +3687,12 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 		}
 		.form-signin .small{
 			text-align: center;
-			color:#888;
+			color:#4a4a4a !important;
+			font-family: "Open Sans";
 			margin-top: 20px;
+			font-size: 12px;
+			font-weight: 700;
+			-webkit-font-smoothing: antialiased;
 		}
 		.form-signin.slidein{
 			opacity:1;
