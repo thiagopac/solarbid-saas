@@ -23,6 +23,12 @@
                         <?=$this->lang->line('application_submited_project');?>
                     </label>
                 <?php endif; ?>
+                <?php if ($flow->customer_approved == 1) : ?>
+                    ❯
+                    <label class="badge btn-secondary" style="padding:6px; font-size: 15px; text-transform: none; border-radius: 4px">
+                        <?=$this->lang->line('application_approved_project_solarbid');?>
+                    </label>
+                <?php endif; ?>
                 <?php if ($flow->solarbid_approved == 1) : ?>
                     ❯
                     <label class="badge btn-success" style="padding:6px; font-size: 15px; text-transform: none; border-radius: 4px">

@@ -1,6 +1,6 @@
 <?php
-
     $label_power = '';
+    $min_value = $pricing_limit->value;
 
     if ($pricing_field->power_top < 1000) {
         $label_power = $this->lang->line('application_from')." ".$pricing_field->power_bottom."".$core_settings->rated_power_measurement." ".$this->lang->line('application_until')." ".$pricing_field->power_top."".$core_settings->rated_power_measurement;
@@ -29,6 +29,7 @@
     $attributes = ['class' => '', 'id' => 'record_form'];
     echo form_open_multipart($form_action, $attributes);
 ?>
+
     <div class="row">
         <div class="col-md-6">
             <div class="form-group read-only">
@@ -54,6 +55,9 @@
         </label>
         <input type="text" value="<?=$label_structure_types;?>" class="form-control" readonly/>
     </div>
+
+<label class="text-danger pull-left hidden" id="min_value_alert" style="text-transform: none; font-weight: normal">Consideramos que para esta faixa de potência, o menor valor exequível é de R$ <span id="min_value">value</span>. Insira um valor maior para salvar!</label>
+
     <div class="form-group">
         <label for="value">
             <?=$this->lang->line('application_Wp_value');?> *
@@ -78,8 +82,7 @@
         <small><?=$this->lang->line('application_delivery_time_days_help')?></small>
     </div>
     <div class="modal-footer">
-        <input type="submit" class="btn btn-primary" value="
-			<?=$this->lang->line('application_save');?>"/>
+        <input type="submit" class="btn btn-primary" id="btn_save" value="<?=$this->lang->line('application_save');?>"/>
         <a class="btn" data-dismiss="modal">
             <?=$this->lang->line('application_close');?>
         </a>
@@ -88,6 +91,23 @@
 
 <script>
     $(document).ready(function(){
+
         $("#value").maskMoney({allowNegative: false, thousands:'.', decimal:',', affixesStay: false});
+
+        $("#value").change(function(){
+
+            let value = $('#value').maskMoney('unmasked')[0];
+            let min_value = <?=$min_value;?>;
+
+            if(parseFloat(value) < min_value){
+                $('#btn_save').prop('disabled', true);
+                $('#min_value_alert').removeClass('hidden');
+                $('#min_value').html(min_value.toString().replace('.', ','));
+            }else{
+                $('#min_value_alert').addClass('hidden');
+                $('#btn_save').prop('disabled', false);
+            }
+        })
+
     });
 </script>

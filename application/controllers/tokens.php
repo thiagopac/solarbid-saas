@@ -41,7 +41,7 @@ class Tokens extends MY_Controller {
 
     public function list_simulator() {
 
-        $this->view_data['simulator_flows'] = SimulatorFlow::find('all',['order' => 'id DESC', 'select'=> 'id, code, city, state, type, name, dealer, monthly_average, activity, structure_type_id, pv_kit, integrator, integrator_approved, solarbid_approved, created_at','include' => ['energy_dealer', 'state', 'city', 'activity', 'structure_type']]);
+        $this->view_data['simulator_flows'] = SimulatorFlow::find('all',['order' => 'id DESC', 'select'=> 'id, code, city, state, type, name, dealer, monthly_average, activity, structure_type_id, pv_kit, integrator, integrator_approved, customer_approved, solarbid_approved, created_at','include' => ['energy_dealer', 'state', 'city', 'activity', 'structure_type']]);
         $this->content_view = 'tokens/simulator_all';
     }
 
@@ -146,6 +146,9 @@ class Tokens extends MY_Controller {
         $this->view_data['flow'] = $flow;
         $this->view_data['company_appointment'] = $company_appointment;
 
+        $installation_local = InstallationLocal::first('first', ['conditions' => ['flow_id = ?', $flow->code]]);
+        $this->view_data['installation_local'] = $installation_local;
+
         $pv_kit_json = $flow->pv_kit_revised != null ? $flow->pv_kit_revised : $flow->pv_kit;
         $pv_kit_obj = json_decode($pv_kit_json);
         $pv_kit_structure_type_id = $pv_kit_obj->structure_type_id;
@@ -182,6 +185,9 @@ class Tokens extends MY_Controller {
 
         $this->view_data['flow'] = $flow;
         $this->view_data['company_appointment'] = $company_appointment;
+
+        $installation_local = InstallationLocal::first('first', ['conditions' => ['flow_id = ?', $flow->code]]);
+        $this->view_data['installation_local'] = $installation_local;
 
         $pv_kit_json = $flow->pv_kit_revised != null ? $flow->pv_kit_revised : $flow->pv_kit;
         $pv_kit_obj = json_decode($pv_kit_json);

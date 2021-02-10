@@ -110,7 +110,6 @@ class cPricing extends MY_Controller
         $this->view_data['pricing_table'] = PricingTable::find($table_id);
         $this->view_data['pricing_records'] = $pricing_records;
 
-//        $this->view_data['var_dump'] = $pricing_records;
         $this->content_view = 'pricing/client/records';
 
         $this->view_data['pricing_table_complete'] = 2*count($pricing_fields) === count($pricing_records) ? true : false;
@@ -139,6 +138,7 @@ class cPricing extends MY_Controller
 
             $this->view_data['pricing_record'] = $pricing_record;
             $this->view_data['pricing_field'] = PricingField::find($pricing_record->field_id);
+            $this->view_data['pricing_limit'] = PricingLimit::first(['conditions' => ['field_id = ? AND structure_type_ids = ?', $pricing_record->field_id, $pricing_record->structure_type_ids]]);
             $this->theme_view = 'modal';
             $this->view_data['title'] = $this->lang->line('application_edit_pricing_record');
             $this->view_data['form_action'] = 'cpricing/update/'.$pricing_record_id;
@@ -180,7 +180,7 @@ class cPricing extends MY_Controller
             }
             redirect('cpricing/view/'.$pricing_table_id);
         } else {
-            $this->view_data['pricing_field'] = PricingField::find($pricing_field_id);
+            $this->view_data['pricing_field'] = $pricing_field = PricingField::find($pricing_field_id);
             $this->theme_view = 'modal';
             $this->view_data['title'] = $this->lang->line('application_create_pricing_record');
             $this->view_data['form_action'] = 'cpricing/create/'.$pricing_table_id.'/'.$pricing_field_id.'/'.$structures_type_ids;
@@ -188,10 +188,12 @@ class cPricing extends MY_Controller
             $this->content_view = 'pricing/client/_record';
 
             if ($structures_type_ids === '123'){
-                $this->view_data['pricing_record_structure_types'] = '1,2,3';
+                $this->view_data['pricing_record_structure_types'] = $str_structures_type_ids = '1,2,3';
             }else{
-                $this->view_data['pricing_record_structure_types'] = '4,5';
+                $this->view_data['pricing_record_structure_types'] = $str_structures_type_ids = '4,5';
             }
+
+            $this->view_data['pricing_limit'] = PricingLimit::first(['conditions' => ['field_id = ? AND structure_type_ids = ?', $pricing_field->id, $str_structures_type_ids]]);
         }
     }
 

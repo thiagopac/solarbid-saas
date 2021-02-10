@@ -25,6 +25,12 @@
                         <?=$this->lang->line('application_submited_project');?>
                     </label>
                 <?php endif; ?>
+                <?php if ($flow->customer_approved == 1) : ?>
+                    ❯
+                    <label class="badge btn-secondary" style="padding:6px; font-size: 15px; text-transform: none; border-radius: 4px">
+                        <?=$this->lang->line('application_approved_project_solarbid');?>
+                    </label>
+                <?php endif; ?>
                 <?php if ($flow->solarbid_approved == 1) : ?>
                     ❯
                     <label class="badge btn-success" style="padding:6px; font-size: 15px; text-transform: none; border-radius: 4px">
@@ -405,10 +411,83 @@
 
                             <br clear="all"></div>
                     </div>
+
+                    <p></p>
+
+                    <div class="box-shadow" style="<?=$company_appointment->completed != 1 ? 'opacity:20%' : '' ;?>">
+                        <div class="table-head">
+                            <?= $this->lang->line('application_customer_final_proposal'); ?>
+                        </div>
+                        <div class="subcont">
+
+                            <?php $integrator_view = $integrator_revised != null ? $integrator_revised : $integrator ?>
+
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <ul class="details">
+                                        <li>
+                                            <span><?= $this->lang->line('application_customer_attach_final_proposal_file'); ?></span>
+<!--                                            <a href="--><?//=base_url()?><!--tokens/preview/--><?//=$flow->code;?><!--" target="_blank"><div class="icon-frame" style="text-align: center"><i class="ion-document"></i></div></a>-->
+
+                                            <h2><div class="form-group">
+                                                <label for="userfile">
+                                                    <?=$this->lang->line('application_file');?>
+                                                </label>
+                                                <div>
+                                                    <input id="uploadFile" class="form-control uploadFile" placeholder="<?=$this->lang->line('application_choose_file');?>" disabled="disabled" />
+                                                    <div class="fileUpload btn btn-primary" style="padding: 6px 10px !important; height: auto !important; right: 4px">
+                                                        <span><?=$this->lang->line('application_attach');?></span>
+                                                        <input id="uploadBtn" type="file" name="userfile" class="upload" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </h2>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <ul class="details">
+                                        <li>
+                                            <span><?= $this->lang->line('application_customer_email') ?></span>
+                                            <h2>
+                                                <?= $installation_local->email ?>
+                                            </h2>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <ul class="details" style="text-align: right;">
+                                        <li>
+                                            <span><?= $this->lang->line('application_proposal_status'); ?></span>
+                                            <h2>
+                                                    <?php switch ($flow->proposal_sent) : case 0 : ?>
+                                                            <span class="text-danger" style="padding: 6px">
+                                                                <?= $this->lang->line('application_not_sent') ?>
+                                                            </span>
+                                                        <?php break; case 1 : ?>
+                                                        <span class="text-success">
+                                                                <?= $this->lang->line('application_sent') ?>
+                                                            </span>
+                                                    <?php endswitch; ?>
+                                            </h2>
+                                            <p></p>
+                                            <?php if ($flow->proposal_sent == 0) : ?>
+                                                <a data-toggle="mainmodal" href="<?= base_url() ?>tokens/send_proposal/<?= $flow->code; ?>"
+                                                   class="pull-right btn btn-success"><?= $this->lang->line('application_send_proposal') ?></a>
+                                            <?php endif; ?>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                    </div>
+
                     <div>
                         <br clear="all"></div>
                         <div class="pull-right">
-                            <?php if ($flow->solarbid_approved != 1) : ?>
+                            <?php if ($flow->integrator_approved == 1 && $flow->customer_approved == 1 &&  $flow->solarbid_approved != 1) : ?>
                                 <a data-toggle="mainmodal" href="<?= base_url() ?>tokens/solarbid_approve/<?= $flow->code; ?>"
                                    class="pull-right btn btn-success"><?= $this->lang->line('application_approve_project') ?></a>
                             <?php endif; ?>

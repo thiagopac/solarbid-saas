@@ -1,6 +1,7 @@
 {
     "require": {
         "ezyang/htmlpurifier": "4.8",
-        "paquettg/php-html-parser": "^1.7"
+        "paquettg/php-html-parser": "^1.7",
+        "dompdf/dompdf": "^0.8.3"
     }
 }

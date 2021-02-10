@@ -10,7 +10,7 @@ class PricingField extends ActiveRecord\Model{
 
     public static $has_many = [
         ['pricing_schema_field', 'foreign_key' => 'id'],
+        ['pricing_limit', 'foreign_key' => 'id'],
     ];
-
 
 }
