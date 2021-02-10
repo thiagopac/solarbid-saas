@@ -56,7 +56,7 @@
         <input type="text" value="<?=$label_structure_types;?>" class="form-control" readonly/>
     </div>
 
-<label class="text-danger pull-left hidden" id="min_value_alert" style="text-transform: none; font-weight: normal">Consideramos que para esta faixa de potência, o menor valor exequível é de R$ <span id="min_value">value</span>. Insira um valor maior para salvar!</label>
+<label class="text-danger hidden" id="min_value_alert" style="text-transform: none; font-weight: normal">Consideramos que para esta faixa de potência, o menor valor exequível é de R$ <span id="min_value">value</span>. Insira um valor maior para salvar!</label>
 
     <div class="form-group">
         <label for="value">
