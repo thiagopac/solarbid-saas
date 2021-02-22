@@ -1624,3 +1624,5 @@ $lang['application_attach'] = 'Anexar';
 $lang['application_customer_email'] = 'E-mail do cliente';
 $lang['application_proposal_status'] = 'Status da proposta';
 $lang['application_not_sent'] = 'Não enviado';
+$lang['application_issue_register_whatsapp_desc'] = 'Teve algum problema ao tentar cadastrar sua empresa?';
+$lang['application_issue_register_whatsapp_link'] = 'Contate-nos por WhatsApp';

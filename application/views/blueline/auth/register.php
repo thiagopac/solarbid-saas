@@ -174,6 +174,16 @@
         <input type="submit" style="height: 40px" class="btn btn-success" tabindex="16" value="<?= $this->lang->line('application_send'); ?>"/>
     </div>
 </div>
+
+<div class="col-md-12" style="margin-top: 20px; display: inline-block">
+    <div class="pull-left">
+        <img width="30" style="margin-left: -30px; float: left" height="30" src="<?=base_url()?>assets/blueline/img/whatsapp-icon.png"/>
+        <label style="padding-left: 5px; float: left; padding-right: 0px"><?= $this->lang->line('application_issue_register_whatsapp_desc'); ?> </label>
+        <label style="float: left; padding-left: 2px"><a href="https://api.whatsapp.com/send?phone=5531991340000" target="_blank"><?=$this->lang->line('application_issue_register_whatsapp_link')?></a></label>
+
+    </div>
+</div>
+
 <?= form_close() ?>
 <script>
     $(document).ready(function() {
