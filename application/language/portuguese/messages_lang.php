@@ -279,6 +279,9 @@ $lang['messages_deleted_photo_error'] = "Erro ao apagar foto";
 $lang['messages_updated_company_profile_success'] = "Perfil da empresa atualizado";
 $lang['messages_updated_company_profile_error'] = "Erro ao atualizar o perfil da empresa";
 
+$lang['messages_proposal_sent_success'] = "Proposta enviada com sucesso!";
+$lang['messages_proposal_sent_error'] = "Erro ao enviar proposta";
+
 $lang['messages_created_pv_kit_error'] = "Erro ao adicionar Kit";
 $lang['messages_created_pv_kit_success'] = "Kit adicionado com sucesso";
 $lang['messages_updated_pv_kit_error'] = "Erro ao atualizar Kit";

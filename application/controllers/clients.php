@@ -169,6 +169,9 @@ class Clients extends MY_Controller
 
     public function update_screening($id = false, $getview = false) {
         if ($_POST) {
+
+            var_dump($_POST);exit;
+
             $id = $_POST['id'];
             $client = ScreeningClient::find($id);
             $config['upload_path'] = './files/media/user';

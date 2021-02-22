@@ -174,6 +174,8 @@ class Tokens extends MY_Controller {
         $flow->integrator_revised = $integrator_revised;
         $flow->save();
 
+        $this->view_data['form_action_proposal'] = 'tokens/send_proposal/';
+
         $this->content_view = 'tokens/analyze_simulator_token';
     }
 
@@ -495,6 +497,70 @@ class Tokens extends MY_Controller {
             $this->content_view = 'tokens/_approve';
             $this->view_data['title'] = $this->lang->line('application_approve_project');
         }
+    }
+
+    public function send_proposal() {
+
+//        var_dump($_POST);exit;
+
+        $core_settings = Setting::first();
+
+        $token = $_POST['token'];
+
+        $is_simulator_flow = SimulatorFlow::find(['conditions' => ['code = ?', $token]]);
+        $is_store_flow = StoreFlow::find(['conditions' => ['code = ?', $token]]);
+
+        $path_type = null;
+
+        if ($is_simulator_flow != null){
+            $path_type =  'analyze_simulator_token';
+        }else{
+            $path_type = 'analyze_store_token';
+        }
+
+        if ($_POST) {
+
+            var_dump($_POST['userfile']);exit;
+
+            if ($_POST['userfile'] != null){
+
+                //begin image upload
+                $config['upload_path'] = './files/proposals/';
+                $config['encrypt_name'] = true;
+                $config['allowed_types'] = 'pdf';
+
+                $full_path = $core_settings->domain."files/proposals/";
+
+                $this->load->library('upload', $config);
+
+                if (!$this->upload->do_upload()) {
+                    $error = $this->upload->display_errors('', ' ');
+                    $this->session->set_flashdata('message', 'error:'.$error);
+                    redirect('tokens/'.$path_type.'/'.$token);
+                } else {
+                    $data = array('upload_data' => $this->upload->data());
+                    $proposal_file = $full_path.$data['upload_data']['file_name'];
+                }
+
+                $_POST = array_map('htmlspecialchars', $_POST);
+                //end image upload
+            }
+
+            unset($_POST['send']);
+            unset($_POST['userfile']);
+            unset($_POST['files']);
+
+//            $pv_kit = PvKit::create($_POST);
+
+            if (!$proposal_file) {
+                $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_proposal_sent_error'));
+            } else {
+                $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_proposal_sent_success'));
+            }
+            redirect('tokens/'.$path_type.'/'.$token);
+        }
+
+        $this->theme_view = 'ajax';
     }
 
 }

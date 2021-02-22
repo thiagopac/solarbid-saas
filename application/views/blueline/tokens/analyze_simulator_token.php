@@ -423,25 +423,31 @@
                             <?php $integrator_view = $integrator_revised != null ? $integrator_revised : $integrator ?>
 
                             <div class="row">
-
+                                <?php
+                                    $attributes = ['class' => '', 'id' => 'proposal_form'];
+                                    echo form_open_multipart($form_action_proposal, $attributes);
+                                ?>
+                                <input type="hidden" name="token" value="<?=$flow->code?>"/>
                                 <div class="col-md-4">
                                     <ul class="details">
                                         <li>
                                             <span><?= $this->lang->line('application_customer_attach_final_proposal_file'); ?></span>
 <!--                                            <a href="--><?//=base_url()?><!--tokens/preview/--><?//=$flow->code;?><!--" target="_blank"><div class="icon-frame" style="text-align: center"><i class="ion-document"></i></div></a>-->
 
-                                            <h2><div class="form-group">
-                                                <label for="userfile">
-                                                    <?=$this->lang->line('application_file');?>
-                                                </label>
-                                                <div>
-                                                    <input id="uploadFile" class="form-control uploadFile" placeholder="<?=$this->lang->line('application_choose_file');?>" disabled="disabled" />
-                                                    <div class="fileUpload btn btn-primary" style="padding: 6px 10px !important; height: auto !important; right: 4px">
-                                                        <span><?=$this->lang->line('application_attach');?></span>
-                                                        <input id="uploadBtn" type="file" name="userfile" class="upload" />
+                                            <h2>
+                                                <div class="form-group">
+                                                    <label for="userfile">
+                                                        <?=$this->lang->line('application_file');?>
+                                                    </label>
+                                                    <div>
+                                                        <input id="uploadFile" class="form-control uploadFile" placeholder="<?=$this->lang->line('application_choose_file');?>" disabled="disabled" />
+                                                        <div class="fileUpload btn btn-primary" style="padding: 6px 10px !important; height: auto !important; right: 4px">
+                                                            <span><?=$this->lang->line('application_attach');?></span>
+                                                            <input id="uploadBtn" type="file" name="userfile" class="upload" />
+                                                        </div>
+
                                                     </div>
                                                 </div>
-                                            </div>
                                             </h2>
                                         </li>
                                     </ul>
@@ -475,13 +481,14 @@
                                             </h2>
                                             <p></p>
                                             <?php if ($flow->proposal_sent == 0) : ?>
-                                                <a data-toggle="mainmodal" href="<?= base_url() ?>tokens/send_proposal/<?= $flow->code; ?>"
-                                                   class="pull-right btn btn-success"><?= $this->lang->line('application_send_proposal') ?></a>
+                                                <input type="submit" class="btn btn-primary" id="btn_send_proposal" value="<?=$this->lang->line('application_send_proposal');?>"/>
                                             <?php endif; ?>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
+
+                            <?php echo form_close(); ?>
                     </div>
 
                     <div>

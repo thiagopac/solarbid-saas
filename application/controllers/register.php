@@ -19,8 +19,6 @@ class Register extends MY_Controller
 
         if ($_POST) {
 
-            var_dump($_POST);exit;
-
             $this->load->library('parser');
             $this->load->helper('file');
             $this->load->helper('notification');
