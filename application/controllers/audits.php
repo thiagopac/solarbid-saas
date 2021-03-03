@@ -39,7 +39,7 @@ class Audits extends MY_Controller{
     }
 
     public function index(){
-        $this->view_data['registries'] = $registries =  Audit::all(['conditions' => ['1 = ? ORDER BY created_at DESC', 1], 'limit' => '500']);
+        $this->view_data['registries'] = $registries =  Audit::all(['conditions' => ['1 = ? ORDER BY created_at DESC', 1], 'limit' => '300']);
 
         $related_objects = array();
 

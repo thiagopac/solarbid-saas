@@ -41,13 +41,13 @@ class Tokens extends MY_Controller {
 
     public function list_simulator() {
 
-        $this->view_data['simulator_flows'] = SimulatorFlow::find('all',['limit' => '500', 'order' => 'id DESC', 'select'=> 'id, code, city, state, type, name, dealer, monthly_average, activity, structure_type_id, pv_kit, integrator, integrator_approved, customer_approved, solarbid_approved, created_at','include' => ['energy_dealer', 'state', 'city', 'activity', 'structure_type']]);
+        $this->view_data['simulator_flows'] = SimulatorFlow::find('all',['limit' => '300', 'order' => 'id DESC', 'select'=> 'id, code, city, state, type, name, dealer, monthly_average, activity, structure_type_id, pv_kit, integrator, integrator_approved, customer_approved, solarbid_approved, created_at','include' => ['energy_dealer', 'state', 'city', 'activity', 'structure_type']]);
         $this->content_view = 'tokens/simulator_all';
     }
 
     public function list_store() {
 
-        $this->view_data['store_flows'] = StoreFlow::find('all',['limit' => '500', 'order' => 'id DESC']);
+        $this->view_data['store_flows'] = StoreFlow::find('all',['limit' => '300', 'order' => 'id DESC']);
 
         $this->content_view = 'tokens/store_all';
     }
