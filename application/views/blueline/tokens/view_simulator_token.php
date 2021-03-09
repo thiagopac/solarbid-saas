@@ -84,7 +84,7 @@
                                         -
                                     <?php else : ?>
                                         <small>
-                                            <strong><?=$this->lang->line('application_tariff')?>:</strong> <?=$core_settings->money_symbol;?><?=display_money($simulation_results->tariff->value).' ('.$simulation_results->tariff->value.')' ?><br/>
+                                            <strong><?=$this->lang->line('application_tariff')?>:</strong> <?=$core_settings->money_symbol;?><?=display_money($simulation_results->tariff).' ('.$simulation_results->tariff.')' ?><br/>
                                             <strong><?=$this->lang->line('application_min_area')?></strong>: <?=$simulation_results->min_area ?> <?=$core_settings->area_measurement;?><br/>
                                             <strong><?=$this->lang->line('application_modules_qty')?></strong>: <?=$simulation_results->modules_qty ?><br/>
                                             <strong><?=$this->lang->line('application_payback_time')?></strong>: <?=$simulation_results->payback_time ?> <?=$this->lang->line('application_years')?><br/>

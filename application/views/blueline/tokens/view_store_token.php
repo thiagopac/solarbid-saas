@@ -119,13 +119,17 @@
                                     <?= $company_appointment->id ?>
                                 </li>
                                 <li> <span> <?=$this->lang->line('application_date'); ?>: </span>
-                                    <?= date($core_settings->date_format, strtotime($company_appointment->date)) ?>
+                                    <?=$company_appointment->date != null ? date($core_settings->date_format, strtotime($company_appointment->date)) : '-' ?>
                                 </li>
                                 <li> <span> <?=$this->lang->line('application_appointment_time'); ?>: </span>
-                                    <?= $company_appointment->appointment_time->name ?>
+                                    <?=$company_appointment->appointment_time != null ?  $company_appointment->appointment_time->name : '-' ?>
                                 </li>
                                 <li> <span> <?=$this->lang->line('application_completed_visit'); ?>: </span>
-                                    <h4 style="vertical-align: middle; <?=$company_appointment->completed == 1 ? 'color: green' : 'color: red' ?>"><?= $company_appointment->completed == 1 ? $this->lang->line('application_yes') : $this->lang->line('application_no') ?></h4>
+                                    <?php if ($company_appointment != null) : ?>
+                                        <h4 style="vertical-align: middle; <?=$company_appointment->completed == 1 ? 'color: green' : 'color: red' ?>"><?= $company_appointment->completed == 1 ? $this->lang->line('application_yes') : $this->lang->line('application_no') ?></h4>
+                                    <?php else : ?>
+                                        -
+                                    <?php endif; ?>
                                 </li>
                             </ul>
                             <br clear="all"> </div>
