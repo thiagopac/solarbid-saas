@@ -83,7 +83,7 @@
                                     <div class="tile-small-header">
                                         <?= $this->lang->line('application_table') ?>: #<?= ellipsize($pricing_table->name, 15, .8);  ?>
 
-                                        <?php if(strtotime($pricing_table->end) < strtotime(date("Y-m-d"))) : ?>
+                                        <?php if((strtotime($pricing_table->end) < strtotime(date("Y-m-d"))) && $pricing_table->expiration_locked == 0) : ?>
                                              <small class="badge btn-danger btn-xs" style="font-size: 9px !important; font-weight: 600; margin-top: -2px; margin-left: 2px">
                                                  <?=$this->lang->line('application_deadline_reached')?>
                                              </small>
@@ -119,6 +119,11 @@
                                                     <small>
                                                         <?= date($core_settings->date_format, strtotime($pricing_table->end)) ?>
                                                     </small>
+                                                    <?php if ($pricing_table->expiration_locked == 1) : ?>
+                                                        <small class="badge btn-xs" style="font-size: 9px !important; font-weight: 600; margin-top: -2px; margin-left: 2px; text-transform: uppercase; background-color: #9c78db">
+                                                            <?=$this->lang->line('application_expiration_deactivated')?>
+                                                        </small>
+                                                    <?php endif; ?>
                                                 </strong>
                                             <?php else: ?>
                                                     <br />

@@ -201,7 +201,7 @@ class My_Controller extends CI_Controller
                 }
 
                 if ($active_pricing_table->end != null){
-                    if (strtotime($active_pricing_table->start) > strtotime(date("Y-m-d"))  || strtotime($active_pricing_table->end) < strtotime(date("Y-m-d")) ){
+                    if (strtotime($active_pricing_table->start) > strtotime(date("Y-m-d"))  || (strtotime($active_pricing_table->end) < strtotime(date("Y-m-d")) && $active_pricing_table->expiration_locked == 0)){
                         $this->view_data['integrator_online'] = false;
                         $integrator_status_desc = "Você não possui nenhuma tabela de preços com período de validade funcional. Corrija este problema para ficar ativo.";
                     }

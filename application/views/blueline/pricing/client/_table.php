@@ -30,6 +30,17 @@
             </div>
         </div>
     </div>
+    <div class="form-group">
+        <label for="name">
+            <?=$this->lang->line('application_expiration_locked_label');?>
+        </label>
+        <input type="checkbox" class="checkbox" id="expiration_locked" name="expiration_locked"
+               data-labelauty="<?=$this->lang->line('application_activated')?>"
+               <?php if ($pricing_table->expiration_locked == 1) {
+            echo 'checked="checked"';
+        } ?>>
+    </div>
+
 
     <?php if($pricing_schemas != null) : ?>
     <div class="form-group">

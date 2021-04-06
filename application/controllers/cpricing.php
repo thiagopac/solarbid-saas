@@ -68,7 +68,7 @@ class cPricing extends MY_Controller
         }
 
         if ($active_pricing_table->end != null){
-            if (strtotime($active_pricing_table->start) > strtotime(date("Y-m-d"))  || strtotime($active_pricing_table->end) < strtotime(date("Y-m-d")) ){
+            if (strtotime($active_pricing_table->start) > strtotime(date("Y-m-d"))  || (strtotime($active_pricing_table->end) < strtotime(date("Y-m-d")) && $active_pricing_table->expiration_locked == 0)){
                 $this->view_data['integrator_online'] = false;
                 $pricing_tables_current_status_desc = $this->lang->line('application_no_pricing_table_valid_start_end');
             }
@@ -138,7 +138,8 @@ class cPricing extends MY_Controller
 
             $this->view_data['pricing_record'] = $pricing_record;
             $this->view_data['pricing_field'] = PricingField::find($pricing_record->field_id);
-            $this->view_data['pricing_limit'] = PricingLimit::first(['conditions' => ['field_id = ? AND structure_type_ids = ?', $pricing_record->field_id, $pricing_record->structure_type_ids]]);
+            $this->view_data['pricing_limit'] = $min_value = PricingLimit::first(['conditions' => ['field_id = ? AND structure_type_ids = ?', $pricing_record->field_id, $pricing_record->structure_type_ids]]);
+            $this->view_data['max_value'] = $min_value->value * 10;
             $this->theme_view = 'modal';
             $this->view_data['title'] = $this->lang->line('application_edit_pricing_record');
             $this->view_data['form_action'] = 'cpricing/update/'.$pricing_record_id;
@@ -248,6 +249,10 @@ class cPricing extends MY_Controller
 
         if ($_POST) {
 
+            $_POST['expiration_locked'] = $_POST['expiration_locked'] == 'on' ? 1 : 0;
+
+//            var_dump($pricing_table);exit;
+
             $pricing_table->update_attributes($_POST);
             if (!$pricing_table) {
                 $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_updated_pricing_table_error'));
@@ -256,7 +261,6 @@ class cPricing extends MY_Controller
             }
             redirect('cpricing/view/'.$pricing_table_id);
         } else {
-            $pricing_table = PricingTable::find($pricing_table_id);
             $this->view_data['pricing_table'] = $pricing_table;
             $this->theme_view = 'modal';
             $this->view_data['title'] = $this->lang->line('application_edit_pricing_table');

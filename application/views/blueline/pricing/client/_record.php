@@ -1,6 +1,7 @@
 <?php
     $label_power = '';
     $min_value = $pricing_limit->value;
+    $max_value = $max_value;
 
     if ($pricing_field->power_top < 1000) {
         $label_power = $this->lang->line('application_from')." ".$pricing_field->power_bottom."".$core_settings->rated_power_measurement." ".$this->lang->line('application_until')." ".$pricing_field->power_top."".$core_settings->rated_power_measurement;
@@ -56,7 +57,7 @@
         <input type="text" value="<?=$label_structure_types;?>" class="form-control" readonly/>
     </div>
 
-<label class="text-danger hidden" id="min_value_alert" style="text-transform: none; font-weight: normal">Consideramos que para esta faixa de potência, o menor valor exequível é de R$ <span id="min_value">value</span>. Insira um valor maior para salvar!</label>
+<label class="text-danger hidden" id="value_alert" style="text-transform: none; font-weight: normal">Consideramos que para esta faixa de potência, o menor valor exequível é de R$ <span id="min_value">value</span> e o maior valor exequível é de R$  <span id="max_value">value</span>. Insira um valor entre este intervalo!</label>
 
     <div class="form-group">
         <label for="value">
@@ -98,13 +99,15 @@
 
             let value = $('#value').maskMoney('unmasked')[0];
             let min_value = <?=$min_value;?>;
+            let max_value = <?=$max_value;?>;
 
-            if(parseFloat(value) < min_value){
+            if(parseFloat(value) < min_value || parseFloat(value) > max_value){
                 $('#btn_save').prop('disabled', true);
-                $('#min_value_alert').removeClass('hidden');
-                $('#min_value').html(min_value.toString().replace('.', ','));
+                $('#value_alert').removeClass('hidden');
+                $('#min_value').html(min_value.toFixed(2).toString().replace('.', ','));
+                $('#max_value').html(max_value.toFixed(2).toString().replace('.', ','));
             }else{
-                $('#min_value_alert').addClass('hidden');
+                $('#value_alert').addClass('hidden');
                 $('#btn_save').prop('disabled', false);
             }
         })
