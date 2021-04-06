@@ -38,7 +38,7 @@
 				<tr>
 					<td>
 						<?php echo str_replace('.zip', '', $filename[1]); ?>
-						<?php echo str_replace('.zip', '', $filename[2]); ?>
+						<?php echo str_replace('.zip', '', $filename[2]); ?>:<?php echo str_replace('.zip', '', $filename[3]); ?>
 					</td>
 					<td>
 						<?php echo str_replace('-', ' ', $filename[0]); ?>

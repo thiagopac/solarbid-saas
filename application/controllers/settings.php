@@ -737,11 +737,11 @@ class Settings extends MY_Controller
         $this->load->dbutil();
         $settings = Setting::first();
         $version = str_replace('.', '-', $settings->version);
-        $prefs = ['format' => 'zip', 'filename' => 'Manual-full-backup_' . date('d-m-Y_H-i')];
+        $prefs = ['format' => 'zip', 'filename' => 'Manual-full-backup_' . date('d-m-Y_H_i')];
 
         $backup = &$this->dbutil->backup($prefs);
 
-        if (!write_file('./files/backup/saas-manual-backup_' . date('d-m-Y_H:i') . '.zip', $backup)) {
+        if (!write_file('./files/backup/saas-manual-backup_' . date('d-m-Y_H_i') . '.zip', $backup)) {
             $this->session->set_flashdata('message', 'error:' . $this->lang->line('messages_create_backup_error'));
         } else {
             $this->session->set_flashdata('message', 'success:' . $this->lang->line('messages_create_backup_success'));
