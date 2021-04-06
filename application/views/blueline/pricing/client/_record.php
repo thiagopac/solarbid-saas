@@ -57,7 +57,8 @@
         <input type="text" value="<?=$label_structure_types;?>" class="form-control" readonly/>
     </div>
 
-<label class="text-danger hidden" id="value_alert" style="text-transform: none; font-weight: normal">Consideramos que para esta faixa de potência, o menor valor exequível é de R$ <span id="min_value">value</span> e o maior valor exequível é de R$  <span id="max_value">value</span>. Insira um valor entre este intervalo!</label>
+    <label class="text-danger hidden" id="min_value_alert" style="text-transform: none; font-weight: normal">Consideramos que para esta faixa de potência, o menor valor exequível é de R$ <span id="min_value">value</span>.</label>
+    <label class="text-danger hidden" id="max_value_alert" style="text-transform: none; font-weight: normal">Consideramos que, para esta faixa de potência, o máximo valor razoável é de R$ <span id="max_value">value</span>. Verifique se o seu preço está considerando o valor apenas do <strong>SERVIÇO</strong>, em (R$/Wp).</label>
 
     <div class="form-group">
         <label for="value">
@@ -103,11 +104,19 @@
 
             if(parseFloat(value) < min_value || parseFloat(value) > max_value){
                 $('#btn_save').prop('disabled', true);
-                $('#value_alert').removeClass('hidden');
-                $('#min_value').html(min_value.toFixed(2).toString().replace('.', ','));
-                $('#max_value').html(max_value.toFixed(2).toString().replace('.', ','));
+
+                if (parseFloat(value) < min_value){
+                    $('#min_value_alert').removeClass('hidden');
+                    $('#max_value_alert').addClass('hidden');
+                    $('#min_value').html(min_value.toFixed(2).toString().replace('.', ','));
+                }else if(parseFloat(value) > max_value){
+                    $('#min_value_alert').addClass('hidden');
+                    $('#max_value_alert').removeClass('hidden');
+                    $('#max_value').html(max_value.toFixed(2).toString().replace('.', ','));
+                }
             }else{
-                $('#value_alert').addClass('hidden');
+                $('#min_value_alert').addClass('hidden');
+                $('#max_value_alert').addClass('hidden');
                 $('#btn_save').prop('disabled', false);
             }
         })
