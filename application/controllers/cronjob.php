@@ -26,7 +26,7 @@ class Cronjob extends MY_Controller
         $core_settings->save();
 
         // Run auto Backup if enabled and if last backup is older then 7 days
-        if ($core_settings->autobackup == '1' && time() > ($core_settings->last_autobackup + 0 * 0 * 60 * 60)) {
+        if ($core_settings->autobackup == '1' && time() > ($core_settings->last_autobackup + 7 * 24 * 60 * 60)) {
             $this->load->dbutil();
 
             $version = str_replace('.', '-', $core_settings->version);
