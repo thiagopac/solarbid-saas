@@ -334,3 +334,6 @@ $lang['messages_routine_success'] = "Rotina executada com sucesso";
 
 $lang['messages_updated_token_error'] = "Erro ao atualizar Token";
 $lang['messages_updated_token_success'] = "Token atualizado com sucesso";
+
+$lang['messages_updated_post_error'] = "Erro ao atualizar Artigo";
+$lang['messages_updated_post_success'] = "Artigo atualizado com sucesso";

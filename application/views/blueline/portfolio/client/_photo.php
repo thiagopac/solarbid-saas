@@ -1,6 +1,6 @@
 <?php
-$attributes = array('class' => '', 'data-reload' => 'div-photos', 'id' => '_photo');
-echo form_open_multipart($form_action, $attributes);
+    $attributes = array('class' => '', 'data-reload' => 'div-photos', 'id' => '_photo');
+    echo form_open_multipart($form_action, $attributes);
 ?>
 
     <div class="form-group">
