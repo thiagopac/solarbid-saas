@@ -184,13 +184,13 @@ class Blog extends MY_Controller
         $files = array_diff(scandir($path), array('.', '..'));
         $clean_files = array();
 
-        for($i = 2; $i < count($files); $i++){
-            if (preg_match("/^[^\.].*$/", $files[$i])) {
-                array_push($clean_files, $files[$i]);
-            }
-        }
+//        for($i = 2; $i < count($files); $i++){
+//            if (preg_match("/^[^\.].*$/", $files[$i])) {
+//                array_push($clean_files, $files[$i]);
+//            }
+//        }
 
-        $this->view_data['files'] = $clean_files;
+        $this->view_data['files'] = $files;
 
         $this->theme_view = 'modal_large';
         $this->content_view = 'blog/_image_server';
