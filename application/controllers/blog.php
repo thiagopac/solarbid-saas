@@ -47,7 +47,7 @@ class Blog extends MY_Controller
                 $config['encrypt_name'] = true;
                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
 
-                $full_path = $core_settings->domain."files/media/blog/";
+                $full_path = $core_settings->domain."/files/media/blog/";
 
                 $this->load->library('upload', $config);
 
@@ -126,7 +126,7 @@ class Blog extends MY_Controller
                 $config['encrypt_name'] = true;
                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
 
-                $full_path = $core_settings->domain."files/media/blog/";
+                $full_path = $core_settings->domain."/files/media/blog/";
 
                 $this->load->library('upload', $config);
 
