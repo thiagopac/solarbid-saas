@@ -337,3 +337,5 @@ $lang['messages_updated_token_success'] = "Token atualizado com sucesso";
 
 $lang['messages_updated_post_error'] = "Erro ao atualizar Artigo";
 $lang['messages_updated_post_success'] = "Artigo atualizado com sucesso";
+
+$lang['messages_send_image_success'] = "Imagem enviada com sucesso";

@@ -137,7 +137,7 @@
                                             <br/>
                                             <strong><?= $this->lang->line('application_location') ?></strong>: <?= $integrator->location ?>
                                             <br/>
-                                            <strong><?= $this->lang->line('application_distance') ?></strong>: <?= $integrator->distance ?>
+                                            <strong><?= $this->lang->line('application_distance') ?></strong>: <?= $integrator->distance ?> km
                                             <br/>
                                             <strong><?= $this->lang->line('application_price') ?></strong>: <?= $core_settings->money_symbol; ?><?= display_money($integrator->price) ?>
                                             <br/>
@@ -364,7 +364,7 @@
                                         <li>
                                             <span><?= $this->lang->line('application_distance_installation_location') ?></span>
                                             <h2>
-                                                <?= $integrator->distance ?>km
+                                                <?= $integrator->distance ?> km
                                             </h2>
                                         </li>
                                     </ul>

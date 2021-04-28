@@ -72,7 +72,7 @@
                                         <small>
                                             <strong><?=$this->lang->line('application_name')?></strong>: <?=$integrator->company_name ?><br/>
                                             <strong><?=$this->lang->line('application_location')?></strong>: <?=$integrator->location ?><br/>
-                                            <strong><?=$this->lang->line('application_distance')?></strong>: <?=$integrator->distance ?><br/>
+                                            <strong><?=$this->lang->line('application_distance')?></strong>: <?=$integrator->distance ?> km<br/>
                                             <strong><?=$this->lang->line('application_price')?></strong>: <?=$core_settings->money_symbol;?><?=display_money($integrator->price) ?><br/>
                                             <strong><?=$this->lang->line('application_average_rating')?></strong>: <?=$integrator->average_rating ?> <br/>
                                             <strong><?=$this->lang->line('application_power_executed')?></strong>: <?=$integrator->power_executed ?> <?=$core_settings->rated_power_measurement;?><br/>
@@ -300,7 +300,7 @@
                                         <li>
                                             <span><?= $this->lang->line('application_distance_installation_location') ?></span>
                                             <h2>
-                                                <?= $integrator->distance ?>km
+                                                <?= $integrator->distance ?> km
                                             </h2>
                                         </li>
                                     </ul>

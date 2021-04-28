@@ -1645,3 +1645,5 @@ $lang['application_leave_blank_availability'] = '(Deixe em branco para postagem 
 $lang['application_publication'] = 'Publicação';
 $lang['application_active_desc'] = '(Artigo ativo é veiculado no blog)';
 $lang['application_preview_post'] = 'Visualizar post';
+$lang['application_send_images'] = 'Enviar imagens';
+$lang['application_view_images'] = 'Visualizar imagens';
