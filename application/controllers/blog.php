@@ -35,56 +35,11 @@ class Blog extends MY_Controller
 
     public function post($post_id = false) {
 
-        $core_settings = Setting::first();
-
         if ($_POST) {
 
             $_POST['active'] = $_POST['active'] == 'on' ? 1 : 0;
 
-            if ($_FILES['userfile']['name'] != ''){
-                //begin image upload
-                $config['upload_path'] = './files/media/blog/';
-                $config['encrypt_name'] = true;
-                $config['allowed_types'] = 'gif|jpg|png|jpeg';
-
-                $full_path = $core_settings->domain."/files/media/blog/";
-
-                $this->load->library('upload', $config);
-
-                if (!$this->upload->do_upload()) {
-                    $error = $this->upload->display_errors('', ' ');
-                    $this->session->set_flashdata('message', 'error:'.$error);
-                    redirect("blog/post/$post_id");
-                } else {
-                    $data = array('upload_data' => $this->upload->data());
-
-                    $_POST['image'] = $full_path.$data['upload_data']['file_name'];
-
-                    //check image processor extension
-                    if (extension_loaded('gd2')) {
-                        $lib = 'gd2';
-                    } else {
-                        $lib = 'gd';
-                    }
-
-                    $config['image_library']  = $lib;
-                    $config['source_image']   = './files/media/blog/'.$_POST['savename'];
-                    $config['maintain_ratio'] = true;
-                    $config['max_width']          = 2048;
-                    $config['max_height']         = 2048;
-                    $config['master_dim']     = "height";
-                    $config['quality']        = "100%";
-
-                    $this->load->library('image_lib');
-                    $this->image_lib->initialize($config);
-                    $this->image_lib->resize();
-                    $this->image_lib->clear();
-                }
-            }
-
             unset($_POST['send']);
-            unset($_POST['userfile']);
-            unset($_POST['files']);
 
             if ($post_id == null){
                 BlogPost::create($_POST);

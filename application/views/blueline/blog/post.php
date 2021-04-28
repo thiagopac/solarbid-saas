@@ -73,17 +73,13 @@
                                     $img = $post->image;
                                 }
                             ?>
-                            <img id="image" name="image" src="<?=$img?>" style="width: 100%"/>
+                            <img id="image_preview" name="image_preview" src="<?=$img?>" style="width: 100%"/>
                             <div class="form-group" style="margin-top: 20px">
-                                <label for="userfile"><?= $this->lang->line('application_image'); ?> </label>
+                                <label for="userfile"><?= $this->lang->line('application_image_url'); ?> </label>
                                 <div>
-                                    <input id="uploadFile" name="uploadFile" class="form-control uploadFile" disabled="disabled" placeholder="<?= $this->lang->line('application_choose_file'); ?>" />
-                                    <div class="fileUpload btn btn-primary">
-                                         <span><i class="icon dripicons-upload"></i>
-                                             <span class="hidden-xs"> <?= $this->lang->line('application_upload_new'); ?></span>
-                                         </span>
-                                        <input id="uploadBtn" type="file" name="userfile" class="upload"/>
-                                    </div>
+                                    <input id="image" type="text" name="image" class="required form-control" value="<?php if (isset($post)) {
+                                        echo $post->image;
+                                    } ?>" required/>
                                 </div>
                             </div>
                         </div>
@@ -159,20 +155,28 @@
             $("#slug").val(string_to_slug($("#title").val()))
         });
 
+        // function readURL(input) {
+        //
+        //     if (input[0].files[0]) {
+        //         var reader = new FileReader();
+        //
+        //         reader.onload = function (e) {
+        //             $('#image').attr('src', e.target.result);
+        //         };
+        //
+        //         reader.readAsDataURL(input[0].files[0]);
+        //     }
+        // }
+        //
+        // $("#uploadBtn").change(function(){
+        //     readURL($(this));
+        // });
+
         function readURL(input) {
-
-            if (input[0].files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#image').attr('src', e.target.result);
-                };
-
-                reader.readAsDataURL(input[0].files[0]);
-            }
+            $('#image_preview').attr('src', input.val())
         }
 
-        $("#uploadBtn").change(function(){
+        $("#image").change(function(){
             readURL($(this));
         });
 

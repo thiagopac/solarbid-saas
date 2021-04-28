@@ -1647,3 +1647,4 @@ $lang['application_active_desc'] = '(Artigo ativo é veiculado no blog)';
 $lang['application_preview_post'] = 'Visualizar post';
 $lang['application_send_images'] = 'Enviar imagens';
 $lang['application_view_images'] = 'Visualizar imagens';
+$lang['application_image_url'] = 'URL da imagem';
