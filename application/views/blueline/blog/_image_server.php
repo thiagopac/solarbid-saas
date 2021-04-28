@@ -3,7 +3,7 @@
     <div class="subcont preview">
         <div align="center" style="height: 70vh; overflow-y: auto;">
             <?php foreach ($files as $file) : ?>
-                <a href="<?=base_url()?>files/media/blog/<?=$file?>" style="padding: 10px" class="ajax-silent image_link"><img width="300" height="auto" src=<?=base_url()?>files/media/blog/<?=$file?>"></a>
+                <a href="<?=base_url()?>files/media/blog/<?=$file?>" style="padding: 10px" class="ajax-silent image_link"><img width="300" height="auto" src="<?=base_url()?>files/media/blog/<?=$file?>"></a>
             <?php endforeach; ?>
         </div>
     </div>
