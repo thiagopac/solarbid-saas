@@ -1649,3 +1649,5 @@ $lang['application_send_images'] = 'Enviar imagens';
 $lang['application_view_images'] = 'Visualizar imagens';
 $lang['application_image_url'] = 'URL da imagem';
 $lang['application_scheduling_done'] = 'Agendamento efetuado';
+$lang['electricity_bill_before'] = 'Conta de luz antes';
+$lang['electricity_bill_after'] = 'Conta de luz depois';
