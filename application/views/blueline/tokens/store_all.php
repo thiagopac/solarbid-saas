@@ -25,6 +25,9 @@
                         <th>
                             <?=$this->lang->line('application_integrator');?>
                         </th>
+                        <th style="text-align: center">
+                            <?=$this->lang->line('application_scheduling_done');?>
+                        </th>
                         <th style="width:100px">
                             <?=$this->lang->line('application_submited_project');?>
                         </th>
@@ -51,6 +54,13 @@
                             </td>
                             <td>
                                 <?=json_decode($store_flow->integrator)->company_name?>
+                            </td>
+                            <td style="text-align: center">
+                                <?php if ($store_flow->installation_local != null) : ?>
+                                    <label class="label label-success"><?=$this->lang->line('application_yes');?></label>
+                                <?php else : ?>
+                                    <label class="label label-important"><?=$this->lang->line('application_no');?></label>
+                                <?php endif; ?>
                             </td>
                             <td style="text-align: center">
                                 <?php if ($store_flow->integrator_approved == 1) : ?>

@@ -2,6 +2,7 @@
 
 class SimulatorFlow extends ActiveRecord\Model {
     static $table_name = 'flow';
+    public $installation_local;
 
     public static $belongs_to = [
         ['city', 'foreign_key' => 'city'],
@@ -16,7 +17,7 @@ class SimulatorFlow extends ActiveRecord\Model {
 
         ['city_obj', 'foreign_key' => 'city', 'class_name' => 'City'],
         ['state_obj', 'foreign_key' => 'state', 'class_name' => 'State'],
-        ['activity_obj', 'foreign_key' => 'activity', 'class_name' => 'Activity'],
+        ['activity_obj', 'foreign_key' => 'activity', 'class_name' => 'Activity']
     ];
 
     public function getFlowByCode($code){
