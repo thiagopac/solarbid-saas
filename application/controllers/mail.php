@@ -260,30 +260,35 @@ class Mail extends MY_Controller {
             $to = trim(htmlspecialchars($_POST['to']));
             $from = $core_settings->email;
             $company_name = $core_settings->company;
-            
+
             $flow = SimulatorFlow::find(['conditions' => ['code = ?', $flow_id]]);
 
             $simulation_results =  json_decode($flow->simulation_results);
+
+            $simulation_results->plant_peak_power = str_replace('.', ',', $simulation_results->plant_peak_power);
+            $simulation_results->before_after_savings = str_replace('.', ',', $simulation_results->before_after_savings);
+            $simulation_results->min_area = str_replace('.', ',', $simulation_results->min_area);
+
             $simulation = "
-                Você economizará até <strong>".$core_settings->money_symbol." ".display_money($simulation_results->annual_savings)."</strong><br/>
-                com um gerador solar de <strong>".$simulation_results->plant_peak_power." ".$core_settings->rated_power_measurement."</strong> de potência<br/></br>
-                <strong>Potencial de economia mensal</strong></br>
-                Conta de luz ANTES: <strong>".$core_settings->money_symbol." ".display_money($simulation_results->electricity_bill_before)."</strong><br/>
-                Conta de luz ANTES: <strong>".$core_settings->money_symbol." ".display_money($simulation_results->electricity_bill_after)."</strong><br/>
-                Economia de até: <strong>".$simulation_results->before_after_savings."%</strong><br/>
-                Área mínima necessária para as placas: <strong>".$simulation_results->min_area." ".$core_settings->area_measurement."</strong><br/>
-                Retorno do investimento (Payback): <strong>".$simulation_results->payback_time." anos</strong><br/>".
-                $simulation_results->payback_consideration."<br/>";
+                Você economizará até <strong><span style='color:#e43f16'>".$core_settings->money_symbol." ".display_money($simulation_results->annual_savings)."</span></strong>
+                com um gerador solar de <strong><span style='color:#e43f16'>".$simulation_results->plant_peak_power." ".$core_settings->rated_power_measurement."</span></strong> de potência<br/></br>
+                Conta de luz ANTES: <strong><span style='color:#e43f16'>".$core_settings->money_symbol." ".display_money($simulation_results->electricity_bill_before)."</span></strong><br/>
+                Conta de luz DEPOIS: <strong><span style='color:#e43f16'>".$core_settings->money_symbol." ".display_money($simulation_results->electricity_bill_after)."</span></strong><br/>
+                Economia mensal de até <strong><span style='color:#e43f16'>".$simulation_results->before_after_savings."%</span></strong><br/><br/>
+                Área mínima necessária para as placas: <strong><span style='color:#e43f16'>".$simulation_results->min_area." ".$core_settings->area_measurement."</span></strong><br/>
+                Retorno do investimento (Payback): <strong><span style='color:#e43f16'>".$simulation_results->payback_time." anos</span></strong><br/><br/>".
+                "<small>".$simulation_results->payback_consideration."</small><br/><br/>".
+                "Confira nossa simulação, equipamentos e instaladores, tudo em um lugar só!<br />".
+                "<a href='https://www.solarbid.com.br' >www.solarbid.com.br</a>";
 
             $parse_data = [
                 'company' => $core_settings->company,
                 'title' => $title,
                 'name' => $name,
                 'simulation' => $simulation,
-                'greetings' => "Equipe ".$core_settings->company,
                 'solarbid_logo' => '<img src="' . base_url() . '' . $core_settings->colored_logo . '" alt="' . $core_settings->company . '"/>'
             ];
-            $email = read_file('./application/views/' . $core_settings->template . '/templates/email_simple_mail.html');
+            $email = read_file('./application/views/' . $core_settings->template . '/templates/email_simulation.html');
             $message = $this->parser->parse_string($email, $parse_data);
 
 

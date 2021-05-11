@@ -59,10 +59,12 @@ typings/
 # next.js build output
 .next
 
-# integrators photos
+# SaaS dynamic files
 /files/media/portfolio
 /files/media/user
 /files/media/pvkits
+/files/media/blog
+/files/backup
 
 # htaccess
 .htaccess
