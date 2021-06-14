@@ -269,7 +269,36 @@ class Mail extends MY_Controller {
             $simulation_results->before_after_savings = str_replace('.', ',', $simulation_results->before_after_savings);
             $simulation_results->min_area = str_replace('.', ',', $simulation_results->min_area);
 
-            $simulation = "
+            $chart = "{
+                type: 'line',
+                data: {
+                  labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                  datasets: [{
+                    label: 'Energia gerada',
+                    data: [";
+                    foreach($simulation_results->monthly_production as $month){
+                        $chart .= $month .  ',';
+                    }
+                    $chart.= "
+                ],
+                lineTension: 0.4
+                  }, {
+                    label: 'Média mensal',
+                    data: [";
+                    for($i = 0; $i<12; $i++){
+                        $chart.= $simulation_results->monthly_average_production . ',';
+                    }
+                    $chart.="],
+                    fill: false,
+                  }],
+                }
+              }";
+              //var_dump($chart);
+              //print_r($chart);
+
+              $encoded_chart = urlencode($chart);
+
+                $simulation = "
                 Você economizará até <strong><span style='color:#e43f16'>".$core_settings->money_symbol." ".display_money($simulation_results->annual_savings)."</span></strong>
                 com um gerador solar de <strong><span style='color:#e43f16'>".$simulation_results->plant_peak_power." ".$core_settings->rated_power_measurement."</span></strong> de potência<br/></br>
                 Conta de luz ANTES: <strong><span style='color:#e43f16'>".$core_settings->money_symbol." ".display_money($simulation_results->electricity_bill_before)."</span></strong><br/>
@@ -278,6 +307,8 @@ class Mail extends MY_Controller {
                 Área mínima necessária para as placas: <strong><span style='color:#e43f16'>".$simulation_results->min_area." ".$core_settings->area_measurement."</span></strong><br/>
                 Retorno do investimento (Payback): <strong><span style='color:#e43f16'>".$simulation_results->payback_time." anos</span></strong><br/><br/>".
                 "<small>".$simulation_results->payback_consideration."</small><br/><br/>".
+                "<img src='https://www.quickchart.io/chart?c=" . $encoded_chart . "' style='height: 50%' alt='Minha Figura'>";
+
                 "Confira nossa simulação, equipamentos e instaladores, tudo em um lugar só!<br />".
                 "<a href='https://www.solarbid.com.br' >www.solarbid.com.br</a>";
 
