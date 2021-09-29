@@ -1651,3 +1651,4 @@ $lang['application_image_url'] = 'URL da imagem';
 $lang['application_scheduling_done'] = 'Agendamento efetuado';
 $lang['electricity_bill_before'] = 'Conta de luz antes';
 $lang['electricity_bill_after'] = 'Conta de luz depois';
+$lang['application_photo_size_limit'] = '(Tamanho limite de arquivo: 2MB)';

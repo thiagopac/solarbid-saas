@@ -5,6 +5,7 @@
 
     <div class="form-group">
         <label for="userfile"><?= $this->lang->line('application_file'); ?></label>
+        <small class="text-muted"><?= $this->lang->line('application_photo_size_limit'); ?></small>
         <div>
             <input id="uploadFile" class="form-control uploadFile"
                    placeholder="<?= $this->lang->line('application_choose_file'); ?>" disabled="disabled"/>
