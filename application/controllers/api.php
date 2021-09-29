@@ -2,8 +2,7 @@
 
 class Api extends MY_Controller {
                
-	function __construct()
-	{
+	function __construct(){
 		parent::__construct();
 
 		$api_token = end($this->uri->segment_array());
