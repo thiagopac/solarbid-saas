@@ -22,14 +22,14 @@
                         <th style="width:100px">
                             <?=$this->lang->line('application_state');?>
                         </th>
-                        <th style="width:100px">
+                        <!-- <th style="width:100px">
                             <?=$this->lang->line('application_type');?>
-                        </th>
+                        </th> -->
                         <th style="width:100px">
                             <?=$this->lang->line('application_energy_dealer');?>
                         </th>
                         <th>
-                            <?=$this->lang->line('application_monthly_average')?> (<?= $core_settings->money_symbol; ?>)
+                            <?=$this->lang->line('application_monthly_average')?>
                         </th>
                         <th>
                             <?=$this->lang->line('application_name');?>
@@ -50,6 +50,9 @@
                             <?=$this->lang->line('application_approved_project');?>
                         </th>
                         <th style="width:100px">
+                            <?=$this->lang->line('application_origin');?>
+                        </th>
+                        <th style="width:100px">
                             <?=$this->lang->line('application_created_at');?>
                         </th>
                     </thead>
@@ -66,9 +69,6 @@
                             </td>
                             <td>
                                 <?=$simulator_flow->state_obj->name?>
-                            </td>
-                            <td>
-                                <?=$this->lang->line("application_flow_$simulator_flow->type");?>
                             </td>
                             <td>
                                 <?=$simulator_flow->energy_dealer->name?>
@@ -108,6 +108,9 @@
                                 <?php else : ?>
                                     <label class="label label-important"><?=$this->lang->line('application_no');?></label>
                                 <?php endif; ?>
+                            </td>
+                            <td>
+                                <?=json_decode($simulator_flow->additional_data)->platform == "parallel ajax" ? 'Nova' : 'Antiga';?>
                             </td>
                             <td>
                                 <?=date($core_settings->date_format . ' ' . $core_settings->date_time_format, strtotime($simulator_flow->created_at))?>
