@@ -45,6 +45,9 @@ class Rate extends MY_Controller {
             $rating_post->comment = $comment;
             $rating_post->save();
 
+            unset($_POST['company_id']);
+            // var_dump($_POST);exit;
+
             foreach ($_POST as $key => $value){
                 $rating_evaluation = new RatingEvaluation();
                 $rating_evaluation->rating_post_id = $rating_post->id;

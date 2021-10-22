@@ -4,7 +4,7 @@
                 $config["mailpath"]         = "/usr/sbin/sendmail";
                 $config["smtp_host"]        = "smtp.gmail.com";
                 $config["smtp_user"]        = "solarbid@solarbid.com.br";
-                $config["smtp_pass"]        = "Solarbid!@#";
+                $config["smtp_pass"]        = "s0larbid#@!";
                 $config["smtp_port"]        = "587";
                 $config["smtp_timeout"]     = "5";
                 $config["smtp_crypto"]      = "tls";
