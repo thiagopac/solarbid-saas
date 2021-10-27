@@ -3,7 +3,7 @@ function stringToCnpj(string){
 }
 
 function stringToCpf(string){
-    return string.toString().replace(/^(\d{3})(\d{3})(\d{3})(\d{2}))/, "$1.$2.$3-$4");
+    return string.toString().replace(/^(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
 }
 
 function cnpjToString(string){
