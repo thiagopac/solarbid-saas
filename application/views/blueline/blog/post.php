@@ -114,7 +114,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="preview"><?=$this->lang->line('application_preview_post');?></label>
-                                <a href="https://solarbid.com.br/blog/article/<?=$post->slug?>" target="_blank"><input type="text" class="form-control" disabled value="https://solarbid.com.br/blog/article/<?=$post->slug?>"/></a>
+                                <a href="https://solarbid.com.br/post?artigo=<?=$post->slug?>" target="_blank"><input type="text" class="form-control" disabled value="https://solarbid.com.br/post?artigo=<?=$post->slug?>"/></a>
                             </div>
                         </div>
                     </div>
